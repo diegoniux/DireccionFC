@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 #login .container #login-row #login-column #login-box {
     margin-top: 30px;
-    max-width: 450px;
-    height: 60vh;
+    max-width: 500px;
+    max-height: 550px;
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 20px;
     opacity: 1;
@@ -11,11 +11,12 @@
   #login .container #login-row #login-column #login-box #login-form {
     padding: 20px;
   }
-  #login .container #login-row #login-column #login-box #login-form #register-link {
-    margin-top: -85px;
-  }
   h3.login-title {
       color: #2F6F43;
+  }
+  .login-row-footer{
+    padding: 20x; 
+    align-content: center;
   }
   input.login-input{
       color: #4D4D4D;
@@ -23,13 +24,24 @@
       border: 1px solid #E8E8E8;
       border-radius: 10px;
       opacity: 1;
+      font: normal normal normal Calibri;
   }
   label.login-label{
       color:#4D4D4D;
+      font: normal normal normal Calibri;
   }
   label.login-label-check{
     color:#4D4D4D;
     margin-left: 10px;
+    font: normal normal normal Calibri;
+  }
+  label.login-footer{
+    text-align: left;
+    font: normal normal normal 12px/14px Calibri;
+    letter-spacing: 0px;
+    color: #4D4D4D;
+    opacity: 1; 
+    margin-top: 25px;
   }
   ::placeholder.input-login{
     letter-spacing: 0px;
