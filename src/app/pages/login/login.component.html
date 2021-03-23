@@ -2,35 +2,52 @@
 <div 
     class="bg-image"
     style="background-image: url('assets/img/background_login.png');
-      height: 100vh">
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh">
 
     <div id="login">
-    <h3 class="text-center text-white pt-5">InverCap Afore</h3>
+        <h3 class="text-center text-white pt-5">Nombre de la aplicación</h3>
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-5">
+            <div id="login-column" class="col-md-4">
                 <div id="login-box" class="col-md-4">
-                    <form id="login-form" class="form" action="" method="post">
-                        <h3 class="text-left login-title">Metas y seguimiento</h3>
-                        <h3 class="text-left login-title">Nivel Directivo</h3>
+                    <form [formGroup]="loginForm" (ngSubmit)="loginUsuario()" class="form-group">
+                        <!-- <h3 class="text-left login-title">Dirección Fuerza Comercial</h3> -->
+                        <!-- <h3 class="text-left login-title">Fuerza Comercial</h3> -->
                         <br>
                         <div class="form-group">
-                            <label for="username" class="login-label">Usuario:</label><br>
-                            <input type="text" name="username" id="username" placeholder="Ingresa tu usuario" class="form-control login-input">
+                            <label for="username" class="login-label">Usuario:</label>
+                            <input type="text" class="form-control login-input" formControlName="user"
+                                placeholder="Ingresa tu usuario..."
+                                [ngClass]="{ 'is-invalid': submitted && f.user.errors }">
+                            <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
+                                <div *ngIf="f.user.errors.required">El usuario es requerido</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="password" class="login-label">Contraseña:</label>
-                            <input type="text" name="password" id="password" class="form-control login-input" placeholder="Ingresa tu contraseña">
+                            <input type="password" class="form-control login-input"
+                                formControlName="passw"
+                                placeholder="Contraseña" ngModel
+                                [ngClass]="{ 'is-invalid': submitted && f.passw.errors }">
+                            <div *ngIf="submitted && f.passw.errors" class="invalid-feedback">
+                                <div *ngIf="f.passw.errors.required">La contraseña es requerida</div>
+                             </div>
                         </div>
+
                         <div class="form-group">
                             <label class="custom-check">Recordar usuario
                                 <input type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                        </div>
+                        </div>                        
                         <div class="form-group">
-                            <button type="button" class="btn btn-block login-btn">Iniciar Sesión</button>
+                            <button type="submit" class="btn btn-block login-btn">Iniciar Sesión</button>
                         </div>
+
+                        <alert></alert>
+                        
                     </form>
                     <div class="login-row-footer">
                         <label class="login-footer col-md-8">Copyright © {{Anio}} InverCap Todos los derechos reservados.</label>
@@ -40,7 +57,9 @@
                 </div>
             </div>
         </div>
+    
     </div>
+    <h3 class="text-center text-white pt-5">InverCap Afore</h3>
 </div>
 
 </div>

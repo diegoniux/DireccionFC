@@ -53,6 +53,7 @@
       background-color: #2F6F43;
       color: #FFFFFF;
       transition-duration: 0.4s;
+      border-radius: 15px;
   }
   .login-btn:hover{
       opacity: 90%;
