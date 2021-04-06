@@ -9,12 +9,16 @@ import { AlertModule } from './shared/_alert/alert.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HomeComponent } from './pages/home/home.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { PizarronDigitalComponent } from './pages/pizarron-digital/pizarron-digital.component';
+import { TituloComponent } from './shared/titulo/titulo.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    PizarronDigitalComponent,
+    TituloComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,18 @@
+.post-container {
+    margin: 20px 20px 0 0;
+    overflow: auto
+}
+.post-thumb {
+    float: left
+}
+.post-thumb img {
+    display: block
+}
+.post-content {
+    margin-left: 0px
+}
+.post-title {
+    font-weight: bold;
+    padding: 12px;
+    padding-left: 70px;
+}
