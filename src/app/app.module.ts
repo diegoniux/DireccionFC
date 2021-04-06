@@ -5,18 +5,24 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AlertModule } from './shared/_alert/alert.module'
+import { AlertModule } from './shared/_alert/alert.module';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { HomeComponent } from './pages/home/home.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AlertModule
+    AlertModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,8 +12,8 @@ const appRoutes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./modules/home/home.module').then(m => HomeModule),
-    //Lazy Modules y PreLoad 
-    data: {preload:true}
+    // Lazy Modules y PreLoad
+    data: {preload: true}
    },
   {
    path: '**',

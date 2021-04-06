@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
-import { LoginInterface } from '../../interfaces/login.interface'
+import { LoginInterface } from '../../interfaces/login.interface';
 import { AlertService } from 'src/app/shared/_alert';
 
 @Component({
@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
   };
 
   constructor(private router: Router,
-    public loginService: LoginService,
-    private formBuilder: FormBuilder,
-    public alertService: AlertService) 
-  { 
+              public loginService: LoginService,
+              private formBuilder: FormBuilder,
+              public alertService: AlertService)
+  {
 
   }
 
@@ -38,9 +38,9 @@ export class LoginComponent implements OnInit {
   }
 
   // función para obtener los controles del formulario
-  get f() {return this.loginForm.controls;}
+  get f(): any { return this.loginForm.controls; }
 
-  public loginUsuario() {
+  public loginUsuario(): any {
     this.submitted = true;
 
     if (this.loginForm.invalid) {
@@ -53,29 +53,30 @@ export class LoginComponent implements OnInit {
       .toPromise()
       .then((resp: LoginInterface) => {
 
-
         this.loginInterface = resp;
 
         if (this.loginInterface.usuarioAutorizado) {
           // this.loginService.setUserLoggedIn(this.loginInterface);
 
           // revisamos el estatus del usuario
-          if (resp.activo) {
-              
-              //this.loginService.setModuloActual(modulo);
-              this.alertService.success('Bienvenido');
-              this.router.navigate(['/Home']);
+          if (this.loginInterface.activo) {
+            // this.loginService.setModuloActual(modulo);
+            this.alertService.success('Bienvenido', this.options);
+            this.router.navigate(['/home']);
           }
           else{
-            console.log('Acceso denegado');
-            this.router.navigate(['/Login']);
+            this.alertService.error('Usuario inactivo, favor de contactar a ATI.', this.options);
           }
 
         } else {
           this.alertService.error('Clave y/o usuario incorrecto. Favor de revisar e intentar de nuevo', this.options);
         }
       })
-      .catch( error => { throw error; });
+      .catch( error =>
+        {
+          this.alertService.error(error , this.options );
+          // throw error;
+        });
     }
 
 }
