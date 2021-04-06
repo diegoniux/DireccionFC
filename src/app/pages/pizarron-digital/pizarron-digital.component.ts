@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class PizarronDigitalComponent implements OnInit {
 
   nombreTitulo: string
+  nombreImg: string
 
   constructor() { 
     this.nombreTitulo = "Pizarrón Digital"
+    this.nombreImg = "iconoPizarronDigital"
   }
 
   ngOnInit(): void {
