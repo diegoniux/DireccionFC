@@ -9,12 +9,14 @@ import { AlertModule } from './shared/_alert/alert.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HomeComponent } from './pages/home/home.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { RankingComponent } from './src/app/pages/ranking/ranking.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
