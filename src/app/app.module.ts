@@ -11,6 +11,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PizarronDigitalComponent } from './pages/pizarron-digital/pizarron-digital.component';
 import { TituloComponent } from './shared/titulo/titulo.component';
+import { RankingComponent } from './pages/ranking/ranking.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { TituloComponent } from './shared/titulo/titulo.component';
     HomeComponent,
     SidebarComponent,
     PizarronDigitalComponent,
-    TituloComponent
+    TituloComponent,
+    RankingComponent
+
   ],
   imports: [
     BrowserModule,
