@@ -1,15 +1,136 @@
 /* // Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {  }
+@media (max-width: 575.98px) {
+    .sizeNombre{
+        display: none;
+    }
+    .sizeSucursal{
+        display: none;
+    }
+    .sizeMoney{
+        font-size: 15px;
+        color: #4D4D4D;
+        opacity: 1px;
+        line-height: 5px;
+    }
+    .sizeTipoSaldo{
+        font-size: 8px;
+        line-height: 5px;
+    }
+ }
 
  /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {  }
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .sizeNombre{
+        display: none;
+    }
+    .sizeSucursal{
+        display: none;
+    }
+    .sizeMoney{
+        font-size: 20px;
+        color: #4D4D4D;
+        opacity: 1px;
+        line-height: 10px;
+    }
+    .sizeTipoSaldo{
+        font-size: 12px;
+        line-height: 10px;
+    }
+ }
 
 /* // Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {  }
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .sizeNombre{
+        display: none;
+    }
+    .sizeSucursal{
+        display: none;
+    }
+    .sizeMoney{
+        font-size: 25px;
+        color: #4D4D4D;
+        opacity: 1px;
+        line-height: 10px;
+    }
+    .sizeTipoSaldo{
+        font-size: 15px;
+        line-height: 12px;
+    }
+ }
 
 /* // Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {  }
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .sizeNombre{
+        font-size: 15px;
+        margin: 0px;
+        padding: 0px;
+        line-height: 15px;
+    }
+    .sizeSucursal{
+        font-size: 13px;
+        margin: 0px;
+        padding: 0px;
+        line-height: 20px;
+    }
+    .sizeMoney{
+        font-size: 40px;
+        color: #4D4D4D;
+        opacity: 1px;
+        line-height: 20px;
+    }
+    .sizeTipoSaldo{
+        font-size: 20px;
+    }
+ }
 
 /* // Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) { 
+    .sizeNombre{
+        font-size: 20px;
+        margin: 0px;
+        padding: 0px;
+        line-height: 20px;
+    }
+    .sizeSucursal{
+        font-size: 18px;
+        margin: 0px;
+        padding: 0px;
+        line-height: 20px;
+    }
+    .sizeMoney{
+        font-size: 40px;
+        color: #4D4D4D;
+        opacity: 1px;
+        margin: 0px;
+        padding: 0px;
+        line-height: 30px;
+    }
+    .sizeTipoSaldo{
+        font-size: 20px;
+        margin: 0px;
+        padding: 0px;
+        line-height: 45px;
+    }
+
+    .imgPerfil{
+        margin: 0px;
+        border-image: 10px;
+    }
+ }
+
+.spanMargin{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.cardMediana{
+    margin-top: 10px;
+}
+
+.imgdiv{
+    background: #80CC0E 0% 0% no-repeat padding-box;
+}
+
 
