@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginInterface: LoginInterface;
 
+
   submitted = false;
   options = {
     autoClose: false,
@@ -49,31 +50,35 @@ export class LoginComponent implements OnInit {
 
     this.alertService.clear();
 
+    console.log(this.loginForm.value.user);
+    console.log(this.loginForm.value.passw);
+
     this.loginService.login(this.loginForm.value.user, this.loginForm.value.passw)
       .toPromise()
       .then((resp: LoginInterface) => {
 
         this.loginInterface = resp;
 
-        if (this.loginInterface.usuarioAutorizado) {
-          // this.loginService.setUserLoggedIn(this.loginInterface);
+        console.log(resp);
 
-          // revisamos el estatus del usuario
-          if (this.loginInterface.activo) {
-            // this.loginService.setModuloActual(modulo);
-            this.alertService.success('Bienvenido', this.options);
-            this.router.navigate(['/home']);
-          }
-          else{
-            this.alertService.error('Usuario inactivo, favor de contactar a ATI.', this.options);
-          }
-
-        } else {
-          this.alertService.error('Clave y/o usuario incorrecto. Favor de revisar e intentar de nuevo', this.options);
+        if (!this.loginInterface.resultadoEjecucion.ejecucionCorrecta) {
+          this.alertService.error(this.loginInterface.resultadoEjecucion.errorMessage, this.options);
+          return;
         }
+
+        if (!this.loginInterface.usuarioData.activo) {
+          this.alertService.error('Usiario inactivo.', this.options);
+          return;
+        }
+
+        this.loginService.setUserLoggedIn(this.loginInterface);
+        // this.loginService.setModuloActual(modulo);
+        this.alertService.success('Bienvenido', this.options);
+        this.router.navigate(['/home']);
       })
       .catch( error =>
         {
+          console.log(error);
           this.alertService.error(error , this.options );
           // throw error;
         });

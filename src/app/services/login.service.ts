@@ -1,23 +1,37 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ModuloInterface } from '../interfaces/modulo.interface';
 import { LoginInterface } from '../interfaces/login.interface';
 import { InfoApp } from '../interfaces/infoApp.interface';
+import { InfoAppService } from './info-app.service';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient,
+              private infoAppService: InfoAppService) { }
 
   public login(usuario: string, password: string): any {
-    return this.http.post('https://spw.invercap.com.mx/spw_Api_GestionFC/api/Login', JSON.stringify(
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // 'Content-Type': 'application/json',
+        // 'withCredentials': 'false',
+        // 'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post('http://desaiis01/Api_DireccionFC/api/Login/LDAP', JSON.stringify(
         {
           Usuario: usuario,
           Password: password
         }
-      ), { headers: {'Content-Type': 'application/json; charset=utf-8'}}
+      ), httpOptions
       );
   }
 
@@ -46,6 +60,19 @@ export class LoginService {
       modulo = JSON.parse(localStorage.getItem('moduloActual'));
     }
     return modulo;
+  }
+
+  public setUserLoggedIn(login: LoginInterface): void {
+    this.infoAppService.getInfoApp()
+    .toPromise()
+    .then( (resp: InfoApp) => {
+      localStorage.setItem('infoApp', JSON.stringify(resp));
+    })
+    .catch( error => {
+      throw error;
+    });
+
+    localStorage.setItem('sessionUser', JSON.stringify(login));
   }
 
   public getUserLoggedIn(): LoginInterface {

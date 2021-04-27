@@ -1,22 +1,25 @@
-  export interface LoginInterface {
-  resultadoEjecucion: ResultadoEjecucion;
-  usuarioAutorizado: boolean;
-  activo: boolean;
-  esGerente: boolean;
+import { ResultadoEjecucionInterface } from './resultadoEjecucion.interface';
+
+export interface LoginInterface {
+  resultadoEjecucion: ResultadoEjecucionInterface;
+  usuarioData: UsuarioData;
   token: string;
-  objUsuario?: ObjUsuario;
 }
 
-  interface ResultadoEjecucion {
-    ejecucionCorrecta: boolean;
-    errorMessage?: string;
-    friendlyMessage?: string;
-  }
-  interface ObjUsuario {
-    Nomina: number;
-    usuario: string;
-    idPerfil: number;
-    idEstatusUsuario: number;
-    password?: any;
-    email: string;
-  }
+interface UsuarioData {
+  usuarioId: number;
+  nomina: number;
+  user: string;
+  nombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno?: string;
+  mail?: string;
+  perfilUsuarioId: number;
+  perfilUsuario: string;
+  sucursal: string;
+  coordinacion: string;
+  zona: string;
+  foto: string;
+  titulo: string;
+  activo: boolean;
+}

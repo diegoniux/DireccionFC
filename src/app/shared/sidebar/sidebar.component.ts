@@ -37,10 +37,10 @@ export class SidebarComponent implements OnInit {
     }
 
     // Obtenemos los menús para módulo
-    this.loginService.getMenus(this.modulo.idModulo, this.infoLogin.objUsuario.idPerfil)
+    this.loginService.getMenus(this.modulo.idModulo, this.infoLogin.usuarioData.perfilUsuarioId)
     .subscribe( (resp: MenuInterface[]) => {
       resp.forEach( (menu) => {
-        this.loginService.getOpciones(menu.idMenu, this.infoLogin.objUsuario.idPerfil)
+        this.loginService.getOpciones(menu.idMenu, this.infoLogin.usuarioData.perfilUsuarioId)
         .subscribe( (opciones: OpcionInterface[]) => {
           menu.listOpciones = opciones;
           this.menus.push(menu);
