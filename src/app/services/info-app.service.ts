@@ -15,7 +15,7 @@ export class InfoAppService {
 
     getInfoApp(): any {
         // leemos el archivo
-        return this.http.get('assets/data/infoPage.json');
+        return this.http.get('assets/data/infoApp.json');
     }
 }
 

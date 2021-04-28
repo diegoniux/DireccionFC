@@ -50,16 +50,11 @@ export class LoginComponent implements OnInit {
 
     this.alertService.clear();
 
-    console.log(this.loginForm.value.user);
-    console.log(this.loginForm.value.passw);
-
     this.loginService.login(this.loginForm.value.user, this.loginForm.value.passw)
       .toPromise()
       .then((resp: LoginInterface) => {
 
         this.loginInterface = resp;
-
-        console.log(resp);
 
         if (!this.loginInterface.resultadoEjecucion.ejecucionCorrecta) {
           this.alertService.error(this.loginInterface.resultadoEjecucion.errorMessage, this.options);
@@ -75,6 +70,10 @@ export class LoginComponent implements OnInit {
         // this.loginService.setModuloActual(modulo);
         this.alertService.success('Bienvenido', this.options);
         this.router.navigate(['/home']);
+
+        console.log(this.loginInterface);
+
+
       })
       .catch( error =>
         {

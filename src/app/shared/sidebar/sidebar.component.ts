@@ -14,9 +14,9 @@ import { LoginInterface } from '../../interfaces/login.interface';
 })
 export class SidebarComponent implements OnInit {
 
-  public modulo: ModuloInterface;
-  public menus: MenuInterface[] = [];
-  public opciones: OpcionInterface[] = [];
+  // public modulo: ModuloInterface;
+  // public menus: MenuInterface[] = [];
+  // public opciones: OpcionInterface[] = [];
   infoLogin: LoginInterface;
   infoApp: InfoApp;
 
@@ -24,28 +24,28 @@ export class SidebarComponent implements OnInit {
                public loginService: LoginService ) { }
 
   ngOnInit(): void {
-    this.cargarMenus();
+    this.cargarInfo();
   }
 
-  cargarMenus(): any {
+  cargarInfo(): any {
     this.infoLogin = this.loginService.getUserLoggedIn();
-    this.modulo = this.loginService.getModuloActual();
+    // this.modulo = this.loginService.getModuloActual();
     this.infoApp = this.loginService.getInfoApp();
 
-    if (!this.modulo) {
-      return;
-    }
+    // if (!this.modulo) {
+    //   return;
+    // }
 
     // Obtenemos los menús para módulo
-    this.loginService.getMenus(this.modulo.idModulo, this.infoLogin.usuarioData.perfilUsuarioId)
-    .subscribe( (resp: MenuInterface[]) => {
-      resp.forEach( (menu) => {
-        this.loginService.getOpciones(menu.idMenu, this.infoLogin.usuarioData.perfilUsuarioId)
-        .subscribe( (opciones: OpcionInterface[]) => {
-          menu.listOpciones = opciones;
-          this.menus.push(menu);
-        });
-      });
-    });
+    // this.loginService.getMenus(this.modulo.idModulo, this.infoLogin.usuarioData.perfilUsuarioId)
+    // .subscribe( (resp: MenuInterface[]) => {
+    //   resp.forEach( (menu) => {
+    //     this.loginService.getOpciones(menu.idMenu, this.infoLogin.usuarioData.perfilUsuarioId)
+    //     .subscribe( (opciones: OpcionInterface[]) => {
+    //       menu.listOpciones = opciones;
+    //       this.menus.push(menu);
+    //     });
+    //   });
+    // });
   }
 }

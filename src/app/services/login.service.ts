@@ -43,24 +43,24 @@ export class LoginService {
     return infoApp;
   }
 
-  public getModulos(IdAplicativo, IdPerfil): any {
-    return this.http.get('https://localhost:44337/api/Login/Modulos/' + IdAplicativo + '/' + IdPerfil);
-  }
+  // public getModulos(IdAplicativo, IdPerfil): any {
+  //   return this.http.get('https://localhost:44337/api/Login/Modulos/' + IdAplicativo + '/' + IdPerfil);
+  // }
 
-  public getMenus(IdModulo, IdPerfil): any {
-    return this.http.get('https://localhost:44337/api/Login/Menus/' + IdModulo + '/' + IdPerfil);
-  }
+  // public getMenus(IdModulo, IdPerfil): any {
+  //   return this.http.get('https://localhost:44337/api/Login/Menus/' + IdModulo + '/' + IdPerfil);
+  // }
 
-  public getOpciones(IdMenu, IdPerfil): any {
-    return this.http.get('https://localhost:44337/api/Login/Opciones/' + IdMenu + '/' + IdPerfil);
-  }
-  public getModuloActual(): ModuloInterface {
-    let modulo: ModuloInterface;
-    if (localStorage.getItem('moduloActual') !== '') {
-      modulo = JSON.parse(localStorage.getItem('moduloActual'));
-    }
-    return modulo;
-  }
+  // public getOpciones(IdMenu, IdPerfil): any {
+  //   return this.http.get('https://localhost:44337/api/Login/Opciones/' + IdMenu + '/' + IdPerfil);
+  // }
+  // public getModuloActual(): ModuloInterface {
+  //   let modulo: ModuloInterface;
+  //   if (localStorage.getItem('moduloActual') !== '') {
+  //     modulo = JSON.parse(localStorage.getItem('moduloActual'));
+  //   }
+  //   return modulo;
+  // }
 
   public setUserLoggedIn(login: LoginInterface): void {
     this.infoAppService.getInfoApp()
