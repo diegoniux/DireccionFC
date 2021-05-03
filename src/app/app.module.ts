@@ -12,6 +12,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PizarronDigitalComponent } from './pages/pizarron-digital/pizarron-digital.component';
 import { TituloComponent } from './shared/titulo/titulo.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
+import { DetallelidercomercialComponent } from './pages/detallelidercomercial/detallelidercomercial.component';
+import { DetallegerenciasComponent } from './pages/detallegerencias/detallegerencias.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,9 @@ import { RankingComponent } from './pages/ranking/ranking.component';
     SidebarComponent,
     PizarronDigitalComponent,
     TituloComponent,
-    RankingComponent
-
+    RankingComponent,
+    DetallelidercomercialComponent,
+    DetallegerenciasComponent
   ],
   imports: [
     BrowserModule,
