@@ -17,8 +17,8 @@ interface UsuarioData {
   perfilUsuarioId: number;
   perfilUsuario: string;
   sucursal: string;
+  idCoordinacion: number;
   coordinacion: string;
-  zona: string;
   foto: string;
   titulo: string;
   activo: boolean;

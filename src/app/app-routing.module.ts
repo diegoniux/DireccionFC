@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeModule } from './modules/home/home.module';
-import { PizarronDigitalModule } from './modules/pizarron-digital/pizarron-digital.module'
-
+import { PizarronDigitalModule } from './modules/pizarron-digital/pizarron-digital.module';
+import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -13,12 +13,14 @@ const appRoutes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./modules/home/home.module').then(m => HomeModule),
+    canActivate : [AuthGuard],
     // Lazy Modules y PreLoad
     data: {preload: true}
    },
    {
     path: 'pizarron-digital',
     loadChildren: () => import('./modules/pizarron-digital/pizarron-digital.module').then(m => PizarronDigitalModule),
+    canActivate : [AuthGuard],
     // Lazy Modules y PreLoad
     data: {preload: true}
    },

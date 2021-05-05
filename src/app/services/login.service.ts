@@ -73,6 +73,7 @@ export class LoginService {
     });
 
     localStorage.setItem('sessionUser', JSON.stringify(login));
+    localStorage.setItem('isUserLoggedIn', 'true');
   }
 
   public getUserLoggedIn(): LoginInterface {
@@ -84,7 +85,7 @@ export class LoginService {
   }
 
   public setUserLoggedOn(): void {
-    localStorage.setItem('isUserLoggedIn', null);
+    localStorage.setItem('isUserLoggedIn', 'false');
     localStorage.setItem('moduloActual', null);
   }
 }

@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
       user: ['', Validators.required],
       passw: ['', Validators.required]
     });
+
+    this.loginService.setUserLoggedOn();
   }
 
   // función para obtener los controles del formulario
@@ -62,7 +64,7 @@ export class LoginComponent implements OnInit {
         }
 
         if (!this.loginInterface.usuarioData.activo) {
-          this.alertService.error('Usiario inactivo.', this.options);
+          this.alertService.error('Usuario inactivo.', this.options);
           return;
         }
 
@@ -77,8 +79,7 @@ export class LoginComponent implements OnInit {
       })
       .catch( error =>
         {
-          console.log(error);
-          this.alertService.error(error , this.options );
+          this.alertService.error(error.message , this.options );
           // throw error;
         });
     }
