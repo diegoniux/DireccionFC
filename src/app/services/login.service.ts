@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ModuloInterface } from '../interfaces/modulo.interface';
 import { LoginInterface } from '../interfaces/login.interface';
-import { InfoApp } from '../interfaces/infoApp.interface';
+import { InfoAppInterface } from '../interfaces/infoApp.interface';
 import { InfoAppService } from './info-app.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -12,11 +12,23 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class LoginService {
 
-  constructor(public http: HttpClient,
-              private infoAppService: InfoAppService) { }
+  infoApp: InfoAppInterface;
+  apiURL: string;
+
+  constructor(public http: HttpClient, private infoAppService: InfoAppService)
+  {
+    this.infoAppService.getInfoApp()
+    .toPromise()
+    .then( (resp: InfoAppInterface) => {
+      this.infoApp = resp;
+      this.apiURL = this.infoApp.API;
+    })
+    .catch( error => {
+      throw error;
+    });
+  }
 
   public login(usuario: string, password: string): any {
-
     const httpOptions = {
       headers: new HttpHeaders({
         // 'Content-Type': 'application/json',
@@ -25,8 +37,7 @@ export class LoginService {
         'Content-Type': 'application/json'
       })
     };
-
-    return this.http.post('http://desaiis01/Api_DireccionFC/api/Login/LDAP', JSON.stringify(
+    return this.http.post(this.apiURL + 'Login/LDAP', JSON.stringify(
         {
           Usuario: usuario,
           Password: password
@@ -35,8 +46,8 @@ export class LoginService {
       );
   }
 
-  public getInfoApp(): InfoApp {
-    let infoApp: InfoApp;
+  public getInfoApp(): InfoAppInterface {
+    let infoApp: InfoAppInterface;
     if (localStorage.getItem('infoApp') !== '') {
       infoApp = JSON.parse(localStorage.getItem('infoApp'));
     }
@@ -65,7 +76,7 @@ export class LoginService {
   public setUserLoggedIn(login: LoginInterface): void {
     this.infoAppService.getInfoApp()
     .toPromise()
-    .then( (resp: InfoApp) => {
+    .then( (resp: InfoAppInterface) => {
       localStorage.setItem('infoApp', JSON.stringify(resp));
     })
     .catch( error => {

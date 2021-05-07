@@ -1,8 +1,7 @@
-export interface InfoApp {
+export interface InfoAppInterface {
     titulo?: string;
     email?: string;
     nombre_corto?: string;
     nombre_largo?: string;
-    Linkedin?: string;
-    IdAplicativo?: number;
+    API?: string;
 }

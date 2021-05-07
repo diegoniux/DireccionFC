@@ -2,5 +2,6 @@
     "titulo": "Dirección FC",
     "email": "",
     "nombre_corto": "DFC",
-    "nombre_largo": "Dirección Fuerza Comercial"
+    "nombre_largo": "Dirección Fuerza Comercial",
+    "API": "http://desaiis01/Api_DireccionFC/api/"
 }

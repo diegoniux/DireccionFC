@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModuloInterface } from '../../interfaces/modulo.interface';
 import { MenuInterface } from '../../interfaces/menu.interface';
 import { OpcionInterface } from '../../interfaces/opcion.interface';
-import { InfoApp } from '../../interfaces/infoApp.interface';
+import { InfoAppInterface } from '../../interfaces/infoApp.interface';
 import { InfoAppService } from '../../services/info-app.service';
 import { LoginService } from '../../services/login.service';
 import { LoginInterface } from '../../interfaces/login.interface';
@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit {
   // public menus: MenuInterface[] = [];
   // public opciones: OpcionInterface[] = [];
   infoLogin: LoginInterface;
-  infoApp: InfoApp;
+  infoApp: InfoAppInterface;
 
   constructor( public infoPagService: InfoAppService,
                public loginService: LoginService ) { }
