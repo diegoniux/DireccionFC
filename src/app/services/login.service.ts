@@ -21,7 +21,7 @@ export class LoginService {
     .toPromise()
     .then( (resp: InfoAppInterface) => {
       this.infoApp = resp;
-      this.apiURL = this.infoApp.API;
+      this.apiURL = this.infoApp.apiUrl;
     })
     .catch( error => {
       throw error;
