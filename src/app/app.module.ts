@@ -17,7 +17,7 @@ import { DetallegerenciasComponent } from './pages/detallegerencias/detallegeren
 import { BarraMetasComponent } from './shared/barra-metas/barra-metas.component';
 import { MejorSaldoComponent } from './shared/mejor-saldo/mejor-saldo.component';
 import { RelevanteComponent } from './shared/relevante/relevante.component';
-import { TendeciaComponent } from './shared/tendecia/tendecia.component';
+import { TendenciaComponent } from './shared/tendencia/tendencia.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { TendeciaComponent } from './shared/tendecia/tendecia.component';
     BarraMetasComponent,
     MejorSaldoComponent,
     RelevanteComponent,
-    TendeciaComponent
+    TendenciaComponent
   ],
   imports: [
     BrowserModule,
