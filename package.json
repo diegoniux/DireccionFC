@@ -26,6 +26,7 @@
     "angular-bootstrap-md": "^11.0.0",
     "animate.css": "^4.1.1",
     "bootstrap": "^4.6.0",
+    "bootstrap-select": "^1.13.18",
     "bootstrap4-toggle": "^3.6.1",
     "chart.js": "^2.5.0",
     "hammer": "0.0.5",

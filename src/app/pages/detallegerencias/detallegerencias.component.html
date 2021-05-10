@@ -7,10 +7,10 @@
             <div class="card">
                 <div class="row">
                     <div class="col">
-                        <div *ngIf="tiposPeriodo" class="form-group">
+                        <div class="form-group">
                             <label>Periodo</label>
-                            <select class="form-control">
-                              <option *ngFor="let item of tiposPeriodo" value="item.idTipoPeriodo">{{ item.tipoPeriodo }}</option>
+                            <select class="selectpicker">
+                              <option *ngFor="let item of tiposPeriodo" value="item.idTipoPeriodo"><i class="fa fa-calendar"> {{ item.tipoPeriodo }}</i></option>
                             </select>
                         </div>
                     </div>
