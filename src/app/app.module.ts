@@ -14,6 +14,7 @@ import { TituloComponent } from './shared/titulo/titulo.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { DetallelidercomercialComponent } from './pages/detallelidercomercial/detallelidercomercial.component';
 import { DetallegerenciasComponent } from './pages/detallegerencias/detallegerencias.component';
+import { BarraMetasComponent } from './shared/barra-metas/barra-metas.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DetallegerenciasComponent } from './pages/detallegerencias/detallegeren
     TituloComponent,
     RankingComponent,
     DetallelidercomercialComponent,
-    DetallegerenciasComponent
+    DetallegerenciasComponent,
+    BarraMetasComponent
   ],
   imports: [
     BrowserModule,
