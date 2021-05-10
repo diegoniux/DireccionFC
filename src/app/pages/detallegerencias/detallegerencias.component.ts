@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TipoPeriodo } from 'src/app/interfaces/tipoPeriodo.interface';
-import { DetalleGerenciasServiceService } from 'src/app/services/detalle-gerencias-service.service';
+import { DetalleGerenciasService } from 'src/app/services/detalle-gerencias-service.service';
 import { TiposPeriodoInterface } from '../../interfaces/tiposPeriodo.interface';
 
 @Component({
@@ -14,7 +14,7 @@ export class DetallegerenciasComponent implements OnInit {
   nombreImg: string;
   tiposPeriodo: TipoPeriodo[];
 
-  constructor(public detalleGerenciaService: DetalleGerenciasServiceService) {
+  constructor(public detalleGerenciaService: DetalleGerenciasService) {
     this.nombreTitulo = 'Detalle Gerencias';
     this.nombreImg = 'iconoPizarronDigital';
 

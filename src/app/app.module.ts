@@ -14,6 +14,10 @@ import { TituloComponent } from './shared/titulo/titulo.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { DetallelidercomercialComponent } from './pages/detallelidercomercial/detallelidercomercial.component';
 import { DetallegerenciasComponent } from './pages/detallegerencias/detallegerencias.component';
+import { BarraMetasComponent } from './shared/barra-metas/barra-metas.component';
+import { MejorSaldoComponent } from './shared/mejor-saldo/mejor-saldo.component';
+import { RelevanteComponent } from './shared/relevante/relevante.component';
+import { TendeciaComponent } from './shared/tendecia/tendecia.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { DetallegerenciasComponent } from './pages/detallegerencias/detallegeren
     TituloComponent,
     RankingComponent,
     DetallelidercomercialComponent,
-    DetallegerenciasComponent
+    DetallegerenciasComponent,
+    BarraMetasComponent,
+    MejorSaldoComponent,
+    RelevanteComponent,
+    TendeciaComponent
   ],
   imports: [
     BrowserModule,
