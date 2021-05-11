@@ -15,15 +15,15 @@ export class BarraMetasComponent implements OnInit {
 
   constructor(public detalleGerenciaService: DetalleGerenciasService) {
 
-    this.getBerraMetas();
+    this.getBarraMetas();
    }
 
   ngOnInit(): void {
   }
 
-  private getBerraMetas(): any
+  private getBarraMetas(): any
   {
-    this.detalleGerenciaService.getBerraMetas()
+    this.detalleGerenciaService.getBarraMetas()
     .toPromise()
     .then((data: BarraMetasInterface) => {
         this.barraMetas = data;
