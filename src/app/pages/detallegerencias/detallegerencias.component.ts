@@ -42,7 +42,7 @@ export class DetallegerenciasComponent implements OnInit {
       if (!data.resultadoEjecucion.ejecucionCorrecta) {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
-      this.tiposPeriodo = data.listTiposPetiodo;
+      this.tiposPeriodo = data.listTiposPeriodo;
       console.log(this.tiposPeriodo);
     })
     .catch(error => {

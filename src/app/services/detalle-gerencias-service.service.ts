@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { InfoAppInterface } from '../interfaces/infoApp.interface';
 import { LoginService } from './login.service';
-import { RelevanteComponent } from '../shared/relevante/relevante.component';
 
 @Injectable({
   providedIn: 'root'
