@@ -16,9 +16,14 @@ export class DetalleGerenciasService {
     return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getTiposPeriodo');
   }
 
-  public getBerraMetas(): any {
+  public getBarraMetas(): any {
     this.infoApp = this.loginService.getInfoApp();
     return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getBarraMetas/69407/2021-04-01T00:00:00/2021-04-30T00:00:00/2');
   }
 
+    // Función para obtener las fechas dado un periodo
+    public getFechasPeriodos(mesSemanaPrevios: number, idTipoPeriodo: number): any {
+      this.infoApp = this.loginService.getInfoApp();
+      return this.http.get(`${this.infoApp.apiUrl}DetalleGerencias/getFechasPeriodo/${mesSemanaPrevios}/${idTipoPeriodo}`);
+    }
 }

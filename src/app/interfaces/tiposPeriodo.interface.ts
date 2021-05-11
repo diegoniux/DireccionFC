@@ -1,8 +1,8 @@
 import { ResultadoEjecucionInterface } from './resultadoEjecucion.interface';
-import { TipoPeriodo } from './tipoPeriodo.interface';
+import { TipoPeriodoInterface } from './tipoPeriodo.interface';
 
 export interface TiposPeriodoInterface {
   resultadoEjecucion: ResultadoEjecucionInterface;
-  listTiposPetiodo: TipoPeriodo[];
+  listTiposPetiodo: TipoPeriodoInterface[];
 }
 

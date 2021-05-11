@@ -1,4 +1,4 @@
-export interface TipoPeriodo {
+export interface TipoPeriodoInterface {
     idTipoPeriodo: number;
     tipoPeriodo: string;
 }
