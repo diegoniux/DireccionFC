@@ -1,36 +1,41 @@
-<div class="card">
-    <div class="row">
-        <div class="col">
-            <p>Mejor Saldo</p>
-        </div>
-        <div class="col">
-            S14 2021
-        </div>
+<style>
+  .card-radius{
+    border-radius: 10px ;
+  }
+  .card-bold{
+    font-weight: bold;
+  }
+</style>
+<div class="card card-radius">
+  <div class="card-body">
+    <div class="card-title">
+      <div class="row">
+          <div class="col">
+              <p class="text-left card-bold">Relevante</p>
+          </div>
+          <div class="col">
+            <p *ngIf='relevante' class="text-right card-bold">{{ relevante.encabezadoPeriodo }}</p>
+          </div>
+      </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <table class="table" style="margin-left: 10px; margin-right: 10px;">
-                <tbody>
-                  <tr>
-                    <th scope="row">S52</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td><img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="../../../assets/img/fotoperfil.png" alt=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">S53</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td><img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="../../../assets/img/fotoperfil.png" alt=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">S54</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td><img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="../../../assets/img/fotoperfil.png" alt=""></td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
-    </div>
+    <table class="table" style="margin-left: 10px; margin-right: 10px;">
+        <tbody *ngIf='relevante'>
+          <tr>
+            <td>Fuera de Línea</td>
+            <th scope="row">{{ relevante.numEspecialistasFL }} / {{ relevante.numEspecialistas }}</th>
+            <td>Especialistas</td>
+          </tr>
+          <tr>
+            <td>Prospectos</td>
+            <th scope="row">{{ relevante.numEspecialistasProsp }} / {{ relevante.numEspecialistas }}</th>
+            <td>Especialistas</td>
+          </tr>
+          <tr>
+            <td>Investigación</td>
+            <th scope="row">{{ relevante.numEspecialistasMR }} / {{ relevante.numEspecialistas }}</th>
+            <td>Especialistas en Riesgo</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
 </div>

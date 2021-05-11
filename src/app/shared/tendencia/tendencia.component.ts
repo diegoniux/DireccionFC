@@ -9,7 +9,7 @@ import { DetalleGerenciasService } from '../../services/detalle-gerencias-servic
 })
 export class TendenciaComponent implements OnInit {
 
-  tendecias: TendenciasInterface;
+  tendencias: TendenciasInterface;
   constructor(public detalleGerenciasService: DetalleGerenciasService) { 
     this.getTendencias();
   }
@@ -22,8 +22,8 @@ export class TendenciaComponent implements OnInit {
     this.detalleGerenciasService.getTendencias()
     .toPromise()
     .then((data: TendenciasInterface) => {
-      this.tendecias = data;
-      console.log(this.tendecias)
+      this.tendencias = data;
+      console.log(this.tendencias)
     })
     .catch(error => {
       console.error(error);
