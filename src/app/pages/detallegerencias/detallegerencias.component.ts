@@ -6,7 +6,6 @@ import { TipoPeriodoInterface } from 'src/app/interfaces/tipoPeriodo.interface';
 import { DetalleGerenciasService } from 'src/app/services/detalle-gerencias-service.service';
 import { TiposPeriodoInterface } from '../../interfaces/tiposPeriodo.interface';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -31,13 +30,14 @@ export class DetallegerenciasComponent implements OnInit {
   constructor(public detalleGerenciaService: DetalleGerenciasService) {
     this.nombreTitulo = 'Detalle Gerencias';
     this.nombreImg = 'iconoPizarronDigital';
-    this.idTipoPeriodo = 1; // Mensual
+    this.idTipoPeriodo = 2; // Mensual
     this.periodosPrevios = 0; // Para que se muestre el periodo actual
+    this.cargarTiposPeriodo();
+    this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
    }
 
   ngOnInit(): void {
-    this.cargarTiposPeriodo();
-    this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
+
   }
 
   private cargarTiposPeriodo(): any
@@ -55,7 +55,7 @@ export class DetallegerenciasComponent implements OnInit {
     });
   }
 
-  private cargarFechasPeriodo(mesSemanaPervios: number, idTipoPeriodo: number): any
+  public cargarFechasPeriodo(mesSemanaPervios: number, idTipoPeriodo: number): any
   {
     this.detalleGerenciaService.getFechasPeriodos(mesSemanaPervios, idTipoPeriodo)
     .toPromise()
@@ -80,8 +80,11 @@ export class DetallegerenciasComponent implements OnInit {
   public onTipoPeriodoChanged(e): any
   {
     console.log(e);
-    console.log(e.target.value);
-    // this.idTipoPeriodo = selectedValue;
+    this.idTipoPeriodo = e;
+    this.periodosPrevios = 0;
+
+    this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
+
   }
 
   getPeriodoDesc(): string
@@ -97,4 +100,12 @@ export class DetallegerenciasComponent implements OnInit {
     return desc;
   }
 
+  public cargarPeriodo(sentido: number): any
+  {
+    this.periodosPrevios += sentido;
+    if (sentido === 1 && this.periodosPrevios === 0) {
+      return;
+    }
+    this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
+  }
 }

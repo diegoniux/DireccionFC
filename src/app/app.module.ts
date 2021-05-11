@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AlertModule } from './shared/_alert/alert.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HomeComponent } from './pages/home/home.component';
@@ -18,6 +18,7 @@ import { BarraMetasComponent } from './shared/barra-metas/barra-metas.component'
 import { MejorSaldoComponent } from './shared/mejor-saldo/mejor-saldo.component';
 import { RelevanteComponent } from './shared/relevante/relevante.component';
 import { TendenciaComponent } from './shared/tendencia/tendencia.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { TendenciaComponent } from './shared/tendencia/tendencia.component';
     HttpClientModule,
     ReactiveFormsModule,
     AlertModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    FormsModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
