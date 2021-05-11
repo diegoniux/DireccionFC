@@ -1,6 +1,6 @@
 import { ResultadoEjecucionInterface } from '../resultadoEjecucion.interface';
 
-interface RelevantesInterface {
+export interface RelevantesInterface {
   resultadoEjecucion: ResultadoEjecucionInterface;
   numEspecialistas: number;
   numEspecialistasFL: number;
