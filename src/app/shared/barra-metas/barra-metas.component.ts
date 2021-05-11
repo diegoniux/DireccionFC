@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DetalleGerenciasService } from 'src/app/services/detalle-gerencias-service.service';
-import { BarraMetasInterface } from 'src/app/interfaces/barraMetas.interface'
+import { BarraMetasInterface } from 'src/app/interfaces/barraMetas.interface';
 
 @Component({
   selector: 'app-barra-metas',
@@ -26,7 +26,6 @@ export class BarraMetasComponent implements OnInit {
     this.detalleGerenciaService.getBarraMetas()
     .toPromise()
     .then((data: BarraMetasInterface) => {
-      console.log(data);
       if (!data.resultadoEjecucion.ejecucionCorrecta) {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
