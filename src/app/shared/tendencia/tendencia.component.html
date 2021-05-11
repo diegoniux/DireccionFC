@@ -1,36 +1,32 @@
-<div class="card">
-    <div class="row">
-        <div class="col">
-            <p>Mejor Saldo</p>
-        </div>
-        <div class="col">
-            S14 2021
-        </div>
+<style>
+  .card-radius{
+    border-radius: 10px ;
+  }
+  .card-bold{
+    font-weight: bold;
+  }
+</style>
+<div class="card card-radius">
+  <div class="card-body">
+    <div class="card-title">
+      <div class="row">
+          <div class="col">
+              <p class="text-left card-bold">Tendencias</p>
+          </div>
+          <div class="col">
+            <p  *ngIf='tendencias' class="text-right card-bold">{{ tendencias.encabezadoPeriodo }}</p>
+          </div>
+      </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <table class="table" style="margin-left: 10px; margin-right: 10px;">
-                <tbody>
-                  <tr>
-                    <th scope="row">S52</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td><img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="../../../assets/img/fotoperfil.png" alt=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">S53</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td><img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="../../../assets/img/fotoperfil.png" alt=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">S54</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td><img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="../../../assets/img/fotoperfil.png" alt=""></td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
-    </div>
+    <table class="table" style="margin-left: 10px; margin-right: 10px;">
+        <tbody *ngIf='tendencias'>
+          <tr *ngFor="let item of tendencias.listaTendencias">
+            <td><img class="mx-auto d-block" style="height: 30px; margin: 0px;" src="{{item.img}}" alt=""></td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.porcentaje }}</td>
+          </tr>
+          <tr>
+        </tbody>
+      </table>
+  </div>
 </div>
