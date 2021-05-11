@@ -20,12 +20,12 @@ export class DetalleGerenciasService {
     this.infoApp = this.loginService.getInfoApp();
     return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getBarraMetas/69407/2021-04-01T00:00:00/2021-04-30T00:00:00/2');
   }
-  
+
   public getMejorSaldo(): any {
     this.infoApp = this.loginService.getInfoApp();
     return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getMejorSaldo/17608/1/2021-05-03T00:00:00/2021-05-09T00:00:00');
   }
-  
+
   public getRelevantes(): any {
     this.infoApp = this.loginService.getInfoApp();
     return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getRelevantes/17608/1/2021-05-03T00:00:00/2021-05-09T00:00:00');

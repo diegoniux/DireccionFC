@@ -1,27 +1,32 @@
+
 <div class="container-fluid p-4" style="background-color: #F2F2F2;">
+    <form [formGroup]="form">
     <div class="row">
         <div class="col-3">
             <app-titulo [nombreTitulo]="nombreTitulo" [nombreImg]="nombreImg"></app-titulo>
         </div>
-        <div class="col text-center">
-            <div class="card">
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label>Periodo</label>
-                            <select class="form-control">
-                              <option *ngFor="let item of tiposPeriodo" value="item.idTipoPeriodo">{{ item.tipoPeriodo }}</option>
-                            </select>
-                        </div>
+        <div class="col-6">
+            <div class="card" style="height: 60px;">
+                <div class="d-flex justify-content-center">
+                    <div class="p-3 flex-fill">
+                        <label>Periodo</label>
                     </div>
-                    <div class="col">
-                        <p>hola</p>
+                    <div class="p-2 flex-fill">
+                        <select formControlName="tipoPeriodo" class="form-control" (Change)='onTipoPeriodoChanged($event)'>
+                            <option *ngFor="let item of tiposPeriodo" value="item.idTipoPeriodo" [selected]="item.idTipoPeriodo === 2">
+                                <i class="fa fa-calendar"> {{ item.tipoPeriodo }}</i>
+                            </option>
+                        </select>
                     </div>
-                    <div class="col">
-                        <p>S15</p>
-                    </div>
-                    <div class="col">
-                        flechitas
+                    <div class="p-2 flex-fill">
+                        <label *ngIf="idTipoPeriodo === 1"> {{ periodoSemana.numeroSemana }} </label>
+                        <button class="btn btn-default">
+                            <img src="../../../assets/img/flechaizq.png" width="12" />
+                        </button>
+                        {{getPeriodoDesc()}}
+                        <button class="btn btn-default">
+                            <img src="../../../assets/img/flechader.png" width="12" />
+                        </button>
                     </div>
                 </div>
             </div>
@@ -30,7 +35,43 @@
     <app-barra-metas></app-barra-metas>
     <div class="row">
         <div class="col">
-            <app-mejor-saldo></app-mejor-saldo>
+            <div class="card">
+                <div class="row">
+                    <div class="col">
+                        <p>Mejor Saldo</p>
+                    </div>
+                    <div class="col">
+                        S14 2021
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table" style="margin-left: 10px; margin-right: 10px;">
+                            <tbody>
+                            <tr>
+                                <th scope="row">S52</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td><img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="../../../assets/img/fotoperfil.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">S53</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td><img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="../../../assets/img/fotoperfil.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">S54</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td><img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="../../../assets/img/fotoperfil.png" alt=""></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
         </div>
         <div class="col">
             <app-tendencia></app-tendencia>           
@@ -75,4 +116,5 @@
             </div>
         </div>
     </div>
+    </form>
 </div>  

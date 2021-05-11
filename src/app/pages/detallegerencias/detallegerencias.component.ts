@@ -5,6 +5,8 @@ import { PeriodoSemanaInterface } from 'src/app/interfaces/periodoSemana.interfa
 import { TipoPeriodoInterface } from 'src/app/interfaces/tipoPeriodo.interface';
 import { DetalleGerenciasService } from 'src/app/services/detalle-gerencias-service.service';
 import { TiposPeriodoInterface } from '../../interfaces/tiposPeriodo.interface';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -22,10 +24,14 @@ export class DetallegerenciasComponent implements OnInit {
   periodoSemana: PeriodoSemanaInterface;
   periodosPrevios: number;
 
+  form = new FormGroup({
+    tipoPeriodo: new FormControl(2, Validators.required)
+  });
+
   constructor(public detalleGerenciaService: DetalleGerenciasService) {
     this.nombreTitulo = 'Detalle Gerencias';
     this.nombreImg = 'iconoPizarronDigital';
-    this.idTipoPeriodo = 2; // Mensual
+    this.idTipoPeriodo = 1; // Mensual
     this.periodosPrevios = 0; // Para que se muestre el periodo actual
    }
 
@@ -43,7 +49,6 @@ export class DetallegerenciasComponent implements OnInit {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
       this.tiposPeriodo = data.listTiposPeriodo;
-      console.log(this.tiposPeriodo);
     })
     .catch(error => {
       console.error(error);
@@ -66,6 +71,30 @@ export class DetallegerenciasComponent implements OnInit {
     .catch(error => {
       console.error(error);
     });
+  }
+
+  get f(): any{
+    return this.form.controls;
+  }
+
+  public onTipoPeriodoChanged(e): any
+  {
+    console.log(e);
+    console.log(e.target.value);
+    // this.idTipoPeriodo = selectedValue;
+  }
+
+  getPeriodoDesc(): string
+  {
+    let desc: string;
+    if (this.idTipoPeriodo === 1) {
+      desc = `${this.periodoSemana.fechaInicial} - ${this.periodoSemana.fechaFinal}`;
+    }
+
+    if (this.idTipoPeriodo === 2) {
+      desc = `${this.periodoMes.mes} ${this.periodoMes.anio}`;
+    }
+    return desc;
   }
 
 }
