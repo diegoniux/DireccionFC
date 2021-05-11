@@ -18,15 +18,25 @@
           </div>
       </div>
     </div>
-    <table class="table" style="margin-left: 10px; margin-right: 10px;">
-        <tbody *ngIf='mejorSaldo'>
-          <tr *ngFor="let item of mejorSaldo.listaMejorSaldo">
-            <th scope="row">{{ item.mes }}</th>
-            <td>{{ item.anio }}</td>
-            <td>{{ item.saldo }}</td>
-            <td><img *ngIf='item.img' class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="{{item.img}}" alt=""></td>
+    <table style="width:100%">
+      <tbody>
+        <tr>
+          <td style="width: 10%;"><img src="../../../assets/img/flechaizq.png" style="width:30px; height: 60px;"></td>
+          <td style="width: 80%; padding-right: 30px;">
+            <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
+              <tbody *ngIf='mejorSaldo'>
+                <tr *ngFor="let item of mejorSaldo.listaMejorSaldo">
+                  <th scope="row">{{ item.mes }}</th>
+                  <td>{{ item.anio }}</td>
+                  <td>{{ item.saldo }}</td>
+                  <td><img *ngIf='item.img' class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="{{item.img}}" alt=""></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td style="width: 10%;"><img src="../../../assets/img/flechader.png" style="width:30px; height: 60px; margin: auto 0;"></td>
           </tr>
-        </tbody>
-      </table>
+      </tbody>
+    </table>
   </div>
 </div>
