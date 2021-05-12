@@ -11,8 +11,10 @@ import { DetalleGerenciasService } from '../../services/detalle-gerencias-servic
 export class MejorSaldoComponent implements OnInit {
 
   mejorSaldo: MejorSaldoInterface;
+  periodo: number;
   constructor(public detalleGerenciasService: DetalleGerenciasService) { 
-    this.getMejorSaldo(17608, 1, "2021-05-03T00:00:00", "2021-05-09T00:00:00", 0);
+    this.periodo = 0;
+    this.getMejorSaldo(17608, 1, "2021-05-03T00:00:00", "2021-05-09T00:00:00", this.periodo);
   }
 
   ngOnInit(): void {
@@ -37,7 +39,13 @@ export class MejorSaldoComponent implements OnInit {
   }
   public cargarPeriodo(periodosPrevios: number): any
   {
-    this.getMejorSaldo(17608, 1, "2021-05-03T00:00:00", "2021-05-09T00:00:00", periodosPrevios);
+    this.periodo = this.periodo + periodosPrevios;
+    if(this.periodo > 0)
+    {
+      this.periodo = 0;
+      return;
+    }
+    this.getMejorSaldo(17608, 1, "2021-05-03T00:00:00", "2021-05-09T00:00:00", this.periodo);
 
     return;
   }
