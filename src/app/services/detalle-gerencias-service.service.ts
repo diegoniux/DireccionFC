@@ -36,9 +36,15 @@ export class DetalleGerenciasService {
     return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getTendencias/17608/1/2021-05-03T00:00:00/2021-05-09T00:00:00');
   }
 
-    // Función para obtener las fechas dado un periodo
-    public getFechasPeriodos(mesSemanaPrevios: number, idTipoPeriodo: number): any {
-      this.infoApp = this.loginService.getInfoApp();
-      return this.http.get(`${this.infoApp.apiUrl}DetalleGerencias/getFechasPeriodo/${mesSemanaPrevios}/${idTipoPeriodo}`);
-    }
+  // Función para obtener las fechas dado un periodo
+  public getFechasPeriodos(mesSemanaPrevios: number, idTipoPeriodo: number): any {
+    this.infoApp = this.loginService.getInfoApp();
+    return this.http.get(`${this.infoApp.apiUrl}DetalleGerencias/getFechasPeriodo/${mesSemanaPrevios}/${idTipoPeriodo}`);
+  }
+
+  public getReporteGerencias(): any {
+    this.infoApp = this.loginService.getInfoApp();
+    return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getReporteGerencias/69407/2021-04-01T13:45:30/2021-04-30T13:45:30/2');
+  }
+
 }

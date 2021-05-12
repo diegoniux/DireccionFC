@@ -19,6 +19,7 @@ import { MejorSaldoComponent } from './shared/mejor-saldo/mejor-saldo.component'
 import { RelevanteComponent } from './shared/relevante/relevante.component';
 import { TendenciaComponent } from './shared/tendencia/tendencia.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ReporteGerenciasComponent } from './shared/reporte-gerencias/reporte-gerencias.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     BarraMetasComponent,
     MejorSaldoComponent,
     RelevanteComponent,
-    TendenciaComponent
+    TendenciaComponent,
+    ReporteGerenciasComponent
   ],
   imports: [
     BrowserModule,

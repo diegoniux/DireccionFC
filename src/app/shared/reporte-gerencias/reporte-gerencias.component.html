@@ -1,0 +1,35 @@
+<div *ngIf="reporteGerencias" class="row m-1">
+    <div class="col">
+        <div class="card">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Proyeccion</th>
+                    <th scope="col">Saldo Acomulado</th>
+                    <th scope="col">Saldo Promedio</th>
+                    <th scope="col">Productividad Especialistas</th>
+                    <th scope="col">Mejor Saldo</th>
+                    <th scope="col">Periodo</th>
+                    <th scope="col">Desempeño Venta</th>
+                    <th scope="col">Diagnóstico</th>
+                </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let item of reporteGerencias.reporteGerencias">
+                        <th scope="row">{{ item.nombre }} {{item.apellido}} {{item.nombreSuc}}</th>
+                        <td>{{ item.proyeccion }}</td>
+                        <td>{{ item.saldoAcomulado }}</td>
+                        <td>{{ item.saldoPromedio }}</td>
+                        <td>{{ item.productividadEsp }}</td>
+                        <td>{{ item.mejorSaldo }}</td>
+                        <td>{{ item.periodo }}</td>
+                        <td>{{ item.desempeno }}</td>
+                        <td><img *ngIf='item.img' class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="" alt="">{{ item.desempeno }}</td>
+                        <td>{{ item.diagnostico }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
