@@ -11,15 +11,15 @@ export class TendenciaComponent implements OnInit {
 
   tendencias: TendenciasInterface;
   constructor(public detalleGerenciasService: DetalleGerenciasService) { 
-    this.getTendencias();
+    this.getTendencias(17608, 1, "2021-05-03T00:00:00", "2021-05-09T00:00:00");
   }
 
   ngOnInit(): void {
   }
 
-  private getTendencias(): any
+  private getTendencias(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any
   {
-    this.detalleGerenciasService.getTendencias()
+    this.detalleGerenciasService.getTendencias(nomina, tipoPeriodo, fechaInicio, fechaFin)
     .toPromise()
     .then((data: TendenciasInterface) => {
       this.tendencias = data;

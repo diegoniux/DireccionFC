@@ -11,15 +11,15 @@ export class RelevanteComponent implements OnInit {
 
   relevante: RelevantesInterface;
   constructor(public detalleGerenciasService: DetalleGerenciasService) { 
-    this.getRelevantes();
+    this.getRelevantes(17608, 1, "2021-05-03T00:00:00", "2021-05-09T00:00:00");
   }
 
   ngOnInit(): void {
   }
 
-  private getRelevantes(): any
+  private getRelevantes(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any
   {
-    this.detalleGerenciasService.getRelevantes()
+    this.detalleGerenciasService.getRelevantes(nomina, tipoPeriodo, fechaInicio, fechaFin)
     .toPromise()
     .then((data: RelevantesInterface) => {
       this.relevante = data;
