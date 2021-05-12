@@ -1,4 +1,4 @@
-<div  class="row m-4">
+<div *ngIf='barraMetas'  class="row m-4">
    <div class="card col">
         <div class="row">
             <div class="col-lg-3 col-12 p-4" [mdbPopover]="PopOverSV" 
@@ -144,7 +144,7 @@
         </div>
     </div>
 </div>
-<div class="row m-4">
+<div *ngIf='barraMetas' class="row m-4">
     <div class="alert alert-danger col p-1" role="alert">
         <div class="row">
             <div class="col-1 offset-md-3">

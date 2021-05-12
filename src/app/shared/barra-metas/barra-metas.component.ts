@@ -26,8 +26,6 @@ export class BarraMetasComponent implements OnInit {
 
   public getBarraMetas(): any
   {
-    console.log('entre');
-    console.log(this.nomina);
     this.detalleGerenciaService.getBarraMetas(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
       , this.periodoSemana.fechaFinal)
     .toPromise()
