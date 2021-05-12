@@ -19,9 +19,49 @@
                     <tr *ngFor="let item of reporteGerencias.reporteGerencias">
                         <th scope="row">{{ item.nombre }} {{item.apellido}} {{item.nombreSuc}}</th>
                         <td>{{ item.proyeccion }}</td>
-                        <td>{{ item.saldoAcomulado }}</td>
+                        <td>
+                            <div class="card cardColorPopOver">
+                                <p class="font-weight-bold">{{ item.saldoAcomulado }}</p>
+                            </div>
+                        </td>
                         <td>{{ item.saldoPromedio }}</td>
-                        <td>{{ item.productividadEsp }}</td>
+                        <td [mdbPopover]="PopOverProdGerente" placement="bottom" triggers="focus" mdbWavesEffect>
+                            <div class="card cardColorPopOver">
+                                <p class="font-weight-bold">{{ item.productividadEsp }}</p>
+                            </div>
+                            <ng-template #PopOverProdGerente>
+                                <div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <img src="../../../assets/img/img-mensaje.png">
+                                                </div>
+                                                <div class="col" style="text-align: center;">
+                                                    <p>Productividad Especialistas</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="border" style="width: 100%; margin: 10px;"></span>
+                                        <div class="col-12" *ngFor="let item2 of item.productividadEsps">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p>{{ item2.rangos }}</p>
+                                                </div>
+                                                <div class="col-4 lblCenter">
+                                                    <div class="card cardColorPopOver">
+                                                        <p class="font-weight-bold">{{ item2.especialistas }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 centercontent">
+                                                    <i class="fas fa-circle" [ngStyle]="{'color': item2.color}"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </td>
                         <td>{{ item.mejorSaldo }}</td>
                         <td>{{ item.periodo }}</td>
                         <td>{{ item.desempeno }}</td>
