@@ -34,13 +34,18 @@ export class DetallegerenciasComponent implements OnInit {
   });
 
   constructor(public detalleGerenciaService: DetalleGerenciasService, public loginService: LoginService) {
-    this.nombreTitulo = 'Detalle Gerencias';
-    this.nombreImg = 'iconoPizarronDigital';
-    this.idTipoPeriodo = 2; // Mensual
-    this.periodosPrevios = 0; // Para que se muestre el periodo actual
-    this.cargarTiposPeriodo();
-    this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
-    this.nomina = this.loginService.getUserLoggedIn().usuarioData.nomina;
+    try {
+      this.nombreTitulo = 'Detalle Gerencias';
+      this.nombreImg = 'iconoPizarronDigital';
+      this.idTipoPeriodo = 2; // Mensual
+      this.periodosPrevios = 0; // Para que se muestre el periodo actual
+      this.cargarTiposPeriodo();
+      this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
+      this.nomina = this.loginService.getUserLoggedIn().usuarioData.nomina;
+    } catch (error) {
+      console.log(error);
+    }
+
    }
 
   ngOnInit(): void {
@@ -96,15 +101,19 @@ export class DetallegerenciasComponent implements OnInit {
 
   getPeriodoDesc(): string
   {
-    let desc: string;
-    if (this.idTipoPeriodo === 1) {
-      desc = `${this.periodoSemana.fechaInicial} - ${this.periodoSemana.fechaFinal}`;
+    try {
+      let desc: string;
+      if (this.idTipoPeriodo === 1) {
+        desc = `${this.periodoSemana.fechaInicial} - ${this.periodoSemana.fechaFinal}`;
+      }
+      if (this.idTipoPeriodo === 2) {
+        desc = `${this.periodoMes.mes} ${this.periodoMes.anio}`;
+      }
+      return desc;
+    } catch (error) {
+      console.log(error);
+      return '';
     }
-
-    if (this.idTipoPeriodo === 2) {
-      desc = `${this.periodoMes.mes} ${this.periodoMes.anio}`;
-    }
-    return desc;
   }
 
   public cargarPeriodo(sentido: number): any
@@ -114,10 +123,10 @@ export class DetallegerenciasComponent implements OnInit {
       this.periodosPrevios = 0;
       return;
     }
-    if (this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo)) {
-      console.log('ola');
-      this.cargarBarraMetas();
-    }
+    // if (this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo)) {
+    //   console.log('ola');
+    //   this.cargarBarraMetas();
+    // }
   }
 
   private cargarBarraMetas(): any
