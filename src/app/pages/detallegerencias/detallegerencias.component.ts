@@ -103,7 +103,8 @@ export class DetallegerenciasComponent implements OnInit {
   public cargarPeriodo(sentido: number): any
   {
     this.periodosPrevios += sentido;
-    if (sentido === 1 && this.periodosPrevios === 0) {
+    if (sentido === 1 && this.periodosPrevios > 0) {
+      this.periodosPrevios = 0;
       return;
     }
     this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
