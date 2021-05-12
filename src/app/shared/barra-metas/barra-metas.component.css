@@ -7,3 +7,23 @@
     font-size: 30px;
     text-align: end;
 }
+
+.centercontent{
+    margin-top: 10px;
+}
+
+.lblCenter{
+    padding: 5px;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #353535;
+    opacity: 1;
+}
+
+.cardColorPopOver{
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+}
+
+.cardColorPopOverRed{
+    background: #FF1D25 0% 0% no-repeat padding-box;
+}
