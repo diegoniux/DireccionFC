@@ -14,7 +14,7 @@
       <tbody>
         <tr>
           <td style="width: 10%;">
-            <button class="btn btn-default" (click)="cargarPeriodo(-1)">
+            <button *ngIf='mejorSaldo' class="btn btn-default" (click)="cargarPeriodo(-1)">
               <img src="../../../assets/img/flechaizq.png" style="width:30px; height: 60px;">
             </button>
           </td>            
@@ -33,7 +33,7 @@
             </table>
           </td>
           <td style="width: 10%;">
-            <button class="btn btn-default" (click)="cargarPeriodo(1)">
+            <button *ngIf='mejorSaldo' class="btn btn-default" (click)="cargarPeriodo(1)">
               <img src="../../../assets/img/flechader.png" style="width:30px; height: 60px; margin: auto 0;">
             </button>            
           </td>
