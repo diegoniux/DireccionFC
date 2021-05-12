@@ -16,9 +16,9 @@ export class DetalleGerenciasService {
     return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getTiposPeriodo');
   }
 
-  public getBarraMetas(): any {
+  public getBarraMetas(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     this.infoApp = this.loginService.getInfoApp();
-    return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getBarraMetas/69407/2021-04-01T00:00:00/2021-04-30T00:00:00/2');
+    return this.http.get(this.infoApp.apiUrl + `DetalleGerencias/getBarraMetas/${nomina}/${fechaInicio}/${fechaFin}/${tipoPeriodo}`);
   }
 
   public getMejorSaldo(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {

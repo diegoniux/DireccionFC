@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FechasPeriodoInterface } from 'src/app/interfaces/dto/fechasPeriodo.interface';
 import { PeriodoMesInterface } from 'src/app/interfaces/PeriodoMes.interface';
 import { PeriodoSemanaInterface } from 'src/app/interfaces/periodoSemana.interface';
@@ -6,6 +6,8 @@ import { TipoPeriodoInterface } from 'src/app/interfaces/tipoPeriodo.interface';
 import { DetalleGerenciasService } from 'src/app/services/detalle-gerencias-service.service';
 import { TiposPeriodoInterface } from '../../interfaces/tiposPeriodo.interface';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
+import { BarraMetasComponent } from '../../shared/barra-metas/barra-metas.component';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -22,18 +24,23 @@ export class DetallegerenciasComponent implements OnInit {
   periodoMes: PeriodoMesInterface;
   periodoSemana: PeriodoSemanaInterface;
   periodosPrevios: number;
+  nomina: number;
+
+  // componenter hijos
+  @ViewChild(BarraMetasComponent) barraMetasChild: BarraMetasComponent;
 
   form = new FormGroup({
     tipoPeriodo: new FormControl(2, Validators.required)
   });
 
-  constructor(public detalleGerenciaService: DetalleGerenciasService) {
+  constructor(public detalleGerenciaService: DetalleGerenciasService, public loginService: LoginService) {
     this.nombreTitulo = 'Detalle Gerencias';
     this.nombreImg = 'iconoPizarronDigital';
     this.idTipoPeriodo = 2; // Mensual
     this.periodosPrevios = 0; // Para que se muestre el periodo actual
     this.cargarTiposPeriodo();
     this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
+    this.nomina = this.loginService.getUserLoggedIn().usuarioData.nomina;
    }
 
   ngOnInit(): void {
@@ -67,9 +74,11 @@ export class DetallegerenciasComponent implements OnInit {
       this.periodoMes = data.periodoMes;
       this.periodoSemana = data.periodoSemana;
       console.log(data);
+      return true;
     })
     .catch(error => {
       console.error(error);
+      return false;
     });
   }
 
@@ -82,9 +91,7 @@ export class DetallegerenciasComponent implements OnInit {
     console.log(e);
     this.idTipoPeriodo = e;
     this.periodosPrevios = 0;
-
     this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
-
   }
 
   getPeriodoDesc(): string
@@ -107,6 +114,24 @@ export class DetallegerenciasComponent implements OnInit {
       this.periodosPrevios = 0;
       return;
     }
-    this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
+    if (this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo)) {
+      console.log('ola');
+      this.cargarBarraMetas();
+    }
+  }
+
+  private cargarBarraMetas(): any
+  {
+    try {
+      console.log('ola2');
+      this.barraMetasChild.nomina = this.nomina;
+      this.barraMetasChild.idTipoPeriodo = this.idTipoPeriodo;
+      this.barraMetasChild.periodoMes = this.periodoMes;
+      this.barraMetasChild.periodoSemana = this.periodoSemana;
+      this.barraMetasChild.getBarraMetas();
+    } catch (error) {
+      console.log('error');
+      console.log(error);
+    }
   }
 }
