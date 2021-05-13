@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   Anio: number = new Date().getFullYear();
   loginForm: FormGroup;
   loginInterface: LoginInterface;
-  chkRecordarUsuario: boolean = true;
 
   submitted = false;
   options = {
@@ -33,17 +32,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     let usr: string;
+    let chkRecordarUsuario: Boolean;
     usr = localStorage.getItem('usuario') != null ? localStorage.getItem('usuario') : '';
     console.log("usr: " + usr);
+    chkRecordarUsuario = localStorage.getItem('usuario') != null ? true : false;
 
     this.loginForm = this.formBuilder.group({
       user: [usr, Validators.required],
       passw: ['', Validators.required],
-      recordarUsr: [true]
+      recordarUsr: [chkRecordarUsuario]
     });
-    this.chkRecordarUsuario = localStorage.getItem('usuario') != null ? true : false;
 
-    //this.loginForm.setValue[2] = true;
     this.loginService.setUserLoggedOn();
   }
 
