@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   Anio: number = new Date().getFullYear();
   loginForm: FormGroup;
   loginInterface: LoginInterface;
-
+  chkRecordarUsuario: boolean = true;
 
   submitted = false;
   options = {
@@ -32,11 +32,18 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      user: ['', Validators.required],
-      passw: ['', Validators.required]
-    });
+    let usr: string;
+    usr = localStorage.getItem('usuario') != null ? localStorage.getItem('usuario') : '';
+    console.log("usr: " + usr);
 
+    this.loginForm = this.formBuilder.group({
+      user: [usr, Validators.required],
+      passw: ['', Validators.required],
+      recordarUsr: [true]
+    });
+    this.chkRecordarUsuario = localStorage.getItem('usuario') != null ? true : false;
+
+    //this.loginForm.setValue[2] = true;
     this.loginService.setUserLoggedOn();
   }
 
@@ -67,6 +74,11 @@ export class LoginComponent implements OnInit {
           this.alertService.error('Usuario inactivo.', this.options);
           return;
         }
+        
+        if(this.loginForm.value.recordarUsr)
+          localStorage.setItem('usuario', this.loginForm.value.user);
+        else if(localStorage.getItem('usuario') != null)
+          localStorage.removeItem('usuario');
 
         this.loginService.setUserLoggedIn(this.loginInterface);
         // this.loginService.setModuloActual(modulo);
@@ -83,5 +95,4 @@ export class LoginComponent implements OnInit {
           // throw error;
         });
     }
-
 }
