@@ -2,6 +2,8 @@ import { createUrlResolverWithoutPackagePrefix } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MejorSaldoInterface } from 'src/app/interfaces/mejorSaldo.interface';
 import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
+import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
+import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
 
 @Component({
   selector: 'app-mejor-saldo',
@@ -9,25 +11,24 @@ import { DetalleGerenciasService } from '../../services/detalle-gerencias-servic
   styleUrls: ['./mejor-saldo.component.css']
 })
 export class MejorSaldoComponent implements OnInit {
-
+  nomina: number;
+  idTipoPeriodo: number;
+  periodoMes: PeriodoMesInterface;
+  periodoSemana: PeriodoSemanaInterface;
   mejorSaldo: MejorSaldoInterface;
   periodo: number;
+
   constructor(public detalleGerenciasService: DetalleGerenciasService) { 
     this.periodo = 0;
-    this.getMejorSaldo(17608, 1, "2021-05-03T00:00:00", "2021-05-09T00:00:00", this.periodo);
   }
 
   ngOnInit(): void {
   }
 
-  private getMejorSaldo(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string, periodosPrevios: number): any
+  public getMejorSaldo(): any
   {
-    // nomina = 17608;
-    // tipoPeriodo = 1;
-    // fechaInicio = "2021-05-03T00:00:00";
-    // fechaFin = "2021-05-09T00:00:00";
-
-    this.detalleGerenciasService.getMejorSaldo(nomina, tipoPeriodo, fechaInicio, fechaFin, periodosPrevios)
+    this.detalleGerenciasService.getMejorSaldo(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
+      , this.periodoSemana.fechaFinal, this.periodo)
     .toPromise()
     .then((data: MejorSaldoInterface) => {
       this.mejorSaldo = data;
@@ -45,7 +46,7 @@ export class MejorSaldoComponent implements OnInit {
       this.periodo = 0;
       return;
     }
-    this.getMejorSaldo(17608, 1, "2021-05-03T00:00:00", "2021-05-09T00:00:00", this.periodo);
+    this.getMejorSaldo();
 
     return;
   }

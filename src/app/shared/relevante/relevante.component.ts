@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RelevantesInterface } from 'src/app/interfaces/dto/relevantes.interface';
 import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
+import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
+import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
 
 @Component({
   selector: 'app-relevante',
@@ -8,18 +10,22 @@ import { DetalleGerenciasService } from '../../services/detalle-gerencias-servic
   styleUrls: ['./relevante.component.css']
 })
 export class RelevanteComponent implements OnInit {
-
+  nomina: number;
+  idTipoPeriodo: number;
+  periodoMes: PeriodoMesInterface;
+  periodoSemana: PeriodoSemanaInterface;
   relevante: RelevantesInterface;
+
   constructor(public detalleGerenciasService: DetalleGerenciasService) { 
-    this.getRelevantes(17608, 1, "2021-05-03T00:00:00", "2021-05-09T00:00:00");
   }
 
   ngOnInit(): void {
   }
 
-  private getRelevantes(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any
+  public getRelevantes(): any
   {
-    this.detalleGerenciasService.getRelevantes(nomina, tipoPeriodo, fechaInicio, fechaFin)
+    this.detalleGerenciasService.getRelevantes(this.nomina, this.idTipoPeriodo,  this.periodoSemana.fechaInicial,
+      this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: RelevantesInterface) => {
       this.relevante = data;

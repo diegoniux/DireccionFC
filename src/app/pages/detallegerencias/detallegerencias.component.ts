@@ -11,6 +11,8 @@ import { BarraMetasComponent } from '../../shared/barra-metas/barra-metas.compon
 import { formatDate } from '@angular/common';
 import { TendenciaComponent } from '../../shared/tendencia/tendencia.component';
 import { ToastrService } from 'ngx-toastr';
+import { RelevanteComponent } from '../../shared/relevante/relevante.component';
+import { MejorSaldoComponent } from '../../shared/mejor-saldo/mejor-saldo.component';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -32,6 +34,8 @@ export class DetallegerenciasComponent implements OnInit {
   // componenter hijos
   @ViewChild(BarraMetasComponent) barraMetasChild: BarraMetasComponent;
   @ViewChild(TendenciaComponent) tendenciasChild: TendenciaComponent;
+  @ViewChild(RelevanteComponent) relevanteChild: RelevanteComponent;
+  @ViewChild(MejorSaldoComponent) mejorSaldoChild: MejorSaldoComponent;
 
   form = new FormGroup({
     tipoPeriodo: new FormControl(2, Validators.required)
@@ -85,6 +89,8 @@ export class DetallegerenciasComponent implements OnInit {
       this.periodoSemana = data.periodoSemana;
       this.cargarBarraMetas();
       this.cargarTendencias();
+      this.cargarRelevante();
+      this.cargarMejorSaldo();
       return true;
     })
     .catch(error => {
@@ -160,6 +166,32 @@ export class DetallegerenciasComponent implements OnInit {
       this.tendenciasChild.periodoSemana = this.periodoSemana;
       this.tendenciasChild.getTendencias();
     } catch (error) {
+      this.toastrService.error(error.message, 'Aviso');
+    }
+  }
+
+  private cargarRelevante(): any
+  {
+    try{
+      this.relevanteChild.nomina = this.nomina;
+      this.relevanteChild.idTipoPeriodo = this.idTipoPeriodo;
+      this.relevanteChild.periodoMes = this.periodoMes;
+      this.relevanteChild.periodoSemana = this.periodoSemana;
+      this.relevanteChild.getRelevantes();
+    }catch(error){
+      this.toastrService.error(error.message, 'Aviso');
+    }
+  }
+
+  private cargarMejorSaldo(): any
+  {
+    try{
+      this.mejorSaldoChild.nomina = this.nomina;
+      this.mejorSaldoChild.idTipoPeriodo = this.idTipoPeriodo;
+      this.mejorSaldoChild.periodoMes = this.periodoMes;
+      this.mejorSaldoChild.periodoSemana = this.periodoSemana;
+      this.mejorSaldoChild.getMejorSaldo();
+    }catch(error){
       this.toastrService.error(error.message, 'Aviso');
     }
   }
