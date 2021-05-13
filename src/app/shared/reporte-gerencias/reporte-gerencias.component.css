@@ -1,3 +1,8 @@
 .cardColorPopOver{
     background: #F5F5F5 0% 0% no-repeat padding-box;
 }
+
+.labelGrid{
+    font-weight: bold;
+    font-size: x-large;
+}

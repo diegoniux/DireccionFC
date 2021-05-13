@@ -22,7 +22,7 @@ export interface ReporteGerenciasInterface {
     productividadEsps: ProductividadEsp[];
     mejorSaldo: string;
     periodo: string;
-    imgFlecha: string;
+    imgFlecha: boolean;
     desempeno: string;
     diagnostico: string;
   }
