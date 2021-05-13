@@ -14,18 +14,18 @@
                     <div class="p-2 flex-fill">
                         <ng-select formControlName="tipoPeriodo" [(ngModel)]= "idTipoPeriodo" (ngModelChange)="onTipoPeriodoChanged($event)">
                             <ng-option *ngFor="let item of tiposPeriodo" [value]="item.idTipoPeriodo">
-                                <img src="../../../assets/img/calendario.png" style="height: 20px;" /> {{ item.tipoPeriodo }}
+                                <img src="assets/img/calendario.png" style="height: 20px;" /> {{ item.tipoPeriodo }}
                             </ng-option>
                         </ng-select>
                     </div>
                     <div class="p-2 flex-fill">
                         <label *ngIf="idTipoPeriodo === 1"> {{ periodoSemana.numeroSemana }} </label>
                         <button class="btn btn-default" (click)="cargarPeriodo(-1)">
-                            <img src="../../../assets/img/flechaizq.png" width="12" />
+                            <img src="assets/img/flechaizq.png" width="12" />
                         </button>
                         {{getPeriodoDesc()}}
                         <button class="btn btn-default" (click)="cargarPeriodo(1)">
-                            <img src="../../../assets/img/flechader.png" width="12" />
+                            <img src="assets/img/flechader.png" width="12" />
                         </button>
                     </div>
                 </div>
