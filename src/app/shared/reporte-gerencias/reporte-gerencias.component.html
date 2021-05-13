@@ -22,7 +22,7 @@
                                 <!-- {{ item.nombre }} {{item.apellido}} {{item.nombreSuc}} -->
                                 <app-perfil-usuario [imgFoto]="item.foto" [Nombre]="item.nombre" [Apellido]="item.apellido" [Sucursal]="item.nombreSuc"></app-perfil-usuario>
                             </th>
-                            <td><p class="text-center labelGrid">{{ item.proyeccion }}</p></td>
+                            <td><p class="text-center labelGrid" [ngStyle]="{'color': (item.proyeccionColor) ? '#80CC0E' : '#FF1D25'}">{{ item.proyeccion }}</p></td>
                             <td [mdbPopover]="PopOverSA" placement="bottom" triggers="focus" mdbWavesEffect>
                                 <div class="card cardColorPopOver">
                                     <p class="text-center labelGrid">{{ item.saldoAcomulado }}</p>
