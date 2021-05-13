@@ -8,6 +8,8 @@ import { TiposPeriodoInterface } from '../../interfaces/tiposPeriodo.interface';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { BarraMetasComponent } from '../../shared/barra-metas/barra-metas.component';
+import { formatDate } from '@angular/common';
+import { TendenciaComponent } from '../../shared/tendencia/tendencia.component';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -28,6 +30,7 @@ export class DetallegerenciasComponent implements OnInit {
 
   // componenter hijos
   @ViewChild(BarraMetasComponent) barraMetasChild: BarraMetasComponent;
+  @ViewChild(TendenciaComponent) tendenciasChild: TendenciaComponent;
 
   form = new FormGroup({
     tipoPeriodo: new FormControl(2, Validators.required)
@@ -45,7 +48,6 @@ export class DetallegerenciasComponent implements OnInit {
     } catch (error) {
       console.log(error);
     }
-
    }
 
   ngOnInit(): void {
@@ -78,7 +80,8 @@ export class DetallegerenciasComponent implements OnInit {
       this.idTipoPeriodo = idTipoPeriodo;
       this.periodoMes = data.periodoMes;
       this.periodoSemana = data.periodoSemana;
-      console.log(data);
+      this.cargarBarraMetas();
+      this.cargarTendencias();
       return true;
     })
     .catch(error => {
@@ -93,7 +96,6 @@ export class DetallegerenciasComponent implements OnInit {
 
   public onTipoPeriodoChanged(e): any
   {
-    console.log(e);
     this.idTipoPeriodo = e;
     this.periodosPrevios = 0;
     this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
@@ -103,8 +105,15 @@ export class DetallegerenciasComponent implements OnInit {
   {
     try {
       let desc: string;
+      if (!this.periodoSemana) {
+        return '';
+      }
+
+      const fechaIni = new Date(this.periodoSemana.fechaInicial);
+      const fechaFin = new Date(this.periodoSemana.fechaFinal);
+
       if (this.idTipoPeriodo === 1) {
-        desc = `${this.periodoSemana.fechaInicial} - ${this.periodoSemana.fechaFinal}`;
+        desc = `${formatDate(fechaIni, 'd/MM/yyyy', 'es-MX')} - ${formatDate(fechaFin, 'd/MM/yyyy', 'es-MX')}`;
       }
       if (this.idTipoPeriodo === 2) {
         desc = `${this.periodoMes.mes} ${this.periodoMes.anio}`;
@@ -123,21 +132,31 @@ export class DetallegerenciasComponent implements OnInit {
       this.periodosPrevios = 0;
       return;
     }
-    // if (this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo)) {
-    //   console.log('ola');
-    //   this.cargarBarraMetas();
-    // }
+    this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
   }
 
   private cargarBarraMetas(): any
   {
     try {
-      console.log('ola2');
       this.barraMetasChild.nomina = this.nomina;
       this.barraMetasChild.idTipoPeriodo = this.idTipoPeriodo;
       this.barraMetasChild.periodoMes = this.periodoMes;
       this.barraMetasChild.periodoSemana = this.periodoSemana;
       this.barraMetasChild.getBarraMetas();
+    } catch (error) {
+      console.log('error');
+      console.log(error);
+    }
+  }
+
+  private cargarTendencias(): any
+  {
+    try {
+      this.tendenciasChild.nomina = this.nomina;
+      this.tendenciasChild.idTipoPeriodo = this.idTipoPeriodo;
+      this.tendenciasChild.periodoMes = this.periodoMes;
+      this.tendenciasChild.periodoSemana = this.periodoSemana;
+      this.tendenciasChild.getTendencias();
     } catch (error) {
       console.log('error');
       console.log(error);
