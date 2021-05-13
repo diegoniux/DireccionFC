@@ -25,6 +25,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ReporteGerenciasComponent } from './shared/reporte-gerencias/reporte-gerencias.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { PerfilUsuarioComponent } from './shared/perfil-usuario/perfil-usuario.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { ToastrModule } from 'ngx-toastr';
     MejorSaldoComponent,
     RelevanteComponent,
     TendenciaComponent,
-    ReporteGerenciasComponent
+    ReporteGerenciasComponent,
+    PerfilUsuarioComponent
   ],
   imports: [
     BrowserModule,
