@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { BarraMetasComponent } from '../../shared/barra-metas/barra-metas.component';
 import { formatDate } from '@angular/common';
 import { TendenciaComponent } from '../../shared/tendencia/tendencia.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -36,7 +37,9 @@ export class DetallegerenciasComponent implements OnInit {
     tipoPeriodo: new FormControl(2, Validators.required)
   });
 
-  constructor(public detalleGerenciaService: DetalleGerenciasService, public loginService: LoginService) {
+  constructor(public detalleGerenciaService: DetalleGerenciasService,
+              public loginService: LoginService,
+              private toastrService: ToastrService) {
     try {
       this.nombreTitulo = 'Detalle Gerencias';
       this.nombreImg = 'iconoPizarronDigital';
@@ -46,7 +49,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
       this.nomina = this.loginService.getUserLoggedIn().usuarioData.nomina;
     } catch (error) {
-      console.log(error);
+      this.toastrService.error(error.message, 'Aviso');
     }
    }
 
@@ -65,7 +68,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.tiposPeriodo = data.listTiposPeriodo;
     })
     .catch(error => {
-      console.error(error);
+      this.toastrService.error(error.message, 'Aviso');
     });
   }
 
@@ -85,7 +88,7 @@ export class DetallegerenciasComponent implements OnInit {
       return true;
     })
     .catch(error => {
-      console.error(error);
+      this.toastrService.error(error.message, 'Aviso');
       return false;
     });
   }
@@ -120,7 +123,7 @@ export class DetallegerenciasComponent implements OnInit {
       }
       return desc;
     } catch (error) {
-      console.log(error);
+      this.toastrService.error(error.message, 'Aviso');
       return '';
     }
   }
@@ -144,8 +147,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.barraMetasChild.periodoSemana = this.periodoSemana;
       this.barraMetasChild.getBarraMetas();
     } catch (error) {
-      console.log('error');
-      console.log(error);
+      this.toastrService.error(error.message, 'Aviso');
     }
   }
 
@@ -158,8 +160,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.tendenciasChild.periodoSemana = this.periodoSemana;
       this.tendenciasChild.getTendencias();
     } catch (error) {
-      console.log('error');
-      console.log(error);
+      this.toastrService.error(error.message, 'Aviso');
     }
   }
 }

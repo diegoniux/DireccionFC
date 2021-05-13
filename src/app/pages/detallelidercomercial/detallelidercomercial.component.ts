@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detallelidercomercial',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetallelidercomercialComponent implements OnInit {
 
-  nombreTitulo: string
-  nombreImg: string
+  nombreTitulo: string;
+  nombreImg: string;
 
   constructor() {
-    this.nombreTitulo = "Detalle Líder Comercial"
-    this.nombreImg = "iconoPizarronDigital"
+    this.nombreTitulo = 'Detalle Líder Comercial';
+    this.nombreImg = 'iconoPizarronDigital';
    }
 
   ngOnInit(): void {

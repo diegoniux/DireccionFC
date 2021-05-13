@@ -23,7 +23,8 @@ import { RelevanteComponent } from './shared/relevante/relevante.component';
 import { TendenciaComponent } from './shared/tendencia/tendencia.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ReporteGerenciasComponent } from './shared/reporte-gerencias/reporte-gerencias.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,14 @@ import { ReporteGerenciasComponent } from './shared/reporte-gerencias/reporte-ge
     AlertModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      closeButton: true
+    }), // ToastrModule added
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-MX'}],
   bootstrap: [AppComponent]
