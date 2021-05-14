@@ -42,9 +42,9 @@ export class DetalleGerenciasService {
     return this.http.get(`${this.infoApp.apiUrl}DetalleGerencias/getFechasPeriodo/${mesSemanaPrevios}/${idTipoPeriodo}`);
   }
 
-  public getReporteGerencias(): any {
+  public getReporteGerencias(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     this.infoApp = this.loginService.getInfoApp();
-    return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getReporteGerencias/69407/2021-04-01T13:45:30/2021-04-30T13:45:30/2');
+    return this.http.get(this.infoApp.apiUrl + `DetalleGerencias/getReporteGerencias/${nomina}/${fechaInicio}/${fechaFin}/${tipoPeriodo}`);
   }
 
 }

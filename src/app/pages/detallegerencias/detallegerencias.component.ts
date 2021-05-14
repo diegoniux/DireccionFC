@@ -13,6 +13,7 @@ import { TendenciaComponent } from '../../shared/tendencia/tendencia.component';
 import { ToastrService } from 'ngx-toastr';
 import { RelevanteComponent } from '../../shared/relevante/relevante.component';
 import { MejorSaldoComponent } from '../../shared/mejor-saldo/mejor-saldo.component';
+import { ReporteGerenciasComponent } from '../../shared/reporte-gerencias/reporte-gerencias.component';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -36,6 +37,7 @@ export class DetallegerenciasComponent implements OnInit {
   @ViewChild(TendenciaComponent) tendenciasChild: TendenciaComponent;
   @ViewChild(RelevanteComponent) relevanteChild: RelevanteComponent;
   @ViewChild(MejorSaldoComponent) mejorSaldoChild: MejorSaldoComponent;
+  @ViewChild(ReporteGerenciasComponent) reporteGerenciaChild: ReporteGerenciasComponent;
 
   form = new FormGroup({
     tipoPeriodo: new FormControl(2, Validators.required)
@@ -93,6 +95,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.cargarTendencias();
       this.cargarRelevante();
       this.cargarMejorSaldo();
+      this.cargarReporteGerencias();
       return true;
     })
     .catch(error => {
@@ -196,6 +199,19 @@ export class DetallegerenciasComponent implements OnInit {
       this.mejorSaldoChild.periodoMes = this.periodoMes;
       this.mejorSaldoChild.periodoSemana = this.periodoSemana;
       this.mejorSaldoChild.getMejorSaldo();
+    }catch (error){
+      this.toastrService.error(error.message, 'Aviso');
+    }
+  }
+
+  private cargarReporteGerencias(): any
+  {
+    try{
+      this.reporteGerenciaChild.nomina = this.nomina;
+      this.reporteGerenciaChild.idTipoPeriodo = this.idTipoPeriodo;
+      this.reporteGerenciaChild.periodoMes = this.periodoMes;
+      this.reporteGerenciaChild.periodoSemana = this.periodoSemana;
+      this.reporteGerenciaChild.getReporteGerencias();
     }catch (error){
       this.toastrService.error(error.message, 'Aviso');
     }

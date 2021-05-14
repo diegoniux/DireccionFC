@@ -8,9 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PerfilUsuarioComponent implements OnInit {
 
   @Input() imgFoto: string;
-  @Input() Nombre: string;   
-  @Input() Apellido: string; 
-  @Input() Sucursal: string; 
+  @Input() Nombre: string;
+  @Input() Apellido: string;
+  @Input() Sucursal: string;
 
 
   constructor() { }

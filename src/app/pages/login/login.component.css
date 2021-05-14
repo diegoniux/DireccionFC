@@ -1,3 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+#login .container #login-row #login-column #login-box {
+  margin-top: 30px;
+  max-width: 500px;
+  max-height: 550px;
+  background: #FBFBFB 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  opacity: 1;
+  align-content: center;
+}
+#login .login-row-footer .img-fluid {
+margin-left: 10px;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+h3.login-title {
+    color: #2F6F43;
+}
+.login-row-footer{
+  align-content: center;
+}
+input.login-input{
+    color: #4D4D4D;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #E8E8E8;
+    border-radius: 10px;
+    opacity: 1;
+    font: normal normal normal Calibri;
+}
+label.login-label{
+    color:#4D4D4D;
+    font: normal normal normal Calibri;
+}
+label.login-label-check{
+  color:#4D4D4D;
+  margin-left: 10px;
+  font: normal normal normal Calibri;
+}
+label.login-footer{
+  text-align: left;
+  font: normal normal normal 12px/14px Calibri;
+  letter-spacing: 0px;
+  color: #4D4D4D;
+  opacity: 1; 
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+::placeholder.input-login{
+  letter-spacing: 0px;
+  color: #D5D1D6;
+  opacity: 1;
+  text-align: left;
+}
+button.login-btn{
+    background-color: #2F6F43;
+    color: #FFFFFF;
+    transition-duration: 0.4s;
+    border-radius: 15px;
+}
+.login-btn:hover{
+    opacity: 90%;
+    color:#FFFFFF;
+}
+
 .checkbox label:after {
     content: '';
     display: table;
