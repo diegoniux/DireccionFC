@@ -107,6 +107,9 @@ export class DetallegerenciasComponent implements OnInit {
 
   public onTipoPeriodoChanged(e): any
   {
+    if (!e) {
+      return;
+    }
     this.idTipoPeriodo = e;
     this.periodosPrevios = 0;
     this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
