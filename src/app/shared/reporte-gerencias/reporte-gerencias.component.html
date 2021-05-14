@@ -30,13 +30,25 @@
                                 <ng-template #PopOverSA>
                                     <div>
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-8">
                                                 <div class="row">
-                                                    <div class="col-2">
-                                                        <img src="assets/img/img-mensaje.png">
+                                                    <div class="col-4">
+                                                        <img width="50px" height="50px" class="rounded-circle" src="{{ item.foto }}" alt="">
                                                     </div>
-                                                    <div class="col" style="text-align: center;">
-                                                        <p>Productividad Especialistas</p>
+                                                    <div class="col-8">
+                                                        <p class="labelNombre">{{item.nombre}}</p>
+                                                        <p class="labelApellido">{{item.apellido}}</p>
+                                                        <p class="labelSucursal">{{item.nombreSuc}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4" style="margin: 0px; padding: 0px;">
+                                                <div class="row" style="padding: 0px;">
+                                                    <div class="col-4" style="margin: 0px; margin-top: 5px;">
+                                                        <img  src="assets/img/detalleLupa.png">
+                                                    </div>
+                                                    <div class="col" style="text-align: left;">
+                                                        <p style="margin: 0px; margin-top: 5px; font-size: 10px;">Detalle Saldo</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,13 +110,25 @@
                                 <ng-template #PopOverProdGerente>
                                     <div>
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-8">
                                                 <div class="row">
-                                                    <div class="col-2">
-                                                        <img src="assets/img/img-mensaje.png">
+                                                    <div class="col-4">
+                                                        <img width="50px" height="50px" class="rounded-circle" src="{{ item.foto }}" alt="">
                                                     </div>
-                                                    <div class="col" style="text-align: center;">
-                                                        <p>Productividad Especialistas</p>
+                                                    <div class="col-8">
+                                                        <p class="labelNombre">{{item.nombre}}</p>
+                                                        <p class="labelApellido">{{item.apellido}}</p>
+                                                        <p class="labelSucursal">{{item.nombreSuc}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4" style="margin: 0px; padding: 0px;">
+                                                <div class="row" style="padding: 0px;">
+                                                    <div class="col-3" style="margin: 0px; margin-top: 5px;">
+                                                        <img  src="assets/img/detalleLupa.png">
+                                                    </div>
+                                                    <div class="col" style="text-align: left;">
+                                                        <p style="margin: 0px; margin-top: 5px; font-size: 10px;">Detalle Especialistas</p>
                                                     </div>
                                                 </div>
                                             </div>

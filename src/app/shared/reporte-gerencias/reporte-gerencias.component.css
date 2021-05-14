@@ -17,3 +17,24 @@
 .centercontent{
     margin-top: 5px;
 }
+
+.labelNombre{
+    line-height: 12px;
+    font-weight: bold;
+    margin: 0px;
+    font-size: 10px;
+}
+
+.labelApellido{
+    line-height: 12px;
+    font-weight: normal;
+    margin: 0px;
+    font-size: 10px;
+}
+
+.labelSucursal{
+    line-height: 12px;
+    font-weight: normal;
+    margin: 0px;
+    font-size: 10px;
+}
