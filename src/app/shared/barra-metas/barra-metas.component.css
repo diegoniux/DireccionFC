@@ -20,12 +20,6 @@
     font-weight: bold;
 }
 
-.lblCenternoBold{
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
 .cardColorPopOver{
     background: #F5F5F5 0% 0% no-repeat padding-box;
 }
