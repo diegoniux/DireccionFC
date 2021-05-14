@@ -1,15 +1,15 @@
-<div *ngIf='barraMetas'  class="row m-4">
+<div *ngIf='barraMetas'  class="row m-3">
    <div class="card col">
         <div class="row">
-            <div class="col-lg-3 col-12 p-4" [mdbPopover]="PopOverSV" 
+            <div class="col-lg-4 col-12 p-3" [mdbPopover]="PopOverSV" 
             placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
                     <div class="col-3 lbl">
                         <p>Avance</p>
                     </div>
-                    <div class="col">
+                    <div class="col-9">
                         <div class="row">
-                            <div class="col-6 lbl">
+                            <div class="col-4 lbl">
                                 <p>Saldo Virtual</p>
                             </div>
                             <div class="col lblavance">
@@ -19,7 +19,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-2 lbl"> 
+                    </div>
+                    <div class="col-3">
                         <img class=" mx-auto d-block imgPerfil" src="assets/img/img-saldo-virtual.png" alt="">
                     </div>
                     <div class="col">
@@ -30,7 +32,7 @@
                                 </div>
                             </div>                            
                         </div>
-                        <div class="row" style="margin-top: 20px;">
+                        <div class="row" style="margin-top: 15px;">
                             <div class="col lbl">
                                 <p class="font-weight-bold">${{ barraMetas.barraAvanceMetas.objetivoSV }}</p>
                                 <p>Objetivo</p>
@@ -40,12 +42,11 @@
                                 <p>Proyección</p>
                             </div>
                         </div>
-                        
                     </div>                        
                 </div>
             </div>
             <span class="border spanMargin"></span>
-            <div class="col-12  col-lg-3 text-center p-4" [mdbPopover]="PopOverSol" 
+            <div class="col-12  col-lg-3 text-center p-3" [mdbPopover]="PopOverSol" 
             placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
                     <div class="col-6 lbl">
@@ -78,7 +79,7 @@
                 </div>
             </div>
             <span class="border spanMargin"></span>
-            <div class="col-12 col-lg-3 text-center p-4">
+            <div class="col-12 col-lg-3 text-center p-3">
                 <div class="row">
                     <div class="col-6 lbl">
                         <p>Traspasos FCT</p>
@@ -105,12 +106,11 @@
                                 <p>Objetivo</p>
                             </div>
                         </div>
-                        
                     </div>                        
                 </div>
             </div>
             <span class="border spanMargin"></span>
-            <div class="col text-center p-4">
+            <div class="col text-center p-3">
                 <div class="row">
                     <div class="col-9 lbl">
                         <p>Gerencias Productivas</p>
@@ -215,7 +215,7 @@
                     <img src="assets/img/img-mensaje.png">
                 </div>
                 <div class="col" style="text-align: center;">
-                    <p>Solicitudes Comicionables</p>
+                    <p>Solicitudes Comisionables</p>
                 </div>
             </div>
         </div>
@@ -287,7 +287,7 @@
                     <img src="assets/img/img-mensaje.png">
                 </div>
                 <div class="col" style="text-align: center;">
-                    <p>Solicitudes No Comicionables</p>
+                    <p>Solicitudes No Comisionables</p>
                 </div>
             </div>
         </div>

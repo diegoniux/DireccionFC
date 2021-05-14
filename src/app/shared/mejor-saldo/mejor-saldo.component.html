@@ -1,44 +1,45 @@
 <div class="card card-radius">
   <div class="card-body">
     <div class="card-title">
-      <div class="row">
-          <div class="col">
-              <p class="text-left card-bold">Mejor Saldo</p>
-          </div>
-          <div class="col">
+      <small style="font-size: 1rem;">Mejor Saldo</small> 
+      <!-- <div class="row"> -->
+          <!-- <div class="col">
+            <small style="font-size: 1rem;">Mejor Saldo</small>
             <p *ngIf='mejorSaldo' class="text-right card-bold">{{ mejorSaldo.encabezadoPeriodo }}</p>
-          </div>
-      </div>
+          </div> -->
+      <!-- </div> -->
     </div>
-    <table style="width:100%">
-      <tbody>
-        <tr>
-          <td style="width: 10%;">
-            <button *ngIf='mejorSaldo' class="btn btn-default" (click)="cargarPeriodo(-1)">
-              <img src="assets/img/flechaizq.png" style="width:30px; height: 60px;">
-            </button>
-          </td>            
-          <td style="width: 80%; padding-right: 30px;">
-            <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
-              <tbody *ngIf='mejorSaldo'>
-                <tr *ngFor="let item of mejorSaldo.listaMejorSaldo">
-                  <th scope="row">{{ item.mes }}</th>
-                  <td>{{ item.anio }}</td>
-                  <td>{{ item.saldo }}</td>
-                  <td>
-                    <img *ngIf='item.img' class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="{{item.img}}" alt="">
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-          <td style="width: 10%;">
-            <button *ngIf='mejorSaldo' class="btn btn-default" (click)="cargarPeriodo(1)">
-              <img src="assets/img/flechader.png" style="width:30px; height: 60px; margin: auto 0;">
-            </button>            
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="card-boby">
+      <table style="width:100%">
+        <tbody>
+          <tr>
+            <td style="width: 10%;">
+              <button *ngIf='mejorSaldo' class="btn btn-default" (click)="cargarPeriodo(-1)">
+                <img src="assets/img/flechaizq.png" style="width:30px; height: 60px;">
+              </button>
+            </td>            
+            <td style="width: 80%; padding-right: 30px;">
+              <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
+                <tbody *ngIf='mejorSaldo'>
+                  <tr *ngFor="let item of mejorSaldo.listaMejorSaldo">
+                    <th scope="row">{{ item.mes }}</th>
+                    <td>{{ item.anio }}</td>
+                    <td>{{ item.saldo }}</td>
+                    <td>
+                      <img *ngIf='item.img' class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="{{item.img}}" alt="">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td style="width: 10%;">
+              <button *ngIf='mejorSaldo' class="btn btn-default" (click)="cargarPeriodo(1)">
+                <img src="assets/img/flechader.png" style="width:30px; height: 60px; margin: auto 0;">
+              </button>            
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
