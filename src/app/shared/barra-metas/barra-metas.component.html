@@ -79,7 +79,8 @@
                 </div>
             </div>
             <span class="border spanMargin"></span>
-            <div class="col-12 col-lg-3 text-center p-3">
+            <div class="col-12 col-lg-3 text-center p-3" [mdbPopover]="PopOverFCT" 
+            placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
                     <div class="col-6 lbl">
                         <p>Traspasos FCT</p>
@@ -164,9 +165,9 @@
                 <div class="col-6">
                     <p>Saldo Virtual</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">${{ barraMetas.popUpSV.saldoVirtual }}</p>
+                        <p class="lblCenter">${{ barraMetas.popUpSV.saldoVirtual }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -179,9 +180,9 @@
                 <div class="col-6">
                     <p>Saldo Cantado</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">${{ barraMetas.popUpSV.saldoCantado }}</p>
+                        <p class="lblCenter">${{ barraMetas.popUpSV.saldoCantado }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -194,9 +195,9 @@
                 <div class="col-6">
                     <p>Saldo Acumulado</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">${{ barraMetas.popUpSV.saldoAcumulado }}</p>
+                        <p class="lblCenter">${{ barraMetas.popUpSV.saldoAcumulado }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -225,9 +226,9 @@
                 <div class="col-6">
                     <p>Registros</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">{{ barraMetas.popUpTraspasos.registros }}</p>
+                        <p class="lblCenter">{{ barraMetas.popUpTraspasos.registros }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -240,9 +241,9 @@
                 <div class="col-6">
                     <p>Traspasos</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">{{ barraMetas.popUpTraspasos.traspasos }}</p>
+                        <p class="lblCenter">{{ barraMetas.popUpTraspasos.traspasos }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -255,9 +256,9 @@
                 <div class="col-6">
                     <p>TraspasosFCT</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">{{ barraMetas.popUpTraspasos.traspasosFCT }}</p>
+                        <p class="lblCenter">{{ barraMetas.popUpTraspasos.traspasosFCT }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -270,9 +271,9 @@
                 <div class="col-6">
                     <p>Total</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">{{ barraMetas.popUpTraspasos.total }}</p>
+                        <p class="lblCenter">{{ barraMetas.popUpTraspasos.total }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -296,9 +297,9 @@
                 <div class="col-6">
                     <p>{{ barraMetas.popUpTraspasos.mensajeSaldoR }}</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOverRed">
-                        <p class="font-weight-bold" style="color: #FFFFFF;">{{ barraMetas.popUpTraspasos.registrosMenores }}</p>
+                        <p class="lblCenter" style="color: #FFFFFF;">{{ barraMetas.popUpTraspasos.registrosMenores }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -311,9 +312,9 @@
                 <div class="col-6">
                     <p>{{ barraMetas.popUpTraspasos.mensajeSaldoT }}</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOverRed">
-                        <p class="font-weight-bold" style="color: #FFFFFF;">{{ barraMetas.popUpTraspasos.traspasosMenores }}</p>
+                        <p class="lblCenter" style="color: #FFFFFF;">{{ barraMetas.popUpTraspasos.traspasosMenores }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -322,4 +323,58 @@
             </div>
         </div>
     </div>
-</div></ng-template>
+</div>
+</ng-template>
+
+<ng-template #PopOverFCT>
+    <div>
+        <div class="row">
+            <span class="border" style="width: 100%; margin: 10px;"></span>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <p>Activos</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="card cardColorPopOver">
+                            <p class="lblCenter">{{ barraMetas.popUpFCT.fctActivos }}</p>
+                        </div>
+                    </div>
+                    <div class="col-1 centercontent">
+                        <i class="fas fa-circle" style="color: #80CC0E;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <p>Inactivos</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="card cardColorPopOver">
+                            <p class="lblCenter">{{ barraMetas.popUpFCT.fctInactivos }}</p>
+                        </div>
+                    </div>
+                    <div class="col-1 centercontent">
+                        <i class="fas fa-circle" style="color: #D5D1D6;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <p>Cancelados</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="card cardColorPopOverRed">
+                            <p class="lblCenter">{{ barraMetas.popUpFCT.fctCancelados }}</p>
+                        </div>
+                    </div>
+                    <div class="col-1 centercontent">
+                        <i class="fas fa-circle" style="color: #FF1D25;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

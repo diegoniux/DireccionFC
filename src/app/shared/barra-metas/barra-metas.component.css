@@ -10,15 +10,20 @@
 }
 
 .centercontent{
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .lblCenter{
-    padding: 5px;
-    text-align: left;
-    letter-spacing: 0px;
-    color: #353535;
-    opacity: 1;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.lblCenternoBold{
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .cardColorPopOver{
@@ -27,4 +32,5 @@
 
 .cardColorPopOverRed{
     background: #FF1D25 0% 0% no-repeat padding-box;
+    color: white;
 }
