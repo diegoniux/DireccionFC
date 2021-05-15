@@ -1,4 +1,3 @@
-import { createUrlResolverWithoutPackagePrefix } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MejorSaldoInterface } from 'src/app/interfaces/mejorSaldo.interface';
 import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
@@ -17,9 +16,11 @@ export class MejorSaldoComponent implements OnInit {
   periodoSemana: PeriodoSemanaInterface;
   mejorSaldo: MejorSaldoInterface;
   periodo: number;
+  loading: boolean;
 
-  constructor(public detalleGerenciasService: DetalleGerenciasService) { 
+  constructor(public detalleGerenciasService: DetalleGerenciasService) {
     this.periodo = 0;
+    this.loading = false;
   }
 
   ngOnInit(): void {
@@ -27,21 +28,22 @@ export class MejorSaldoComponent implements OnInit {
 
   public getMejorSaldo(): any
   {
+    this.loading = true;
     this.detalleGerenciasService.getMejorSaldo(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
       , this.periodoSemana.fechaFinal, this.periodo)
     .toPromise()
     .then((data: MejorSaldoInterface) => {
       this.mejorSaldo = data;
-      console.log(this.mejorSaldo);
+      this.loading = false;
     })
     .catch(error => {
-      console.error(error)
+      console.error(error);
     });
   }
   public cargarPeriodo(periodosPrevios: number): any
   {
     this.periodo = this.periodo + periodosPrevios;
-    if(this.periodo > 0)
+    if (this.periodo > 0)
     {
       this.periodo = 0;
       return;

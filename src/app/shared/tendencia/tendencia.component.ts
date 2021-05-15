@@ -15,6 +15,7 @@ export class TendenciaComponent implements OnInit {
   periodoMes: PeriodoMesInterface;
   periodoSemana: PeriodoSemanaInterface;
   tendencias: TendenciasInterface;
+  loading: boolean;
 
   constructor(public detalleGerenciasService: DetalleGerenciasService) {
   }
@@ -24,12 +25,13 @@ export class TendenciaComponent implements OnInit {
 
   public getTendencias(): any
   {
+    this.loading = true;
     this.detalleGerenciasService.getTendencias(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
       , this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: TendenciasInterface) => {
       this.tendencias = data;
-      console.log(this.tendencias);
+      this.loading = false;
     })
     .catch(error => {
       console.error(error);

@@ -15,8 +15,10 @@ export class RelevanteComponent implements OnInit {
   periodoMes: PeriodoMesInterface;
   periodoSemana: PeriodoSemanaInterface;
   relevante: RelevantesInterface;
+  loading: boolean;
 
-  constructor(public detalleGerenciasService: DetalleGerenciasService) { 
+  constructor(public detalleGerenciasService: DetalleGerenciasService) {
+    this.loading = false;
   }
 
   ngOnInit(): void {
@@ -24,12 +26,13 @@ export class RelevanteComponent implements OnInit {
 
   public getRelevantes(): any
   {
+    this.loading = true;
     this.detalleGerenciasService.getRelevantes(this.nomina, this.idTipoPeriodo,  this.periodoSemana.fechaInicial,
       this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: RelevantesInterface) => {
       this.relevante = data;
-      console.log(this.relevante);
+      this.loading = false;
     })
     .catch(error => {
       console.error(error);

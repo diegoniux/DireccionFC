@@ -17,6 +17,7 @@ export class BarraMetasComponent implements OnInit {
   idTipoPeriodo: number;
   periodoMes: PeriodoMesInterface;
   periodoSemana: PeriodoSemanaInterface;
+  loading: boolean;
 
   login: LoginInterface;
   barraMetas: BarraMetasInterface;
@@ -24,12 +25,13 @@ export class BarraMetasComponent implements OnInit {
   constructor(public detalleGerenciaService: DetalleGerenciasService,
               public loginService: LoginService,
               private toastrService: ToastrService) {
+      this.loading = false;
    }
 
   ngOnInit(): void {
     try {
       this.login = this.loginService.getUserLoggedIn();
-      this.login.usuarioData.apellidoPaterno = this.login.usuarioData.apellidoPaterno + ' ' + this.login.usuarioData.apellidoMaterno
+      this.login.usuarioData.apellidoPaterno = this.login.usuarioData.apellidoPaterno + ' ' + this.login.usuarioData.apellidoMaterno;
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
     }
@@ -37,6 +39,7 @@ export class BarraMetasComponent implements OnInit {
 
   public getBarraMetas(): any
   {
+    this.loading = true;
     this.detalleGerenciaService.getBarraMetas(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
       , this.periodoSemana.fechaFinal)
     .toPromise()
@@ -48,6 +51,7 @@ export class BarraMetasComponent implements OnInit {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
       this.barraMetas = data;
+      this.loading = false;
     })
     .catch(error => {
       console.error(error);

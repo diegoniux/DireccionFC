@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DetalleGerenciasService } from 'src/app/services/detalle-gerencias-service.service';
-import { ReporteGerenciasInterface } from 'src/app/interfaces/reporteGerencias.interface'
+import { ReporteGerenciasInterface } from 'src/app/interfaces/reporteGerencias.interface';
 import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
 import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
 @Component({
@@ -15,7 +15,10 @@ export class ReporteGerenciasComponent implements OnInit {
   periodoSemana: PeriodoSemanaInterface;
   reporteGerencias: ReporteGerenciasInterface;
 
+  loading: boolean;
+
   constructor(public detalleGerenciaService: DetalleGerenciasService) {
+    this.loading = false;
    }
 
   ngOnInit(): void {
@@ -23,6 +26,7 @@ export class ReporteGerenciasComponent implements OnInit {
 
   public getReporteGerencias(): any
   {
+    this.loading = true;
     this.detalleGerenciaService.getReporteGerencias(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
       , this.periodoSemana.fechaFinal)
     .toPromise()
@@ -32,6 +36,7 @@ export class ReporteGerenciasComponent implements OnInit {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
       this.reporteGerencias = data;
+      this.loading = false;
     })
     .catch(error => {
       console.error(error);
