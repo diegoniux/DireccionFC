@@ -1,15 +1,15 @@
-<div *ngIf='barraMetas'  class="row m-4">
+<div *ngIf='barraMetas'  class="row m-3">
    <div class="card col">
         <div class="row">
-            <div class="col-lg-3 col-12 p-4" [mdbPopover]="PopOverSV" 
+            <div class="col-lg-4 col-12 p-3" [mdbPopover]="PopOverSV" 
             placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
                     <div class="col-3 lbl">
                         <p>Avance</p>
                     </div>
-                    <div class="col">
+                    <div class="col-9">
                         <div class="row">
-                            <div class="col-6 lbl">
+                            <div class="col-4 lbl">
                                 <p>Saldo Virtual</p>
                             </div>
                             <div class="col lblavance">
@@ -19,7 +19,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-2 lbl"> 
+                    </div>
+                    <div class="col-3">
                         <img class=" mx-auto d-block imgPerfil" src="assets/img/img-saldo-virtual.png" alt="">
                     </div>
                     <div class="col">
@@ -30,7 +32,7 @@
                                 </div>
                             </div>                            
                         </div>
-                        <div class="row" style="margin-top: 20px;">
+                        <div class="row" style="margin-top: 15px;">
                             <div class="col lbl">
                                 <p class="font-weight-bold">${{ barraMetas.barraAvanceMetas.objetivoSV }}</p>
                                 <p>Objetivo</p>
@@ -40,12 +42,11 @@
                                 <p>Proyección</p>
                             </div>
                         </div>
-                        
                     </div>                        
                 </div>
             </div>
             <span class="border spanMargin"></span>
-            <div class="col-12  col-lg-3 text-center p-4" [mdbPopover]="PopOverSol" 
+            <div class="col-12  col-lg-3 text-center p-3" [mdbPopover]="PopOverSol" 
             placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
                     <div class="col-6 lbl">
@@ -78,7 +79,8 @@
                 </div>
             </div>
             <span class="border spanMargin"></span>
-            <div class="col-12 col-lg-3 text-center p-4">
+            <div class="col-12 col-lg-3 text-center p-3" [mdbPopover]="PopOverFCT" 
+            placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
                     <div class="col-6 lbl">
                         <p>Traspasos FCT</p>
@@ -105,12 +107,11 @@
                                 <p>Objetivo</p>
                             </div>
                         </div>
-                        
                     </div>                        
                 </div>
             </div>
             <span class="border spanMargin"></span>
-            <div class="col text-center p-4">
+            <div class="col text-center p-3">
                 <div class="row">
                     <div class="col-9 lbl">
                         <p>Gerencias Productivas</p>
@@ -144,8 +145,8 @@
         </div>
     </div>
 </div>
-<div *ngIf='barraMetas' class="row m-4">
-    <div class="alert alert-danger col p-1" role="alert">
+<div *ngIf='barraMetas' class="row m-3">
+    <div class="alert alert-danger col p-0" role="alert">
         <div class="row">
             <div class="col-1 offset-md-3">
                 <img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="assets/img/img-mensaje.png" alt="">
@@ -158,15 +159,37 @@
 </div>
 <ng-template #PopOverSV><div>
     <div class="row">
+        <div class="col-8">
+            <div class="row">
+                <div class="col-4">
+                    <img width="50px" height="50px" class="rounded-circle" src="{{ login.usuarioData.foto }}" alt="">
+                </div>
+                <div class="col-8">
+                    <p class="labelNombre">{{login.usuarioData.nombre}}</p>
+                    <p class="labelApellido">{{login.usuarioData.apellidoPaterno}}</p>
+                    <p class="labelSucursal">{{login.usuarioData.coordinacion}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4" style="margin: 0px; padding: 0px;">
+            <div class="row" style="padding: 0px;">
+                <div class="col-4" style="margin: 0px;">
+                    <img  src="assets/img/bolsaAhorro.png">
+                </div>
+                <div class="col" style="text-align: left;">
+                    <p style="margin: 0px; margin-top: 5px; font-size: 10px;">Detalle Saldo</p>
+                </div>
+            </div>
+        </div>
         <span class="border" style="width: 100%; margin: 10px;"></span>
         <div class="col-12">
             <div class="row">
                 <div class="col-6">
                     <p>Saldo Virtual</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">${{ barraMetas.popUpSV.saldoVirtual }}</p>
+                        <p class="lblCenter">${{ barraMetas.popUpSV.saldoVirtual }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -179,9 +202,9 @@
                 <div class="col-6">
                     <p>Saldo Cantado</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">${{ barraMetas.popUpSV.saldoCantado }}</p>
+                        <p class="lblCenter">${{ barraMetas.popUpSV.saldoCantado }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -194,9 +217,9 @@
                 <div class="col-6">
                     <p>Saldo Acumulado</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">${{ barraMetas.popUpSV.saldoAcumulado }}</p>
+                        <p class="lblCenter">${{ barraMetas.popUpSV.saldoAcumulado }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -212,10 +235,10 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-2">
-                    <img src="assets/img/img-mensaje.png">
+                    <img src="assets/img/manosAhorro.png">
                 </div>
                 <div class="col" style="text-align: center;">
-                    <p>Solicitudes Comicionables</p>
+                    <p style="margin-top: 5px;">Solicitudes Comisionables</p>
                 </div>
             </div>
         </div>
@@ -225,9 +248,9 @@
                 <div class="col-6">
                     <p>Registros</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">{{ barraMetas.popUpTraspasos.registros }}</p>
+                        <p class="lblCenter">{{ barraMetas.popUpTraspasos.registros }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -240,9 +263,9 @@
                 <div class="col-6">
                     <p>Traspasos</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">{{ barraMetas.popUpTraspasos.traspasos }}</p>
+                        <p class="lblCenter">{{ barraMetas.popUpTraspasos.traspasos }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -255,9 +278,9 @@
                 <div class="col-6">
                     <p>TraspasosFCT</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">{{ barraMetas.popUpTraspasos.traspasosFCT }}</p>
+                        <p class="lblCenter">{{ barraMetas.popUpTraspasos.traspasosFCT }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -270,9 +293,9 @@
                 <div class="col-6">
                     <p>Total</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOver">
-                        <p class="font-weight-bold">{{ barraMetas.popUpTraspasos.total }}</p>
+                        <p class="lblCenter">{{ barraMetas.popUpTraspasos.total }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -284,10 +307,10 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-2">
-                    <img src="assets/img/img-mensaje.png">
+                    <img src="assets/img/manosAhorro.png">
                 </div>
                 <div class="col" style="text-align: center;">
-                    <p>Solicitudes No Comicionables</p>
+                    <p style="margin-top: 5px;">Solicitudes No Comisionables</p>
                 </div>
             </div>
         </div>
@@ -296,9 +319,9 @@
                 <div class="col-6">
                     <p>{{ barraMetas.popUpTraspasos.mensajeSaldoR }}</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOverRed">
-                        <p class="font-weight-bold" style="color: #FFFFFF;">{{ barraMetas.popUpTraspasos.registrosMenores }}</p>
+                        <p class="lblCenter" style="color: #FFFFFF;">{{ barraMetas.popUpTraspasos.registrosMenores }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -311,9 +334,9 @@
                 <div class="col-6">
                     <p>{{ barraMetas.popUpTraspasos.mensajeSaldoT }}</p>
                 </div>
-                <div class="col-4 lblCenter">
+                <div class="col-4">
                     <div class="card cardColorPopOverRed">
-                        <p class="font-weight-bold" style="color: #FFFFFF;">{{ barraMetas.popUpTraspasos.traspasosMenores }}</p>
+                        <p class="lblCenter" style="color: #FFFFFF;">{{ barraMetas.popUpTraspasos.traspasosMenores }}</p>
                     </div>
                 </div>
                 <div class="col-1 centercontent">
@@ -322,4 +345,68 @@
             </div>
         </div>
     </div>
-</div></ng-template>
+</div>
+</ng-template>
+
+<ng-template #PopOverFCT>
+    <div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="assets/img/Ahorro.png">
+                    </div>
+                    <div class="col" style="text-align: left;">
+                        <p style="margin-top: 8px;">Traspasos FCT</p>
+                    </div>
+                </div>
+            </div>
+            <span class="border" style="width: 100%; margin: 10px;"></span>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <p>Activos</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="card cardColorPopOver">
+                            <p class="lblCenter">{{ barraMetas.popUpFCT.fctActivos }}</p>
+                        </div>
+                    </div>
+                    <div class="col-1 centercontent">
+                        <i class="fas fa-circle" style="color: #80CC0E;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <p>Inactivos</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="card cardColorPopOver">
+                            <p class="lblCenter">{{ barraMetas.popUpFCT.fctInactivos }}</p>
+                        </div>
+                    </div>
+                    <div class="col-1 centercontent">
+                        <i class="fas fa-circle" style="color: #D5D1D6;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <p>Cancelados</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="card cardColorPopOverRed">
+                            <p class="lblCenter">{{ barraMetas.popUpFCT.fctCancelados }}</p>
+                        </div>
+                    </div>
+                    <div class="col-1 centercontent">
+                        <i class="fas fa-circle" style="color: #FF1D25;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

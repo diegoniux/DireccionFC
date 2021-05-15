@@ -13,6 +13,7 @@ import { TendenciaComponent } from '../../shared/tendencia/tendencia.component';
 import { ToastrService } from 'ngx-toastr';
 import { RelevanteComponent } from '../../shared/relevante/relevante.component';
 import { MejorSaldoComponent } from '../../shared/mejor-saldo/mejor-saldo.component';
+import { ReporteGerenciasComponent } from '../../shared/reporte-gerencias/reporte-gerencias.component';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -36,6 +37,7 @@ export class DetallegerenciasComponent implements OnInit {
   @ViewChild(TendenciaComponent) tendenciasChild: TendenciaComponent;
   @ViewChild(RelevanteComponent) relevanteChild: RelevanteComponent;
   @ViewChild(MejorSaldoComponent) mejorSaldoChild: MejorSaldoComponent;
+  @ViewChild(ReporteGerenciasComponent) reporteGerenciaChild: ReporteGerenciasComponent;
 
   form = new FormGroup({
     tipoPeriodo: new FormControl(2, Validators.required)
@@ -44,6 +46,9 @@ export class DetallegerenciasComponent implements OnInit {
   constructor(public detalleGerenciaService: DetalleGerenciasService,
               public loginService: LoginService,
               private toastrService: ToastrService) {
+   }
+
+  ngOnInit(): void {
     try {
       this.nombreTitulo = 'Detalle Gerencias';
       this.nombreImg = 'iconoPizarronDigital';
@@ -55,10 +60,6 @@ export class DetallegerenciasComponent implements OnInit {
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
     }
-   }
-
-  ngOnInit(): void {
-
   }
 
   private cargarTiposPeriodo(): any
@@ -87,10 +88,14 @@ export class DetallegerenciasComponent implements OnInit {
       this.idTipoPeriodo = idTipoPeriodo;
       this.periodoMes = data.periodoMes;
       this.periodoSemana = data.periodoSemana;
+      if (!this.periodoSemana.fechaInicial) {
+        return true;
+      }
       this.cargarBarraMetas();
       this.cargarTendencias();
       this.cargarRelevante();
       this.cargarMejorSaldo();
+      this.cargarReporteGerencias();
       return true;
     })
     .catch(error => {
@@ -105,6 +110,9 @@ export class DetallegerenciasComponent implements OnInit {
 
   public onTipoPeriodoChanged(e): any
   {
+    if (!e) {
+      return;
+    }
     this.idTipoPeriodo = e;
     this.periodosPrevios = 0;
     this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
@@ -118,10 +126,10 @@ export class DetallegerenciasComponent implements OnInit {
         return '';
       }
 
-      const fechaIni = new Date(this.periodoSemana.fechaInicial);
-      const fechaFin = new Date(this.periodoSemana.fechaFinal);
-
       if (this.idTipoPeriodo === 1) {
+
+        const fechaIni = new Date(this.periodoSemana.fechaInicial.replace(/-/g, '\/'));
+        const fechaFin = new Date(this.periodoSemana.fechaFinal.replace(/-/g, '\/'));
         desc = `${formatDate(fechaIni, 'd/MM/yyyy', 'es-MX')} - ${formatDate(fechaFin, 'd/MM/yyyy', 'es-MX')}`;
       }
       if (this.idTipoPeriodo === 2) {
@@ -178,7 +186,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.relevanteChild.periodoMes = this.periodoMes;
       this.relevanteChild.periodoSemana = this.periodoSemana;
       this.relevanteChild.getRelevantes();
-    }catch(error){
+    }catch (error){
       this.toastrService.error(error.message, 'Aviso');
     }
   }
@@ -191,7 +199,20 @@ export class DetallegerenciasComponent implements OnInit {
       this.mejorSaldoChild.periodoMes = this.periodoMes;
       this.mejorSaldoChild.periodoSemana = this.periodoSemana;
       this.mejorSaldoChild.getMejorSaldo();
-    }catch(error){
+    }catch (error){
+      this.toastrService.error(error.message, 'Aviso');
+    }
+  }
+
+  private cargarReporteGerencias(): any
+  {
+    try{
+      this.reporteGerenciaChild.nomina = this.nomina;
+      this.reporteGerenciaChild.idTipoPeriodo = this.idTipoPeriodo;
+      this.reporteGerenciaChild.periodoMes = this.periodoMes;
+      this.reporteGerenciaChild.periodoSemana = this.periodoSemana;
+      this.reporteGerenciaChild.getReporteGerencias();
+    }catch (error){
       this.toastrService.error(error.message, 'Aviso');
     }
   }

@@ -14,6 +14,7 @@ export interface ReporteGerenciasInterface {
     apellido: string;
     nombreSuc: string;
     proyeccion: string;
+    proyeccionColor: string;
     saldoAcomulado: string;
     saldoVirtual: string;
     saldoCantado: string;

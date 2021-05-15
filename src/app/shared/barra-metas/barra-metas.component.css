@@ -1,23 +1,23 @@
 .lbl{
-    line-height: 1px;
+    line-height: 10px;
+    font-size: small;
 }
 
 .lblavance{
-    line-height: 1px;
-    font-size: 30px;
+    line-height: 10px;
+    font-size: x-large;
     text-align: end;
 }
 
 .centercontent{
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .lblCenter{
-    padding: 5px;
-    text-align: left;
-    letter-spacing: 0px;
-    color: #353535;
-    opacity: 1;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .cardColorPopOver{
@@ -26,4 +26,26 @@
 
 .cardColorPopOverRed{
     background: #FF1D25 0% 0% no-repeat padding-box;
+    color: white;
+}
+
+.labelNombre{
+    line-height: 12px;
+    font-weight: bold;
+    margin: 0px;
+    font-size: 10px;
+}
+
+.labelApellido{
+    line-height: 12px;
+    font-weight: normal;
+    margin: 0px;
+    font-size: 10px;
+}
+
+.labelSucursal{
+    line-height: 12px;
+    font-weight: normal;
+    margin: 0px;
+    font-size: 10px;
 }

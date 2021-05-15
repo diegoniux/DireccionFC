@@ -22,7 +22,7 @@
                                 <!-- {{ item.nombre }} {{item.apellido}} {{item.nombreSuc}} -->
                                 <app-perfil-usuario [imgFoto]="item.foto" [Nombre]="item.nombre" [Apellido]="item.apellido" [Sucursal]="item.nombreSuc"></app-perfil-usuario>
                             </th>
-                            <td><p class="text-center labelGrid">{{ item.proyeccion }}</p></td>
+                            <td><p class="text-center labelGrid" [ngStyle]="{'color': (item.proyeccionColor) ? '#80CC0E' : '#FF1D25'}">{{ item.proyeccion }}</p></td>
                             <td [mdbPopover]="PopOverSA" placement="bottom" triggers="focus" mdbWavesEffect>
                                 <div class="card cardColorPopOver">
                                     <p class="text-center labelGrid">{{ item.saldoAcomulado }}</p>
@@ -30,13 +30,25 @@
                                 <ng-template #PopOverSA>
                                     <div>
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-8">
                                                 <div class="row">
-                                                    <div class="col-2">
-                                                        <img src="assets/img/img-mensaje.png">
+                                                    <div class="col-4">
+                                                        <img width="50px" height="50px" class="rounded-circle" src="{{ item.foto }}" alt="">
                                                     </div>
-                                                    <div class="col" style="text-align: center;">
-                                                        <p>Productividad Especialistas</p>
+                                                    <div class="col-8">
+                                                        <p class="labelNombre">{{item.nombre}}</p>
+                                                        <p class="labelApellido">{{item.apellido}}</p>
+                                                        <p class="labelSucursal">{{item.nombreSuc}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4" style="margin: 0px; padding: 0px;">
+                                                <div class="row" style="padding: 0px;">
+                                                    <div class="col-4" style="margin: 0px; margin-top: 5px;">
+                                                        <img  src="assets/img/detalleLupa.png">
+                                                    </div>
+                                                    <div class="col" style="text-align: left;">
+                                                        <p style="margin: 0px; margin-top: 5px; font-size: 10px;">Detalle Saldo</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -46,9 +58,9 @@
                                                     <div class="col-6">
                                                         <p>Saldo Virtual</p>
                                                     </div>
-                                                    <div class="col-4 lblCenter">
+                                                    <div class="col-4">
                                                         <div class="card cardColorPopOver">
-                                                            <p class="text-center font-weight-bold">{{ item.saldoVirtual }}</p>
+                                                            <p class="lblCenter">{{ item.saldoVirtual }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-1 centercontent">
@@ -61,9 +73,9 @@
                                                     <div class="col-6">
                                                         <p>Saldo Cantado</p>
                                                     </div>
-                                                    <div class="col-4 lblCenter">
+                                                    <div class="col-4">
                                                         <div class="card cardColorPopOver">
-                                                            <p class="text-center font-weight-bold">{{ item.saldoCantado }}</p>
+                                                            <p class="lblCenter">{{ item.saldoCantado }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-1 centercontent">
@@ -76,9 +88,9 @@
                                                     <div class="col-6">
                                                         <p>Saldo Acumulado</p>
                                                     </div>
-                                                    <div class="col-4 lblCenter">
+                                                    <div class="col-4">
                                                         <div class="card cardColorPopOver">
-                                                            <p class="text-center font-weight-bold">{{ item.saldoAcomulado }}</p>
+                                                            <p class="lblCenter">{{ item.saldoAcomulado }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-1 centercontent">
@@ -98,13 +110,25 @@
                                 <ng-template #PopOverProdGerente>
                                     <div>
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-8">
                                                 <div class="row">
-                                                    <div class="col-2">
-                                                        <img src="assets/img/img-mensaje.png">
+                                                    <div class="col-4">
+                                                        <img width="50px" height="50px" class="rounded-circle" src="{{ item.foto }}" alt="">
                                                     </div>
-                                                    <div class="col" style="text-align: center;">
-                                                        <p>Productividad Especialistas</p>
+                                                    <div class="col-8">
+                                                        <p class="labelNombre">{{item.nombre}}</p>
+                                                        <p class="labelApellido">{{item.apellido}}</p>
+                                                        <p class="labelSucursal">{{item.nombreSuc}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4" style="margin: 0px; padding: 0px;">
+                                                <div class="row" style="padding: 0px;">
+                                                    <div class="col-3" style="margin: 0px; margin-top: 5px;">
+                                                        <img  src="assets/img/detalleLupa.png">
+                                                    </div>
+                                                    <div class="col" style="text-align: left;">
+                                                        <p style="margin: 0px; margin-top: 5px; font-size: 10px;">Detalle Especialistas</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,9 +138,9 @@
                                                     <div class="col-6">
                                                         <p class="text-center font-weight-bold">{{ item2.rangos }}</p>
                                                     </div>
-                                                    <div class="col-4 lblCenter">
+                                                    <div class="col-4">
                                                         <div class="card cardColorPopOver">
-                                                            <p class="text-center font-weight-bold">{{ item2.especialistas }}</p>
+                                                            <p class="lblCenter">{{ item2.especialistas }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-1 centercontent">
