@@ -59,8 +59,8 @@ button.login-btn{
     border-radius: 15px;
 }
 .login-btn:hover{
-    opacity: 90%;
-    color:#FFFFFF;
+    background-color: #2F6F43;
+    box-shadow: 5px, 10px #4D4D4D;
 }
 
 .checkbox label:after {
@@ -76,7 +76,7 @@ button.login-btn{
     border-radius: .25em;
     width: 1.3em;
     height: 1.3em;
-    float: left;
+    float: none;
     margin-right: .5em;
   }
   

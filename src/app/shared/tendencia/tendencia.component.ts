@@ -3,6 +3,7 @@ import { TendenciasInterface } from '../../interfaces/dto/tendencias.interface';
 import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
 import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
 import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tendencia',

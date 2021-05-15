@@ -216,4 +216,15 @@ export class DetallegerenciasComponent implements OnInit {
       this.toastrService.error(error.message, 'Aviso');
     }
   }
+
+  public isLoading(): boolean
+  {
+
+    return this.barraMetasChild?.loading ||
+            this.mejorSaldoChild?.loading ||
+            this.tendenciasChild?.loading ||
+            this.relevanteChild?.loading ||
+            this.reporteGerenciaChild?.loading;
+  }
+
 }

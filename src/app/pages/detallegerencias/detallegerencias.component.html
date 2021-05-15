@@ -27,6 +27,7 @@
                         <button class="btn btn-default" (click)="cargarPeriodo(1)">
                             <img src="assets/img/flechader.png" width="12" />
                         </button>
+                        <div *ngIf="isLoading()" class="spinner-border text-success" role="status"></div>
                     </div>
                 </div>
             </div>
