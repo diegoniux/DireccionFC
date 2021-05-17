@@ -1,7 +1,11 @@
 .card-radius{
     border-radius: 10px ;
-    height: 410px;
+    height: 300px;
 }
 .card-bold{
     font-weight: bold;
+}
+.papading{
+    padding: 3px;
+    vertical-align:middle
 }

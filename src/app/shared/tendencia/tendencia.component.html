@@ -18,9 +18,9 @@
     <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
         <tbody *ngIf='tendencias'>
           <tr *ngFor="let item of tendencias.listaTendencias">
-            <td><img class="mx-auto d-block" style="height: 30px; margin: 0px;" src="{{item.img}}" alt=""></td>
-            <td>{{ item.descripcion }}</td>
-            <td [ngStyle]="{'color': (item.positivo) ? '#80CC0E' : '#FF1D25'}"><i class="fas fa-arrow-{{ item.positivo ? 'up' : 'down'}}"></i> {{ item.porcentaje }}</td>
+            <td class="papading"><img class="mx-auto d-block" style="height: 30px; margin: 0px;" src="{{item.img}}" alt=""></td>
+            <td class="papading">{{ item.descripcion }}</td>
+            <td class="papading" [ngStyle]="{'color': (item.positivo) ? '#80CC0E' : '#FF1D25'}"><i class="fas fa-arrow-{{ item.positivo ? 'up' : 'down'}}"></i> {{ item.porcentaje }}</td>
           </tr>
           <tr>
         </tbody>

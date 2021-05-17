@@ -1,13 +1,14 @@
 <div *ngIf="mejorSaldo && !loading" class="card card-radius">
   <div class="card-body">
     <div class="card-title">
-      <small style="font-size: 1rem;">Mejor Saldo</small> 
-      <!-- <div class="row"> -->
-          <!-- <div class="col">
-            <small style="font-size: 1rem;">Mejor Saldo</small>
-            <p *ngIf='mejorSaldo' class="text-right card-bold">{{ mejorSaldo.encabezadoPeriodo }}</p>
-          </div> -->
-      <!-- </div> -->
+      <div class="row"> 
+        <div class="col">
+          <p class="card-bold">Mejor Saldo</p>
+        </div> 
+        <div class="col">
+          <p *ngIf='mejorSaldo' class="text-right card-bold">{{ mejorSaldo.encabezadoPeriodo }}</p>
+        </div> 
+      </div>
     </div>
     <div class="card-boby">
       <table style="width:100%">
@@ -22,10 +23,10 @@
               <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
                 <tbody *ngIf='mejorSaldo'>
                   <tr *ngFor="let item of mejorSaldo.listaMejorSaldo">
-                    <th scope="row">{{ item.mes }}</th>
-                    <td>{{ item.anio }}</td>
-                    <td>{{ item.saldo }}</td>
-                    <td>
+                    <th scope="row" class="papading">{{ item.mes }}</th>
+                    <td class="papading">{{ item.anio }}</td>
+                    <td class="papading">{{ item.saldo }}</td>
+                    <td class="papading">
                       <img *ngIf='item.img' class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="{{item.img}}" alt="">
                     </td>
                   </tr>
@@ -42,4 +43,4 @@
       </table>
     </div>
   </div>
-</div>
+</div>  

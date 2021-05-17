@@ -13,19 +13,19 @@
     <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
         <tbody *ngIf='relevante'>
           <tr>
-            <td>Fuera de Línea</td>
-            <th scope="row"><h2>{{ relevante.numEspecialistasFL }} / {{ relevante.numEspecialistas }}</h2></th>
-            <td>Especialistas</td>
+            <td class="papading">Fuera de Línea</td>
+            <th scope="row" class="papading"><p style="font-size: 25px;">{{ relevante.numEspecialistasFL }}/{{ relevante.numEspecialistas }}</p></th>
+            <td class="papading">Especialistas</td>
           </tr>
           <tr>
-            <td>Prospectos</td>
-            <th scope="row"><h2>{{ relevante.numEspecialistasProsp }} / {{ relevante.numEspecialistas }}</h2></th>
-            <td>Especialistas</td>
+            <td class="papading">Prospectos</td>
+            <th class="papading" scope="row"><p style="font-size: 25px;">{{ relevante.numEspecialistasProsp }}/{{ relevante.numEspecialistas }}</p></th>
+            <td class="papading">Especialistas</td>
           </tr>
           <tr>
-            <td>Investigación</td>
-            <th scope="row"><h2>{{ relevante.numEspecialistasMR }} / {{ relevante.numEspecialistas }}</h2></th>
-            <td>Especialistas en Riesgo</td>
+            <td class="papading">Investigación</td>
+            <th class="papading" scope="row"><p style="font-size: 25px;">{{ relevante.numEspecialistasMR }}/{{ relevante.numEspecialistas }}</p></th>
+            <td class="papading">Especialistas en Riesgo</td>
           </tr>
         </tbody>
       </table>
