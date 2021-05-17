@@ -1,26 +1,20 @@
 <div *ngIf='barraMetas && !loading'  class="row m-3">
    <div class="card col">
         <div class="row">
-            <div class="col-lg-4 col-12 p-3" [mdbPopover]="PopOverSV" 
-            placement="bottom" triggers="focus" mdbWavesEffect>
+            <div class="col-lg-3 col-12 p-3" [mdbPopover]="PopOverSV" placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
-                    <div class="col-3 lbl">
-                        <p>Avance</p>
-                    </div>
-                    <div class="col-9">
+                    <div class="col">
                         <div class="row">
-                            <div class="col-4 lbl">
-                                <p>Saldo Virtual</p>
+                            <div class="col-6 lbl">
+                                <p>Saldo Acumulado</p>
                             </div>
-                            <div class="col lblavance">
+                            <div class="col-6 lblavance">
                                 <p *ngIf='barraMetas' class="font-weight-bold">${{ barraMetas.barraAvanceMetas.saldoVirtual }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-2 lbl"> 
-                    </div>
                     <div class="col-3">
                         <img class=" mx-auto d-block imgPerfil" src="assets/img/img-saldo-virtual.png" alt="">
                     </div>
@@ -32,12 +26,12 @@
                                 </div>
                             </div>                            
                         </div>
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col lbl">
+                        <div class="row">
+                            <div class="col lbl-small">
                                 <p class="font-weight-bold">${{ barraMetas.barraAvanceMetas.objetivoSV }}</p>
                                 <p>Objetivo</p>
                             </div>
-                            <div class="col lbl">
+                            <div class="col lbl-small">
                                 <p class="font-weight-bold">${{ barraMetas.barraAvanceMetas.proyeccion }}</p>
                                 <p>Proyección</p>
                             </div>
@@ -46,19 +40,22 @@
                 </div>
             </div>
             <span class="border spanMargin"></span>
-            <div class="col-12  col-lg-3 text-center p-3" [mdbPopover]="PopOverSol" 
-            placement="bottom" triggers="focus" mdbWavesEffect>
+            <div class="col-12  col-lg-3 p-3" [mdbPopover]="PopOverSol" placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
-                    <div class="col-6 lbl">
-                        <p>Solicitudes</p>
-                    </div>
-                    <div class="col lblavance">
-                        <p *ngIf='barraMetas' class="font-weight-bold">{{ barraMetas.barraAvanceMetas.solicitudes }}</p>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-6 lbl">
+                                <p>Solicitudes</p>
+                            </div>
+                            <div class="col-6 lblavance">
+                                <p *ngIf='barraMetas' class="font-weight-bold">{{ barraMetas.barraAvanceMetas.solicitudes }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col lbl">
-                        <img class="rounded mx-auto d-block imgPerfil" src="assets/img/img-solicitudes.png" alt="">
+                    <div class="col-3">
+                        <img class=" mx-auto d-block imgPerfil" src="assets/img/img-solicitudes.png" alt="">
                     </div>
                     <div class="col">
                         <div class="row">
@@ -68,61 +65,68 @@
                                 </div>
                             </div>                            
                         </div>
-                        <div class="row" style="margin-top: 20px;">
-                            <div class="col lbl">
-                                <p class="font-weight-bold">{{ barraMetas.barraAvanceMetas.objetivoSol }}</p>
+                        <div class="row">
+                            <div class="col lbl-small">
+                                <p class="font-weight-bold">${{ barraMetas.barraAvanceMetas.objetivoSol }}</p>
                                 <p>Objetivo</p>
                             </div>
                         </div>
-                        
                     </div>                        
-                </div>
+                </div>                
             </div>
             <span class="border spanMargin"></span>
-            <div class="col-12 col-lg-3 text-center p-3" [mdbPopover]="PopOverFCT" 
+            <div class="col-12 col-lg-3 p-3" [mdbPopover]="PopOverFCT" 
             placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
-                    <div class="col-6 lbl">
-                        <p>Traspasos FCT</p>
-                    </div>
-                    <div class="col lblavance">
-                        <p class="font-weight-bold">{{ barraMetas.barraAvanceMetas.traspasosFCT }}</p>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-6 lbl">
+                                <p>Traspasos FCT</p>
+                            </div>
+                            <div class="col-6 lblavance">
+                                <p *ngIf='barraMetas' class="font-weight-bold">{{ barraMetas.barraAvanceMetas.traspasosFCT }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
-                        <img class="rounded mx-auto d-block imgPerfil" src="assets/img/img-traspasos-fct.png" alt="">
+                    <div class="col-3">
+                        <img class=" mx-auto d-block imgPerfil" src="assets/img/img-traspasos-fct.png" alt="">
                     </div>
                     <div class="col">
                         <div class="row">
                             <div class="col">
                                 <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{'width': barraMetas.barraAvanceMetas.traspasosBar}" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{'width': barraMetas.barraAvanceMetas.traspasosBar}" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>                            
                         </div>
-                        <div class="row" style="margin-top: 20px;">
-                            <div class="col lbl">
-                                <p class="font-weight-bold">{{ barraMetas.barraAvanceMetas.objetivoTra }}</p>
+                        <div class="row">
+                            <div class="col lbl-small">
+                                <p class="font-weight-bold">${{ barraMetas.barraAvanceMetas.objetivoTra }}</p>
                                 <p>Objetivo</p>
                             </div>
                         </div>
                     </div>                        
-                </div>
+                </div>  
             </div>
             <span class="border spanMargin"></span>
-            <div class="col text-center p-3">
+            <div class="col p-3">
                 <div class="row">
-                    <div class="col-9 lbl">
-                        <p>Gerencias Productivas</p>
-                    </div>
-                    <div class="col lblavance">
-                        <p class="font-weight-bold">{{ barraMetas.barraAvanceMetas.gerenciasProductivas }}</p>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-8 lbl">
+                                <p>Gerencias Productivas</p>
+                            </div>
+                            <div class="col-4 lblavance">
+                                <p *ngIf='barraMetas' class="font-weight-bold">{{ barraMetas.barraAvanceMetas.gerenciasProductivas }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
-                        <img class="rounded mx-auto d-block imgPerfil" src="assets/img/img-gerencias-productivas.png" alt="">
+                    <div class="col-3">
+                        <img class=" mx-auto d-block imgPerfil" src="assets/img/img-gerencias-productivas.png" alt="">
                     </div>
                     <div class="col">
                         <div class="row">
@@ -132,15 +136,14 @@
                                 </div>
                             </div>                            
                         </div>
-                        <div class="row" style="margin-top: 20px;">
-                            <div class="col lbl">
-                                <p class="font-weight-bold">{{ barraMetas.barraAvanceMetas.objetivoGP }}</p>
+                        <div class="row">
+                            <div class="col lbl-small">
+                                <p class="font-weight-bold">${{ barraMetas.barraAvanceMetas.objetivoGP }}</p>
                                 <p>Objetivo</p>
                             </div>
                         </div>
-                        
                     </div>                        
-                </div>
+                </div>                
             </div>
         </div>
     </div>
