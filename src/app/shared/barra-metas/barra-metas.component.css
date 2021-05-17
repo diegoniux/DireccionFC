@@ -1,6 +1,13 @@
 .lbl{
     line-height: 10px;
-    font-size: small;
+    font-size: medium;
+}
+
+.lbl-small{
+    line-height: 10px;
+    font-size: 13px;
+    margin-top: 15px;
+    text-align: center;
 }
 
 .lblavance{
