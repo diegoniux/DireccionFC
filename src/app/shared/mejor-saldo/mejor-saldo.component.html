@@ -14,12 +14,12 @@
       <table style="width:100%">
         <tbody>
           <tr>
-            <td style="width: 10%;">
+            <td style="width: 30px;">
               <button *ngIf='mejorSaldo' class="btn btn-default" (click)="cargarPeriodo(-1)">
                 <img src="assets/img/flechaizq.png" style="width:30px; height: 60px;">
               </button>
             </td>            
-            <td style="width: 80%; padding-right: 30px;">
+            <td style="width: 100%; padding-right: 30px;">
               <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
                 <tbody *ngIf='mejorSaldo'>
                   <tr *ngFor="let item of mejorSaldo.listaMejorSaldo">
@@ -33,7 +33,7 @@
                 </tbody>
               </table>
             </td>
-            <td style="width: 10%;">
+            <td style="width: 30px;">
               <button *ngIf='mejorSaldo' class="btn btn-default" (click)="cargarPeriodo(1)">
                 <img src="assets/img/flechader.png" style="width:30px; height: 60px; margin: auto 0;">
               </button>            
