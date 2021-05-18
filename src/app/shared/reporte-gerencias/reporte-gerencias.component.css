@@ -42,3 +42,7 @@
     margin: 0px;
     font-size: 10px;
 }
+
+.card-radius{
+    border-radius: 10px ;
+}
