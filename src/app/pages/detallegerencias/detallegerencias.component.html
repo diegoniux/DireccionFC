@@ -1,18 +1,18 @@
 
 <div class="container-fluid" style="background-color: #F2F2F2;">
     <form [formGroup]="form">
-    <div class="row">
-        <div class="col-3">
+    <div class="row m-1">
+        <div class="col-12 col-lg-3">
             <app-titulo [nombreTitulo]="nombreTitulo" [nombreImg]="nombreImg"></app-titulo>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
             <div class="card" style="height: 60px; margin-top: 20px;">
                 <div class="d-flex justify-content-center">
                     <div class="p-3 flex-fill">
                         <label>Periodo</label>
                     </div>
                     <div class="p-2 flex-fill">
-                        <ng-select formControlName="tipoPeriodo" [(ngModel)]= "idTipoPeriodo" (ngModelChange)="onTipoPeriodoChanged($event)">
+                        <ng-select formControlName="tipoPeriodo" class="disable-clear-all" [clearable]="false" [searchable]="false" [(ngModel)]= "idTipoPeriodo" (ngModelChange)="onTipoPeriodoChanged($event)">
                             <ng-option *ngFor="let item of tiposPeriodo" [value]="item.idTipoPeriodo">
                                 <img src="assets/img/calendario.png" style="height: 20px;" /> {{ item.tipoPeriodo }}
                             </ng-option>
