@@ -1,3 +1,7 @@
+.card, .spanMargin{
+    height: 130px;   
+}
+
 .lbl{
     line-height: 10px;
     font-size: medium;

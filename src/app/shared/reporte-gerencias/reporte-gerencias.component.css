@@ -2,9 +2,13 @@
     background: #F5F5F5 0% 0% no-repeat padding-box;
 }
 
-.labelGrid{
-    font-weight: bold;
-    font-size: x-large;
+.table-row{
+    height: 10px;
+}
+
+/*.labelGrid{
+    font-weight: normal;
+    font-size: large;
 }
 
 .lblCenter{
@@ -37,4 +41,4 @@
     font-weight: normal;
     margin: 0px;
     font-size: 10px;
-}
+} */

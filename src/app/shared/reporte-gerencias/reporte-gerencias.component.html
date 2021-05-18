@@ -1,3 +1,4 @@
+<br>
 <div *ngIf="reporteGerencias && !loading" class="row m-1">
     <div class="col">
         <div class="card">
@@ -5,7 +6,7 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col-3" class="text-center">Nombre</th>
+                        <th scope="col-4" class="text-center">Nombre</th>
                         <th scope="col" class="text-center">Proyección</th>
                         <th scope="col" class="text-center">Saldo Acumulado</th>
                         <th scope="col" class="text-center">Saldo Promedio</th>
@@ -17,11 +18,11 @@
                     </tr>
                     </thead>
                     <tbody >
-                        <tr *ngFor="let item of reporteGerencias.reporteGerencias">
-                            <th scope="row">
+                        <tr *ngFor="let item of reporteGerencias.reporteGerencias" class="table-row">
+                            <td scope="row">
                                 <!-- {{ item.nombre }} {{item.apellido}} {{item.nombreSuc}} -->
                                 <app-perfil-usuario [imgFoto]="item.foto" [Nombre]="item.nombre" [Apellido]="item.apellido" [Sucursal]="item.nombreSuc"></app-perfil-usuario>
-                            </th>
+                            </td>
                             <td><p class="text-center labelGrid" [ngStyle]="{'color': (item.proyeccionColor) ? '#80CC0E' : '#FF1D25'}">{{ item.proyeccion }}</p></td>
                             <td [mdbPopover]="PopOverSA" placement="bottom" triggers="focus" mdbWavesEffect>
                                 <div class="card cardColorPopOver">

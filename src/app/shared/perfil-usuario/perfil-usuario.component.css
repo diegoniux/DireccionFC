@@ -1,17 +1,17 @@
 .labelNombre{
     line-height: 10px;
     font-weight: bold;
-    font-size: small;
+    font-size: 10px;
 }
 
 .labelApellido{
     line-height: 10px;
     font-weight: normal;
-    font-size: small;
+    font-size: 10px;
 }
 
 .labelSucursal{
     line-height: 10px;
     font-weight: normal;
-    font-size: small;
+    font-size: 10px;
 }

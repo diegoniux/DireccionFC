@@ -33,6 +33,7 @@ export class TendenciaComponent implements OnInit {
     .then((data: TendenciasInterface) => {
       this.tendencias = data;
       this.loading = false;
+      console.log(data);
     })
     .catch(error => {
       console.error(error);
