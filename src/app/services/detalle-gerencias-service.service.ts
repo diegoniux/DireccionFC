@@ -16,85 +16,97 @@ export class DetalleGerenciasService {
   public getTiposPeriodos(): any {
     this.infoApp = this.loginService.getInfoApp();
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
-      })
-    };
-    return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getTiposPeriodo', httpOptions);
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     Authorization: 'Bearer ' + this.token
+    //   })
+    // };
+    // return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getTiposPeriodo', httpOptions);
+    return this.http.get(this.infoApp.apiUrl + 'DetalleGerencias/getTiposPeriodo');
   }
 
   public getBarraMetas(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     this.infoApp = this.loginService.getInfoApp();
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
-      })
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     Authorization: 'Bearer ' + this.token
+    //   })
+    // };
+    // return this.http.get(this.infoApp.apiUrl +
+    //   `DetalleGerencias/getBarraMetas/${nomina}/${fechaInicio}/${fechaFin}/${tipoPeriodo}`, httpOptions);
     return this.http.get(this.infoApp.apiUrl +
-      `DetalleGerencias/getBarraMetas/${nomina}/${fechaInicio}/${fechaFin}/${tipoPeriodo}`, httpOptions);
+      `DetalleGerencias/getBarraMetas/${nomina}/${fechaInicio}/${fechaFin}/${tipoPeriodo}`);
   }
 
   public getMejorSaldo(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string, periodosPrevios: number): any {
     this.infoApp = this.loginService.getInfoApp();
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
-      })
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     Authorization: 'Bearer ' + this.token
+    //   })
+    // };
+    // return this.http.get(this.infoApp.apiUrl +
+    //   `DetalleGerencias/getMejorSaldo/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}/${periodosPrevios}`, httpOptions);
     return this.http.get(this.infoApp.apiUrl +
-      `DetalleGerencias/getMejorSaldo/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}/${periodosPrevios}`, httpOptions);
+      `DetalleGerencias/getMejorSaldo/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}/${periodosPrevios}`);
   }
 
   public getRelevantes(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     this.infoApp = this.loginService.getInfoApp();
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
-      })
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     Authorization: 'Bearer ' + this.token
+    //   })
+    // };
+    // return this.http.get(this.infoApp.apiUrl +
+    //   `DetalleGerencias/getRelevantes/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`, httpOptions);
     return this.http.get(this.infoApp.apiUrl +
-      `DetalleGerencias/getRelevantes/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`, httpOptions);
+      `DetalleGerencias/getRelevantes/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`);
   }
 
   public getTendencias(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     this.infoApp = this.loginService.getInfoApp();
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
-      })
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     Authorization: 'Bearer ' + this.token
+    //   })
+    // };
+    // return this.http.get(this.infoApp.apiUrl +
+    //   `DetalleGerencias/getTendencias/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`, httpOptions);
     return this.http.get(this.infoApp.apiUrl +
-      `DetalleGerencias/getTendencias/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`, httpOptions);
+      `DetalleGerencias/getTendencias/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`);
   }
 
   // Función para obtener las fechas dado un periodo
   public getFechasPeriodos(mesSemanaPrevios: number, idTipoPeriodo: number): any {
     this.infoApp = this.loginService.getInfoApp();
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
-      })
-    };
-    return this.http.get(`${this.infoApp.apiUrl}DetalleGerencias/getFechasPeriodo/${mesSemanaPrevios}/${idTipoPeriodo}`, httpOptions);
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     Authorization: 'Bearer ' + this.token
+    //   })
+    // };
+    // return this.http.get(`${this.infoApp.apiUrl}DetalleGerencias/getFechasPeriodo/${mesSemanaPrevios}/${idTipoPeriodo}`, httpOptions);
+    return this.http.get(`${this.infoApp.apiUrl}DetalleGerencias/getFechasPeriodo/${mesSemanaPrevios}/${idTipoPeriodo}`);
   }
 
   public getReporteGerencias(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     this.infoApp = this.loginService.getInfoApp();
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
-      })
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     Authorization: 'Bearer ' + this.token
+    //   })
+    // };
+    // return this.http.get(this.infoApp.apiUrl +
+    //   `DetalleGerencias/getReporteGerencias/${nomina}/${fechaInicio}/${fechaFin}/${tipoPeriodo}`, httpOptions);
     return this.http.get(this.infoApp.apiUrl +
-      `DetalleGerencias/getReporteGerencias/${nomina}/${fechaInicio}/${fechaFin}/${tipoPeriodo}`, httpOptions);
+      `DetalleGerencias/getReporteGerencias/${nomina}/${fechaInicio}/${fechaFin}/${tipoPeriodo}`);
   }
 
 }
