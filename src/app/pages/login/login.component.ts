@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { LoginInterface } from '../../interfaces/login.interface';
 import { AlertService } from 'src/app/shared/_alert';
+import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
+import { LogErrorInterface } from '../../interfaces/logError.interface';
 
 @Component({
   selector: 'app-login',
@@ -32,9 +34,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     let usr: string;
-    let chkRecordarUsuario: Boolean;
+    let chkRecordarUsuario: boolean;
     usr = localStorage.getItem('usuario') != null ? localStorage.getItem('usuario') : '';
-    console.log("usr: " + usr);
+    console.log('usr: ' + usr);
     chkRecordarUsuario = localStorage.getItem('usuario') != null ? true : false;
 
     this.loginForm = this.formBuilder.group({
@@ -73,23 +75,36 @@ export class LoginComponent implements OnInit {
           this.alertService.error('Usuario inactivo.', this.options);
           return;
         }
-        
-        if(this.loginForm.value.recordarUsr)
+
+        if (this.loginForm.value.recordarUsr) {
           localStorage.setItem('usuario', this.loginForm.value.user);
-        else if(localStorage.getItem('usuario') != null)
+        } else
+        if (localStorage.getItem('usuario') != null) {
           localStorage.removeItem('usuario');
+        }
 
         this.loginService.setUserLoggedIn(this.loginInterface);
-        // this.loginService.setModuloActual(modulo);
+
+        const logSistema: LogSistemaInterface = {
+          idAccion: 1,
+          idPantalla: 0,
+          usuario: this.loginInterface.usuarioData.nomina
+        };
+
+        // this.loginService.setLogSistema(logSistema);
+
         this.alertService.success('Bienvenido', this.options);
         this.router.navigate(['/home']);
-
-        console.log(this.loginInterface);
-
-
       })
       .catch( error =>
         {
+          const logError: LogErrorInterface = {
+            idPantalla: 0,
+            usuario: 0,
+            error: error.message
+          };
+
+          this.loginService.setLogError(logError);
           this.alertService.error(error.message , this.options );
           // throw error;
         });

@@ -4,8 +4,8 @@ import { ModuloInterface } from '../interfaces/modulo.interface';
 import { LoginInterface } from '../interfaces/login.interface';
 import { InfoAppInterface } from '../interfaces/infoApp.interface';
 import { InfoAppService } from './info-app.service';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { LogSistemaInterface } from '../interfaces/logSistema.interface';
+import { LogErrorInterface } from '../interfaces/logError.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,9 +31,6 @@ export class LoginService {
   public login(usuario: string, password: string): any {
     const httpOptions = {
       headers: new HttpHeaders({
-        // 'Content-Type': 'application/json',
-        // 'withCredentials': 'false',
-        // 'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
       })
     };
@@ -46,6 +43,24 @@ export class LoginService {
       );
   }
 
+  public setLogSistema(logSistema: LogSistemaInterface): any {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(this.apiURL + 'Login/LogSistema', JSON.stringify(logSistema), httpOptions);
+  }
+
+  public setLogError(logSistema: LogErrorInterface): any {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(this.apiURL + 'Login/LogSistema', JSON.stringify(logSistema), httpOptions);
+  }
+
   public getInfoApp(): InfoAppInterface {
     let infoApp: InfoAppInterface;
     if (localStorage.getItem('infoApp') !== '') {
@@ -54,24 +69,6 @@ export class LoginService {
     return infoApp;
   }
 
-  // public getModulos(IdAplicativo, IdPerfil): any {
-  //   return this.http.get('https://localhost:44337/api/Login/Modulos/' + IdAplicativo + '/' + IdPerfil);
-  // }
-
-  // public getMenus(IdModulo, IdPerfil): any {
-  //   return this.http.get('https://localhost:44337/api/Login/Menus/' + IdModulo + '/' + IdPerfil);
-  // }
-
-  // public getOpciones(IdMenu, IdPerfil): any {
-  //   return this.http.get('https://localhost:44337/api/Login/Opciones/' + IdMenu + '/' + IdPerfil);
-  // }
-  // public getModuloActual(): ModuloInterface {
-  //   let modulo: ModuloInterface;
-  //   if (localStorage.getItem('moduloActual') !== '') {
-  //     modulo = JSON.parse(localStorage.getItem('moduloActual'));
-  //   }
-  //   return modulo;
-  // }
 
   public setUserLoggedIn(login: LoginInterface): void {
     this.infoAppService.getInfoApp()
