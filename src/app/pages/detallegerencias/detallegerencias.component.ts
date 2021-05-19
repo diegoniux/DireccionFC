@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { RelevanteComponent } from '../../shared/relevante/relevante.component';
 import { MejorSaldoComponent } from '../../shared/mejor-saldo/mejor-saldo.component';
 import { ReporteGerenciasComponent } from '../../shared/reporte-gerencias/reporte-gerencias.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -43,7 +44,8 @@ export class DetallegerenciasComponent implements OnInit {
     tipoPeriodo: new FormControl(2, Validators.required)
   });
 
-  constructor(public detalleGerenciaService: DetalleGerenciasService,
+  constructor(private router: Router,
+              public detalleGerenciaService: DetalleGerenciasService,
               public loginService: LoginService,
               private toastrService: ToastrService) {
    }
@@ -155,6 +157,13 @@ export class DetallegerenciasComponent implements OnInit {
       return;
     }
     this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
+  }
+
+  public logOut(): any {
+    if(confirm("¿Está seguro de cerrar sesión?")){
+    this.loginService.setUserLoggedOn();
+    this.router.navigate(['/Login']);
+    }
   }
 
   private cargarBarraMetas(): any
