@@ -4,8 +4,6 @@ import { ModuloInterface } from '../interfaces/modulo.interface';
 import { LoginInterface } from '../interfaces/login.interface';
 import { InfoAppInterface } from '../interfaces/infoApp.interface';
 import { InfoAppService } from './info-app.service';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 import { LogSistemaInterface } from '../interfaces/logSistema.interface';
 import { LogErrorInterface } from '../interfaces/logError.interface';
 
