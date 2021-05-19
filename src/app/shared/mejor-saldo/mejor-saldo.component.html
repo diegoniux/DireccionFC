@@ -5,38 +5,28 @@
         <div class="col">
           <p class="card-bold">Mejor Saldo</p>
         </div> 
-        <div class="col">
-          <p *ngIf='mejorSaldo' class="text-right card-bold">{{ mejorSaldo.encabezadoPeriodo }}</p>
+        <div class="col col-lg-9">
+          <p *ngIf='mejorSaldo' class="text-right card-bold">
+            <button *ngIf='mejorSaldo' class="btn btn-default btn-sm" style="padding: 1px;" (click)="cargarPeriodo(-1)">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            {{ mejorSaldo.encabezadoPeriodo }}
+            <button *ngIf='mejorSaldo' class="btn btn-default btn-sm" style="padding: 1px;" (click)="cargarPeriodo(1)">
+              <i class="fas fa-chevron-right"></i>
+            </button>            
+          </p>
         </div> 
       </div>
     </div>
     <div class="card-boby">
-      <table style="width:100%">
-        <tbody>
-          <tr>
-            <td style="width: 30px;">
-              <button *ngIf='mejorSaldo' class="btn btn-default" (click)="cargarPeriodo(-1)">
-                <img src="assets/img/flechaizq.png" style="width:30px; height: 60px;">
-              </button>
-            </td>            
-            <td style="width: 100%; padding-right: 30px;">
-              <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
-                <tbody *ngIf='mejorSaldo'>
-                  <tr *ngFor="let item of mejorSaldo.listaMejorSaldo">
-                    <th scope="row" class="papading">{{ item.mes }}</th>
-                    <td class="papading">{{ item.anio }}</td>
-                    <td class="papading">{{ item.saldo }}</td>
-                    <td class="papading">
-                      <img *ngIf='item.img' class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="{{item.img}}" alt="">
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-            <td style="width: 30px;">
-              <button *ngIf='mejorSaldo' class="btn btn-default" (click)="cargarPeriodo(1)">
-                <img src="assets/img/flechader.png" style="width:30px; height: 60px; margin: auto 0;">
-              </button>            
+      <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
+        <tbody *ngIf='mejorSaldo'>
+          <tr *ngFor="let item of mejorSaldo.listaMejorSaldo">
+            <th scope="row" class="papading">{{ item.mes }}</th>
+            <td class="papading">{{ item.anio }}</td>
+            <td class="papading">{{ item.saldo }}</td>
+            <td class="papading">
+              <img *ngIf='item.img' class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="{{item.img}}" alt="">
             </td>
           </tr>
         </tbody>
