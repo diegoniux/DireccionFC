@@ -44,9 +44,6 @@ export class BarraMetasComponent implements OnInit {
       , this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: BarraMetasInterface) => {
-      console.log(this.periodoSemana);
-      console.log(this.nomina);
-      console.log(data);
       if (!data.resultadoEjecucion.ejecucionCorrecta) {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }

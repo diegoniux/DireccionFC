@@ -31,7 +31,6 @@ export class ReporteGerenciasComponent implements OnInit {
       , this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: ReporteGerenciasInterface) => {
-      console.log(data);
       if (!data.resultadoEjecucion.ejecucionCorrecta) {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }

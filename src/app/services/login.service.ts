@@ -50,7 +50,6 @@ export class LoginService {
       })
     };
     const url: string = this.apiURL + 'Login/LogSistema';
-    console.log(url);
     return this.http.post(url, JSON.stringify(logSistema), httpOptions);
   }
 

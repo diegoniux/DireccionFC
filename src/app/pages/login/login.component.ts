@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
     let usr: string;
     let chkRecordarUsuario: boolean;
     usr = localStorage.getItem('usuario') != null ? localStorage.getItem('usuario') : '';
-    console.log('usr: ' + usr);
     chkRecordarUsuario = localStorage.getItem('usuario') != null ? true : false;
 
     this.loginForm = this.formBuilder.group({
@@ -91,7 +90,11 @@ export class LoginComponent implements OnInit {
           usuario: this.loginInterface.usuarioData.nomina
         };
 
-        this.loginService.setLogSistema(logSistema);
+        this.loginService.setLogSistema(logSistema)
+        .toPromise()
+        .then((data: any) => {
+        })
+        .catch();
 
         this.alertService.success('Bienvenido', this.options);
         this.router.navigate(['/home']);

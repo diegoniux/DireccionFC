@@ -276,10 +276,8 @@ export class DetallegerenciasComponent implements OnInit {
     this.loginService.setLogError(logError)
       .toPromise()
       .then((resp: any) => {
-        console.log('error registtrado !!');
       })
       .catch(error => {
-        console.log('fallé');
         this.toastrService.error(error.message, 'Aviso');
       });
   }
@@ -288,10 +286,8 @@ export class DetallegerenciasComponent implements OnInit {
     this.loginService.setLogSistema(logSistema)
       .toPromise()
       .then((resp: any ) => {
-        console.log('log exitoso !!');
       })
       .catch(error => {
-        console.log('fallé');
         this.toastrService.error(error.message, 'Aviso');
       });
   }
