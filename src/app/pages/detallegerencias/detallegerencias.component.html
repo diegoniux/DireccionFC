@@ -12,11 +12,16 @@
                         <label>Periodo</label>
                     </div>
                     <div class="p-2 flex-fill">
-                        <ng-select formControlName="tipoPeriodo" class="disable-clear-all" [clearable]="false" [searchable]="false" [(ngModel)]= "idTipoPeriodo" (ngModelChange)="onTipoPeriodoChanged($event)">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
+                            </div>
+                        <ng-select formControlName="tipoPeriodo" class="disable-clear-all" [clearable]="false" [searchable]="false" [(ngModel)]= "idTipoPeriodo" (ngModelChange)="onTipoPeriodoChanged($event)" aria-describedby="basic-addon2">
                             <ng-option *ngFor="let item of tiposPeriodo" [value]="item.idTipoPeriodo">
-                                <img src="assets/img/calendario.png" style="height: 20px;" /> {{ item.tipoPeriodo }}
+                                {{ item.tipoPeriodo }}
                             </ng-option>
                         </ng-select>
+                    </div>
                     </div>
                     <div class="p-2 flex-fill">
                         <label *ngIf="idTipoPeriodo === 1"> {{ periodoSemana.numeroSemana }} </label>
@@ -32,7 +37,14 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="col-12 col-lg-3" style="height: 60px; margin-top: 30px;">
+            <div class="row ">
+                <div class="col-12">
+                    <button class="btn btn-light btn-block" (click)="logOut()"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                </div>
+            </div>
+        </div>
+    </div>    
     <app-barra-metas></app-barra-metas>
     <div class="row m-1">
         <div class="col">
