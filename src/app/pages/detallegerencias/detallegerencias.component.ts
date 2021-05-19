@@ -15,6 +15,8 @@ import { RelevanteComponent } from '../../shared/relevante/relevante.component';
 import { MejorSaldoComponent } from '../../shared/mejor-saldo/mejor-saldo.component';
 import { ReporteGerenciasComponent } from '../../shared/reporte-gerencias/reporte-gerencias.component';
 import { Router } from '@angular/router';
+import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
+import { LogErrorInterface } from '../../interfaces/logError.interface';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -56,16 +58,24 @@ export class DetallegerenciasComponent implements OnInit {
       this.nombreImg = 'iconoPizarronDigital';
       this.idTipoPeriodo = 2; // Mensual
       this.periodosPrevios = 0; // Para que se muestre el periodo actual
+
       this.cargarTiposPeriodo();
       this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
       this.nomina = this.loginService.getUserLoggedIn().usuarioData.nomina;
+
+      const logSistema: LogSistemaInterface = {
+        idAccion: 3,
+        idPantalla: 1,
+        usuario: this.nomina
+      };
+      this.registrarLogPantalla(logSistema);
       // Asignación del token al servicio
       const token: string = this.loginService.getUserLoggedIn().token;
       this.detalleGerenciaService.token = token;
-      console.log(token);
 
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
+      this.registrarError(error.message);
     }
   }
 
@@ -81,6 +91,7 @@ export class DetallegerenciasComponent implements OnInit {
     })
     .catch(error => {
       this.toastrService.error(error.message, 'Aviso');
+      this.registrarError(error.message);
     });
   }
 
@@ -107,6 +118,7 @@ export class DetallegerenciasComponent implements OnInit {
     })
     .catch(error => {
       this.toastrService.error(error.message, 'Aviso');
+      this.registrarError(error.message);
       return false;
     });
   }
@@ -145,6 +157,7 @@ export class DetallegerenciasComponent implements OnInit {
       return desc;
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
+      this.registrarError(error.message);
       return '';
     }
   }
@@ -160,8 +173,14 @@ export class DetallegerenciasComponent implements OnInit {
   }
 
   public logOut(): any {
-    if(confirm("¿Está seguro de cerrar sesión?")){
+    if (confirm('¿Está seguro de cerrar sesión?')){
     this.loginService.setUserLoggedOn();
+    const logSistema: LogSistemaInterface = {
+      idAccion: 2,
+      idPantalla: 0,
+      usuario: this.nomina
+    };
+    this.registrarLogPantalla(logSistema);
     this.router.navigate(['/Login']);
     }
   }
@@ -176,6 +195,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.barraMetasChild.getBarraMetas();
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
+      this.registrarError(error.message);
     }
   }
 
@@ -189,6 +209,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.tendenciasChild.getTendencias();
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
+      this.registrarError(error.message);
     }
   }
 
@@ -202,6 +223,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.relevanteChild.getRelevantes();
     }catch (error){
       this.toastrService.error(error.message, 'Aviso');
+      this.registrarError(error.message);
     }
   }
 
@@ -215,6 +237,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.mejorSaldoChild.getMejorSaldo();
     }catch (error){
       this.toastrService.error(error.message, 'Aviso');
+      this.registrarError(error.message);
     }
   }
 
@@ -228,6 +251,7 @@ export class DetallegerenciasComponent implements OnInit {
       this.reporteGerenciaChild.getReporteGerencias();
     }catch (error){
       this.toastrService.error(error.message, 'Aviso');
+      this.registrarError(error.message);
     }
   }
 
@@ -239,6 +263,37 @@ export class DetallegerenciasComponent implements OnInit {
             this.tendenciasChild?.loading ||
             this.relevanteChild?.loading ||
             this.reporteGerenciaChild?.loading;
+  }
+
+  private registrarError(msg: string): any
+  {
+    const logError: LogErrorInterface = {
+      idPantalla: 1,
+      usuario: this.nomina,
+      error: msg
+    };
+
+    this.loginService.setLogError(logError)
+      .toPromise()
+      .then((resp: any) => {
+        console.log('error registtrado !!');
+      })
+      .catch(error => {
+        console.log('fallé');
+        this.toastrService.error(error.message, 'Aviso');
+      });
+  }
+
+  private registrarLogPantalla(logSistema: LogSistemaInterface): any {
+    this.loginService.setLogSistema(logSistema)
+      .toPromise()
+      .then((resp: any ) => {
+        console.log('log exitoso !!');
+      })
+      .catch(error => {
+        console.log('fallé');
+        this.toastrService.error(error.message, 'Aviso');
+      });
   }
 
 }

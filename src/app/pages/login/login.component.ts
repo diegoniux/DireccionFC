@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
           usuario: this.loginInterface.usuarioData.nomina
         };
 
-        // this.loginService.setLogSistema(logSistema);
+        this.loginService.setLogSistema(logSistema);
 
         this.alertService.success('Bienvenido', this.options);
         this.router.navigate(['/home']);

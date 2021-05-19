@@ -49,16 +49,18 @@ export class LoginService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post(this.apiURL + 'Login/LogSistema', JSON.stringify(logSistema), httpOptions);
+    const url: string = this.apiURL + 'Login/LogSistema';
+    console.log(url);
+    return this.http.post(url, JSON.stringify(logSistema), httpOptions);
   }
 
-  public setLogError(logSistema: LogErrorInterface): any {
+  public setLogError(logError: LogErrorInterface): any {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post(this.apiURL + 'Login/LogSistema', JSON.stringify(logSistema), httpOptions);
+    return this.http.post(this.apiURL + 'Login/LogError', JSON.stringify(logError), httpOptions);
   }
 
   public getInfoApp(): InfoAppInterface {
