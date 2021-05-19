@@ -17,15 +17,23 @@ export class LoginService {
 
   constructor(public http: HttpClient, private infoAppService: InfoAppService)
   {
-    this.infoAppService.getInfoApp()
-    .toPromise()
-    .then( (resp: InfoAppInterface) => {
-      this.infoApp = resp;
+    this.infoApp = JSON.parse(localStorage.getItem('infoApp'));
+    if (!this.infoApp) {
+      this.infoAppService.getInfoApp()
+      .toPromise()
+      .then( (resp: InfoAppInterface) => {
+        this.infoApp = resp;
+        this.apiURL = this.infoApp.apiUrl;
+        localStorage.setItem('infoApp', JSON.stringify(resp));
+      })
+      .catch( error => {
+        throw error;
+      });
+    }
+    else
+    {
       this.apiURL = this.infoApp.apiUrl;
-    })
-    .catch( error => {
-      throw error;
-    });
+    }
   }
 
   public login(usuario: string, password: string): any {
