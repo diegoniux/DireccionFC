@@ -6,33 +6,35 @@
             <app-titulo [nombreTitulo]="nombreTitulo" [nombreImg]="nombreImg"></app-titulo>
         </div>
         <div class="col-12 col-lg-6">
-            <div class="card" style="height: 60px; margin-top: 20px;">
-                <div class="d-flex justify-content-center">
-                    <div class="p-3 flex-fill lblnone">
-                        <label>Periodo</label>
+            <div class="card" style="min-height: 60px; margin-top: 20px; padding-left: 10px;">
+                <div class="row">
+                    <div class="col-4 col-lg-2 p-3 flex-fill">
+                        <label class="lblPeriodo">Periodo</label>
                     </div>
-                    <div class="p-2 flex-fill">
+                    <div class="col-8 col-lg-4 p-2 flex-fill">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
                             </div>
-                        <ng-select formControlName="tipoPeriodo" class="disable-clear-all" [clearable]="false" [searchable]="false" [(ngModel)]= "idTipoPeriodo" (ngModelChange)="onTipoPeriodoChanged($event)" aria-describedby="basic-addon2">
+                        <ng-select formControlName="tipoPeriodo" style="min-width: 50%;" class="disable-clear-all selectMobil" [clearable]="false" [searchable]="false" [(ngModel)]= "idTipoPeriodo" (ngModelChange)="onTipoPeriodoChanged($event)" aria-describedby="basic-addon2">
                             <ng-option *ngFor="let item of tiposPeriodo" [value]="item.idTipoPeriodo">
                                 {{ item.tipoPeriodo }}
                             </ng-option>
                         </ng-select>
                     </div>
                     </div>
-                    <div class="p-2 flex-fill">
-                        <label *ngIf="idTipoPeriodo === 1"> {{ periodoSemana.numeroSemana }} </label>
-                        <button class="btn btn-default" (click)="cargarPeriodo(-1)">
-                            <img src="assets/img/flechaizq.png" width="12" />
-                        </button>
-                        {{getPeriodoDesc()}}
-                        <button class="btn btn-default" (click)="cargarPeriodo(1)">
-                            <img src="assets/img/flechader.png" width="12" />
-                        </button>
-                        <div *ngIf="isLoading()" class="spinner-border text-success" role="status"></div>
+                    <div class="col-12 col-lg-6 p-2 flex-fill" style="vertical-align: middle;">
+                        <div class="d-flex justify-content-center">
+                            <label *ngIf="idTipoPeriodo === 1" class="lblPeriodo">{{ periodoSemana.numeroSemana }}</label>
+                            <button class="btn btn-default" (click)="cargarPeriodo(-1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <label class="lblPeriodo">{{getPeriodoDesc()}}</label>
+                            <button class="btn btn-default" (click)="cargarPeriodo(1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div *ngIf="isLoading()" class="spinner-border text-success" role="status"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -46,7 +48,7 @@
         </div>
     </div>    
     <app-barra-metas></app-barra-metas>
-    <div class="row m-1">
+    <div class="row m-1" style="margin-top:100px">
         <div class="col">
             <app-mejor-saldo></app-mejor-saldo>
         </div>
