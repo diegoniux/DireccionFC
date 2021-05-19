@@ -10,3 +10,19 @@
     padding: 3px;
     vertical-align:middle
 }
+
+@media only screen and (max-device-width: 1550px) {
+    .card-bold {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-device-width: 1300px) {
+    .card-bold {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-device-width: 489px) {
+
+}

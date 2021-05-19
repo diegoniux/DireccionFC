@@ -14,17 +14,17 @@
         <tbody *ngIf='relevante'>
           <tr>
             <td class="papading">Fuera de Línea</td>
-            <th scope="row" class="papading"><p style="font-size: 25px;">{{ relevante.numEspecialistasFL }}/{{ relevante.numEspecialistas }}</p></th>
+            <td class="papading"><label class="lblNumRel">{{ relevante.numEspecialistasFL }}/{{ relevante.numEspecialistas }}</label></td>
             <td class="papading">Especialistas</td>
           </tr>
           <tr>
             <td class="papading">Prospectos</td>
-            <th class="papading" scope="row"><p style="font-size: 25px;">{{ relevante.numEspecialistasProsp }}/{{ relevante.numEspecialistas }}</p></th>
+            <td class="papading"><label class="lblNumRel">{{ relevante.numEspecialistasProsp }}/{{ relevante.numEspecialistas }}</label></td>
             <td class="papading">Especialistas</td>
           </tr>
           <tr>
             <td class="papading">Investigación</td>
-            <th class="papading" scope="row"><p style="font-size: 25px;">{{ relevante.numEspecialistasMR }}/{{ relevante.numEspecialistas }}</p></th>
+            <td class="papading"><label class="lblNumRel">{{ relevante.numEspecialistasMR }}/{{ relevante.numEspecialistas }}</label></td>
             <td class="papading">Especialistas en Riesgo</td>
           </tr>
         </tbody>
