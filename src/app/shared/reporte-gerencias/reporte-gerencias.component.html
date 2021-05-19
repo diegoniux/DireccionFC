@@ -6,21 +6,20 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col-4" class="text-center">Nombre</th>
-                        <th scope="col" class="text-center">Proyección</th>
-                        <th scope="col" class="text-center">Saldo Acumulado</th>
-                        <th scope="col" class="text-center">Saldo Promedio</th>
-                        <th scope="col" class="text-center">Productividad Especialistas</th>
-                        <th scope="col" class="text-center">Mejor Saldo</th>
-                        <th scope="col" class="text-center">Periodo</th>
-                        <th scope="col" class="text-center">Desempeño Venta</th>
-                        <th scope="col" class="text-center">Diagnóstico</th>
+                        <th scope="col" class="text-center labelHGrid">Nombre</th>
+                        <th scope="col" class="text-center labelHGrid">Proyección</th>
+                        <th scope="col" class="text-center labelHGrid">Saldo Acumulado</th>
+                        <th scope="col" class="text-center labelHGrid">Saldo Promedio</th>
+                        <th scope="col" class="text-center labelHGrid">Productividad Especialistas</th>
+                        <th scope="col" class="text-center labelHGrid">Mejor Saldo</th>
+                        <th scope="col" class="text-center labelHGrid">Periodo</th>
+                        <th scope="col" class="text-center labelHGrid">Desempeño Venta</th>
+                        <th scope="col" class="text-center labelHGrid">Diagnóstico</th>
                     </tr>
                     </thead>
                     <tbody >
                         <tr *ngFor="let item of reporteGerencias.reporteGerencias" class="table-row">
                             <td scope="row">
-                                <!-- {{ item.nombre }} {{item.apellido}} {{item.nombreSuc}} -->
                                 <app-perfil-usuario [imgFoto]="item.foto" [Nombre]="item.nombre" [Apellido]="item.apellido" [Sucursal]="item.nombreSuc"></app-perfil-usuario>
                             </td>
                             <td><p class="text-center labelGrid" [ngStyle]="{'color': (item.proyeccionColor) ? '#80CC0E' : '#FF1D25'}">{{ item.proyeccion }}</p></td>

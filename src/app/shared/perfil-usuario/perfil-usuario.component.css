@@ -1,17 +1,116 @@
-.labelNombre{
-    line-height: 10px;
-    font-weight: bold;
-    font-size: 10px;
+@media only screen and (max-device-width: 480px) {
+   /* styles for mobile browsers smaller than 480px; (iPhone) */
+   .labelNombre{
+        margin-top: 0px;
+        font-weight: bold;
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+
+    .labelApellido{
+        font-weight: normal;
+        font-size: 12px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .labelSucursal{
+        font-weight: normal;
+        font-size: 12px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+@media only screen and (max-device-width: 768px) and (min-device-width: 481px) {
+   /* default iPad screens */
+   .labelNombre{
+        margin-top: 0px;
+        font-weight: bold;
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+
+    .labelApellido{
+        font-weight: normal;
+        font-size: 12px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .labelSucursal{
+        font-weight: normal;
+        font-size: 12px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
 }
 
-.labelApellido{
-    line-height: 10px;
-    font-weight: normal;
-    font-size: 10px;
-}
+@media only screen and (max-device-width: 960px) and (min-device-width: 769px) {
+    /* styles for browsers larger than 960px; */
+    .labelNombre{
+        margin-top: 0px;
+        font-weight: bold;
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
 
-.labelSucursal{
-    line-height: 10px;
-    font-weight: normal;
-    font-size: 10px;
+    .labelApellido{
+        font-weight: normal;
+        font-size: 12px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .labelSucursal{
+        font-weight: normal;
+        font-size: 12px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+@media only screen and (max-device-width: 1440px) and (min-device-width: 961px) {
+    /* styles for browsers larger than 1440px; */
+    .labelNombre{
+        margin-top: 0px;
+        font-weight: bold;
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+
+    .labelApellido{
+        font-weight: normal;
+        font-size: 12px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .labelSucursal{
+        font-weight: normal;
+        font-size: 12px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+@media only screen and (max-device-width: 2000px) and (min-device-width: 1441px) {
+    /* for sumo sized (mac) screens */
+    .labelNombre{
+        margin-top: 0px;
+        font-weight: bold;
+        font-size: 11px;
+        margin-bottom: 0px;
+    }
+
+    .labelApellido{
+        font-weight: normal;
+        font-size: 11px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .labelSucursal{
+        font-weight: normal;
+        font-size: 11px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
 }
