@@ -9,3 +9,11 @@
     font-weight: bold;
 }
 
+
+@media only screen and (max-device-width: 489px) {
+    /* styles for mobile browsers smaller than 480px; (iPhone) */
+    .lblnone{
+        display: none;
+    }
+ }
+
