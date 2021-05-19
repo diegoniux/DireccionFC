@@ -57,6 +57,11 @@ export class DetallegerenciasComponent implements OnInit {
       this.cargarTiposPeriodo();
       this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
       this.nomina = this.loginService.getUserLoggedIn().usuarioData.nomina;
+      // Asignación del token al servicio
+      const token: string = this.loginService.getUserLoggedIn().token;
+      this.detalleGerenciaService.token = token;
+      console.log(token);
+
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
     }
