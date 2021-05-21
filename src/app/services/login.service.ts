@@ -103,7 +103,7 @@ export class LoginService {
 
   public setUserLoggedOn(): void {
     localStorage.setItem('isUserLoggedIn', 'false');
-    localStorage.setItem('moduloActual', null);
+    localStorage.setItem('sessionUser', null);
   }
 }
 

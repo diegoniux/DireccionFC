@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientJsonpModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AlertModule } from './shared/_alert/alert.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -25,7 +25,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ReporteGerenciasComponent } from './shared/reporte-gerencias/reporte-gerencias.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { PerfilUsuarioComponent } from './shared/perfil-usuario/perfil-usuario.component'
+import { PerfilUsuarioComponent } from './shared/perfil-usuario/perfil-usuario.component';
+// Interceptors
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,7 @@ import { PerfilUsuarioComponent } from './shared/perfil-usuario/perfil-usuario.c
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     ReactiveFormsModule,
     AlertModule,
     MDBBootstrapModule.forRoot(),
@@ -61,7 +64,17 @@ import { PerfilUsuarioComponent } from './shared/perfil-usuario/perfil-usuario.c
       closeButton: true
     }), // ToastrModule added
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es-MX'}],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'es-MX'
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

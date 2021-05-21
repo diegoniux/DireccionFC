@@ -6,6 +6,8 @@ import { LoginInterface } from '../../interfaces/login.interface';
 import { AlertService } from 'src/app/shared/_alert';
 import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { LogErrorInterface } from '../../interfaces/logError.interface';
+import { InfoAppService } from '../../services/info-app.service';
+import { InfoAppInterface } from '../../interfaces/infoApp.interface';
 
 @Component({
   selector: 'app-login',
@@ -27,9 +29,10 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               public loginService: LoginService,
               private formBuilder: FormBuilder,
-              public alertService: AlertService)
+              public alertService: AlertService,
+              private infoAppService: InfoAppService)
   {
-
+    this.cargarInfoApp();
   }
 
   ngOnInit(): void {
@@ -43,8 +46,6 @@ export class LoginComponent implements OnInit {
       passw: ['', Validators.required],
       recordarUsr: [chkRecordarUsuario]
     });
-
-    this.loginService.setUserLoggedOn();
   }
 
   // función para obtener los controles del formulario
@@ -111,5 +112,18 @@ export class LoginComponent implements OnInit {
           this.alertService.error(error.message , this.options );
           // throw error;
         });
+    }
+
+    private cargarInfoApp(): any
+    {
+      this.infoAppService.getInfoApp()
+      .toPromise()
+      .then( (resp: InfoAppInterface) => {
+        localStorage.setItem('isUserLoggedIn', 'false');
+        localStorage.setItem('infoApp', JSON.stringify(resp));
+      })
+      .catch( error => {
+        this.alertService.error(error.message , this.options );
+      });
     }
 }
