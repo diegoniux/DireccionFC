@@ -32,6 +32,7 @@ import { ControlPeriodosComponent } from './shared/control-periodos/control-peri
 import { ComisionEstimadaComponent } from './shared/comision-estimada/comision-estimada.component';
 import { DetallegerenciaComponent } from './shared/detallegerencia/detallegerencia.component';
 import { ChartsModule } from 'ng2-charts';
+import { VisoreslidercomercialEspecialistariesgoComponent } from './shared/visoreslidercomercial-especialistariesgo/visoreslidercomercial-especialistariesgo.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ChartsModule } from 'ng2-charts';
     PerfilUsuarioComponent,
     ControlPeriodosComponent,
     ComisionEstimadaComponent,
-    DetallegerenciaComponent
+    DetallegerenciaComponent,
+    VisoreslidercomercialEspecialistariesgoComponent
   ],
   imports: [
     BrowserModule,
