@@ -6,11 +6,20 @@
               <p class="text-left card-bold">Relevante</p>
           </div>
           <div class="col">
-            <p *ngIf='relevante' class="text-right card-bold">{{ relevante.encabezadoPeriodo }}</p>
+      <p *ngIf='relevante' class="text-right card-bold"> {{ relevante.numEspecialistas }}  Especialistas</p>
           </div>
       </div>
     </div>
-    <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
+    <div style="display: block">
+      <canvas baseChart class="canvasChart"
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+    <!-- <table class="table table-hover" style="margin-left: 10px; margin-right: 10px;">
         <tbody *ngIf='relevante'>
           <tr>
             <td class="papading">Fuera de Línea</td>
@@ -28,6 +37,6 @@
             <td class="papading">Especialistas en Riesgo</td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
   </div>
 </div>

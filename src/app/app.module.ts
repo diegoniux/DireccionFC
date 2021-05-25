@@ -30,6 +30,9 @@ import { PerfilUsuarioComponent } from './shared/perfil-usuario/perfil-usuario.c
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ControlPeriodosComponent } from './shared/control-periodos/control-periodos.component';
 import { ComisionEstimadaComponent } from './shared/comision-estimada/comision-estimada.component';
+import { DetallegerenciaComponent } from './shared/detallegerencia/detallegerencia.component';
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,8 @@ import { ComisionEstimadaComponent } from './shared/comision-estimada/comision-e
     ReporteGerenciasComponent,
     PerfilUsuarioComponent,
     ControlPeriodosComponent,
-    ComisionEstimadaComponent
+    ComisionEstimadaComponent,
+    DetallegerenciaComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +71,7 @@ import { ComisionEstimadaComponent } from './shared/comision-estimada/comision-e
       preventDuplicates: true,
       closeButton: true
     }), // ToastrModule added
+    ChartsModule
   ],
   providers: [
     {

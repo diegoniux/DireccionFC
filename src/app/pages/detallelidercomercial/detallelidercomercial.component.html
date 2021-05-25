@@ -1,4 +1,10 @@
 <div class="container-fluid" style="background-color: #F2F2F2;">
+    <div class="row m-1">
+        <div class="col-12 col-lg-3">
+            <app-titulo [nombreTitulo]="nombreTitulo" [nombreImg]="nombreImg"></app-titulo>
+        </div>
+    </div>
+    <app-detallegerencia></app-detallegerencia>
     <form [formGroup]="form">
         <div class="row m-1" style="margin-top:100px">
             <div class="col-5">
