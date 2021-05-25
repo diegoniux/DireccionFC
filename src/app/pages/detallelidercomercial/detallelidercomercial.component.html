@@ -1,1 +1,52 @@
-<div class="container-fluid p-4" style="background-color: #F2F2F2;"></div>
+<div class="container-fluid" style="background-color: #F2F2F2;">
+    <form [formGroup]="form">
+        <div class="row m-1" style="margin-top:100px">
+            <div class="col">
+                <div class="card">
+                    <div class="card-boby">
+                        <div class="card-title">Comisión Estimada</div>
+                        <div class="row">
+                            <div class="col">Proyección Saldo</div>
+                            <div class="col">Objetivo Gerente</div>
+                            <div class="col">Mejor Saldo</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Comisión <span class="badge badge-secondary">$0</span></div>
+                            <div class="col">Comisión <span class="badge badge-secondary">$0</span></div>
+                            <div class="col">Comisión <span class="badge badge-secondary">$0</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Bono Excelencia <span class="badge badge-secondary">$0</span></div>
+                            <div class="col">Bono Excelencia <span class="badge badge-secondary">$0</span></div>
+                            <div class="col">Bono Excelencia <span class="badge badge-secondary">$0</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col">Bono Desarrollo <span class="badge badge-secondary">$0</span></div>
+                            <div class="col">Bono Desarrollo <span class="badge badge-secondary">$0</span></div>
+                            <div class="col">Bono Desarrollo <span class="badge badge-secondary">$0</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <app-mejor-saldo></app-mejor-saldo>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-boby">
+                            <div class="card-title">Visor Líder Comercial</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card">
+                        <div class="card-boby">
+                            <p>Especialista con marca de Riesgo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
