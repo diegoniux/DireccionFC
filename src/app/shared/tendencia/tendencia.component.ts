@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TendenciasInterface } from '../../interfaces/dto/tendencias.interface';
 import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
 import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
@@ -18,6 +18,8 @@ export class TendenciaComponent implements OnInit {
   tendencias: TendenciasInterface;
   loading: boolean;
 
+  @Output() isLoadingEvent = new EventEmitter<boolean>();
+
   constructor(public detalleGerenciasService: DetalleGerenciasService) {
   }
 
@@ -27,12 +29,14 @@ export class TendenciaComponent implements OnInit {
   public getTendencias(): any
   {
     this.loading = true;
+    this.isLoadingEvent.emit(this.loading);
     this.detalleGerenciasService.getTendencias(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
       , this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: TendenciasInterface) => {
       this.tendencias = data;
       this.loading = false;
+      this.isLoadingEvent.emit(this.loading);
     })
     .catch(error => {
       console.error(error);

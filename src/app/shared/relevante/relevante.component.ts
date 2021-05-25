@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RelevantesInterface } from 'src/app/interfaces/dto/relevantes.interface';
 import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
 import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
@@ -17,6 +17,8 @@ export class RelevanteComponent implements OnInit {
   relevante: RelevantesInterface;
   loading: boolean;
 
+  @Output() isLoadingEvent = new EventEmitter<boolean>();
+
   constructor(public detalleGerenciasService: DetalleGerenciasService) {
     this.loading = false;
   }
@@ -27,12 +29,14 @@ export class RelevanteComponent implements OnInit {
   public getRelevantes(): any
   {
     this.loading = true;
+    this.isLoadingEvent.emit(this.loading);
     this.detalleGerenciasService.getRelevantes(this.nomina, this.idTipoPeriodo,  this.periodoSemana.fechaInicial,
       this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: RelevantesInterface) => {
       this.relevante = data;
       this.loading = false;
+      this.isLoadingEvent.emit(this.loading);
     })
     .catch(error => {
       console.error(error);
