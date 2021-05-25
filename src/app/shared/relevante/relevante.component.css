@@ -11,6 +11,10 @@
     vertical-align:middle
 }
 
+.canvasChart{
+    height: 220px;
+}
+
 .lblNumRel{
     font-weight: bold;
     font-size: 20px;

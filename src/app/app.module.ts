@@ -30,6 +30,8 @@ import { PerfilUsuarioComponent } from './shared/perfil-usuario/perfil-usuario.c
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ControlPeriodosComponent } from './shared/control-periodos/control-periodos.component';
 import { DetallegerenciaComponent } from './shared/detallegerencia/detallegerencia.component';
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +69,7 @@ import { DetallegerenciaComponent } from './shared/detallegerencia/detallegerenc
       preventDuplicates: true,
       closeButton: true
     }), // ToastrModule added
+    ChartsModule
   ],
   providers: [
     {
