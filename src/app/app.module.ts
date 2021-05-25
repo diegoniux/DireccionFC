@@ -29,6 +29,7 @@ import { PerfilUsuarioComponent } from './shared/perfil-usuario/perfil-usuario.c
 // Interceptors
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ControlPeriodosComponent } from './shared/control-periodos/control-periodos.component';
+import { ComisionEstimadaComponent } from './shared/comision-estimada/comision-estimada.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { ControlPeriodosComponent } from './shared/control-periodos/control-peri
     TendenciaComponent,
     ReporteGerenciasComponent,
     PerfilUsuarioComponent,
-    ControlPeriodosComponent
+    ControlPeriodosComponent,
+    ComisionEstimadaComponent
   ],
   imports: [
     BrowserModule,
