@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DetalleGerenciasService } from 'src/app/services/detalle-gerencias-service.service';
 import { BarraMetasInterface } from 'src/app/interfaces/barraMetas.interface';
 import { PeriodoMesInterface } from 'src/app/interfaces/PeriodoMes.interface';
@@ -18,6 +18,8 @@ export class BarraMetasComponent implements OnInit {
   periodoMes: PeriodoMesInterface;
   periodoSemana: PeriodoSemanaInterface;
   loading: boolean;
+
+  @Output() isLoadingEvent = new EventEmitter<boolean>();
 
   login: LoginInterface;
   barraMetas: BarraMetasInterface;
@@ -40,6 +42,7 @@ export class BarraMetasComponent implements OnInit {
   public getBarraMetas(): any
   {
     this.loading = true;
+    this.isLoadingEvent.emit(this.loading);
     this.detalleGerenciaService.getBarraMetas(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
       , this.periodoSemana.fechaFinal)
     .toPromise()
@@ -49,6 +52,7 @@ export class BarraMetasComponent implements OnInit {
       }
       this.barraMetas = data;
       this.loading = false;
+      this.isLoadingEvent.emit(this.loading);
     })
     .catch(error => {
       console.error(error);

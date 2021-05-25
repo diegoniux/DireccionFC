@@ -28,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { PerfilUsuarioComponent } from './shared/perfil-usuario/perfil-usuario.component';
 // Interceptors
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { ControlPeriodosComponent } from './shared/control-periodos/control-periodos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     RelevanteComponent,
     TendenciaComponent,
     ReporteGerenciasComponent,
-    PerfilUsuarioComponent
+    PerfilUsuarioComponent,
+    ControlPeriodosComponent
   ],
   imports: [
     BrowserModule,

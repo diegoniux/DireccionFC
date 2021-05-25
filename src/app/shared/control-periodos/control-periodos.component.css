@@ -1,0 +1,55 @@
+.spanMargin{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.card-radius{
+    border-radius: 10px ;
+}
+.card-bold{
+    font-weight: bold;
+}
+.lblPeriodo {
+    margin-top: 6px;
+    font-size: 16px;
+}
+
+@media only screen and (max-device-width: 1550px) {
+    .lblPeriodo {
+        margin-top: 8px;
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-device-width: 1300px) {
+    .lblPeriodo {
+        margin-top: 8px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-device-width: 489px) {
+    /* styles for mobile browsers smaller than 480px; (iPhone) */
+    .lblnone {
+        display: none;
+    }
+
+    .lblPeriodo {
+        font-size: 16px;
+        vertical-align: middle;
+    }
+
+    .selectMobil {
+        width: 60%;
+    }
+
+    .cardPeriodo {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .controlesPeriodo{
+        margin: 0 auto;
+        vertical-align: middle;
+    }
+
+ }

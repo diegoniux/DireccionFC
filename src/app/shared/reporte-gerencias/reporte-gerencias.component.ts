@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DetalleGerenciasService } from 'src/app/services/detalle-gerencias-service.service';
 import { ReporteGerenciasInterface } from 'src/app/interfaces/reporteGerencias.interface';
 import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
@@ -17,6 +17,8 @@ export class ReporteGerenciasComponent implements OnInit {
 
   loading: boolean;
 
+  @Output() isLoadingEvent = new EventEmitter<boolean>();
+
   constructor(public detalleGerenciaService: DetalleGerenciasService) {
     this.loading = false;
    }
@@ -27,6 +29,7 @@ export class ReporteGerenciasComponent implements OnInit {
   public getReporteGerencias(): any
   {
     this.loading = true;
+    this.isLoadingEvent.emit(this.loading);
     this.detalleGerenciaService.getReporteGerencias(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
       , this.periodoSemana.fechaFinal)
     .toPromise()
@@ -36,6 +39,7 @@ export class ReporteGerenciasComponent implements OnInit {
       }
       this.reporteGerencias = data;
       this.loading = false;
+      this.isLoadingEvent.emit(this.loading);
     })
     .catch(error => {
       console.error(error);

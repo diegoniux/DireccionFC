@@ -1,14 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FechasPeriodoInterface } from 'src/app/interfaces/dto/fechasPeriodo.interface';
-import { PeriodoMesInterface } from 'src/app/interfaces/PeriodoMes.interface';
-import { PeriodoSemanaInterface } from 'src/app/interfaces/periodoSemana.interface';
-import { TipoPeriodoInterface } from 'src/app/interfaces/tipoPeriodo.interface';
-import { DetalleGerenciasService } from 'src/app/services/detalle-gerencias-service.service';
-import { TiposPeriodoInterface } from '../../interfaces/tiposPeriodo.interface';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { BarraMetasComponent } from '../../shared/barra-metas/barra-metas.component';
-import { formatDate } from '@angular/common';
 import { TendenciaComponent } from '../../shared/tendencia/tendencia.component';
 import { ToastrService } from 'ngx-toastr';
 import { RelevanteComponent } from '../../shared/relevante/relevante.component';
@@ -17,34 +11,29 @@ import { ReporteGerenciasComponent } from '../../shared/reporte-gerencias/report
 import { Router } from '@angular/router';
 import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { LogErrorInterface } from '../../interfaces/logError.interface';
+import { ControlPeriodosComponent } from '../../shared/control-periodos/control-periodos.component';
+import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
+import { LoginInterface } from '../../interfaces/login.interface';
 
 @Component({
   selector: 'app-detallegerencias',
   templateUrl: './detallegerencias.component.html',
   styleUrls: ['./detallegerencias.component.css']
 })
-export class DetallegerenciasComponent implements OnInit {
+export class DetallegerenciasComponent implements OnInit, AfterViewInit {
 
   // Propiedades de la clase
   nombreTitulo: string;
   nombreImg: string;
-  tiposPeriodo: TipoPeriodoInterface[];
-  idTipoPeriodo: number;
-  periodoMes: PeriodoMesInterface;
-  periodoSemana: PeriodoSemanaInterface;
-  periodosPrevios: number;
-  nomina: number;
+  loginInterface: LoginInterface;
 
-  // componenter hijos
+  // componentes hijos
   @ViewChild(BarraMetasComponent) barraMetasChild: BarraMetasComponent;
   @ViewChild(TendenciaComponent) tendenciasChild: TendenciaComponent;
   @ViewChild(RelevanteComponent) relevanteChild: RelevanteComponent;
   @ViewChild(MejorSaldoComponent) mejorSaldoChild: MejorSaldoComponent;
   @ViewChild(ReporteGerenciasComponent) reporteGerenciaChild: ReporteGerenciasComponent;
-
-  form = new FormGroup({
-    tipoPeriodo: new FormControl(2, Validators.required)
-  });
+  @ViewChild(ControlPeriodosComponent) controlPeriodosChild: ControlPeriodosComponent;
 
   constructor(private router: Router,
               public detalleGerenciaService: DetalleGerenciasService,
@@ -53,123 +42,39 @@ export class DetallegerenciasComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.nombreTitulo = 'Detalle Gerencias';
+    this.nombreImg = 'iconoPizarronDigital';
+  }
+
+  ngAfterViewInit(): void {
     try {
-      this.nombreTitulo = 'Detalle Gerencias';
-      this.nombreImg = 'iconoPizarronDigital';
-      this.idTipoPeriodo = 2; // Mensual
-      this.periodosPrevios = 0; // Para que se muestre el periodo actual
-
-      this.cargarTiposPeriodo();
-      this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
-      this.nomina = this.loginService.getUserLoggedIn().usuarioData.nomina;
-
+      this.loginInterface = this.loginService.getUserLoggedIn();
+      this.controlPeriodosChild.nomina = this.loginInterface.usuarioData.nomina;
       const logSistema: LogSistemaInterface = {
         idAccion: 3,
         idPantalla: 1,
-        usuario: this.nomina
+        usuario: this.loginInterface.usuarioData.nomina
       };
       this.registrarLogPantalla(logSistema);
       // Asignación del token al servicio
-      const token: string = this.loginService.getUserLoggedIn().token;
-      this.detalleGerenciaService.token = token;
-
+      this.detalleGerenciaService.token = this.loginInterface.token;
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
       this.registrarError(error.message);
     }
   }
 
-  private cargarTiposPeriodo(): any
-  {
-    this.detalleGerenciaService.getTiposPeriodos()
-    .toPromise()
-    .then((data: TiposPeriodoInterface) => {
-      if (!data.resultadoEjecucion.ejecucionCorrecta) {
-        throw new Error(data.resultadoEjecucion.friendlyMessage);
-      }
-      this.tiposPeriodo = data.listTiposPeriodo;
-    })
-    .catch(error => {
-      this.toastrService.error(error.message, 'Aviso');
-      this.registrarError(error.message);
-    });
-  }
-
-  public cargarFechasPeriodo(mesSemanaPervios: number, idTipoPeriodo: number): any
-  {
-    this.detalleGerenciaService.getFechasPeriodos(mesSemanaPervios, idTipoPeriodo)
-    .toPromise()
-    .then((data: FechasPeriodoInterface) => {
-      if (!data.resultadoEjecucion.ejecucionCorrecta) {
-        throw new Error(data.resultadoEjecucion.friendlyMessage);
-      }
-      this.idTipoPeriodo = idTipoPeriodo;
-      this.periodoMes = data.periodoMes;
-      this.periodoSemana = data.periodoSemana;
-      if (!this.periodoSemana.fechaInicial) {
-        return true;
-      }
-      this.cargarBarraMetas();
-      this.cargarTendencias();
-      this.cargarRelevante();
-      this.cargarMejorSaldo();
-      this.cargarReporteGerencias();
-      return true;
-    })
-    .catch(error => {
-      this.toastrService.error(error.message, 'Aviso');
-      this.registrarError(error.message);
-      return false;
-    });
-  }
-
-  get f(): any{
-    return this.form.controls;
-  }
-
-  public onTipoPeriodoChanged(e): any
-  {
-    if (!e) {
-      return;
-    }
-    this.idTipoPeriodo = e;
-    this.periodosPrevios = 0;
-    this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
-  }
-
-  getPeriodoDesc(): string
-  {
+  recievePeriodo($event: any): void{
     try {
-      let desc: string;
-      if (!this.periodoSemana) {
-        return '';
-      }
-
-      if (this.idTipoPeriodo === 1) {
-
-        const fechaIni = new Date(this.periodoSemana.fechaInicial.replace(/-/g, '\/'));
-        const fechaFin = new Date(this.periodoSemana.fechaFinal.replace(/-/g, '\/'));
-        desc = `${formatDate(fechaIni, 'd/MM/yyyy', 'es-MX')} - ${formatDate(fechaFin, 'd/MM/yyyy', 'es-MX')}`;
-      }
-      if (this.idTipoPeriodo === 2) {
-        desc = `${this.periodoMes.mes} ${this.periodoMes.anio}`;
-      }
-      return desc;
+      this.cargarBarraMetas();
+      this.cargarMejorSaldo();
+      this.cargarRelevante();
+      this.cargarTendencias();
+      this.cargarReporteGerencias();
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
       this.registrarError(error.message);
-      return '';
     }
-  }
-
-  public cargarPeriodo(sentido: number): any
-  {
-    this.periodosPrevios += sentido;
-    if (sentido === 1 && this.periodosPrevios > 0) {
-      this.periodosPrevios = 0;
-      return;
-    }
-    this.cargarFechasPeriodo(this.periodosPrevios, this.idTipoPeriodo);
   }
 
   public logOut(): any {
@@ -178,7 +83,7 @@ export class DetallegerenciasComponent implements OnInit {
     const logSistema: LogSistemaInterface = {
       idAccion: 2,
       idPantalla: 0,
-      usuario: this.nomina
+      usuario: this.controlPeriodosChild.nomina
     };
     this.registrarLogPantalla(logSistema);
     this.router.navigate(['/Login']);
@@ -188,10 +93,10 @@ export class DetallegerenciasComponent implements OnInit {
   private cargarBarraMetas(): any
   {
     try {
-      this.barraMetasChild.nomina = this.nomina;
-      this.barraMetasChild.idTipoPeriodo = this.idTipoPeriodo;
-      this.barraMetasChild.periodoMes = this.periodoMes;
-      this.barraMetasChild.periodoSemana = this.periodoSemana;
+      this.barraMetasChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.barraMetasChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
+      this.barraMetasChild.periodoMes = this.controlPeriodosChild.periodoMes;
+      this.barraMetasChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
       this.barraMetasChild.getBarraMetas();
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
@@ -202,10 +107,10 @@ export class DetallegerenciasComponent implements OnInit {
   private cargarTendencias(): any
   {
     try {
-      this.tendenciasChild.nomina = this.nomina;
-      this.tendenciasChild.idTipoPeriodo = this.idTipoPeriodo;
-      this.tendenciasChild.periodoMes = this.periodoMes;
-      this.tendenciasChild.periodoSemana = this.periodoSemana;
+      this.tendenciasChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.tendenciasChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
+      this.tendenciasChild.periodoMes = this.controlPeriodosChild.periodoMes;
+      this.tendenciasChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
       this.tendenciasChild.getTendencias();
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
@@ -216,10 +121,10 @@ export class DetallegerenciasComponent implements OnInit {
   private cargarRelevante(): any
   {
     try{
-      this.relevanteChild.nomina = this.nomina;
-      this.relevanteChild.idTipoPeriodo = this.idTipoPeriodo;
-      this.relevanteChild.periodoMes = this.periodoMes;
-      this.relevanteChild.periodoSemana = this.periodoSemana;
+      this.relevanteChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.relevanteChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
+      this.relevanteChild.periodoMes = this.controlPeriodosChild.periodoMes;
+      this.relevanteChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
       this.relevanteChild.getRelevantes();
     }catch (error){
       this.toastrService.error(error.message, 'Aviso');
@@ -230,10 +135,10 @@ export class DetallegerenciasComponent implements OnInit {
   private cargarMejorSaldo(): any
   {
     try{
-      this.mejorSaldoChild.nomina = this.nomina;
-      this.mejorSaldoChild.idTipoPeriodo = this.idTipoPeriodo;
-      this.mejorSaldoChild.periodoMes = this.periodoMes;
-      this.mejorSaldoChild.periodoSemana = this.periodoSemana;
+      this.mejorSaldoChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.mejorSaldoChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
+      this.mejorSaldoChild.periodoMes = this.controlPeriodosChild.periodoMes;
+      this.mejorSaldoChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
       this.mejorSaldoChild.getMejorSaldo();
     }catch (error){
       this.toastrService.error(error.message, 'Aviso');
@@ -244,10 +149,10 @@ export class DetallegerenciasComponent implements OnInit {
   private cargarReporteGerencias(): any
   {
     try{
-      this.reporteGerenciaChild.nomina = this.nomina;
-      this.reporteGerenciaChild.idTipoPeriodo = this.idTipoPeriodo;
-      this.reporteGerenciaChild.periodoMes = this.periodoMes;
-      this.reporteGerenciaChild.periodoSemana = this.periodoSemana;
+      this.reporteGerenciaChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.reporteGerenciaChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
+      this.reporteGerenciaChild.periodoMes = this.controlPeriodosChild.periodoMes;
+      this.reporteGerenciaChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
       this.reporteGerenciaChild.getReporteGerencias();
     }catch (error){
       this.toastrService.error(error.message, 'Aviso');
@@ -255,21 +160,11 @@ export class DetallegerenciasComponent implements OnInit {
     }
   }
 
-  public isLoading(): boolean
-  {
-
-    return this.barraMetasChild?.loading ||
-            this.mejorSaldoChild?.loading ||
-            this.tendenciasChild?.loading ||
-            this.relevanteChild?.loading ||
-            this.reporteGerenciaChild?.loading;
-  }
-
   private registrarError(msg: string): any
   {
     const logError: LogErrorInterface = {
       idPantalla: 1,
-      usuario: this.nomina,
+      usuario: this.loginInterface.usuarioData.nomina,
       error: msg
     };
 
@@ -290,6 +185,13 @@ export class DetallegerenciasComponent implements OnInit {
       .catch(error => {
         this.toastrService.error(error.message, 'Aviso');
       });
+  }
+
+  recieveIsLoading($event): void {
+    const res: boolean = this.barraMetasChild.loading && this.mejorSaldoChild.loading &&
+      this.relevanteChild.loading && this.tendenciasChild.loading && this.reporteGerenciaChild.loading;
+
+    this.controlPeriodosChild.loading = res;
   }
 
 }
