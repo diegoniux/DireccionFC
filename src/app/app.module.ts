@@ -33,6 +33,7 @@ import { ComisionEstimadaComponent } from './shared/comision-estimada/comision-e
 import { DetallegerenciaComponent } from './shared/detallegerencia/detallegerencia.component';
 import { ChartsModule } from 'ng2-charts';
 import { VisoreslidercomercialEspecialistariesgoComponent } from './shared/visoreslidercomercial-especialistariesgo/visoreslidercomercial-especialistariesgo.component';
+import { AvanceLidercomercialComponent } from './shared/avance-lidercomercial/avance-lidercomercial.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { VisoreslidercomercialEspecialistariesgoComponent } from './shared/visor
     ControlPeriodosComponent,
     ComisionEstimadaComponent,
     DetallegerenciaComponent,
-    VisoreslidercomercialEspecialistariesgoComponent
+    VisoreslidercomercialEspecialistariesgoComponent,
+    AvanceLidercomercialComponent
   ],
   imports: [
     BrowserModule,

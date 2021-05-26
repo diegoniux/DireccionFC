@@ -1,0 +1,34 @@
+.card-radius{
+    border-radius: 10px ;
+    width: 100%;
+    /* margin-top: -15px; */
+}
+.papading{
+    padding: 3px;
+    vertical-align: middle;
+}
+.shadow{
+    box-shadow: 2px 2px 4px #bababa;
+}
+
+.verticalProgress{
+    position: absolute; left:50.5%; width: 7px; height: 70px; opacity: 0.8; filter: alpha(opacity=80);
+}
+.verticalProgress-bar{
+    position:absolute;top:30%; width: 100%;height: 0%;
+}
+
+.lblDays{
+    margin: auto;
+    text-align: center;
+    font-size: 12px;
+}
+.col-verticalProgress{
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    height: 90px;
+    margin: auto;
+}

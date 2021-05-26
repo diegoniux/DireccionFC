@@ -7,3 +7,6 @@
     padding: 3px;
     vertical-align: middle;
 }
+.imgShadow{
+    box-shadow: 2px 2px 4px #bababa;
+}

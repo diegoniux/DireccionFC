@@ -4,17 +4,22 @@
             <app-titulo [nombreTitulo]="nombreTitulo" [nombreImg]="nombreImg"></app-titulo>
         </div>
     </div>
-    <app-detallegerencia></app-detallegerencia>
     <form [formGroup]="form">
+        <app-detallegerencia></app-detallegerencia>
         <div class="row m-1" style="margin-top:100px">
-            <div class="col-5">
+            <div class="col-lg-5">
                 <app-comision-estimada></app-comision-estimada>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4">
                 <app-mejor-saldo></app-mejor-saldo>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3">
                 <app-visoreslidercomercial-especialistariesgo></app-visoreslidercomercial-especialistariesgo>
+            </div>
+        </div>
+        <div class="row m-1" style="margin-top:100px">
+            <div class="col">
+                <app-avance-lidercomercial></app-avance-lidercomercial>
             </div>
         </div>
     </form>
