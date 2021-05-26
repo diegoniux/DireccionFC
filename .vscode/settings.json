@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/6015b11b-c17e-4531-9dc1-9d29bf9ca7d3/resourceGroups/AccesQrLumena/providers/Microsoft.Web/sites/direccionfc",
+    "appService.deploySubpath": "dist\\DireccionFC"
+}
