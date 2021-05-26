@@ -1,0 +1,9 @@
+.card-radius{
+    border-radius: 10px ;
+    width: 100%;
+    /* margin-top: -15px; */
+}
+.papading{
+    padding: 3px;
+    vertical-align: middle;
+}
