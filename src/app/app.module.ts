@@ -34,6 +34,7 @@ import { DetallegerenciaComponent } from './shared/detallegerencia/detallegerenc
 import { ChartsModule } from 'ng2-charts';
 import { VisoreslidercomercialEspecialistariesgoComponent } from './shared/visoreslidercomercial-especialistariesgo/visoreslidercomercial-especialistariesgo.component';
 import { AvanceLidercomercialComponent } from './shared/avance-lidercomercial/avance-lidercomercial.component';
+import { RelevantesAppsComponent } from './shared/relevantes-apps/relevantes-apps.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AvanceLidercomercialComponent } from './shared/avance-lidercomercial/av
     ComisionEstimadaComponent,
     DetallegerenciaComponent,
     VisoreslidercomercialEspecialistariesgoComponent,
-    AvanceLidercomercialComponent
+    AvanceLidercomercialComponent,
+    RelevantesAppsComponent
   ],
   imports: [
     BrowserModule,

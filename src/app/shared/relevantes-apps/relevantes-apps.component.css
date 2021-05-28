@@ -1,0 +1,32 @@
+.NumRelevantes{
+    font-weight: bold;
+    font-size: x-large;
+    color: #4D4D4D;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 70px;
+    display: inline-block;
+    border: none;
+    background-color: #E9E9E9;
+}
+
+.NumRelevantesTG{
+    font-weight: bold;
+    font-size: x-large;
+    color: #4D4D4D;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: inline-block;
+}
+
+.flechaRelevante{
+    font-size: x-large;
+}
+
+.RelevantesDesc{
+    font-weight: normal;
+    font-size: small;
+    color: #4D4D4D;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
