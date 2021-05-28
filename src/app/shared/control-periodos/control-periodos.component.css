@@ -1,16 +1,20 @@
-.spanMargin{
+/* .spanMargin{
     margin-top: 20px;
     margin-bottom: 20px;
-}
-.card-radius{
+} */
+/* .card-radius{
+    align-content: center;
     border-radius: 10px ;
 }
 .card-bold{
     font-weight: bold;
-}
+} */
 .lblPeriodo {
-    margin-top: 6px;
     font-size: 16px;
+}
+
+.lblPeriodoDesc{
+    font-size: 14px;
 }
 
 @media only screen and (max-device-width: 1550px) {
@@ -35,7 +39,6 @@
 
     .lblPeriodo {
         font-size: 16px;
-        vertical-align: middle;
     }
 
     .selectMobil {
