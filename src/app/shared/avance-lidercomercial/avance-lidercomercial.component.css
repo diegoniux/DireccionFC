@@ -10,7 +10,6 @@
 .shadow{
     box-shadow: 2px 2px 4px #bababa;
 }
-
 .verticalProgress{
     /* position: absolute; left:50.5%; width: 7px; height: 70px; opacity: 0.8; filter: alpha(opacity=80); */
     transform: rotate(-90deg);
@@ -21,7 +20,6 @@
     margin-top: 20px;
     margin-left: -22px;
 }
-
 .lblDays{
     margin: auto;
     margin-bottom: 15px;
@@ -35,4 +33,14 @@
     position: relative;
     width: 10px;
     height: 100px;
+}
+.avaceBox{
+    height: 250px;
+}
+
+.lblTitulos{
+    padding: 3px;
+    text-align: center;
+    vertical-align: middle;
+    height: 55px;
 }
