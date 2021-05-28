@@ -34,7 +34,7 @@
     width: 10px;
     height: 100px;
 }
-.avaceBox{
+.avanceBox{
     height: 250px;
 }
 
@@ -43,4 +43,20 @@
     text-align: center;
     vertical-align: middle;
     height: 55px;
+}
+
+@media only screen and (max-device-width: 1550px) {
+    .colAvance{
+        padding: 5px;
+    }
+}
+
+@media only screen and (max-device-width: 1300px) {
+    .colAvance{
+        padding: 5px;
+    }
+}
+
+@media only screen and (max-device-width: 489px) {
+
 }
