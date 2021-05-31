@@ -39,6 +39,10 @@
     border: none;
 }
 
-.navbar-inverse {
-    border-radius: 0;
-  }
+.navdetallegerencia{
+    color: #4D4D4D; 
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+    padding: 2px; 
+    width: 300px;
+}
