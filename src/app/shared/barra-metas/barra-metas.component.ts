@@ -28,6 +28,24 @@ export class BarraMetasComponent implements OnInit {
               public loginService: LoginService,
               private toastrService: ToastrService) {
       this.loading = false;
+
+      this.barraMetas = {
+        barraAvanceMetas: {
+          gerenciasBar: '',
+          gerenciasProductivas: '',
+          objetivoGP: '',
+          objetivoSV: '',
+          objetivoSol: '',
+          objetivoTra: '',
+          proyeccion: '',
+          saldoVirtual: '',
+          saldoVirtualBar: '',
+          solicitudes: '',
+          solicitudesBar: '',
+          traspasosBar: '',
+          traspasosFCT: ''
+        }
+      };
    }
 
   ngOnInit(): void {

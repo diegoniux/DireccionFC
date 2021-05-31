@@ -1,8 +1,8 @@
 import { ResultadoEjecucionInterface } from './resultadoEjecucion.interface';
 
 export interface ReporteGerenciasInterface {
-    resultadoEjecucion: ResultadoEjecucionInterface;
-    reporteGerencias: ReporteGerencia[];
+    resultadoEjecucion?: ResultadoEjecucionInterface;
+    reporteGerencias?: ReporteGerencia[];
   }
 
 interface ReporteGerencia {

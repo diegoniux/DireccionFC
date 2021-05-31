@@ -58,6 +58,10 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
       this.registrarLogPantalla(logSistema);
       // Asignación del token al servicio
       this.detalleGerenciaService.token = this.loginInterface.token;
+
+      // Carga automática de componentes cada 20 segundos
+      setInterval(() => this.loadData(), 60000);
+
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
       this.registrarError(error.message);
@@ -65,6 +69,10 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
   }
 
   recievePeriodo($event: any): void{
+    this.loadData();
+  }
+
+  loadData(): void{
     try {
       this.cargarBarraMetas();
       this.cargarMejorSaldo();

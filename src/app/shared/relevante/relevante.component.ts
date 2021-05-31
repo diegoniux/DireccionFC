@@ -19,6 +19,7 @@ export class RelevanteComponent implements OnInit {
   periodoSemana: PeriodoSemanaInterface;
   relevante: RelevantesInterface;
   loading: boolean;
+  loadPage: boolean;
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -49,6 +50,14 @@ export class RelevanteComponent implements OnInit {
 
   constructor(public detalleGerenciasService: DetalleGerenciasService) {
     this.loading = false;
+    this.loadPage = true;
+    this.relevante = {
+      encabezadoPeriodo: '',
+      numEspecialistas: 0,
+      numEspecialistasFL: 0,
+      numEspecialistasMR: 0,
+      numEspecialistasProsp: 0
+    };
   }
 
   ngOnInit(): void {
@@ -64,6 +73,7 @@ export class RelevanteComponent implements OnInit {
     .then((data: RelevantesInterface) => {
       this.relevante = data;
       this.loading = false;
+      this.loadPage = false;
       this.isLoadingEvent.emit(this.loading);
       this.barChartData = [
         { data: [this.relevante.numEspecialistasFL], label: 'Fuera de Línea' },

@@ -21,6 +21,7 @@ export class ReporteGerenciasComponent implements OnInit {
 
   constructor(public detalleGerenciaService: DetalleGerenciasService) {
     this.loading = false;
+    this.reporteGerencias = {};
    }
 
   ngOnInit(): void {

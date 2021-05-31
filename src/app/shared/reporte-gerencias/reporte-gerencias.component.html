@@ -1,5 +1,5 @@
 <br>
-<div *ngIf="reporteGerencias && !loading" class="row m-1">
+<div class="row m-1">
     <div class="col">
         <div class="card card-radius">
             <div class="table-responsive">
@@ -17,7 +17,7 @@
                         <th scope="col" class="text-center labelHGrid">Diagnóstico</th>
                     </tr>
                     </thead>
-                    <tbody >
+                    <tbody *ngIf="reporteGerencias" >
                         <tr *ngFor="let item of reporteGerencias.reporteGerencias" class="table-row">
                             <td scope="row">
                                 <app-perfil-usuario [imgFoto]="item.foto" [Nombre]="item.nombre" [Apellido]="item.apellido" [Sucursal]="item.nombreSuc"></app-perfil-usuario>
