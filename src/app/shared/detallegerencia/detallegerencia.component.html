@@ -12,55 +12,62 @@
         <div class="card col">
             <div class="row">
                 <div class="col-lg-3 col-12 text-left" style="background-color: #80CC0E; padding: 0px;">
-                    <div class="row">
+                    <div *ngIf="infoGerencia" class="row">
                         <div class="col-4 text-center">
-                            <img width="100px" height="100px" style="margin-top: 15px; margin-bottom: 0px; margin-left: 0px;" class="rounded-circle" src="assets\img\capi_circulo.png" alt="">
+                            <img width="100px" height="100px" 
+                                style="margin-top: 5px; margin-bottom: 5px; margin-left: 10px;" 
+                                class="rounded-circle" src="{{ infoGerencia.foto }}" alt="">
                         </div>
                         <div class="col-8">
                             <div class="card-body">
-                                <p class="labelNombre">Camilo Angel</p>
-                                <p class="labelApellido">Grimaldo Arreguin</p>
-                                <p class="labelSucursal">MONTERREY 11</p>
+                                <p class="labelNombre">{{ infoGerencia.nombre }}</p>
+                                <p class="labelApellido">{{ infoGerencia.apellido }}</p>
+                                <p class="labelSucursal">{{ infoGerencia.nombreSuc }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-9">
-                    <div class="row">
+                    <div *ngIf="detalle" class="row">
                         <div class="col-lg col-6 text-center">
-                            <img width="70px" height="70px" class="rounded-circle" src="assets\img\btn-productivos-off.png" alt="">
+                            <img *ngIf="!detalle.productivoAcivo" width="70px" height="70px" class="rounded-circle" src="assets\img\btn-productivos-off.png" alt="">
+                            <img *ngIf="detalle.productivoAcivo" width="70px" height="70px" class="rounded-circle" src="assets\img\btn-productivos-on.png" alt="">
                             <p class="lblTitulos">
                                 Productivos
                             </p>
-                            <div class="card valores">9/21</div>
+                            <div class="card valores">{{ detalle.productivos }}</div>
                         </div>
                         <div class="col-lg col-6 text-center">
-                            <img width="70px" height="70px" class="rounded-circle" src="assets\img\btn-saldo-promedio-off.png" alt="">
+                            <img *ngIf="!detalle.saldoPromedioAcivo" width="70px" height="70px" class="rounded-circle" src="assets\img\btn-saldo-promedio-off.png" alt="">
+                            <img *ngIf="detalle.saldoPromedioAcivo" width="70px" height="70px" class="rounded-circle" src="assets\img\btn-saldo-promedio-on.png" alt="">
                             <p class="lblTitulos">
                                 Saldo Promedio
                             </p>
-                            <div class="card valores">$105.5K</div>
+                            <div class="card valores">{{ detalle.saldoPromedio }}</div>
                         </div>
                         <div class="col-lg col-6 text-center">
-                            <img width="70px" height="70px" class="rounded-circle" src="assets\img\btn-fct-off.png" alt="">
+                            <img *ngIf="!detalle.fctAcivo" width="70px" height="70px" class="rounded-circle" src="assets\img\btn-fct-off.png" alt="">
+                            <img *ngIf="detalle.fctAcivo" width="70px" height="70px" class="rounded-circle" src="assets\img\btn-fct-on.png" alt="">
                             <p class="lblTitulos">
                                 FCT
                             </p>
-                            <div class="card valores">35</div>
+                            <div class="card valores">{{ detalle.fct }}</div>
                         </div>
                         <div class="col-lg col-6 text-center">
-                            <img width="70px" height="70px" class="rounded-circle" src="assets\img\btn-traspasos-off.png" alt="">
+                            <img *ngIf="!detalle.traspasosAcivo" width="70px" height="70px" class="rounded-circle" src="assets\img\btn-traspasos-off.png" alt="">
+                            <img *ngIf="detalle.traspasosAcivo"  width="70px" height="70px" class="rounded-circle" src="assets\img\btn-traspasos-on.png" alt="">
                             <p class="lblTitulos">
                                 Total Traspasos
                             </p>
-                            <div class="card valores">120</div>
+                            <div class="card valores">{{ detalle.bienPrimera }}</div>
                         </div>
                         <div class="col-lg col-6 text-center">
-                            <img width="70px" height="70px" class="rounded-circle" src="assets\img\btn-bien-primera-on.png" alt="">
+                            <img *ngIf="!detalle.bienPrimeraAcivo" width="70px" height="70px" class="rounded-circle" src="assets\img\btn-bien-primera-off.png" alt="">
+                            <img *ngIf="detalle.bienPrimeraAcivo" width="70px" height="70px" class="rounded-circle" src="assets\img\btn-bien-primera-on.png" alt="">
                             <p class="lblTitulos">
                                 Bien a la primera
                             </p>
-                            <div class="card valores">96%</div>
+                            <div class="card valores">{{ detalle.bienPrimera }}</div>
                         </div>
                         <div class="col-lg-0 col-0 text-center">
                         </div>

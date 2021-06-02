@@ -3,6 +3,8 @@ import { DetalleGerenciasService } from 'src/app/services/detalle-gerencias-serv
 import { ReporteGerenciasInterface } from 'src/app/interfaces/reporteGerencias.interface';
 import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
 import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
+import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-reporte-gerencias',
   templateUrl: './reporte-gerencias.component.html',
@@ -19,7 +21,7 @@ export class ReporteGerenciasComponent implements OnInit {
 
   @Output() isLoadingEvent = new EventEmitter<boolean>();
 
-  constructor(public detalleGerenciaService: DetalleGerenciasService) {
+  constructor(public detalleGerenciaService: DetalleGerenciasService, public router: Router) {
     this.loading = false;
     this.reporteGerencias = {};
    }
@@ -47,4 +49,12 @@ export class ReporteGerenciasComponent implements OnInit {
     });
   }
 
+  cargarDetalleGerencia(gerencia: ReporteGerencia): void {
+    try {
+      localStorage.setItem('infoGerente', JSON.stringify(gerencia));
+      this.router.navigate(['/home/detalleLider']);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }

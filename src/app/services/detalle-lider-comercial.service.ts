@@ -21,32 +21,32 @@ export class DetalleLiderComercialService {
      return this.loginService.getInfoApp();
    }
 
-   public getDetalleGerencia(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
+   public getDetalleGerencia(nomina: string): any {
     return this.http.get(this.apiURL +
       `DetalleLiderComercial/getDetalleGerencia/${nomina}`);
   }
 
-  public getComisionEstimada(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string, periodosPrevios: number): any {
+  public getComisionEstimada(nomina: string, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     return this.http.get(this.apiURL +
       `DetalleLiderComercial/getComisionEstimada/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`);
   }
 
-  public getEspecialistasRiesgo(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
+  public getEspecialistasRiesgo(nomina: string, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     return this.http.get(this.apiURL +
       `DetalleLiderComercial/getEspecialistasRiesgo/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`);
   }
 
-  public getAvance(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
+  public getAvance(nomina: string, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     return this.http.get(this.apiURL +
       `DetalleLiderComercial/getAvance/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`);
   }
 
-  public getNotificaciones(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
+  public getNotificaciones(nomina: string, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     return this.http.get(this.apiURL +
       `DetalleLiderComercial/getNotificaciones/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`);
   }
 
-  public getRelevanteApps(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
+  public getRelevanteApps(nomina: string, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
     return this.http.get(this.apiURL +
       `DetalleLiderComercial/getRelevanteApps/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`);
   }

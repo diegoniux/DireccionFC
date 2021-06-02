@@ -3,7 +3,7 @@
     <div class="col">
         <div class="card card-radius">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th scope="col" class="text-center labelHGrid">Nombre</th>
@@ -19,10 +19,10 @@
                     </thead>
                     <tbody *ngIf="reporteGerencias" >
                         <tr *ngFor="let item of reporteGerencias.reporteGerencias" class="table-row">
-                            <td scope="row">
+                            <td scope="row" (click)="cargarDetalleGerencia(item)">
                                 <app-perfil-usuario [imgFoto]="item.foto" [Nombre]="item.nombre" [Apellido]="item.apellido" [Sucursal]="item.nombreSuc"></app-perfil-usuario>
                             </td>
-                            <td><p class="text-center labelGrid" [ngStyle]="{'color': (item.proyeccionColor) ? '#80CC0E' : '#FF1D25'}">{{ item.proyeccion }}</p></td>
+                            <td (click)="cargarDetalleGerencia(item)"><p class="text-center labelGrid" [ngStyle]="{'color': (item.proyeccionColor) ? '#80CC0E' : '#FF1D25'}">{{ item.proyeccion }}</p></td>
                             <td [mdbPopover]="PopOverSA" placement="bottom" triggers="focus" mdbWavesEffect>
                                 <div class="card cardColorPopOver">
                                     <p class="text-center labelGrid">{{ item.saldoAcomulado }}</p>
@@ -102,7 +102,7 @@
                                     </div>
                                 </ng-template>
                             </td>
-                            <td><p class="text-center labelGrid">{{ item.saldoPromedio }}</p></td>
+                            <td (click)="cargarDetalleGerencia(item)"><p class="text-center labelGrid">{{ item.saldoPromedio }}</p></td>
                             <td [mdbPopover]="PopOverProdGerente" placement="bottom" triggers="focus" mdbWavesEffect>
                                 <div class="card cardColorPopOver">
                                     <p class="text-center labelGrid">{{ item.productividadEsp }}</p>
@@ -152,10 +152,10 @@
                                     </div>
                                 </ng-template>
                             </td>
-                            <td><p class="text-center labelGrid">{{ item.mejorSaldo }}</p></td>
-                            <td><p class="text-center labelGrid">{{ item.periodo }}</p></td>
-                            <td class="text-center labelGrid" [ngStyle]="{'color': (item.imgFlecha) ? '#80CC0E' : '#FF1D25'}"><i class="fas fa-arrow-{{ item.imgFlecha ? 'up' : 'down'}}"></i> {{ item.desempeno }}</td>
-                            <td><p class="text-center labelGrid">{{ item.diagnostico }}</p></td>
+                            <td (click)="cargarDetalleGerencia(item)"><p class="text-center labelGrid">{{ item.mejorSaldo }}</p></td>
+                            <td (click)="cargarDetalleGerencia(item)"><p class="text-center labelGrid">{{ item.periodo }}</p></td>
+                            <td (click)="cargarDetalleGerencia(item)" class="text-center labelGrid" [ngStyle]="{'color': (item.imgFlecha) ? '#80CC0E' : '#FF1D25'}"><i class="fas fa-arrow-{{ item.imgFlecha ? 'up' : 'down'}}"></i> {{ item.desempeno }}</td>
+                            <td (click)="cargarDetalleGerencia(item)"><p class="text-center labelGrid">{{ item.diagnostico }}</p></td>
                         </tr>
                     </tbody>
                 </table>

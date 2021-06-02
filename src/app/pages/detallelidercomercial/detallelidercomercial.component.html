@@ -8,7 +8,7 @@
         <app-detallegerencia></app-detallegerencia>
         <div class="row justify-content-center">   
             <div class="col-12 col-lg-6">
-                <app-control-periodos></app-control-periodos>
+                <app-control-periodos (changePeriodoEvent)="recievePeriodo($event)"></app-control-periodos>
             </div>
         </div>
         <div class="container-fluid" style="margin-top:20px">

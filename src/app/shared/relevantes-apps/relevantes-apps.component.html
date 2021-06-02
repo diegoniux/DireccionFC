@@ -11,22 +11,23 @@
                     <p style="margin-top: 0px; margin-bottom: 0px; font-weight: bold;">Fuerza Comercial</p>
                 </div>
             </div>
-            <div class="row">
+            <div *ngIf="relevanteApps" class="row">
                 <div class="col text-center divespacio">
-                    <i class="fas fa-arrow-down flechaRelevante" style="color: #FF1D25;"></i>
-                    <p class="NumRelevantesTG">23</p>
+                    <i *ngIf="!relevanteApps.fuerzaComercial.tendenciaTG" class="fas fa-arrow-down flechaRelevante" style="color: #FF1D25;"></i>
+                    <i *ngIf="relevanteApps.fuerzaComercial.tendenciaTG" class="fas fa-arrow-up flechaRelevante" style="color: #80CC0E;"></i>
+                    <p class="NumRelevantesTG">{{ relevanteApps.fuerzaComercial.trmitesGenerados }}</p>
                     <p class="RelevantesDesc">Trámites Generados</p>
                 </div>
                 <div class="col text-center divespacio">
-                    <div class="card NumRelevantes">8</div>
+                    <div class="card NumRelevantes">{{ relevanteApps.fuerzaComercial.tramitesFinalizados }}</div>
                     <p class="RelevantesDesc">Trámites Finalizados (Operaciones)</p>
                 </div>
                 <div class="col text-center divespacio">                    
-                    <div class="card NumRelevantes">37%</div>
+                    <div class="card NumRelevantes">{{ relevanteApps.fuerzaComercial.porcentajePrimerIntento }}</div>
                     <p class="RelevantesDesc">% Rechazos 1er Intento</p>
                 </div>
                 <div class="col text-center divespacio">
-                    <div class="card NumRelevantes">0</div>
+                    <div class="card NumRelevantes">{{ relevanteApps.fuerzaComercial.tramitesNoRecuperados }}</div>
                     <p class="RelevantesDesc">Trámites No Recuperados</p>
                 </div>
             </div>
@@ -39,26 +40,27 @@
                     <p style="margin-top: 0px; font-weight: bold;">Prospectos</p>
                 </div>
             </div>
-            <div class="row">
+            <div *ngIf="relevanteApps" class="row">
                 <div class="col text-center divespacio">
-                    <i class="fas fa-arrow-down flechaRelevante" style="color: #FF1D25;"></i>
-                    <p class="NumRelevantesTG">2</p>
+                    <i *ngIf="!relevanteApps.prospectos.tendenciaUso" class="fas fa-arrow-down flechaRelevante" style="color: #FF1D25;"></i>
+                    <i *ngIf="relevanteApps.prospectos.tendenciaUso" class="fas fa-arrow-up flechaRelevante" style="color: #80CC0E;"></i>
+                    <p class="NumRelevantesTG">{{ relevanteApps.prospectos.apsUtilizan }}</p>
                     <p class="RelevantesDesc">#Aps utilizan</p>
                 </div>
                 <div class="col text-center divespacio">
-                    <div class="card NumRelevantes">0</div>
+                    <div class="card NumRelevantes">{{ relevanteApps.prospectos.correosProm }}</div>
                     <p class="RelevantesDesc">Correos promocionales</p>
                 </div>
                 <div class="col text-center divespacio">                    
-                    <div class="card NumRelevantes">0</div>
+                    <div class="card NumRelevantes">{{ relevanteApps.prospectos.ofertaValor }}</div>
                     <p class="RelevantesDesc">Oferta de Valor</p>
                 </div>
                 <div class="col text-center divespacio">
-                    <div class="card NumRelevantes">0</div>
+                    <div class="card NumRelevantes">{{ relevanteApps.prospectos.prevalidacion }}</div>
                     <p class="RelevantesDesc">Pre-Validación</p>
                 </div>
                 <div class="col text-center divespacio">
-                    <div class="card NumRelevantes">0</div>
+                    <div class="card NumRelevantes">{{ relevanteApps.prospectos.certificacion }}</div>
                     <p class="RelevantesDesc">Certificacón</p>
                 </div>
             </div>
@@ -71,21 +73,22 @@
                     <p style="margin-top: 0px; font-weight: bold;">Fuera de Línea</p>
                 </div>
             </div>
-            <div class="row" style="padding-bottom: 18px;">
+            <div *ngIf="relevanteApps" class="row" style="padding-bottom: 18px;">
                 <div class="col text-center divespacio">
-                    <i class="fas fa-arrow-down flechaRelevante" style="color: #FF1D25;"></i>
-                    <p class="NumRelevantesTG">0</p>
+                    <i *ngIf="!relevanteApps.fueraLinea.tendenciaUso" class="fas fa-arrow-down flechaRelevante" style="color: #FF1D25;"></i>
+                    <i *ngIf="relevanteApps.fueraLinea.tendenciaUso" class="fas fa-arrow-up flechaRelevante" style="color: #80CC0E;"></i>
+                    <p class="NumRelevantesTG">{{ relevanteApps.fueraLinea.apsUtilizan }}</p>
                     <p class="RelevantesDesc">#Aps utilizan</p>
                 </div>
                 <div class="col text-center divespacio">
-                    <div class="card NumRelevantes">0</div>
+                    <div class="card NumRelevantes">{{ relevanteApps.fueraLinea.tramitesCertificados }}</div>
                     <p class="RelevantesDesc">Trámites Certificados</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-lg-2 divespacio">
-        <div class="card p-3 h-100">
+        <div class="card p-3 h-100" [mdbPopover]="PopOverTop5" placement="top" triggers="focus" mdbWavesEffect>
             <div class="row">
                 <div class="col">
                     <p style="margin-top: 0px; margin-bottom: 10px; font-weight: bold;">Top 5 Rechazos</p>
@@ -96,6 +99,33 @@
                     <img width="100px" height="100px" style="margin: 0px;" class="rounded-circle" src="assets\img\five.png">
                 </div>
             </div>
+            <ng-template #PopOverTop5>
+                <div *ngIf="relevanteApps">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img width="50px" height="50px" class="rounded-circle" src="assets\img\five.png" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <p class="labelNombre">Top 5 Rechazos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="border" style="width: 100%; margin: 10px;"></span>
+                        <div class="col-12" *ngFor="let item of relevanteApps.top5Rechazos">
+                            <div class="row">
+                                <div class="col-2">
+                                    <p class="text-left font-weight-bold">{{ item.orden }}</p>
+                                </div>
+                                <div class="col-10">
+                                    <p class="lblCenter">{{ item.rechazo }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>            
         </div>
     </div>
 </div>

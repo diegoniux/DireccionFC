@@ -37,7 +37,6 @@ export class TendenciaComponent implements OnInit {
       this.tendencias = data;
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
-      console.log(this.tendencias);
     })
     .catch(error => {
       console.error(error);

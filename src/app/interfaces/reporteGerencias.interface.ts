@@ -5,7 +5,7 @@ export interface ReporteGerenciasInterface {
     reporteGerencias?: ReporteGerencia[];
   }
 
-interface ReporteGerencia {
+export interface ReporteGerencia {
   nominaGerente: string;
   usuarioIdGerente: string;
   sucursalCve: string;
