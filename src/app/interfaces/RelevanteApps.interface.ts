@@ -28,7 +28,7 @@ interface Prospectos {
 }
 
 interface FuerzaComercial {
-  trmitesGenerados: number;
+  tramitesGenerados: number;
   tendenciaTG: boolean;
   tramitesFinalizados: number;
   porcentajePrimerIntento: string;
