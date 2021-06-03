@@ -46,6 +46,7 @@ export class AvanceLidercomercialComponent implements OnInit {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
       this.avanceGerencia = data;
+      console.log(this.avanceGerencia);
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
     })

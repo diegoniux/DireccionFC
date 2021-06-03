@@ -46,6 +46,7 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit {
     this.nombreTitulo = 'Detalle Líder Comercial';
     this.nombreImg = 'iconoPizarronDigital';
     this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
+    console.log(this.infoGerencia);
    }
 
   ngOnInit(): void {
@@ -54,7 +55,6 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     try {
       this.loginInterface = this.loginService.getUserLoggedIn();
-      this.controlPeriodosChild.nomina = this.loginInterface.usuarioData.nomina;
       const logSistema: LogSistemaInterface = {
         idAccion: 3,
         idPantalla: 2,
@@ -98,7 +98,7 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit {
     const logSistema: LogSistemaInterface = {
       idAccion: 2,
       idPantalla: 0,
-      usuario: this.controlPeriodosChild.nomina
+      usuario: this.loginInterface.usuarioData.nomina
     };
     this.registrarLogPantalla(logSistema);
     this.router.navigate(['/Login']);
