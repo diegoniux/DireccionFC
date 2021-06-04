@@ -3,8 +3,8 @@ import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
 import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
 import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
 import { Router } from '@angular/router';
-import { DetalleLiderComercialService } from '../../services/detalle-lider-comercial.service';
-import { EspecialistasRiesgoInterface } from '../../interfaces/EspecialistasRiesgo.interface';
+import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
+import { RelevantesInterface } from '../../interfaces/dto/relevantes.interface';
 
 @Component({
   selector: 'app-visoreslidercomercial-especialistariesgo',
@@ -16,14 +16,14 @@ export class VisoreslidercomercialEspecialistariesgoComponent implements OnInit 
   idTipoPeriodo: number;
   periodoMes: PeriodoMesInterface;
   periodoSemana: PeriodoSemanaInterface;
-  especialistasRiesgo: EspecialistasRiesgoInterface;
+  relevante: RelevantesInterface;
   periodo: number;
   loading: boolean;
 
   @Output() isLoadingEvent = new EventEmitter<boolean>();
 
   constructor(public router: Router,
-              public detalleService: DetalleLiderComercialService) {
+              public detalleService: DetalleGerenciasService) {
     this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
     if (!this.infoGerencia) {
       router.navigate(['/home']);
@@ -33,15 +33,13 @@ export class VisoreslidercomercialEspecialistariesgoComponent implements OnInit 
   }
 
   public loadData(): void{
-    // obtenmos la información desde el servicio
-    this.detalleService.getEspecialistasRiesgo(this.infoGerencia.nominaGerente, this.idTipoPeriodo,
-        this.periodoSemana.fechaInicial, this.periodoSemana.fechaFinal)
+    this.loading = true;
+    this.isLoadingEvent.emit(this.loading);
+    this.detalleService.getRelevantes(Number(this.infoGerencia.nominaGerente), this.idTipoPeriodo,  this.periodoSemana.fechaInicial,
+      this.periodoSemana.fechaFinal)
     .toPromise()
-    .then((data: EspecialistasRiesgoInterface) => {
-      if (!data.resultadoEjecucion.ejecucionCorrecta) {
-        throw new Error(data.resultadoEjecucion.friendlyMessage);
-      }
-      this.especialistasRiesgo = data;
+    .then((data: RelevantesInterface) => {
+      this.relevante = data;
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
     })

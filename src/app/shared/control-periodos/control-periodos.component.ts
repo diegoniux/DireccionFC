@@ -3,7 +3,6 @@ import { TipoPeriodoInterface } from '../../interfaces/tipoPeriodo.interface';
 import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
 import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
 import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
-import { LoginService } from '../../services/login.service';
 import { TiposPeriodoInterface } from '../../interfaces/tiposPeriodo.interface';
 import { ToastrService } from 'ngx-toastr';
 import { FechasPeriodoInterface } from '../../interfaces/dto/fechasPeriodo.interface';
@@ -21,7 +20,6 @@ export class ControlPeriodosComponent implements OnInit {
   periodoMes: PeriodoMesInterface;
   periodoSemana: PeriodoSemanaInterface;
   periodosPrevios: number;
-  nomina: number;
   loading: boolean;
 
   @Output() changePeriodoEvent = new EventEmitter();
@@ -32,7 +30,6 @@ export class ControlPeriodosComponent implements OnInit {
 
   constructor(
     private detalleGerenciaService: DetalleGerenciasService,
-    private loginService: LoginService,
     private toastrService: ToastrService) { }
 
   ngOnInit(): void {
