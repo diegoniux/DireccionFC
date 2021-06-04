@@ -217,6 +217,7 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit {
   }
 
   recieveIsLoading($event): void {
+    console.log('entré');
     const res: boolean = this.detalleGerenciaChild.loading && this.mejorSaldoChild.loading &&
       this.relevanteChild.loading && this.comsisionEstimadaChild.loading && this.avanceChild.loading
       && this.visoresChild.loading;

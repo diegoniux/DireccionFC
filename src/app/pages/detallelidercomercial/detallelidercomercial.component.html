@@ -14,23 +14,23 @@
         <div class="container-fluid" style="margin-top:20px">
             <div class="row">
                 <div class="col-12 col-lg-5">
-                    <app-comision-estimada></app-comision-estimada>
+                    <app-comision-estimada (isLoadingEvent)="recieveIsLoading($event)"></app-comision-estimada>
                 </div>
                 <div class="col-12 col-lg-4">
-                    <app-mejor-saldo></app-mejor-saldo>
+                    <app-mejor-saldo (isLoadingEvent)="recieveIsLoading($event)"></app-mejor-saldo>
                 </div>
                 <div class="col-12 col-lg-3">
-                    <app-visoreslidercomercial-especialistariesgo></app-visoreslidercomercial-especialistariesgo>
+                    <app-visoreslidercomercial-especialistariesgo (isLoadingEvent)="recieveIsLoading($event)"></app-visoreslidercomercial-especialistariesgo>
                 </div>
             </div>
         </div>
         <div class="container-fluid" style="margin-top:40px">
             <div class="row">
                 <div class="col-12">
-                    <app-avance-lidercomercial></app-avance-lidercomercial>
+                    <app-avance-lidercomercial (isLoadingEvent)="recieveIsLoading($event)"></app-avance-lidercomercial>
                 </div>
             </div>
         </div>
     </form>
-    <app-relevantes-apps></app-relevantes-apps>
+    <app-relevantes-apps (isLoadingEvent)="recieveIsLoading($event)"></app-relevantes-apps>
 </div>
