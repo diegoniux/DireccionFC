@@ -5,6 +5,7 @@ import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
 import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-relevante',
@@ -32,10 +33,24 @@ export class RelevanteComponent implements OnInit {
     }
   };
 
+  public pieChartColors: Array < any > = [{
+        backgroundColor: ['#59C812', 'red', 'red'],
+        borderColor: ['red', 'red', 'red'],
+    },
+    {
+      backgroundColor: ['#3C830F', 'red', 'red'],
+      borderColor: ['red', 'red', 'red'],
+    },
+    {
+      backgroundColor: ['#FF1D25', 'red', 'red'],
+      borderColor: ['red', 'red', 'red'],
+    }
+  ];
+
   public barChartLabels: Label[] = ['Indicadores'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
-  // public barChartPlugins = [pluginDataLabels];
+  public barChartPlugins = [pluginDataLabels];
 
   public barChartData: ChartDataSets[];
 
