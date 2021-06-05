@@ -16,6 +16,8 @@ npm install --save ng2-charts
 
 npm install --save chart.js
 
+npm install chartjs-plugin-datalabels --save
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
