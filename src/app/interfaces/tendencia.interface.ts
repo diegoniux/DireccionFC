@@ -4,4 +4,6 @@ export interface TendenciaInterface {
     porcentaje: string;
     positivo: boolean;
     img: string;
+    descripcionAvance: string;
+    imgAvance: string;
 }

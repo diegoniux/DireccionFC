@@ -50,8 +50,9 @@ export class ReporteGerenciasComponent implements OnInit {
   }
 
   cargarDetalleGerencia(gerencia: ReporteGerencia): void {
-    try {
+    try {      
       localStorage.setItem('infoGerente', JSON.stringify(gerencia));
+      console.log(gerencia);
       this.router.navigate(['/home/detalleLider']);
     } catch (error) {
       throw new Error(error.message);

@@ -7,84 +7,21 @@
                         <p class="card-title font-weight-bold">Avance</p>
                     </div>
                 </div>
-                <div *ngIf="avanceGerencia" class="row">
-                    <div class="col-12 col-lg-2 colAvance">
-                        <div class="card card-radius shadow avaceBox">
+                <div *ngIf="avanceGerencia && tendencias" class="row">
+                    <div class="col-12 col-lg-2 colAvance ">
+                        <div [mdbPopover]="PopOverSA" class="card card-radius shadow avanceBox" placement="top" triggers="focus" mdbWavesEffect>
                             <div class="card-body  text-center">
-                                <div *ngIf="avanceGerencia.detalleSaldoSemanal.saldo" class="row">
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">L</label><br>
+                                <div *ngIf="avanceGerencia.listaSaldoAvances && idTipoPeriodo == 1" class="row">
+                                    <div class="col-verticalProgress" *ngFor="let item of avanceGerencia.listaSaldoAvances">
+                                        <label class="lblDays">{{item.diaDescCorta}}</label><br>
                                         <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoSemanal.lunes}" class="progress-bar verticalProgress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">M</label><br>
-                                        <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoSemanal.martes}" class="progress-bar verticalProgress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">M</label><br>
-                                        <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoSemanal.miercoles}" class="progress-bar verticalProgress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">J</label><br>
-                                        <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoSemanal.jueves}"  class="progress-bar verticalProgress-bar bg-danger" role="progressbar progress-bar-striped progress-bar-animated" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">V</label><br>
-                                        <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoSemanal.viernes}"  class="progress-bar verticalProgress-bar bg-danger" role="progressbar progress-bar-striped progress-bar-animated" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">S</label><br>
-                                        <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoSemanal.sabado}" class="progress-bar verticalProgress-bar bg-danger" role="progressbar progress-bar-striped progress-bar-animated" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">D</label><br>
-                                        <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoSemanal.domingo}"  class="progress-bar verticalProgress-bar bg-danger" role="progressbar progress-bar-striped progress-bar-animated" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div *ngIf="avanceGerencia.detalleSaldoMensual.saldo" class="row">
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">S1</label><br>
-                                        <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoMensual.sem1}" class="progress-bar verticalProgress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">S2</label><br>
-                                        <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoMensual.sem2}" class="progress-bar verticalProgress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">S3</label><br>
-                                        <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoMensual.sem3}" class="progress-bar verticalProgress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-verticalProgress">
-                                        <label class="lblDays">S4</label><br>
-                                        <div class="progress verticalProgress">
-                                            <div [ngStyle]="{'width': avanceGerencia.detalleSaldoMensual.sem4}"  class="progress-bar verticalProgress-bar bg-danger" role="progressbar progress-bar-striped progress-bar-animated" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div [ngStyle]="{'width': item.porcentaje}" class="progress-bar verticalProgress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col">
-                                        <span *ngIf="avanceGerencia.detalleSaldoSemanal.saldo" class="badge badge-danger"><h4>{{ avanceGerencia.detalleSaldoSemanal.saldo }}</h4></span>
-                                        <span *ngIf="avanceGerencia.detalleSaldoMensual.saldo" class="badge badge-danger"><h4>{{ avanceGerencia.detalleSaldoMensual.saldo }}</h4></span>
+                                        <span *ngIf="avanceGerencia.saldoAcumulado" class="badge badge-danger"><h4>{{ avanceGerencia.saldoAcumulado }}</h4></span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -93,89 +30,85 @@
                                     </div>
                                 </div>
                             </div>
+                            <ng-template #PopOverSA>
+                                <div>
+                                    <div class="row">
+
+                                        <div class="row">
+                                            <div class="col-lg-2" style="margin-left: 4px;">
+                                                <img style="width: 33px; height:30px" src="assets/img/bolsaAhorro.png">
+                                            </div>
+                                            <div class="col-lg-9 text-center" style="">
+                                                <h7>Avance de Saldo</h7>
+                                            </div>
+
+                                        </div>
+                                        <span class="border" style="width: 100%; margin: 10px;"></span>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p>Saldo Virtual</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="lblCenter">
+                                                        <span class="badge badge-light cardColorPopOver"><h6>{{ avanceGerencia.saldoVirtual }}</h6></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p>Saldo Cantado</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="lblCenter">
+                                                        <span class="badge badge-light cardColorPopOver"><h6>{{ avanceGerencia.saldoCantado }}</h6></span>
+                                                    </p>                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p>Saldo Acumulado</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="lblCenter">
+                                                        <span class="badge badge-light cardColorPopOver"><h6>{{ avanceGerencia.saldoAcumulado }}</h6></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12" *ngIf="idTipoPeriodo == 1">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p>Comisión Estimada</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="lblCenter">
+                                                        <span class="badge badge-light cardColorPopOver"><h6>{{ avanceGerencia.comisionEstimada }}</h6></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
                         </div>
                     </div>
-                    <div class="col-12 col-lg colAvance">
-                        <div class="card card-radius shadow avanceBox">
-                            <div class="card-body  text-center">
-                                <img *ngIf="!avanceGerencia.productivoAcivo" width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="assets\img\btn-productivos-off.png" alt="">
-                                <img *ngIf="avanceGerencia.productivoAcivo" width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="assets\img\btn-productivos-on.png" alt="">
-                                <p class="lblTitulos">
-                                    Productivos
-                                </p>
-                                <p class="font-weight-bold">{{ avanceGerencia.productivos }}</p>
-                                <div class="progress">
-                                    <div [ngStyle]="{'width': avanceGerencia.porcentajeProd}" class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="col-12 col-lg" *ngFor="let item of tendencias.listaTendencias">
+                        <div class="col-12 col-lg colAvance">
+                            <div class="card card-radius shadow avanceBox">
+                                <div class="card-body  text-center">
+                                    <img width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="{{item.imgAvance}}" alt="">
+                                    <p class="lblTitulos">{{ item.descripcion }}</p>
+                                    <p class="font-weight-bold">{{ item.descripcionAvance }}</p>
+                                    <div class="progress">
+                                        <div [ngStyle]="{'width': item.porcentaje}" class="progress-bar bg-{{ item.positivo ? 'success' : 'danger'}} progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <p [ngStyle]="{'color': (item.positivo) ? '#80CC0E' : '#FF1D25'}"><i class="fas fa-arrow-{{ item.positivo ? 'up' : 'down'}}"></i> {{ item.porcentaje }}</p>
                                 </div>
-                                <p *ngIf="!avanceGerencia.tendenciaProdOK"><i class="fas fa-arrow-down text-danger"></i>{{ avanceGerencia.porcentajeProd }}</p>
-                                <p *ngIf="avanceGerencia.tendenciaProdOK"><i class="fas fa-arrow-up text-success"></i>{{ avanceGerencia.porcentajeProd }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg colAvance">
-                        <div class="card card-radius shadow avanceBox">
-                            <div class="card-body  text-center">
-                                <img *ngIf="!avanceGerencia.saldoPromedioAcivo" width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="assets\img\btn-saldo-promedio-off.png" alt="">
-                                <img *ngIf="avanceGerencia.saldoPromedioAcivo" width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="assets\img\btn-saldo-promedio-on.png" alt="">
-                                <p class="lblTitulos">
-                                    Saldo Promedio
-                                </p>
-                                <p class="font-weight-bold">{{ avanceGerencia.saldoPromedio }}</p>
-                                <div class="progress">
-                                    <div [ngStyle]="{'width': avanceGerencia.porcentajeSP}" class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p *ngIf="!avanceGerencia.tendenciaSaldoPromOK"><i class="fas fa-arrow-down text-danger"></i>{{ avanceGerencia.porcentajeSP }}</p>
-                                <p *ngIf="avanceGerencia.tendenciaSaldoPromOK"><i class="fas fa-arrow-up text-success"></i>{{ avanceGerencia.porcentajeSP }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg colAvance">
-                        <div class="card card-radius shadow avanceBox">
-                            <div class="card-body  text-center">
-                                <img *ngIf="!avanceGerencia.fctAcivo" width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="assets\img\btn-fct-off.png" alt="">
-                                <img *ngIf="avanceGerencia.fctAcivo" width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="assets\img\btn-fct-on.png" alt="">
-                                <p class="lblTitulos">
-                                    FCT
-                                </p>
-                                <p class="font-weight-bold">{{ avanceGerencia.fct }}</p>
-                                <div class="progress">
-                                    <div [ngStyle]="{'width': avanceGerencia.porcentajeFCT}" class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p *ngIf="!avanceGerencia.tendenciaFCTOK"><i class="fas fa-arrow-down text-danger"></i>{{ avanceGerencia.porcentajeFCT }}</p>
-                                <p *ngIf="avanceGerencia.tendenciaFCTOK"><i class="fas fa-arrow-up text-success"></i>{{ avanceGerencia.porcentajeFCT }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg colAvance">
-                        <div class="card card-radius shadow avanceBox">
-                            <div class="card-body  text-center">
-                                <img *ngIf="!avanceGerencia.traspasosAcivo" width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="assets\img\btn-traspasos-off.png" alt="">
-                                <img *ngIf="avanceGerencia.traspasosAcivo" width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="assets\img\btn-traspasos-on.png" alt="">
-                                <p class="lblTitulos">
-                                    Total Traspasos
-                                </p>
-                                <p class="font-weight-bold">{{ avanceGerencia.traspasos }}</p>
-                                <div class="progress">
-                                    <div [ngStyle]="{'width': avanceGerencia.porcentajeT}" class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p *ngIf="!avanceGerencia.tendenciaTraspOK"><i class="fas fa-arrow-down text-danger"></i>{{ avanceGerencia.porcentajeT }}</p>
-                                <p *ngIf="avanceGerencia.tendenciaTraspOK"><i class="fas fa-arrow-up text-success"></i>{{ avanceGerencia.porcentajeT }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg colAvance">
-                        <div class="card card-radius shadow avanceBox">
-                            <div class="card-body  text-center">
-                                <img *ngIf="!avanceGerencia.bienPrimeraAcivo" width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="assets\img\btn-bien-primera-off.png" alt="">
-                                <img *ngIf="avanceGerencia.bienPrimeraAcivo" width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="assets\img\btn-bien-primera-on.png" alt="">
-                                <p class="lblTitulos">
-                                    Bien a la primera
-                                </p>
-                                <p class="font-weight-bold">{{ avanceGerencia.bienPrimera }}</p>
-                                <div class="progress">
-                                    <div [ngStyle]="{'width': avanceGerencia.porcentajeB1}" class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p *ngIf="!avanceGerencia.tendenciaB1OK"><i class="fas fa-arrow-down text-danger"></i>{{ avanceGerencia.porcentajeB1 }}</p>
                             </div>
                         </div>
                     </div>
