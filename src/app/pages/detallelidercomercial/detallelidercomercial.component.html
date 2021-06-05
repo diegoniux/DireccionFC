@@ -6,11 +6,6 @@
     </div>
     <form [formGroup]="form">
         <app-detallegerencia></app-detallegerencia>
-        <div class="row justify-content-center">   
-            <div class="col-12 col-lg-6">
-                <app-control-periodos (changePeriodoEvent)="recievePeriodo($event)"></app-control-periodos>
-            </div>
-        </div>
         <div class="container-fluid" style="margin-top:20px">
             <div class="row">
                 <div class="col-12 col-lg-5">
@@ -24,7 +19,12 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid" style="margin-top:40px">
+        <div class="row justify-content-center" style="margin-top:20px">   
+            <div class="col-12 col-lg-6">
+                <app-control-periodos (changePeriodoEvent)="recievePeriodo($event)"></app-control-periodos>
+            </div>
+        </div>
+        <div class="container-fluid" style="margin-top:20px">
             <div class="row">
                 <div class="col-12">
                     <app-avance-lidercomercial (isLoadingEvent)="recieveIsLoading($event)"></app-avance-lidercomercial>
