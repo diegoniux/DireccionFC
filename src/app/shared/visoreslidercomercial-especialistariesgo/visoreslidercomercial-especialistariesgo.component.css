@@ -1,3 +1,4 @@
+
 .card-radius{
     border-radius: 10px ;
     width: 100%;
@@ -47,7 +48,9 @@
         width: 55px;
         height: 55px;
     }
+
+    
     .lblDescipcionBtn{
-        font-size: 14px;
+        font-size: 12px;
     }
 }
