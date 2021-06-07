@@ -27,7 +27,7 @@ export class RelevanteComponent implements OnInit {
     scales: { xAxes: [{}], yAxes: [{}] },
     plugins: {
       datalabels: {
-        anchor: 'end',
+        anchor: 'center',
         align: 'end',
       }
     }

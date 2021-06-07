@@ -12,7 +12,9 @@
 }
 
 .canvasChart{
-    height: 220px;
+    /* display: block; */
+    /* width: 100%;
+    height: 80%; */
 }
 
 .lblNumRel{
