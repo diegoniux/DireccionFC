@@ -1,16 +1,18 @@
 <div class="card card-radius comisionEstimadaCard">
     <div class="card-body">
         <div class="row">
-            <div class="col">
+            <div class="col col-lg-4">
                 <p class="card-title font-weight-bold">Comisión Estimada</p>
             </div>
-            <div class="col"></div>
+            <div class="col col-lg-8">
+                <p *ngIf="comisionEstimada" class="text-right font-weight-bold">{{ comisionEstimada.periodo }}</p>
+            </div>
         </div>
         <div *ngIf="comisionEstimada" class="row mt-1">
             <div class="col-12 col-lg-3">
                 <div class="row comisionEstimadaHeader rowBG colBorder">
-                    <div class="col-8 col-lg-7">Saldo<br>Acumulado</div>
-                    <div class="col-4 col-lg-5"><span class="align-middle">{{ comisionEstimada.saldoAcumulado }}</span></div>
+                    <div class="col-8 col-lg-7 especialColsHeader">Saldo<br>Acumulado</div>
+                    <div class="col-4 col-lg-5 especialColsHeader"><span class="align-middle">{{ comisionEstimada.saldoAcumulado }}</span></div>
                 </div>
                 <div class="row rowBG">
                     <div class="col-8 col-lg-7 rowFonts">Bono<br>Excelencia</div>
@@ -23,8 +25,8 @@
             </div>
             <div class="col-12 col-lg-3">
                 <div class="row comisionEstimadaHeader rowBG colBorder">
-                    <div class="col-8 col-lg-7">Proyección<br>Saldo</div>
-                    <div class="col-4 col-lg-5"><span class="align-middle">{{ comisionEstimada.saldoProyectado }}</span></div>
+                    <div class="col-8 col-lg-7 especialColsHeader">Proyección<br>Saldo</div>
+                    <div class="col-4 col-lg-5 especialColsHeader"><span class="align-middle">{{ comisionEstimada.saldoProyectado }}</span></div>
                 </div>
                 <div class="row rowBG">
                     <div class="col-8 col-lg-7 rowFonts"><p class="especialCols">Bono<br>Excelencia</p></div>
@@ -37,8 +39,8 @@
             </div>            
             <div class="col-12 col-lg-3">
                 <div class="row comisionEstimadaHeader rowBG colBorder">
-                    <div class="col-8 col-lg-7">Objetivo<br>Gerente</div>
-                    <div class="col-4 col-lg-5">{{ comisionEstimada.saldoObjetivo }}</div>
+                    <div class="col-8 col-lg-7 especialColsHeader">Objetivo<br>Gerente</div>
+                    <div class="col-4 col-lg-5 especialColsHeader">{{ comisionEstimada.saldoObjetivo }}</div>
                 </div>
                 <div class="row rowBG">
                     <div class="col-8 col-lg-7 rowFonts"><p class="especialCols">Bono<br>Excelencia</p></div>
@@ -51,8 +53,8 @@
             </div>
             <div class="col-12 col-lg-3">
                 <div class="row comisionEstimadaHeader rowBG">
-                    <div class="col-8 col-lg-7">Mejor<br>Saldo</div>
-                    <div class="col-4 col-lg-5">{{ comisionEstimada.mejorSaldo }}</div>
+                    <div class="col-8 col-lg-7 especialColsHeader">Mejor<br>Saldo</div>
+                    <div class="col-4 col-lg-5 especialColsHeader">{{ comisionEstimada.mejorSaldo }}</div>
                 </div>
                 <div class="row rowBG">
                     <div class="col-8 col-lg-7 rowFonts"><p class="especialCols">Bono<br>Excelencia</p></div>
