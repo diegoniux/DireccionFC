@@ -6,58 +6,60 @@
             </div>
             <div class="col"></div>
         </div>
-        <div *ngIf="comisionEstimada" class="row mt-4">
-            <div class="col-12 col-lg-4">
+        <div *ngIf="comisionEstimada" class="row mt-1">
+            <div class="col-12 col-lg-3">
                 <div class="row comisionEstimadaHeader rowBG colBorder">
-                    <div class="col-8 col-lg-7">Proyección Saldo</div>
+                    <div class="col-8 col-lg-7">Saldo<br>Acumulado</div>
+                    <div class="col-4 col-lg-5"><span class="align-middle">{{ comisionEstimada.saldoAcumulado }}</span></div>
+                </div>
+                <div class="row rowBG">
+                    <div class="col-8 col-lg-7 rowFonts">Bono<br>Excelencia</div>
+                    <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.bonoExcelenciaSA }}</span></div>
+                </div>
+                <div class="row rowBG">
+                    <div class="col-8 col-lg-7 rowFonts">Bono<br>Desarrollo</div>
+                    <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.bonoDesarrolloSA }}</span></div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="row comisionEstimadaHeader rowBG colBorder">
+                    <div class="col-8 col-lg-7">Proyección<br>Saldo</div>
                     <div class="col-4 col-lg-5"><span class="align-middle">{{ comisionEstimada.saldoProyeccion }}</span></div>
                 </div>
                 <div class="row rowBG">
-                    <div class="col-8 col-lg-7 rowFonts">Comisión</div>
-                    <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.comisionSP }}</span></div>
-                </div>
-                <div class="row rowBG">
-                    <div class="col-8 col-lg-7 rowFonts">Bono Excelencia</div>
+                    <div class="col-8 col-lg-7 rowFonts"><p class="especialCols">Bono<br>Excelencia</p></div>
                     <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.bonoExcelenciaSP }}</span></div>
                 </div>
                 <div class="row rowBG">
-                    <div class="col-8 col-lg-7 rowFonts">Bono Desarrollo</div>
+                    <div class="col-8 col-lg-7 rowFonts"><p class="especialCols">Bono<br>Desarrollo</p></div>
                     <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.bonoDesarrolloSP }}</span></div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-4">
+            </div>            
+            <div class="col-12 col-lg-3">
                 <div class="row comisionEstimadaHeader rowBG colBorder">
-                    <div class="col-8 col-lg-7">Objetivo Gerente</div>
+                    <div class="col-8 col-lg-7">Objetivo<br>Gerente</div>
                     <div class="col-4 col-lg-5">{{ comisionEstimada.saldoObjetivoGerente }}</div>
                 </div>
                 <div class="row rowBG">
-                    <div class="col-8 col-lg-7 rowFonts">Comisión</div>
-                    <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.comisionOG }}</span></div>
-                </div>
-                <div class="row rowBG">
-                    <div class="col-8 col-lg-7 rowFonts">Bono Excelencia</div>
+                    <div class="col-8 col-lg-7 rowFonts"><p class="especialCols">Bono<br>Excelencia</p></div>
                     <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.bonoExcelenciaOG }}</span></div>
                 </div>
                 <div class="row rowBG">
-                    <div class="col-8 col-lg-7 rowFonts">Bono Desarrollo</div>
+                    <div class="col-8 col-lg-7 rowFonts"><p class="especialCols">Bono<br>Desarrollo</p></div>
                     <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.bonoDesarrolloOG }}</span></div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-3">
                 <div class="row comisionEstimadaHeader rowBG">
-                    <div class="col-8 col-lg-7">Mejor Saldo</div>
+                    <div class="col-8 col-lg-7">Mejor<br>Saldo</div>
                     <div class="col-4 col-lg-5">{{ comisionEstimada.mejorSaldo }}</div>
                 </div>
                 <div class="row rowBG">
-                    <div class="col-8 col-lg-7 rowFonts">Comisión</div>
-                    <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.comisionMS }}</span></div>
-                </div>
-                <div class="row rowBG">
-                    <div class="col-8 col-lg-7 rowFonts">Bono Excelencia</div>
+                    <div class="col-8 col-lg-7 rowFonts"><p class="especialCols">Bono<br>Excelencia</p></div>
                     <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.bonoExcelenciaMS }}</span></div>
                 </div>
                 <div class="row rowBG">
-                    <div class="col-8 col-lg-7 rowFonts">Bono Desarrollo</div>
+                    <div class="col-8 col-lg-7 rowFonts"><p class="especialCols">Bono<br>Desarrollo</p></div>
                     <div class="col-4 col-lg-5"><span class="badge badge-pill badge-secondary valores">{{ comisionEstimada.bonoDesarrolloMS }}</span></div>
                 </div>
             </div>
