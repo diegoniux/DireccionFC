@@ -1,19 +1,17 @@
-import { ResultadoEjecucionInterface } from './resultadoEjecucion.interface';
-
+import { ResultadoEjecucionInterface } from "./resultadoEjecucion.interface";
 export interface ComisionEstimadaInterface {
   resultadoEjecucion: ResultadoEjecucionInterface;
   periodo: string;
-  saldoProyeccion: string;
-  comisionSP: string;
+  saldoAcumulado: string;
+  bonoExcelenciaSA: string;
+  bonoDesarrolloSA: string;
+  saldoProyectado: string;
   bonoExcelenciaSP: string;
   bonoDesarrolloSP: string;
-  colorSaldoProyeccion: string;
-  saldoObjetivoGerente: string;
-  comisionOG: string;
-  bonoExcelenciaOG: string;
-  bonoDesarrolloOG: string;
+  saldoObjetivo: string;
+  bonoExcelenciaSO: string;
+  bonoDesarrolloSO: string;
   mejorSaldo: string;
-  comisionMS: string;
   bonoExcelenciaMS: string;
   bonoDesarrolloMS: string;
 }

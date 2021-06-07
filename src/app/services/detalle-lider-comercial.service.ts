@@ -26,9 +26,9 @@ export class DetalleLiderComercialService {
       `DetalleLiderComercial/getDetalleGerencia/${nomina}`);
   }
 
-  public getComisionEstimada(nomina: string, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
+  public getComisionEstimada(nomina: string): any {
     return this.http.get(this.apiURL +
-      `DetalleLiderComercial/getComisionEstimada/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`);
+      `DetalleLiderComercial/getComisionEstimada/${nomina}`);
   }
 
   public getEspecialistasRiesgo(nomina: string, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
