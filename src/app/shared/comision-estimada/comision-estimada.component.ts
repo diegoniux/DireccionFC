@@ -35,8 +35,7 @@ export class ComisionEstimadaComponent implements OnInit {
 
   public loadData(): void{
     // obtenmos la información desde el servicio
-    this.detalleService.getComisionEstimada(this.infoGerencia.nominaGerente, this.idTipoPeriodo,
-        this.periodoSemana.fechaInicial, this.periodoSemana.fechaFinal)
+    this.detalleService.getComisionEstimada(this.infoGerencia.nominaGerente)
     .toPromise()
     .then((data: ComisionEstimadaInterface) => {
       if (!data.resultadoEjecucion.ejecucionCorrecta) {
