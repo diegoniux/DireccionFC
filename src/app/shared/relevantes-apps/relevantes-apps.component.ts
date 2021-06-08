@@ -35,6 +35,7 @@ export class RelevantesAppsComponent implements OnInit {
 
   public loadData(): void{
     this.loading = true;
+    this.isLoadingEvent.emit(this.loading);
     // obtenmos la información desde el servicio
     this.detalleService.getRelevanteApps(this.infoGerencia.nominaGerente, this.idTipoPeriodo,
         this.periodoSemana.fechaInicial, this.periodoSemana.fechaFinal)
