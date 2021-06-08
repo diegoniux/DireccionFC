@@ -9,7 +9,11 @@
                     <div class="input-group">
                         <div class="input-group-prepend centerobj">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
-                            <ng-select formControlName="tipoPeriodo" style="min-width: 80%;" class="disable-clear-all selectMobil" [clearable]="false" [searchable]="false" [(ngModel)]= "idTipoPeriodo" (ngModelChange)="onTipoPeriodoChanged($event)" aria-describedby="basic-addon2">
+                            <ng-select formControlName="tipoPeriodo" style="min-width: 110px;" 
+                                    class="disable-clear-all selectMobil" [clearable]="false" 
+                                    [searchable]="false" [(ngModel)]= "idTipoPeriodo" 
+                                    (ngModelChange)="onTipoPeriodoChanged($event)" 
+                                    aria-describedby="basic-addon2">
                                 <ng-option *ngFor="let item of tiposPeriodo" [value]="item.idTipoPeriodo">
                                     {{ item.tipoPeriodo }}
                                 </ng-option>
