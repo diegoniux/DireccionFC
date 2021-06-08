@@ -63,6 +63,18 @@
         font-size: 60%;
     }
 }
+@media only screen and (max-device-width: 1025px) {
+    .card-body{
+        padding: 10px;
+    }
+    .lblHeaders{
+        font-size: 13px;
+    }
+    .valores{
+        width: 55px;
+        font-size: 11px;
+    }
+}
 
 @media only screen and (max-device-width: 489px) {
     .font-weight-bold {
