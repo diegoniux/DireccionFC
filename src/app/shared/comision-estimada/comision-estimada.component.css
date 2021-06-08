@@ -26,7 +26,7 @@
 }
 
 .rowBG{
-    margin-top: 5px;
+    margin-top: 20px;
 }
 
 .colBorder{
@@ -36,19 +36,26 @@
 .rowBG:hover{
     background-color: rgba(227, 230, 240, 0.6);
 }
-@media only screen and (max-device-width: 1550px) {
-    .font-weight-bold {
-        font-size: 15px;
-    }
+@media only screen and (max-device-width: 1700px) {
     .comisionEstimadaHeader{
-        font-size: 15px;        
+        font-size: 13px;        
+    }
+}
+
+@media only screen and (max-device-width: 1550px) {
+    .comisionEstimadaHeader{
+        font-size: 12px;
+        padding: 0px;
+    }
+    .especialColsHeader{
+        padding: 4px;
     }
 }
 
 @media only screen and (max-device-width: 1300px) {
-    .font-weight-bold {
-        font-size: 15px;        
-    }
+    /* .font-weight-bold {
+        font-size: 13px;        
+    } */
     .comisionEstimadaHeader{
         font-size: 12px;        
     }
@@ -60,6 +67,9 @@
         width: 55px;
         font-size: 60%;
     }
+    /* .especialCols{
+        display: none;
+    } */
 }
 
 @media only screen and (max-device-width: 489px) {

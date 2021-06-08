@@ -47,13 +47,13 @@
 
 @media only screen and (max-device-width: 1550px) {
     .colAvance{
-        padding: 5px;
+        padding: 1px;
     }
 }
 
 @media only screen and (max-device-width: 1300px) {
     .colAvance{
-        padding: 5px;
+        padding: 1px;
     }
 }
 

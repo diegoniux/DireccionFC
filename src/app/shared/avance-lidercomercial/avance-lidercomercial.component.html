@@ -97,11 +97,11 @@
                             </ng-template>
                         </div>
                     </div>
-                    <div class="col-12 col-lg" *ngFor="let item of tendencias.listaTendencias">
-                        <div class="col-12 col-lg colAvance">
+                    <div class="col-12 col-lg" *ngFor="let item of tendencias.listaTendencias" style="padding-left: 3px; padding-right: 3px;">
+                        <div class="col-12 col-lg colAvance" >
                             <div class="card card-radius shadow avanceBox">
-                                <div class="card-body  text-center">
-                                    <img width="70px" height="66px" class="mx-auto d-block rounded-circle shadow" src="{{item.imgAvance}}" alt="">
+                                <div class="card-body text-center">
+                                    <img width="70px" height="66px" class="mx-auto d-block " src="{{item.imgAvance}}" alt="">
                                     <p class="lblTitulos">{{ item.descripcion }}</p>
                                     <p class="font-weight-bold">{{ item.descripcionAvance }}</p>
                                     <div class="progress">
@@ -115,7 +115,7 @@
                 </div> 
             </div>
         </div>
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-md-4">
             <div class="card-body">
                 <div class="row">
                     <div class="col">
