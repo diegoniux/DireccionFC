@@ -32,15 +32,15 @@
         <div class="card-body font-weight-bold" style="height: 105px;">
             <div class="row h-100">
                 <div class="col-3">
-                    <img class="mx-auto d-block" src="assets/img/especialistas-alert.png">
+                    <img class="mx-auto d-block imgMR" src="assets/img/especialistas-alert.png">
                 </div>
                 <div class="col-3 text-center align-middle ">
-                    <p style="font-size: 22px;" class="mt-3">
+                    <p class="mt-3 lblNumEspecialistas">
                         <span *ngIf="relevante" class="align-middle">{{ relevante.numEspecialistasMR + '/' + relevante.numEspecialistas  }}</span>
                     </p>
                 </div>
                 <div class="col-6">
-                    <p class="mt-2">Especialista con marca de Riesgo</p>
+                    <p class="mt-2 lblDescipcionMR">Especialista con marca de Riesgo</p>
                 </div>
             </div>            
         </div>

@@ -19,6 +19,9 @@
 .btnImgGroup{
     padding: 2px;
 }
+.lblNumEspecialistas{
+    font-size: 21px;
+}
 @media only screen and (max-device-width: 1550px) {
     .bntImg{
         width: 50px;
@@ -37,6 +40,15 @@
     .lblDescipcionBtn{
         font-size: 12px;
     }
+    .lblNumEspecialistas{
+        font-size: 18px;
+    }
+    .lblDescipcionMR{
+        font-size: 15px;
+    }
+    .imgMR{
+        width: 60px;
+    }
 }
 
 @media only screen and (max-device-width: 489px) {
@@ -48,9 +60,11 @@
         width: 55px;
         height: 55px;
     }
-
     
     .lblDescipcionBtn{
         font-size: 12px;
+    }
+    .lblNumEspecialistas{
+        font-size: 16px;
     }
 }
