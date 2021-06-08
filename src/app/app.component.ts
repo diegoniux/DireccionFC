@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DireccionFC';
+
+
+  onActivate(event): void {
+    window.scroll(0, 0);
+  }
 }
