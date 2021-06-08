@@ -51,11 +51,23 @@
     }
 }
 
-@media only screen and (max-device-width: 489px) {
-    .bntImg{
-        width: 66px;
-        height: 66px;
+@media only screen and (max-device-width: 1025px) {
+    .lblDescipcionBtn{
+        font-size: 10px;
     }
+    .lblNumEspecialistas{
+        font-size: 12px;
+    }
+    .lblDescipcionMR{
+        font-size: 13px;
+    }
+    .imgMR{
+        width: 45px;
+    }
+}
+
+@media only screen and (max-device-width: 489px) {
+
     .bntImg{
         width: 55px;
         height: 55px;
