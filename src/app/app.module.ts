@@ -35,6 +35,8 @@ import { ChartsModule } from 'ng2-charts';
 import { VisoreslidercomercialEspecialistariesgoComponent } from './shared/visoreslidercomercial-especialistariesgo/visoreslidercomercial-especialistariesgo.component';
 import { AvanceLidercomercialComponent } from './shared/avance-lidercomercial/avance-lidercomercial.component';
 import { RelevantesAppsComponent } from './shared/relevantes-apps/relevantes-apps.component';
+import { DirectorComercialComponent } from './pages/director-comercial/director-comercial.component';
+import { DetalleDirectorComercialComponent } from './pages/detalle-director-comercial/detalle-director-comercial.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { RelevantesAppsComponent } from './shared/relevantes-apps/relevantes-app
     DetallegerenciaComponent,
     VisoreslidercomercialEspecialistariesgoComponent,
     AvanceLidercomercialComponent,
-    RelevantesAppsComponent
+    RelevantesAppsComponent,
+    DirectorComercialComponent,
+    DetalleDirectorComercialComponent
   ],
   imports: [
     BrowserModule,
