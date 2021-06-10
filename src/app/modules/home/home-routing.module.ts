@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../../pages/home/home.component';
 import { DetallelidercomercialComponent } from '../../pages/detallelidercomercial/detallelidercomercial.component';
 import { AuthGuard } from '../../guards/auth.guard';
+import { DetalleDirectorComercialComponent } from 'src/app/pages/detalle-director-comercial/detalle-director-comercial.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     path: 'detalleLider',
     component: DetallelidercomercialComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'detalleDirectorComercial',
+    component: DetalleDirectorComercialComponent,
     canActivate: [AuthGuard]
   }
   ];
