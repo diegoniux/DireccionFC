@@ -1,6 +1,6 @@
-<div class="row mt-3">
+<div class="row mt-3 plantillaMbDisplay">
     <div class="col-12">
-        <div class="card border-0">
+        <div class="card border-0 ">
             <div class="card-body">
                 <div class="row"  *ngIf='focusUsr' >
                     <div class="col-2 noPaddig">
@@ -33,9 +33,9 @@
         </div>
     </div>
 </div>
-<div class="row mt-3" *ngIf='listaPlantilla'>
+<div class="row mt-3 plantillaWebDisplay" *ngIf='listaPlantilla'>
     <div class="col-12 col-md" *ngFor='let item of listaPlantilla'>
-        <div class="card border-0" (click)="selectedUser( item.id )">
+        <div class="card border-0" (click)="selectedUser( item.id )" [ngClass]="(item.id == focusUsr.id ? 'card-bg-on' : 'card-bg-off')">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-3">
