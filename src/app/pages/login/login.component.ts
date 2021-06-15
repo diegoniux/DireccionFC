@@ -97,8 +97,12 @@ export class LoginComponent implements OnInit {
         })
         .catch();
 
+        
         this.alertService.success('Bienvenido', this.options);
-        this.router.navigate(['/home']);
+        if(this.loginInterface.usuarioData.perfilUsuarioId == 9)
+          this.router.navigate(['/home']);
+        else
+          this.router.navigate(['/home/detalleDirectorComercial']);
       })
       .catch( error =>
         {
