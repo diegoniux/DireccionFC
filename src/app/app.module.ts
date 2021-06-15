@@ -37,6 +37,7 @@ import { AvanceLidercomercialComponent } from './shared/avance-lidercomercial/av
 import { RelevantesAppsComponent } from './shared/relevantes-apps/relevantes-apps.component';
 import { DetalleDirectorComercialComponent } from './pages/detalle-director-comercial/detalle-director-comercial.component';
 import { DetalleDireccionComercialComponent } from './shared/detalle-direccion-comercial/detalle-direccion-comercial.component';
+import { PlantillaDirectorComercialComponent } from './shared/plantilla-director-comercial/plantilla-director-comercial.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { DetalleDireccionComercialComponent } from './shared/detalle-direccion-c
     AvanceLidercomercialComponent,
     RelevantesAppsComponent,
     DetalleDirectorComercialComponent,
-    DetalleDireccionComercialComponent
+    DetalleDireccionComercialComponent,
+    PlantillaDirectorComercialComponent
   ],
   imports: [
     BrowserModule,

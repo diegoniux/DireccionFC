@@ -1,0 +1,56 @@
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card border-0">
+            <div class="card-body">
+                <div class="row"  *ngIf='focusUsr' >
+                    <div class="col-2 noPaddig">
+                        <button class="btn btn-default" (click)="selectedUser( (focusUsr.id-1) )" style="height: 100%; font-size: 50px;">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-4 noPaddig">
+                                <img src="{{focusUsr.foto}}" class="mx-auto d-block rounded-circle imgFoto">
+                            </div>
+                            <div class="col-6 noPaddig">
+                                <p class="font-weight-bold">{{ focusUsr.nombres }} {{ focusUsr.apellidos }}</p>
+                                <p>{{focusUsr.coordinacion}}</p>
+                            </div>
+                        </div>
+                        <div class="text-center noPaddig">
+                            <p><span class="badge badge-pill" [ngClass]="(focusUsr.positivo) ? 'badge-success' : 'badge-danger'">{{focusUsr.saldoAcumulado}}</span><br><span class="font-weight-bold">Saldo Acumulado</span></p>
+                            <p><span [ngStyle]="{'color': (focusUsr.positivo) ? '#80CC0E' : '#FF1D25'}"><i class="fas fa-arrow-{{ (focusUsr.positivo) ? 'up' : 'down'}}"></i> {{ focusUsr.porcentaje }}</span><br>Desempeño de venta</p>
+                        </div>
+                    </div>
+                    <div class="col-2 noPaddig">
+                        <button class="btn btn-default" (click)="selectedUser( (focusUsr.id+1) )" style="height: 100%; margin-left: -5px; font-size: 50px;">
+                            <i class="fas fa-chevron-right" ></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-3" *ngIf='listaPlantilla'>
+    <div class="col-12 col-md" *ngFor='let item of listaPlantilla'>
+        <div class="card border-0" (click)="selectedUser( item.id )">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{{ item.foto }}" class="mx-auto d-block rounded-circle imgFoto">
+                    </div>
+                    <div class="col-md-*">
+                        <p class="font-weight-bold">{{ item.nombres }} {{ item.apellidos }}</p>
+                        <p>{{ item.coordinacion }}</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p><span class="badge badge-pill" [ngClass]="(item.positivo) ? 'badge-success' : 'badge-danger'">{{item.saldoAcumulado}}</span><br><span class="font-weight-bold">Saldo Acumulado</span></p>
+                    <p><span [ngStyle]="{'color': (item.positivo) ? '#80CC0E' : '#FF1D25'}"><i class="fas fa-arrow-{{ (item.positivo) ? 'up' : 'down'}}"></i> {{ item.porcentaje }}</span><br>Desempeño de venta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
