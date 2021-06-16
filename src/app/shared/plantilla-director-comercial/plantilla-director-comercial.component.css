@@ -1,6 +1,11 @@
 .card {
     cursor: pointer;
 }
+.card-radius{
+    border-radius: 10px ;
+    height: 300px;
+    /* margin-top: -15px; */
+}
 .imgFoto{
     width:70px
 }
@@ -9,9 +14,13 @@
 }
 .card-bg-on{
     background-color: #ffffff;
+    border: solid 2px; 
+    border-color: #28a745;
 }
 .card-bg-off{
-    background-color: #f5f5f5;
+    background-color: #fff;
+    border: solid 2px; 
+    border-color: #dfdfdf;
 }
 .plantillaMbDisplay{
     display: none;
