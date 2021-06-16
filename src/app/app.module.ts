@@ -38,6 +38,7 @@ import { RelevantesAppsComponent } from './shared/relevantes-apps/relevantes-app
 import { DetalleDirectorComercialComponent } from './pages/detalle-director-comercial/detalle-director-comercial.component';
 import { DetalleDireccionComercialComponent } from './shared/detalle-direccion-comercial/detalle-direccion-comercial.component';
 import { PlantillaDirectorComercialComponent } from './shared/plantilla-director-comercial/plantilla-director-comercial.component';
+import { HeaderDirectorComercialComponent } from './shared/header-director-comercial/header-director-comercial.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { PlantillaDirectorComercialComponent } from './shared/plantilla-director
     RelevantesAppsComponent,
     DetalleDirectorComercialComponent,
     DetalleDireccionComercialComponent,
-    PlantillaDirectorComercialComponent
+    PlantillaDirectorComercialComponent,
+    HeaderDirectorComercialComponent
   ],
   imports: [
     BrowserModule,
