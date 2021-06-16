@@ -1,5 +1,19 @@
 <div class="container-fluid" style="background-color: #F2F2F2;">
-    <p>Detalle Directores</p>
+    <div class="row m-1">
+        <div class="col-12 col-lg-3">
+            <app-titulo [nombreTitulo]="nombreTitulo" [nombreImg]="nombreImg"></app-titulo>
+        </div>
+        <div class="col-12 col-lg-6" style="margin-top: 20px;">
+            <app-control-periodos (changePeriodoEvent)="recievePeriodo($event)"></app-control-periodos>
+        </div>
+        <div class="col-12 col-lg-3" style="height: 60px; margin-top: 30px;">
+            <div class="row ">
+                <div class="col-12">
+                    <button class="btn btn-light btn-block" (click)="logOut()"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                </div>
+            </div>
+        </div>
+    </div>    
     <!-- <app-plantilla-director-comercial (isLoadingEvent)="recieveIsLoading($event)"></app-plantilla-director-comercial> -->
     <app-plantilla-director-comercial></app-plantilla-director-comercial>
     
