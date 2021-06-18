@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { LoginInterface } from '../../interfaces/login.interface';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { BarraCoordinacionDirectorComercialComponent } from '../../shared/barra-coordinacion-director-comercial/barra-coordinacion-director-comercial.component';
+import { PlantillaDirectorComercialComponent } from '../../shared/plantilla-director-comercial/plantilla-director-comercial.component';
+import { UserInfoInterface } from '../../interfaces/userInfo.interface';
+import { ControlPeriodosComponent } from '../../shared/control-periodos/control-periodos.component';
 
 @Component({
   selector: 'app-detalle-director-comercial',
@@ -17,6 +21,13 @@ export class DetalleDirectorComercialComponent implements OnInit {
   nombreImg: string;
   loginInterface: LoginInterface;
 
+
+  // Componentes hijos
+  @ViewChild(ControlPeriodosComponent) controlPeriodosChild: ControlPeriodosComponent;
+  @ViewChild(PlantillaDirectorComercialComponent) plantillaDirectorComercialChild: PlantillaDirectorComercialComponent;
+  @ViewChild(BarraCoordinacionDirectorComercialComponent) barraCoordinacionDirectorComercialChild: BarraCoordinacionDirectorComercialComponent;
+  
+  
   constructor(private router: Router, public loginService: LoginService, private toastrService: ToastrService) {
     this.nombreTitulo = 'Director Comercial';
     this.nombreImg = 'iconoPizarronDigital';
@@ -63,18 +74,31 @@ export class DetalleDirectorComercialComponent implements OnInit {
   recievePeriodo($event: any): void{
     this.loadData();
   }
+  recieveNominaSelected($event: any): void{
+    this.loadData();
+  }
 
   loadData(): void{
     try {
-      // this.cargarBarraMetas();
-      // this.cargarMejorSaldo();
-      // this.cargarRelevante();
-      // this.cargarTendencias();
-      // this.cargarReporteGerencias();
+      //this.controlPeriodosChild.loading = true;
+      this.cargaDatosplantillaDirectorComercial();
+      this.cargaDatosBarraDatosCoordinacion();
+
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
       // this.registrarError(error.message);
     }
   }
 
+  private cargaDatosplantillaDirectorComercial(): any {
+    this.plantillaDirectorComercialChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
+    this.plantillaDirectorComercialChild.periodoMes = this.controlPeriodosChild.periodoMes;
+    this.plantillaDirectorComercialChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
+    //this.plantillaDirectorComercialChild.loadData();
+  }
+
+  private cargaDatosBarraDatosCoordinacion(): any {
+    this.barraCoordinacionDirectorComercialChild.focusUsr = this.plantillaDirectorComercialChild.focusUsr;
+    //this.barraCoordinacionDirectorComercialChild.loadData();
+  }
 }

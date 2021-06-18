@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserInfoInterface } from '../../interfaces/userInfo.interface';
+import { Router } from '@angular/router';
+import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
+import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
 
 @Component({
   selector: 'app-plantilla-director-comercial',
@@ -7,6 +10,8 @@ import { UserInfoInterface } from '../../interfaces/userInfo.interface';
   styleUrls: ['./plantilla-director-comercial.component.css']
 })
 export class PlantillaDirectorComercialComponent implements OnInit {
+  @Output() nominaSelectedEvent = new EventEmitter();
+  
   listaPlantilla:UserInfoInterface[];
   usrOne = {
     id: 1,
@@ -42,6 +47,11 @@ export class PlantillaDirectorComercialComponent implements OnInit {
     foto: 'https://avatars.githubusercontent.com/u/36705902?v=4'
   };
   focusUsr:UserInfoInterface;
+  idTipoPeriodo: number;
+  periodoMes: PeriodoMesInterface;
+  periodoSemana: PeriodoSemanaInterface;
+  periodo: number;
+  loading: boolean;
 
   constructor() {
     this.listaPlantilla = [];
@@ -63,7 +73,7 @@ export class PlantillaDirectorComercialComponent implements OnInit {
     this.listaPlantilla.forEach(i => {
       if(i.id == id){
         this.focusUsr = this.listaPlantilla[id-1];
-        alert("Seleccionaste a " + i.nombres);
+        this.nominaSelectedEvent.emit();
       }
     });
   }

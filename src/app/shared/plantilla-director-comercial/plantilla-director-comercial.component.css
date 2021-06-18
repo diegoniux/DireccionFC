@@ -26,7 +26,15 @@
     display: none;
 }
 .plantillaWebDisplay{
-   
+}
+
+@media only screen and (max-device-width: 769px) {
+    .plantillaMbDisplay{
+        display: block;
+    }
+    .plantillaWebDisplay{
+        display: none;
+    }
 }
 
 @media only screen and (max-device-width: 489px) {
