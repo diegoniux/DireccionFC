@@ -1,0 +1,36 @@
+.card-radius{
+    border-radius: 10px ;
+    /* margin-top: -15px; */
+}
+
+.barraMbDisplay{
+    display: none;
+}
+.barraWebDisplay{
+}
+
+@media only screen and (max-device-width: 769px) {
+    .barraMbDisplay{
+        display: block;
+    }
+    .barraWebDisplay{
+        display: none;
+    }
+}
+
+@media only screen and (max-device-width: 489px) {
+    p {
+        font-size: 13px;
+    }
+
+    h4{
+        font-size: 17px;
+    }
+
+    .barraMbDisplay{
+        display: block;
+    }
+    .barraWebDisplay{
+        display: none;
+    }
+}

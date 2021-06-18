@@ -16,24 +16,10 @@
     </div>
     <app-header-director-comercial></app-header-director-comercial>
     <!-- <app-plantilla-director-comercial (isLoadingEvent)="recieveIsLoading($event)"></app-plantilla-director-comercial> -->
-    <app-plantilla-director-comercial></app-plantilla-director-comercial>
+    <app-plantilla-director-comercial (nominaSelectedEvent)="recieveNominaSelected($event)"></app-plantilla-director-comercial>
     
 
-    <div class="row mt-3">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row text-center">
-                        <div class="col-12 col-md "><p>Occidente</p></div>
-                        <div class="col-12 col-md border-left"><p>30 Gerencias Comerciales</p></div>
-                        <div class="col-12 col-md border-left"><p>30 Especialistas</p></div>
-                        <div class="col-12 col-md border-left"><p>$ 1.5 M Proyección Saldo</p></div>
-                        <div class="col-12 col-md border-left"><p>$ 7.5 M Mejor Saldo</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-barra-coordinacion-director-comercial></app-barra-coordinacion-director-comercial>    
 
     <app-detalle-direccion-comercial></app-detalle-direccion-comercial>
 </div>
