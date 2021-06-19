@@ -19,6 +19,8 @@ interface UsuarioData {
   sucursal: string;
   idCoordinacion: number;
   coordinacion: string;
+  zona:string;
+  cveZona:string;
   foto: string;
   titulo: string;
   activo: boolean;

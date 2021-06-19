@@ -4,9 +4,8 @@ import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { LoginInterface } from '../../interfaces/login.interface';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { BarraCoordinacionDirectorComercialComponent } from '../../shared/barra-coordinacion-director-comercial/barra-coordinacion-director-comercial.component';
+import { BarraZonaDirectorComercialComponent } from '../../shared/barra-zona-director-comercial/barra-zona-director-comercial.component';
 import { PlantillaDirectorComercialComponent } from '../../shared/plantilla-director-comercial/plantilla-director-comercial.component';
-import { UserInfoInterface } from '../../interfaces/userInfo.interface';
 import { ControlPeriodosComponent } from '../../shared/control-periodos/control-periodos.component';
 
 @Component({
@@ -25,7 +24,7 @@ export class DetalleDirectorComercialComponent implements OnInit {
   // Componentes hijos
   @ViewChild(ControlPeriodosComponent) controlPeriodosChild: ControlPeriodosComponent;
   @ViewChild(PlantillaDirectorComercialComponent) plantillaDirectorComercialChild: PlantillaDirectorComercialComponent;
-  @ViewChild(BarraCoordinacionDirectorComercialComponent) barraCoordinacionDirectorComercialChild: BarraCoordinacionDirectorComercialComponent;
+  @ViewChild(BarraZonaDirectorComercialComponent) barraZonaDirectorComercialChild: BarraZonaDirectorComercialComponent;
   
   
   constructor(private router: Router, public loginService: LoginService, private toastrService: ToastrService) {
@@ -75,14 +74,15 @@ export class DetalleDirectorComercialComponent implements OnInit {
     this.loadData();
   }
   recieveNominaSelected($event: any): void{
-    this.loadData();
+    this.cargaDatosBarraDatosZona();
   }
 
   loadData(): void{
     try {
       //this.controlPeriodosChild.loading = true;
       this.cargaDatosplantillaDirectorComercial();
-      this.cargaDatosBarraDatosCoordinacion();
+      if(this.barraZonaDirectorComercialChild.nomina != null || this.loginInterface.usuarioData.perfilUsuarioId == 15)
+        this.cargaDatosBarraDatosZona();
 
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
@@ -91,14 +91,25 @@ export class DetalleDirectorComercialComponent implements OnInit {
   }
 
   private cargaDatosplantillaDirectorComercial(): any {
+    this.plantillaDirectorComercialChild.perfilUsuarioId = this.loginInterface.usuarioData.perfilUsuarioId;
+    this.plantillaDirectorComercialChild.nomina = this.loginInterface.usuarioData.nomina;
     this.plantillaDirectorComercialChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
     this.plantillaDirectorComercialChild.periodoMes = this.controlPeriodosChild.periodoMes;
     this.plantillaDirectorComercialChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
-    //this.plantillaDirectorComercialChild.loadData();
+    this.plantillaDirectorComercialChild.loadData();
   }
 
-  private cargaDatosBarraDatosCoordinacion(): any {
-    this.barraCoordinacionDirectorComercialChild.focusUsr = this.plantillaDirectorComercialChild.focusUsr;
-    //this.barraCoordinacionDirectorComercialChild.loadData();
+  private cargaDatosBarraDatosZona(): any {
+    if(this.loginInterface.usuarioData.perfilUsuarioId == 15){
+      this.barraZonaDirectorComercialChild.zona = this.loginInterface.usuarioData.zona;
+      this.barraZonaDirectorComercialChild.nomina = this.loginInterface.usuarioData.nomina;
+    } else {
+      this.barraZonaDirectorComercialChild.zona = this.plantillaDirectorComercialChild.focusUsr.zona;
+      this.barraZonaDirectorComercialChild.nomina = this.plantillaDirectorComercialChild.focusUsr.nomina;
+    }
+    this.barraZonaDirectorComercialChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
+    this.barraZonaDirectorComercialChild.periodoMes = this.controlPeriodosChild.periodoMes;
+    this.barraZonaDirectorComercialChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
+    this.barraZonaDirectorComercialChild.loadData();
   }
 }

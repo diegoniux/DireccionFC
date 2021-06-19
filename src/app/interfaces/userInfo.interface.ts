@@ -1,9 +1,10 @@
 export interface UserInfoInterface{
     id:number;
     nomina:number;
-    nombres:string;
-    apellidos:string;
-    coordinacion:string;
+    nombre:string;
+    apellidoPaterno:string;
+    apellidoMaterno:string;
+    zona:string;
     saldoAcumulado:string;
     porcentaje:string;
     positivo:boolean;

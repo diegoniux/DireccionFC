@@ -39,7 +39,7 @@ import { DetalleDirectorComercialComponent } from './pages/detalle-director-come
 import { DetalleDireccionComercialComponent } from './shared/detalle-direccion-comercial/detalle-direccion-comercial.component';
 import { PlantillaDirectorComercialComponent } from './shared/plantilla-director-comercial/plantilla-director-comercial.component';
 import { HeaderDirectorComercialComponent } from './shared/header-director-comercial/header-director-comercial.component';
-import { BarraCoordinacionDirectorComercialComponent } from './shared/barra-coordinacion-director-comercial/barra-coordinacion-director-comercial.component';
+import { BarraZonaDirectorComercialComponent } from './shared/barra-zona-director-comercial/barra-zona-director-comercial.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,7 @@ import { BarraCoordinacionDirectorComercialComponent } from './shared/barra-coor
     DetalleDireccionComercialComponent,
     PlantillaDirectorComercialComponent,
     HeaderDirectorComercialComponent,
-    BarraCoordinacionDirectorComercialComponent
+    BarraZonaDirectorComercialComponent
   ],
   imports: [
     BrowserModule,

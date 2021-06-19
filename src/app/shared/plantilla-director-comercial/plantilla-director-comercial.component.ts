@@ -3,6 +3,8 @@ import { UserInfoInterface } from '../../interfaces/userInfo.interface';
 import { Router } from '@angular/router';
 import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
 import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
+import { plantillaDirectorComercialInterface } from '../../interfaces/dto/plantillaDirectorComercial.interface';
+import { DetalleDirectorComercialService } from '../../services/detalle-director-comercial.service';
 
 @Component({
   selector: 'app-plantilla-director-comercial',
@@ -11,57 +13,41 @@ import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface
 })
 export class PlantillaDirectorComercialComponent implements OnInit {
   @Output() nominaSelectedEvent = new EventEmitter();
+  @Output() isLoadingEvent = new EventEmitter();
   
+  perfilUsuarioId: number;
   listaPlantilla:UserInfoInterface[];
-  usrOne = {
-    id: 1,
-    nomina: 22222,
-    nombres: 'Richi', 
-    apellidos: 'Garza', 
-    coordinacion: 'Monterrey', 
-    saldoAcumulado: '$ 10M', 
-    porcentaje: '50%', 
-    positivo: false, 
-    foto: 'https://pbs.twimg.com/profile_images/792844379635408897/4pwOSKD6_400x400.jpg'
-  };
-  usrTwo = {
-    id: 2,
-    nomina: 33333,
-    nombres: 'Camilo', 
-    apellidos: 'Grimaldo', 
-    coordinacion: 'Monterrey2', 
-    saldoAcumulado: '$ 6M', 
-    porcentaje: '35%', 
-    positivo: true, 
-    foto: 'https://pbs.twimg.com/profile_images/908667096971620353/9CkybC7v_400x400.jpg'
-  };
-  usrThree = {
-    id: 3,
-    nomina: 44444,
-    nombres: 'Diego', 
-    apellidos: 'Nieto', 
-    coordinacion: 'Morelia', 
-    saldoAcumulado: '$ 1M', 
-    porcentaje: '10%', 
-    positivo: true, 
-    foto: 'https://avatars.githubusercontent.com/u/36705902?v=4'
-  };
   focusUsr:UserInfoInterface;
+  nomina: number;
   idTipoPeriodo: number;
   periodoMes: PeriodoMesInterface;
   periodoSemana: PeriodoSemanaInterface;
   periodo: number;
   loading: boolean;
 
-  constructor() {
-    this.listaPlantilla = [];
-    this.listaPlantilla.push(this.usrOne);
-    this.listaPlantilla.push(this.usrTwo);
-    this.listaPlantilla.push(this.usrThree);
-    this.focusUsr = this.listaPlantilla[0];
+  constructor(public detalleDirectorComercialService: DetalleDirectorComercialService) {
   }
 
   ngOnInit(): void {
+  }
+
+  public loadData(): any {
+    this.loading = true;
+    this.isLoadingEvent.emit(this.loading);
+    this.detalleDirectorComercialService.getPlantillaDireccionComercial(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
+      , this.periodoSemana.fechaFinal)
+    .toPromise()
+    .then((data: plantillaDirectorComercialInterface) => {
+      this.listaPlantilla = data.listaPlantilla;
+      this.focusUsr = this.listaPlantilla[0];
+      console.log(data);
+      this.nominaSelectedEvent.emit();
+      this.loading = false;
+      this.isLoadingEvent.emit(this.loading);
+    })
+    .catch(error => {
+      console.error(error);
+    });
   }
 
   public selectedUser(id:number): any {
