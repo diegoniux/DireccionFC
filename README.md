@@ -5,9 +5,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Installation
 
 --- Default Node & Angular settings
+
 npm install --save-dev @angular-devkit/build-angular
 
+
 --- Required package
+
 npm install --save @types/chart.js
 
 npm install --save @ng-select/ng-select
