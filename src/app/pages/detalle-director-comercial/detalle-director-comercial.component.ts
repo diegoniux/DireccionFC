@@ -81,7 +81,7 @@ export class DetalleDirectorComercialComponent implements OnInit {
     try {
       //this.controlPeriodosChild.loading = true;
       this.cargaDatosplantillaDirectorComercial();
-      if(this.barraZonaDirectorComercialChild.nomina != null || this.loginInterface.usuarioData.perfilUsuarioId == 15)
+      if(this.barraZonaDirectorComercialChild.nomina != null || this.loginInterface.usuarioData.perfilUsuarioId == 7)
         this.cargaDatosBarraDatosZona();
 
     } catch (error) {
@@ -100,7 +100,7 @@ export class DetalleDirectorComercialComponent implements OnInit {
   }
 
   private cargaDatosBarraDatosZona(): any {
-    if(this.loginInterface.usuarioData.perfilUsuarioId == 15){
+    if(this.loginInterface.usuarioData.perfilUsuarioId == 7){
       this.barraZonaDirectorComercialChild.zona = this.loginInterface.usuarioData.zona;
       this.barraZonaDirectorComercialChild.nomina = this.loginInterface.usuarioData.nomina;
     } else {
