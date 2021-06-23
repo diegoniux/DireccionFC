@@ -14,7 +14,7 @@
                                 <img src="{{focusUsr.foto}}" class="mx-auto d-block rounded-circle imgFoto">
                             </div>
                             <div class="col-6 noPaddig" >
-                                <p class="font-weight-bold">{{ focusUsr.nombres }} {{ focusUsr.apellidos }}</p>
+                                <p class="font-weight-bold">{{ focusUsr.nombre }} {{ focusUsr.apellidoPaterno }} {{ focusUsr.apellidoMaterno }}</p>
                                 <p>{{focusUsr.coordinacion}}</p>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                         <img src="{{ item.foto }}" class="mx-auto d-block rounded-circle imgFoto">
                     </div>
                     <div class="col-md-*" style="padding-left: 10px;">
-                        <p class="font-weight-bold">{{ item.nombres }} {{ item.apellidos }}</p>
+                        <p class="font-weight-bold">{{ item.nombre }} {{ item.apellidoPaterno }} {{ item.apellidoMaterno }}</p>
                         <p>{{ item.coordinacion }}</p>
                     </div>
                 </div>
