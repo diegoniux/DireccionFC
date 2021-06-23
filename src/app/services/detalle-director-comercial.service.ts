@@ -30,4 +30,14 @@ export class DetalleDirectorComercialService {
     return this.http.get(this.apiURL +
       `DirectorComercial/getEncabezadoZonaDireccionComercial/${nomina}/${tipoPeriodo}/${fechaInicio}/${fechaFin}`);
   }
+
+  public getHeaderDirectorComercial(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
+    return this.http.get(this.apiURL +
+      `DirectorComercial/getHeaderDirectorComercial/${nomina}/${fechaInicio}/${fechaFin}/${tipoPeriodo}`);
+  }
+
+  public getDetalleDireccionComercial(nomina: number, tipoPeriodo: number, fechaInicio: string, fechaFin: string): any {
+    return this.http.get(this.apiURL +
+      `DirectorComercial/getDetalleDireccionComercial/${nomina}/${fechaInicio}/${fechaFin}/${tipoPeriodo}`);
+  }
 }

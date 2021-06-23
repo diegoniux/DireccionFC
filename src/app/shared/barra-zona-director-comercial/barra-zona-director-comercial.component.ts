@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { UserInfoInterface } from '../../interfaces/userInfo.interface';
 import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
 import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
 import { DetalleDirectorComercialService } from '../../services/detalle-director-comercial.service';
@@ -12,8 +11,8 @@ import { BarraZonaDirectorComercialInterface } from '../../interfaces/dto/BarraZ
 })
 export class BarraZonaDirectorComercialComponent implements OnInit {
   @Output() isLoadingEvent = new EventEmitter();
-  
-  zona:string;
+
+  zona: string;
   nomina: number;
   idTipoPeriodo: number;
   periodoMes: PeriodoMesInterface;
@@ -29,7 +28,7 @@ export class BarraZonaDirectorComercialComponent implements OnInit {
   public loadData(): any {
     this.loading = true;
     this.isLoadingEvent.emit(this.loading);
-    this.detalleDirectorComercialService.getEncabezadoZonaDireccionComercial(this.nomina, this.idTipoPeriodo, 
+    this.detalleDirectorComercialService.getEncabezadoZonaDireccionComercial(this.nomina, this.idTipoPeriodo,
       this.periodoSemana.fechaInicial, this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: BarraZonaDirectorComercialInterface) => {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { LoginInterface } from '../../interfaces/login.interface';
@@ -7,13 +7,15 @@ import { Router } from '@angular/router';
 import { BarraZonaDirectorComercialComponent } from '../../shared/barra-zona-director-comercial/barra-zona-director-comercial.component';
 import { PlantillaDirectorComercialComponent } from '../../shared/plantilla-director-comercial/plantilla-director-comercial.component';
 import { ControlPeriodosComponent } from '../../shared/control-periodos/control-periodos.component';
+import { HeaderDirectorComercialComponent } from '../../shared/header-director-comercial/header-director-comercial.component';
+import { DetalleDireccionComercialComponent } from '../../shared/detalle-direccion-comercial/detalle-direccion-comercial.component';
 
 @Component({
   selector: 'app-detalle-director-comercial',
   templateUrl: './detalle-director-comercial.component.html',
   styleUrls: ['./detalle-director-comercial.component.css']
 })
-export class DetalleDirectorComercialComponent implements OnInit {
+export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit {
 
 
   nombreTitulo: string;
@@ -25,8 +27,9 @@ export class DetalleDirectorComercialComponent implements OnInit {
   @ViewChild(ControlPeriodosComponent) controlPeriodosChild: ControlPeriodosComponent;
   @ViewChild(PlantillaDirectorComercialComponent) plantillaDirectorComercialChild: PlantillaDirectorComercialComponent;
   @ViewChild(BarraZonaDirectorComercialComponent) barraZonaDirectorComercialChild: BarraZonaDirectorComercialComponent;
-  
-  
+  @ViewChild(HeaderDirectorComercialComponent) headerDirectorComercialChild: HeaderDirectorComercialComponent;
+  @ViewChild(DetalleDireccionComercialComponent) detalleDireccionChild: DetalleDireccionComercialComponent;
+
   constructor(private router: Router, public loginService: LoginService, private toastrService: ToastrService) {
     this.nombreTitulo = 'Director Comercial';
     this.nombreImg = 'iconoPizarronDigital';
@@ -79,11 +82,15 @@ export class DetalleDirectorComercialComponent implements OnInit {
 
   loadData(): void{
     try {
-      //this.controlPeriodosChild.loading = true;
+      // this.controlPeriodosChild.loading = true;
       this.cargaDatosplantillaDirectorComercial();
-      if(this.barraZonaDirectorComercialChild.nomina != null || this.loginInterface.usuarioData.perfilUsuarioId == 7)
+      this.cargaHeader();
+      if (this.barraZonaDirectorComercialChild.nomina != null || this.loginInterface.usuarioData.perfilUsuarioId === 7) {
         this.cargaDatosBarraDatosZona();
-
+      }
+      else{
+        this.cargaDetalleDireccion();
+      }
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
       // this.registrarError(error.message);
@@ -99,8 +106,24 @@ export class DetalleDirectorComercialComponent implements OnInit {
     this.plantillaDirectorComercialChild.loadData();
   }
 
+  private cargaHeader(): any {
+    this.headerDirectorComercialChild.nomina = this.loginInterface.usuarioData.nomina;
+    this.headerDirectorComercialChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
+    this.headerDirectorComercialChild.periodoMes = this.controlPeriodosChild.periodoMes;
+    this.headerDirectorComercialChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
+    this.headerDirectorComercialChild.loadData();
+  }
+
+  private cargaDetalleDireccion(): any {
+    this.detalleDireccionChild.nomina = this.loginInterface.usuarioData.nomina;
+    this.detalleDireccionChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
+    this.detalleDireccionChild.periodoMes = this.controlPeriodosChild.periodoMes;
+    this.detalleDireccionChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
+    this.detalleDireccionChild.loadData();
+  }
+
   private cargaDatosBarraDatosZona(): any {
-    if(this.loginInterface.usuarioData.perfilUsuarioId == 7){
+    if (this.loginInterface.usuarioData.perfilUsuarioId === 7){
       this.barraZonaDirectorComercialChild.zona = this.loginInterface.usuarioData.zona;
       this.barraZonaDirectorComercialChild.nomina = this.loginInterface.usuarioData.nomina;
     } else {
@@ -111,5 +134,8 @@ export class DetalleDirectorComercialComponent implements OnInit {
     this.barraZonaDirectorComercialChild.periodoMes = this.controlPeriodosChild.periodoMes;
     this.barraZonaDirectorComercialChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
     this.barraZonaDirectorComercialChild.loadData();
+
+    // cargar el detalle de la dirección
+    this.cargaDetalleDireccion();
   }
 }
