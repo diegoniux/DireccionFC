@@ -3,5 +3,5 @@
     "email": "",
     "nombre_corto": "DFC",
     "nombre_largo": "Dirección Fuerza Comercial",
-    "apiUrl": "http://192.168.1.5/Api_DireccionFC/api/"
+    "apiUrl": "http://desaiis01/Api_DireccionFC/api/"
 }
