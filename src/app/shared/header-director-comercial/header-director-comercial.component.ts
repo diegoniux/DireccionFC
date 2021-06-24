@@ -17,7 +17,7 @@ export class HeaderDirectorComercialComponent implements OnInit {
   periodoSemana: PeriodoSemanaInterface;
   periodo: number;
   loading: boolean;
-  headerDirecorComercial: HeaderDirectorComercial;
+  headerDirectorComercial: HeaderDirectorComercial;
 
   constructor(public detalleDirectorComercialService: DetalleDirectorComercialService) { }
 
@@ -31,7 +31,8 @@ export class HeaderDirectorComercialComponent implements OnInit {
       this.periodoSemana.fechaInicial, this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: HeaderDirectorComercial) => {
-      this.headerDirecorComercial = data;
+      this.headerDirectorComercial = data;
+      console.log(this.headerDirectorComercial);
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
     })
