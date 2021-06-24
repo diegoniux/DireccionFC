@@ -167,6 +167,17 @@
         display: inline-block;
         border: none;
     }
+
+    .valoresOk{
+        background: #80CC0E 0% 0% no-repeat padding-box;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: medium;
+        margin-top: 15px;
+        width: 80px;
+        display: inline-block;
+        border: none;
+    }
     
     
     .cardsdiv{

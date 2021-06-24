@@ -1,127 +1,160 @@
-<div class="row no-gutters p-3">
-    <div class="card col-7 col-lg-3 divsinfo2">
-        <div class="card-body contenedorperfil">
-            <div class="row">
-                <div class="col-3">
-                    <img width="60px" height="60px" class="rounded-circle ImgPerfil" src="assets\img\capi_circulo.png" alt="">
-                </div>
-                <div class="col-9 bodynombre">
-                    <p class="labelNombre">Camilo Angel</p>
-                    <p class="labelApellido">Grimaldo Arreguin</p>
-                    <p class="labelSucursal">Montarrey 11</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card col-5 col-lg divsinfo2 text-center">
-        <div class="card-body cardsdivnoImg">
-            <p class="lblProyeccion">
-                $98M
-            </p>
-            <p class="lblProyeccionDesc">
-                Proyección
-            </p>
-        </div>
-    </div>
-    <div class="card col-12 col-lg divsinfo text-center">
-        <div class="card-body cardsdiv">
-            <div class="row">
-                <div class="col-4 col-md-2 col-lg-12">
-                    <img class="rounded-circle iconos" src="assets\img\btn-saldo-promedio-on.png" alt="">
-                </div>
-                <div class="col-4 col-md-5 col-lg-12">
-                    <p class="lblTitulos">
-                        Saldo Acomulado
-                    </p>
-                </div>
-                <div class="col-4 col-md-5 col-lg-12">
-                    <div class="card valores">$98M</div>
+<div *ngIf="detalleDirectorComercial">
+    <div *ngFor="let item of detalleDirectorComercial.detalleDireccionComercial" class="row no-gutters p-3">
+        <div class="card col-7 col-lg-3 divsinfo2">
+            <div class="card-body contenedorperfil">
+                <div class="row">
+                    <div class="col-3">
+                        <img width="60px" height="60px" class="rounded-circle ImgPerfil" src="{{ item.foto }}" alt="">
+                    </div>
+                    <div class="col-9 bodynombre">
+                        <p class="labelNombre">{{ item.nombre }}</p>
+                        <p class="labelApellido">{{ item.apellido }}</p>
+                        <p class="labelSucursal">{{ item.sucursal }}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card col-12 col-lg divsinfo text-center">
-        <div class="card-body cardsdiv">
-            <div class="row">
-                <div class="col-4 col-md-2 col-lg-12">
-                    <img class="rounded-circle iconos" src="assets\img\btn-productivos-on.png" alt="">
-                </div>
-                <div class="col-4 col-md-5 col-lg-12">
-                    <p class="lblTitulos">
-                        Gerencias Productivas
-                    </p>
-                </div>
-                <div class="col-4 col-md-5 col-lg-12">
-                    <div class="card valores">5/20</div>
+        <div class="card col-5 col-lg divsinfo2 text-center">
+            <div class="card-body cardsdivnoImg">
+                <p class="lblProyeccion">
+                    <span [ngStyle]="{'color': (item.desempenoActivo) ? '#80CC0E' : '#FF1D25'}"><i class="fas fa-arrow-{{ (item.desempenoActivo) ? 'up' : 'down'}}"></i> 
+                        {{ item.proyeccion }}
+                    </span>
+                </p>
+                <p class="lblProyeccionDesc">
+                    Proyección
+                </p>
+            </div>
+        </div>
+        <div class="card col-12 col-lg divsinfo text-center">
+            <div class="card-body cardsdiv">
+                <div class="row">
+                    <div class="col-4 col-md-2 col-lg-12">
+                        <img *ngIf="item.saldoAcumuladoActivo" class="rounded-circle iconos" src="assets\img\btn-saldo-promedio-on.png" alt="">
+                        <img *ngIf="!item.saldoAcumuladoActivo" class="rounded-circle iconos" src="assets\img\btn-saldo-promedio-off.png" alt="">
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12">
+                        <p class="lblTitulos">
+                            Saldo Acomulado
+                        </p>
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12">
+                        <div [ngClass]="{
+                            'card valoresOk': item.saldoAcumuladoActivo,
+                            'card valores': !item.saldoAcumuladoActivo}">
+                            {{ item.saldoAcumulado }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card col-12 col-lg divsinfo text-center">
-        <div class="card-body cardsdiv">
-            <div class="row">
-                <div class="col-4 col-md-2 col-lg-12">
-                    <img class="rounded-circle iconos" src="assets\img\btn-traspasos-on.png" alt="">
-                </div>
-                <div class="col-4 col-md-5 col-lg-12">
-                    <p class="lblTitulos">
-                        Solicitudes
-                    </p>
-                </div>
-                <div class="col-4 col-md-5 col-lg-12">
-                    <div class="card valores">200</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card col-12 col-lg divsinfo text-center">
-        <div class="card-body cardsdiv">
-            <div class="row">
-                <div class="col-4 col-md-2 col-lg-12">
-                    <img class="rounded-circle iconos" src="assets\img\btn-fct-on.png" alt="">
-                </div>
-                <div class="col-4 col-md-5 col-lg-12">
-                    <p class="lblTitulos">
-                        Traspasos FCT
-                    </p>
-                </div>
-                <div class="col-4 col-md-5 col-lg-12">
-                    <div class="card valores">100</div>
+        <div class="card col-12 col-lg divsinfo text-center">
+            <div class="card-body cardsdiv">
+                <div class="row">
+                    <div class="col-4 col-md-2 col-lg-12">
+                        <img *ngIf="item.gerenciasProductivasActivo" class="rounded-circle iconos" src="assets\img\btn-productivos-on.png" alt="">
+                        <img *ngIf="!item.gerenciasProductivasActivo" class="rounded-circle iconos" src="assets\img\btn-productivos-off.png" alt="">
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12">
+                        <p class="lblTitulos">
+                            Gerencias Productivas
+                        </p>
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12">
+                        <div [ngClass]="{
+                            'card valoresOk': item.gerenciasProductivasActivo,
+                            'card valores': !item.gerenciasProductivasActivo}">
+                            {{ item.gerenciasProductivas }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card col-12 col-lg divsinfo text-center">
-        <div class="card-body cardsdiv">
-            <div class="row">
-                <div class="col-4 col-md-2 col-lg-12">
-                    <img class="mb-2 iconoesp" src="assets/img/especialistas-alert.png" alt="">
-                </div>
-                <div class="col-4 col-md-5 col-lg-12">
-                    <p class="lblTitulos">
-                        Especialistas en Riesgo
-                    </p>
-                </div>
-                <div class="col-4 col-md-5 col-lg-12">
-                    <div class="card valores">1/500</div>
+        <div class="card col-12 col-lg divsinfo text-center">
+            <div class="card-body cardsdiv">
+                <div class="row">
+                    <div class="col-4 col-md-2 col-lg-12">
+                        <img *ngIf="item.solicitudesActivo" class="rounded-circle iconos" src="assets\img\btn-traspasos-on.png" alt="">
+                        <img *ngIf="!item.solicitudesActivo" class="rounded-circle iconos" src="assets\img\btn-traspasos-off.png" alt="">
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12">
+                        <p class="lblTitulos">
+                            Solicitudes
+                        </p>
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12">
+                        <div [ngClass]="{
+                            'card valoresOk': item.solicitudesActivo,
+                            'card valores': !item.solicitudesActivo}">
+                            {{item.solicitudes}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card col-12 col-lg divsinfo text-center">
-        <div class="card-body cardsdivnoImg">
-            <div class="row">
-                <div class="col-4 col-md-2 col-lg-12">
+        <div class="card col-12 col-lg divsinfo text-center">
+            <div class="card-body cardsdiv">
+                <div class="row">
+                    <div class="col-4 col-md-2 col-lg-12">
+                        <img *ngIf="item.traspasosFCTActivo" class="rounded-circle iconos" src="assets\img\btn-fct-on.png" alt="">
+                        <img *ngIf="!item.traspasosFCTActivo" class="rounded-circle iconos" src="assets\img\btn-fct-off.png" alt="">
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12">
+                        <p class="lblTitulos">
+                            Traspasos FCT
+                        </p>
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12">
+                        <div [ngClass]="{
+                            'card valoresOk': item.traspasosFCTActivo,
+                            'card valores': !item.traspasosFCTActivo}">
+                            {{item.traspasosFCT}}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-4 col-md-5 col-lg-12 orden">
-                    <p class="lblProyeccion">
-                        <i class="fas fa-arrow-up"></i>10%
-                    </p>
+            </div>
+        </div>
+        <div class="card col-12 col-lg divsinfo text-center">
+            <div class="card-body cardsdiv">
+                <div class="row">
+                    <div class="col-4 col-md-2 col-lg-12">
+                        <img class="mb-2 iconoesp" src="assets/img/especialistas-alert.png" alt="">
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12">
+                        <p class="lblTitulos">
+                            Especialistas en Riesgo
+                        </p>
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12">
+                        <div [ngClass]="{
+                            'card valoresOk': item.especialistasEnRiesgoActivo,
+                            'card valores': !item.especialistasEnRiesgoActivo}">
+                            {{item.especialistasEnRiesgo}}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-4 col-md-5 col-lg-12 ordentitulo">
-                    <p class="lblTitulos">
-                        Desempeño de Venta
-                    </p>
+            </div>
+        </div>
+        <div class="card col-12 col-lg divsinfo text-center">
+            <div class="card-body cardsdivnoImg">
+                <div class="row">
+                    <div class="col-4 col-md-2 col-lg-12">
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12 orden">
+                        <p>
+                            <span [ngStyle]="{'color': (item.desempenoActivo) ? '#80CC0E' : '#FF1D25'}"><i class="fas fa-arrow-{{ (item.desempenoActivo) ? 'up' : 'down'}}"></i> {{ item.desempeno }}</span>
+                        </p>
+                        <!-- <p class="lblProyeccion">
+                            <i *ngIf="item.desmpenoActivo" class="fa fa-arrow-up"></i>
+                            <i *ngIf="!item.desempenoActivo" class="fa fa-arrow-down"></i>
+                            {{item.desempeno}}
+                        </p> -->
+                    </div>
+                    <div class="col-4 col-md-5 col-lg-12 ordentitulo">
+                        <p class="lblTitulos">
+                            Desempeño de Venta
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

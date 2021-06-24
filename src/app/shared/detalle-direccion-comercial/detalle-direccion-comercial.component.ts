@@ -17,7 +17,7 @@ export class DetalleDireccionComercialComponent implements OnInit {
   periodoSemana: PeriodoSemanaInterface;
   periodo: number;
   loading: boolean;
-  detalleDirecgtorComercial: DetalleDireccionComercial;
+  detalleDirectorComercial: DetalleDireccionComercial;
 
   constructor(public detalleDirectorComercialService: DetalleDirectorComercialService) { }
 
@@ -25,13 +25,15 @@ export class DetalleDireccionComercialComponent implements OnInit {
   }
 
   public loadData(): any {
+    console.log('ok');
     this.loading = true;
     this.isLoadingEvent.emit(this.loading);
     this.detalleDirectorComercialService.getDetalleDireccionComercial(this.nomina, this.idTipoPeriodo,
       this.periodoSemana.fechaInicial, this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: DetalleDireccionComercial) => {
-      this.detalleDirecgtorComercial = data;
+      console.log('si jaló');
+      this.detalleDirectorComercial = data;
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
     })
