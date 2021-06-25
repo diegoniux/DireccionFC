@@ -39,8 +39,8 @@
                             </p>
                             
                         </div>
-                        <div class="col-lg col-6 text-center" [ngStyle]="{'color': (headerDirectorComercial.desempenoVentaActivo) ? '#80CC0E' : '#FF1D25'}">
-                            <p class="valores" style="color: green;">
+                        <div class="col-lg col-6 text-center" >
+                            <p class="valores" [ngStyle]="{'color': (headerDirectorComercial.desempenoVentaActivo) ? '#80CC0E' : '#FF1D25'}">
                                 <i class="fas fa-arrow-{{ (headerDirectorComercial.desempenoVentaActivo) ? 'up' : 'down'}}"></i>
                                 {{headerDirectorComercial.desempenoVenta}}
                             </p>
