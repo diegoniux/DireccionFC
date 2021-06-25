@@ -102,7 +102,10 @@ export class LoginComponent implements OnInit {
           case 9: // Gerente Coorginador
             this.router.navigate(['/home']);
             break;
-          case 7 || 14: // Director Comercial o VP
+          case 7: // Director Comercial
+            this.router.navigate(['/home/detalleDirectorComercial']);
+            break;
+          case 14: // VP
             this.router.navigate(['/home/detalleDirectorComercial']);
             break;
         }
