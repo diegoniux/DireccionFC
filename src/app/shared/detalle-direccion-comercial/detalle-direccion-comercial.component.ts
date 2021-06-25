@@ -25,14 +25,12 @@ export class DetalleDireccionComercialComponent implements OnInit {
   }
 
   public loadData(): any {
-    console.log('ok');
     this.loading = true;
     this.isLoadingEvent.emit(this.loading);
     this.detalleDirectorComercialService.getDetalleDireccionComercial(this.nomina, this.idTipoPeriodo,
       this.periodoSemana.fechaInicial, this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: DetalleDireccionComercial) => {
-      console.log('si jaló');
       this.detalleDirectorComercial = data;
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);

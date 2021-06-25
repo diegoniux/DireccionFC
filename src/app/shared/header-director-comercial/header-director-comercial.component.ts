@@ -32,7 +32,6 @@ export class HeaderDirectorComercialComponent implements OnInit {
     .toPromise()
     .then((data: HeaderDirectorComercial) => {
       this.headerDirectorComercial = data;
-      console.log(this.headerDirectorComercial);
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
     })

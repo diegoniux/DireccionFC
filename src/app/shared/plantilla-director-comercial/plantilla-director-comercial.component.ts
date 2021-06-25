@@ -14,10 +14,10 @@ import { DetalleDirectorComercialService } from '../../services/detalle-director
 export class PlantillaDirectorComercialComponent implements OnInit {
   @Output() nominaSelectedEvent = new EventEmitter();
   @Output() isLoadingEvent = new EventEmitter();
-  
+
   perfilUsuarioId: number;
-  listaPlantilla:UserInfoInterface[];
-  focusUsr:UserInfoInterface;
+  listaPlantilla: UserInfoInterface[];
+  focusUsr: UserInfoInterface;
   nomina: number;
   idTipoPeriodo: number;
   periodoMes: PeriodoMesInterface;
@@ -40,7 +40,6 @@ export class PlantillaDirectorComercialComponent implements OnInit {
     .then((data: plantillaDirectorComercialInterface) => {
       this.listaPlantilla = data.listaPlantilla;
       this.focusUsr = this.listaPlantilla[0];
-      console.log(data);
       this.nominaSelectedEvent.emit();
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
@@ -50,15 +49,16 @@ export class PlantillaDirectorComercialComponent implements OnInit {
     });
   }
 
-  public selectedUser(id:number): any {
-    if(id > this.listaPlantilla.length)
+  public selectedUser(id: number): any {
+    if (id > this.listaPlantilla.length){
       id = 1;
-    else if (id == 0)
+    }
+    else if (id === 0) {
       id = this.listaPlantilla.length;
-      
+    }
     this.listaPlantilla.forEach(i => {
-      if(i.id == id){
-        this.focusUsr = this.listaPlantilla[id-1];
+      if (i.id === id) {
+        this.focusUsr = this.listaPlantilla[id - 1];
         this.nominaSelectedEvent.emit();
       }
     });

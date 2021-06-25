@@ -78,6 +78,8 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
   }
   recieveNominaSelected($event: any): void{
     this.cargaDatosBarraDatosZona();
+    // cargar el detalle de la dirección
+    this.cargaDetalleDireccion();
   }
 
   loadData(): void{
@@ -98,6 +100,7 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
   }
 
   private cargaDatosplantillaDirectorComercial(): any {
+    this.plantillaDirectorComercialChild.nomina = this.loginInterface.usuarioData.nomina;
     this.plantillaDirectorComercialChild.perfilUsuarioId = this.loginInterface.usuarioData.perfilUsuarioId;
     this.plantillaDirectorComercialChild.nomina = this.loginInterface.usuarioData.nomina;
     this.plantillaDirectorComercialChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
@@ -115,7 +118,15 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
   }
 
   private cargaDetalleDireccion(): any {
-    this.detalleDireccionChild.nomina = this.loginInterface.usuarioData.nomina;
+    if (this.loginInterface.usuarioData.perfilUsuarioId === 7){
+      this.plantillaDirectorComercialChild.nomina = this.loginInterface.usuarioData.nomina;
+    } else {
+      if (!this.plantillaDirectorComercialChild.focusUsr) {
+        return;
+      }
+      this.plantillaDirectorComercialChild.nomina = this.plantillaDirectorComercialChild.focusUsr.nomina;
+    }
+    this.detalleDireccionChild.nomina = this.plantillaDirectorComercialChild.focusUsr.nomina;
     this.detalleDireccionChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
     this.detalleDireccionChild.periodoMes = this.controlPeriodosChild.periodoMes;
     this.detalleDireccionChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
@@ -134,8 +145,5 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
     this.barraZonaDirectorComercialChild.periodoMes = this.controlPeriodosChild.periodoMes;
     this.barraZonaDirectorComercialChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
     this.barraZonaDirectorComercialChild.loadData();
-
-    // cargar el detalle de la dirección
-    this.cargaDetalleDireccion();
   }
 }
