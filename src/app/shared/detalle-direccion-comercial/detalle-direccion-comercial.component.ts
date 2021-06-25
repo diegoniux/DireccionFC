@@ -31,6 +31,7 @@ export class DetalleDireccionComercialComponent implements OnInit {
       this.periodoSemana.fechaInicial, this.periodoSemana.fechaFinal)
     .toPromise()
     .then((data: DetalleDireccionComercial) => {
+      console.log(data);
       this.detalleDirectorComercial = data;
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);

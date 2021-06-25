@@ -85,14 +85,13 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
   loadData(): void{
     try {
       // this.controlPeriodosChild.loading = true;
-      this.cargaDatosplantillaDirectorComercial();
       this.cargaHeader();
+      if(this.loginInterface.usuarioData.perfilUsuarioId != 7)
+        this.cargaDatosplantillaDirectorComercial();
       if (this.barraZonaDirectorComercialChild.nomina != null || this.loginInterface.usuarioData.perfilUsuarioId === 7) {
         this.cargaDatosBarraDatosZona();
       }
-      else{
-        this.cargaDetalleDireccion();
-      }
+      this.cargaDetalleDireccion();
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
       // this.registrarError(error.message);
@@ -119,14 +118,13 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
 
   private cargaDetalleDireccion(): any {
     if (this.loginInterface.usuarioData.perfilUsuarioId === 7){
-      this.plantillaDirectorComercialChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.detalleDireccionChild.nomina = this.loginInterface.usuarioData.nomina;
     } else {
       if (!this.plantillaDirectorComercialChild.focusUsr) {
         return;
       }
-      this.plantillaDirectorComercialChild.nomina = this.plantillaDirectorComercialChild.focusUsr.nomina;
+      this.detalleDireccionChild.nomina = this.plantillaDirectorComercialChild.focusUsr.nomina;
     }
-    this.detalleDireccionChild.nomina = this.plantillaDirectorComercialChild.focusUsr.nomina;
     this.detalleDireccionChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
     this.detalleDireccionChild.periodoMes = this.controlPeriodosChild.periodoMes;
     this.detalleDireccionChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
