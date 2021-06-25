@@ -24,11 +24,13 @@ export class PlantillaDirectorComercialComponent implements OnInit {
   periodoSemana: PeriodoSemanaInterface;
   periodo: number;
   loading: boolean;
+  idSelected: number;
 
   constructor(public detalleDirectorComercialService: DetalleDirectorComercialService) {
   }
 
   ngOnInit(): void {
+    localStorage.setItem('idSelected', '0');
   }
 
   public loadData(): any {
@@ -43,6 +45,11 @@ export class PlantillaDirectorComercialComponent implements OnInit {
       this.nominaSelectedEvent.emit();
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
+      this.idSelected = +localStorage.getItem('idSelected');
+      if (this.idSelected && this.idSelected > 0) {
+        this.selectedUser(this.idSelected);
+      }
+
     })
     .catch(error => {
       console.error(error);
@@ -58,6 +65,7 @@ export class PlantillaDirectorComercialComponent implements OnInit {
     }
     this.listaPlantilla.forEach(i => {
       if (i.id === id) {
+        localStorage.setItem('idSelected', id.toString());
         this.focusUsr = this.listaPlantilla[id - 1];
         this.nominaSelectedEvent.emit();
       }
