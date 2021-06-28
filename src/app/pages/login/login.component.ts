@@ -8,6 +8,7 @@ import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { LogErrorInterface } from '../../interfaces/logError.interface';
 import { InfoAppService } from '../../services/info-app.service';
 import { InfoAppInterface } from '../../interfaces/infoApp.interface';
+import { ModoPantallaInterface } from '../../interfaces/modoPantalla.interface';
 
 @Component({
   selector: 'app-login',
@@ -100,6 +101,12 @@ export class LoginComponent implements OnInit {
         this.alertService.success('Bienvenido', this.options);
         switch (this.loginInterface.usuarioData.perfilUsuarioId) {
           case 9: // Gerente Coorginador
+            // activamos el modo de pantalla para que tome la información del coordinador
+            const modoPantalla: ModoPantallaInterface = {
+              modoDetalle: false,
+              nominaDetalle: 0
+            };
+            localStorage.setItem('modoPantalla', JSON.stringify(modoPantalla));
             this.router.navigate(['/home']);
             break;
           case 7: // Director Comercial

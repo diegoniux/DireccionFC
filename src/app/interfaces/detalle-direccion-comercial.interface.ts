@@ -4,6 +4,7 @@ export interface DetalleDireccionComercial {
   detalleDireccionComercial: DetalleDireccionComercialList[];
 }
 interface DetalleDireccionComercialList {
+  nomina: number;
   foto: string;
   nombre: string;
   apellido: string;

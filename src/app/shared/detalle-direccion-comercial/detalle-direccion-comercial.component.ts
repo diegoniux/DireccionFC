@@ -3,6 +3,8 @@ import { PeriodoMesInterface } from '../../interfaces/PeriodoMes.interface';
 import { PeriodoSemanaInterface } from '../../interfaces/periodoSemana.interface';
 import { DetalleDireccionComercial } from '../../interfaces/detalle-direccion-comercial.interface';
 import { DetalleDirectorComercialService } from '../../services/detalle-director-comercial.service';
+import { ModoPantallaInterface } from '../../interfaces/modoPantalla.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-direccion-comercial',
@@ -19,7 +21,10 @@ export class DetalleDireccionComercialComponent implements OnInit {
   loading: boolean;
   detalleDirectorComercial: DetalleDireccionComercial;
 
-  constructor(public detalleDirectorComercialService: DetalleDirectorComercialService) { }
+  constructor(
+    public detalleDirectorComercialService: DetalleDirectorComercialService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -40,5 +45,15 @@ export class DetalleDireccionComercialComponent implements OnInit {
       console.error(error);
     });
   }
+
+  public goDetalleCoordinacion(nomina: number): any{
+    const modoPantalla: ModoPantallaInterface = {
+      modoDetalle: true,
+      nominaDetalle: nomina
+    };
+    localStorage.setItem('modoPantalla', JSON.stringify(modoPantalla));
+    this.router.navigate(['/home']);
+  }
+
 
 }

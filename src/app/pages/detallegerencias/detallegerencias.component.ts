@@ -1,6 +1,4 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FechasPeriodoInterface } from 'src/app/interfaces/dto/fechasPeriodo.interface';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { BarraMetasComponent } from '../../shared/barra-metas/barra-metas.component';
 import { TendenciaComponent } from '../../shared/tendencia/tendencia.component';
@@ -14,6 +12,8 @@ import { LogErrorInterface } from '../../interfaces/logError.interface';
 import { ControlPeriodosComponent } from '../../shared/control-periodos/control-periodos.component';
 import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
 import { LoginInterface } from '../../interfaces/login.interface';
+import { ModoPantallaInterface } from '../../interfaces/modoPantalla.interface';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detallegerencias',
@@ -26,6 +26,8 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
   nombreTitulo: string;
   nombreImg: string;
   loginInterface: LoginInterface;
+  nomina: number;
+  modoPantalla: ModoPantallaInterface;
 
   // componentes hijos
   @ViewChild(BarraMetasComponent) barraMetasChild: BarraMetasComponent;
@@ -38,7 +40,8 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
   constructor(private router: Router,
               public detalleGerenciaService: DetalleGerenciasService,
               public loginService: LoginService,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private location: Location) {
    }
 
   ngOnInit(): void {
@@ -49,6 +52,7 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     try {
       this.loginInterface = this.loginService.getUserLoggedIn();
+      this.nomina = this.loginInterface.usuarioData.nomina;
       const logSistema: LogSistemaInterface = {
         idAccion: 3,
         idPantalla: 1,
@@ -57,6 +61,11 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
       this.registrarLogPantalla(logSistema);
       // Asignación del token al servicio
       this.detalleGerenciaService.token = this.loginInterface.token;
+      // cargamos el modo pantalla
+      this.modoPantalla = JSON.parse(localStorage.getItem('modoPantalla'));
+      if (this.modoPantalla && this.modoPantalla.modoDetalle) {
+        this.nomina = this.modoPantalla.nominaDetalle;
+      }
 
       // Carga automática de componentes cada 20 segundos
       setInterval(() => this.loadData(), 60000);
@@ -85,6 +94,12 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
   }
 
   public logOut(): any {
+    // si el modo de la pantalla es modo detalle, al presionar el botón de salir, regresaremos a la pantalla anteri
+    if (this.modoPantalla && this.modoPantalla.modoDetalle) {
+      this.location.back();
+      return;
+    }
+
     if (confirm('¿Está seguro de cerrar sesión?')){
     this.loginService.setUserLoggedOn();
     const logSistema: LogSistemaInterface = {
@@ -100,7 +115,7 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
   private cargarBarraMetas(): any
   {
     try {
-      this.barraMetasChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.barraMetasChild.nomina = this.nomina;
       this.barraMetasChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
       this.barraMetasChild.periodoMes = this.controlPeriodosChild.periodoMes;
       this.barraMetasChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
@@ -114,7 +129,7 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
   private cargarTendencias(): any
   {
     try {
-      this.tendenciasChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.tendenciasChild.nomina = this.nomina;
       this.tendenciasChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
       this.tendenciasChild.periodoMes = this.controlPeriodosChild.periodoMes;
       this.tendenciasChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
@@ -128,7 +143,7 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
   private cargarRelevante(): any
   {
     try{
-      this.relevanteChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.relevanteChild.nomina = this.nomina;
       this.relevanteChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
       this.relevanteChild.periodoMes = this.controlPeriodosChild.periodoMes;
       this.relevanteChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
@@ -156,7 +171,7 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
   private cargarReporteGerencias(): any
   {
     try{
-      this.reporteGerenciaChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.reporteGerenciaChild.nomina = this.nomina;
       this.reporteGerenciaChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
       this.reporteGerenciaChild.periodoMes = this.controlPeriodosChild.periodoMes;
       this.reporteGerenciaChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
