@@ -139,6 +139,7 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
       this.barraZonaDirectorComercialChild.zona = this.plantillaDirectorComercialChild.focusUsr.zona;
       this.barraZonaDirectorComercialChild.nomina = this.plantillaDirectorComercialChild.focusUsr.nomina;
     }
+    this.barraZonaDirectorComercialChild.barraZonaDirectorComercial = null;
     this.barraZonaDirectorComercialChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
     this.barraZonaDirectorComercialChild.periodoMes = this.controlPeriodosChild.periodoMes;
     this.barraZonaDirectorComercialChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
