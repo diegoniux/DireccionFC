@@ -41,15 +41,16 @@ export class PlantillaDirectorComercialComponent implements OnInit {
     .toPromise()
     .then((data: plantillaDirectorComercialInterface) => {
       this.listaPlantilla = data.listaPlantilla;
-      this.focusUsr = this.listaPlantilla[0];
-      this.nominaSelectedEvent.emit();
-      this.loading = false;
-      this.isLoadingEvent.emit(this.loading);
       this.idSelected = +localStorage.getItem('idSelected');
       if (this.idSelected && this.idSelected > 0) {
         this.selectedUser(this.idSelected);
+        console.log('idSelected ' + this.idSelected.toString());
+      } else {
+        this.focusUsr = this.listaPlantilla[0];
+        this.nominaSelectedEvent.emit();
       }
-
+      this.loading = false;
+      this.isLoadingEvent.emit(this.loading);
     })
     .catch(error => {
       console.error(error);
@@ -65,7 +66,7 @@ export class PlantillaDirectorComercialComponent implements OnInit {
     }
     this.listaPlantilla.forEach(i => {
       if (i.id === id) {
-        localStorage.setItem('idSelected', id.toString());
+        localStorage.setItem('idSelected', (id).toString());
         this.focusUsr = this.listaPlantilla[id - 1];
         this.nominaSelectedEvent.emit();
       }

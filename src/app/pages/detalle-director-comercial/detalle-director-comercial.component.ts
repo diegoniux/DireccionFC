@@ -77,6 +77,8 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
     this.loadData();
   }
   recieveNominaSelected($event: any): void{
+    this.detalleDireccionChild.detalleDirectorComercial = null;
+    this.barraZonaDirectorComercialChild.barraZonaDirectorComercial = null;
     this.cargaDatosBarraDatosZona();
     // cargar el detalle de la dirección
     this.cargaDetalleDireccion();
@@ -139,7 +141,6 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
       this.barraZonaDirectorComercialChild.zona = this.plantillaDirectorComercialChild.focusUsr.zona;
       this.barraZonaDirectorComercialChild.nomina = this.plantillaDirectorComercialChild.focusUsr.nomina;
     }
-    this.barraZonaDirectorComercialChild.barraZonaDirectorComercial = null;
     this.barraZonaDirectorComercialChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
     this.barraZonaDirectorComercialChild.periodoMes = this.controlPeriodosChild.periodoMes;
     this.barraZonaDirectorComercialChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
