@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { BarraMetasComponent } from '../../shared/barra-metas/barra-metas.component';
 import { TendenciaComponent } from '../../shared/tendencia/tendencia.component';
@@ -20,7 +20,7 @@ import { Location } from '@angular/common';
   templateUrl: './detallegerencias.component.html',
   styleUrls: ['./detallegerencias.component.css']
 })
-export class DetallegerenciasComponent implements OnInit, AfterViewInit {
+export class DetallegerenciasComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Propiedades de la clase
   nombreTitulo: string;
@@ -28,6 +28,7 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
   loginInterface: LoginInterface;
   nomina: number;
   modoPantalla: ModoPantallaInterface;
+  idInterval: any;
 
   // componentes hijos
   @ViewChild(BarraMetasComponent) barraMetasChild: BarraMetasComponent;
@@ -49,6 +50,12 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
     this.nombreImg = 'iconoPizarronDigital';
   }
 
+  ngOnDestroy(): void {
+    if (this.idInterval) {
+      clearInterval(this.idInterval);
+    }
+  }
+
   ngAfterViewInit(): void {
     try {
       this.loginInterface = this.loginService.getUserLoggedIn();
@@ -68,7 +75,7 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit {
       }
 
       // Carga automática de componentes cada 20 segundos
-      setInterval(() => this.loadData(), 60000);
+      this.idInterval = setInterval(() => this.loadData(), 60000);
 
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');

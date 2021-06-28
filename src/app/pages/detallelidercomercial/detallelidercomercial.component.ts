@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -19,12 +19,13 @@ import { LogErrorInterface } from '../../interfaces/logError.interface';
   templateUrl: './detallelidercomercial.component.html',
   styleUrls: ['./detallelidercomercial.component.css']
 })
-export class DetallelidercomercialComponent implements OnInit, AfterViewInit {
+export class DetallelidercomercialComponent implements OnInit, AfterViewInit, OnDestroy {
 
   nombreTitulo: string;
   nombreImg: string;
   loginInterface: LoginInterface;
   infoGerencia: ReporteGerencia;
+  idInterval: any;
 
   // Componentes hijos
   @ViewChild(DetallegerenciaComponent) detalleGerenciaChild: DetallegerenciaComponent;
@@ -46,10 +47,15 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit {
     this.nombreTitulo = 'Detalle Líder Comercial';
     this.nombreImg = 'iconoPizarronDigital';
     this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
-    console.log(this.infoGerencia);
    }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    if (this.idInterval) {
+      clearInterval(this.idInterval);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -66,7 +72,7 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit {
         this.router.navigate(['/home']);
       }
       // Carga automática de componentes cada 1 minuto
-      setInterval(() => this.loadData(), 60000);
+      this.idInterval = setInterval(() => this.loadData(), 60000);
 
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');

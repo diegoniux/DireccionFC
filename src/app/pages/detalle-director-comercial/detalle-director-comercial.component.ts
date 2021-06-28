@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { LoginInterface } from '../../interfaces/login.interface';
@@ -15,12 +15,13 @@ import { DetalleDireccionComercialComponent } from '../../shared/detalle-direcci
   templateUrl: './detalle-director-comercial.component.html',
   styleUrls: ['./detalle-director-comercial.component.css']
 })
-export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit {
+export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   nombreTitulo: string;
   nombreImg: string;
   loginInterface: LoginInterface;
+  idInterval: any;
 
 
   // Componentes hijos
@@ -39,6 +40,12 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
 
   }
 
+  ngOnDestroy(): void {
+    if (this.idInterval) {
+      clearInterval(this.idInterval);
+    }
+  }
+
   ngAfterViewInit(): void {
     try {
       this.loginInterface = this.loginService.getUserLoggedIn();
@@ -52,7 +59,7 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit 
       // this.detalleGerenciaService.token = this.loginInterface.token;
 
       // Carga automática de componentes cada 20 segundos
-      setInterval(() => this.loadData(), 60000);
+      this.idInterval = setInterval(() => this.loadData(), 60000);
 
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
