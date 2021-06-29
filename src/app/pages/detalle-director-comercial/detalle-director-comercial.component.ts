@@ -95,8 +95,9 @@ export class DetalleDirectorComercialComponent implements OnInit, AfterViewInit,
     try {
       // this.controlPeriodosChild.loading = true;
       this.cargaHeader();
-      if(this.loginInterface.usuarioData.perfilUsuarioId != 7)
+      if (this.loginInterface.usuarioData.perfilUsuarioId !== 7) {
         this.cargaDatosplantillaDirectorComercial();
+      }
       if (this.barraZonaDirectorComercialChild.nomina != null || this.loginInterface.usuarioData.perfilUsuarioId === 7) {
         this.cargaDatosBarraDatosZona();
       }
