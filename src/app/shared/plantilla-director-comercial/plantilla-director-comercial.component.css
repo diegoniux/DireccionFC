@@ -7,15 +7,15 @@
     /* margin-top: -15px; */
 }
 .imgFoto{
-    width:70px
+    width:70px;
 }
 .noPaddig{
     padding: 0px;
 }
 .card-bg-on{
-    background-color: #ffffff;
+    background-color: #fff;
     border: solid 2px; 
-    border-color: #28a745;
+    border-color: #80CC0E;
 }
 .card-bg-off{
     background-color: #fff;
@@ -25,17 +25,43 @@
 .plantillaMbDisplay{
     display: none;
 }
-.plantillaWebDisplay{
-}
+.plantillaWebDisplay{}
+
 .nombre{
     font-size: 14px;
 }
 
-@media only screen and (max-device-width: 1550px) {}
+@media only screen and (max-device-width: 1550px) {
+    .nombre {
+        padding: 3px;        
+        font-size: 13px;
+    }
+    .imgFoto {
+        width: 55px;
+    }
+    .zona{
+        padding: 3px;
+    }
+}
 
-@media only screen and (max-device-width: 1300px) {}
+@media only screen and (max-device-width: 1300px) {
+    .nombre {
+        padding: 3px;        
+        font-size: 12px;
+    }
+    .imgFoto {
+        width: 52px;
+    }
+    .zona{
+        padding: 3px;
+    }
+}
 
 @media only screen and (max-device-width: 769px) {
+    .nombre {
+        padding: 1px;        
+        font-size: 15px;
+    }
     .plantillaMbDisplay{
         display: block;
     }
@@ -45,6 +71,13 @@
 }
 
 @media only screen and (max-device-width: 489px) {
+    .nombre {
+        padding: 1px;        
+        font-size: 15px;
+    }
+    .imgFoto {
+        width: 52px;
+    }
     .plantillaMbDisplay{
         display: block;
     }
