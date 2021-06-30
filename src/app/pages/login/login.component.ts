@@ -104,7 +104,11 @@ export class LoginComponent implements OnInit {
             // activamos el modo de pantalla para que tome la información del coordinador
             const modoPantalla: ModoPantallaInterface = {
               modoDetalle: false,
-              nominaDetalle: 0
+              nominaDetalle: 0,
+              foto: '',
+              nombre: '',
+              apellido: '',
+              sucursal: ''
             };
             localStorage.setItem('modoPantalla', JSON.stringify(modoPantalla));
             this.router.navigate(['/home']);

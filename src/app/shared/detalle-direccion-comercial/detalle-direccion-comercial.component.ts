@@ -45,10 +45,14 @@ export class DetalleDireccionComercialComponent implements OnInit {
     });
   }
 
-  public goDetalleCoordinacion(nomina: number): any{
+  public goDetalleCoordinacion(nomina: number,foto: string, nombre: string, apellido: string, sucursal: string): any{
     const modoPantalla: ModoPantallaInterface = {
       modoDetalle: true,
-      nominaDetalle: nomina
+      nominaDetalle: nomina,
+      foto: foto,
+      nombre: nombre,
+      apellido: apellido,
+      sucursal: sucursal
     };
     localStorage.setItem('modoPantalla', JSON.stringify(modoPantalla));
     this.router.navigate(['/home']);

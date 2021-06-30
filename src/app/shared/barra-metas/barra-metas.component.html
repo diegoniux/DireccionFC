@@ -165,12 +165,12 @@
         <div class="col-8">
             <div class="row">
                 <div class="col-4">
-                    <img width="50px" height="50px" class="rounded-circle" src="{{ login.usuarioData.foto }}" alt="">
+                    <img width="50px" height="50px" class="rounded-circle" src="{{ (modoPantalla.modoDetalle) ? modoPantalla.foto : login.usuarioData.foto }}" alt="">
                 </div>
                 <div class="col-8">
-                    <p class="labelNombre">{{login.usuarioData.nombre}}</p>
-                    <p class="labelApellido">{{login.usuarioData.apellidoPaterno}}</p>
-                    <p class="labelSucursal">{{login.usuarioData.coordinacion}}</p>
+                    <p class="labelNombre">{{ (modoPantalla.modoDetalle) ? modoPantalla.nombre : login.usuarioData.nombre}}</p>
+                    <p class="labelApellido">{{ (modoPantalla.modoDetalle) ? modoPantalla.apellido : login.usuarioData.apellidoPaterno}}</p>
+                    <p class="labelSucursal">{{ (modoPantalla.modoDetalle) ? modoPantalla.sucursal : login.usuarioData.coordinacion}}</p>
                 </div>
             </div>
         </div>

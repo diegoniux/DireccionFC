@@ -6,6 +6,7 @@ import { PeriodoSemanaInterface } from 'src/app/interfaces/periodoSemana.interfa
 import { LoginInterface } from 'src/app/interfaces/login.interface';
 import { LoginService } from 'src/app/services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { ModoPantallaInterface } from '../../interfaces/modoPantalla.interface';
 
 @Component({
   selector: 'app-barra-metas',
@@ -17,6 +18,7 @@ export class BarraMetasComponent implements OnInit {
   idTipoPeriodo: number;
   periodoMes: PeriodoMesInterface;
   periodoSemana: PeriodoSemanaInterface;
+  modoPantalla: ModoPantallaInterface;
   loading: boolean;
 
   @Output() isLoadingEvent = new EventEmitter<boolean>();
@@ -60,6 +62,7 @@ export class BarraMetasComponent implements OnInit {
   public getBarraMetas(): any
   {
     this.loading = true;
+    this.modoPantalla = JSON.parse(localStorage.getItem('modoPantalla'));
     this.isLoadingEvent.emit(this.loading);
     this.detalleGerenciaService.getBarraMetas(this.nomina, this.idTipoPeriodo, this.periodoSemana.fechaInicial
       , this.periodoSemana.fechaFinal)
