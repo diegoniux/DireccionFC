@@ -17,7 +17,8 @@
         <div class="card col-5 col-lg divsinfo2 text-center">
             <div class="card-body cardsdivnoImg">
                 <p class="lblProyeccion">
-                    <span [ngStyle]="{'color': (item.desempenoActivo) ? '#80CC0E' : '#FF1D25'}"><i class="fas fa-arrow-{{ (item.desempenoActivo) ? 'up' : 'down'}}"></i> 
+                    <span [ngStyle]="{'color': (item.desempenoActivo) ? '#80CC0E' : '#FF1D25'}">
+                        <!-- <i class="fas fa-arrow-{{ (item.desempenoActivo) ? 'up' : 'down'}}"></i>  -->
                         {{ item.proyeccion }}
                     </span>
                 </p>
