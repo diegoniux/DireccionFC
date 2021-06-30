@@ -164,7 +164,7 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit, OnDestr
   private cargarMejorSaldo(): any
   {
     try{
-      this.mejorSaldoChild.nomina = this.loginInterface.usuarioData.nomina;
+      this.mejorSaldoChild.nomina = this.nomina;
       this.mejorSaldoChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
       this.mejorSaldoChild.periodoMes = this.controlPeriodosChild.periodoMes;
       this.mejorSaldoChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
