@@ -1,3 +1,26 @@
+.spanMargin{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.active{
+    background-color: #80CC0E;
+    color: #fff;
+    border-radius: 10px;
+}
+.active a{
+    color: #fff;
+}
+
+.cardMediana{
+    margin-top: 10px;
+    border-radius: 10px ;
+}
+
+.imgdiv{
+    background: #80CC0E 0% 0% no-repeat padding-box;
+}
+
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .sizeNombre{
@@ -117,20 +140,3 @@
         border-image: 10px;
     }
  }
-
-.spanMargin{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-
-
-.cardMediana{
-    margin-top: 10px;
-}
-
-.imgdiv{
-    background: #80CC0E 0% 0% no-repeat padding-box;
-}
-
-

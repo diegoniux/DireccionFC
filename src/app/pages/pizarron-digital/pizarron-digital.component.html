@@ -1,7 +1,32 @@
 <div class="container-fluid p-4" style="background-color: #F2F2F2;">
     <app-titulo class="row" [nombreTitulo]="nombreTitulo" [nombreImg]="nombreImg"></app-titulo>
+    <nav class="navbar navbar-expand-lg navbar-light cardMediana" style="background-color: white;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <button class="btn btn-default"><i style="color: #64a70b;" class="fas fa-home"></i></button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 text-center">
+                <li class="nav-item border-left active" style="width: 250px; margin: 0px 4px 0px 4px;">
+                    <a class="nav-link text-white">
+                        <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Pizarrón Digital <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item border-left" style="width: 250px; margin: 0px 4px 0px 4px;">
+                    <a class="nav-link">
+                        <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Productividad Agentes
+                    </a>
+                </li>
+                <li class="nav-item border-left" style="width: 250px; margin: 0px 4px 0px 4px;">
+                    <a class="nav-link">
+                        <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Alarmas Improductivas
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="row">
-        <div class="card col">
+        <div class="card col cardMediana">
             <div class="row">
                 <div class="row align-items-center col-lg-3 text-white p-0 imgdiv" style="margin-left: 0px; margin-bottom: 0px; margin-right: 1px;">
                     <div class="col-lg-5 col-md-12 p-2">
@@ -53,7 +78,7 @@
             </div>
         </div>
         <div class="m-4"></div>
-        <div class="card col cardMediana">
+        <div class="card col cardMediana ">
             <div class="row">
                 <div class="col text-center p-4">
                     <p class="font-weight-bold sizeMoney">$5K</p>
@@ -69,115 +94,117 @@
     </div>
     <div class="row">
         <div class="card col cardMediana">
-            <div class="row table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th scope="col" class="text-white" style="background-color: #275D38;">Consulta Semanal</th>
-                        <th scope="col">LU</th>
-                        <th scope="col">MA</th>
-                        <th scope="col">MI</th>
-                        <th scope="col">JU</th>
-                        <th scope="col">VI</th>
-                        <th scope="col">SA</th>
-                        <th scope="col">DO</th>
-                        <th scope="col" style="background-color: #DE9401;">Total</th>
-                        <th scope="col" style="background-color: #DE9401;">Faltante</th>
-                        <th scope="col" style="background-color: #DE9401;">Meta</th>
-                        <th scope="col" style="background-color: #C78400;">FCT Inactivo</th>
-                        <th scope="col" style="background-color: #C78400;">FCT Activo</th>
-                        <th scope="col" style="background-color: #C78400;">Saldos menores 40K</th>
-                        <th scope="col" style="background-color: #C78400;">Total Folios Cert.</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">Camilo</th>
-                        <td>345</td>
-                        <td>34</td>
-                        <td>89</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="background-color: #FF00001A;">0</td>
-                        <td>40</td>
-                        <td>70</td>
-                        <td></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Richo</th>
-                        <td>78</td>
-                        <td></td>
-                        <td>6</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="background-color: #FF00001A;">120</td>
-                        <td>40</td>
-                        <td>70</td>
-                        <td></td>
-                        <td></td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Diego</th>
-                        <td>67</td>
-                        <td>78</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="background-color: #FF00001A;">120</td>
-                        <td>40</td>
-                        <td>100</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Rafa</th>
-                        <td>10</td>
-                        <td></td>
-                        <td>100</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="background-color: #FFA40033;">220</td>
-                        <td>175</td>
-                        <td>170</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Alex</th>
-                        <td>13</td>
-                        <td>40</td>
-                        <td>70</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="background-color: #64A70B33;">318</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="card-body">
+                <div class="row table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="text-center">
+                        <tr>
+                            <th scope="col" class="text-white" style="background-color: #275D38;">Consulta Semanal</th>
+                            <th scope="col">LU</th>
+                            <th scope="col">MA</th>
+                            <th scope="col">MI</th>
+                            <th scope="col">JU</th>
+                            <th scope="col">VI</th>
+                            <th scope="col">SA</th>
+                            <th scope="col">DO</th>
+                            <th scope="col" style="color: white; background-color: #DE9401;">Total</th>
+                            <th scope="col" style="color: white; background-color: #DE9401;">Faltante</th>
+                            <th scope="col" style="color: white; background-color: #DE9401;">Meta</th>
+                            <th scope="col" style="color: white; background-color: #C78400;">FCT Inactivo</th>
+                            <th scope="col" style="color: white; background-color: #C78400;">FCT Activo</th>
+                            <th scope="col" style="color: white; background-color: #C78400;">Saldos menores 40K</th>
+                            <th scope="col" style="color: white; background-color: #C78400;">Total Folios Cert.</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Camilo</th>
+                            <td>345</td>
+                            <td>34</td>
+                            <td>89</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="background-color: #FF00001A;">0</td>
+                            <td>40</td>
+                            <td>70</td>
+                            <td></td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Richo</th>
+                            <td>78</td>
+                            <td></td>
+                            <td>6</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="background-color: #FF00001A;">120</td>
+                            <td>40</td>
+                            <td>70</td>
+                            <td></td>
+                            <td></td>
+                            <td>1</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Diego</th>
+                            <td>67</td>
+                            <td>78</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="background-color: #FF00001A;">120</td>
+                            <td>40</td>
+                            <td>100</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td></td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Rafa</th>
+                            <td>10</td>
+                            <td></td>
+                            <td>100</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="background-color: #FFA40033;">220</td>
+                            <td>175</td>
+                            <td>170</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Alex</th>
+                            <td>13</td>
+                            <td>40</td>
+                            <td>70</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="background-color: #64A70B33;">318</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
