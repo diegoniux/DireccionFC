@@ -40,6 +40,7 @@ import { DetalleDireccionComercialComponent } from './shared/detalle-direccion-c
 import { PlantillaDirectorComercialComponent } from './shared/plantilla-director-comercial/plantilla-director-comercial.component';
 import { HeaderDirectorComercialComponent } from './shared/header-director-comercial/header-director-comercial.component';
 import { BarraZonaDirectorComercialComponent } from './shared/barra-zona-director-comercial/barra-zona-director-comercial.component';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { BarraZonaDirectorComercialComponent } from './shared/barra-zona-directo
     DetalleDireccionComercialComponent,
     PlantillaDirectorComercialComponent,
     HeaderDirectorComercialComponent,
-    BarraZonaDirectorComercialComponent
+    BarraZonaDirectorComercialComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
