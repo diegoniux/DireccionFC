@@ -1,5 +1,43 @@
-.cardMediana{
-    margin-top: 10px;
+.navbar.navbar-light .breadcrumb .nav-item.active >.nav-link, .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
+    background-color: #fff;
+    border-radius: 10px;
+}
+mdb-navbar .navbar.navbar-7 .navbar-toggler-icon {
+    background-image: url('https://mdbcdn.b-cdn.net/img/svg/hamburger9.svg?color=FF2C00');
+}
+.navbar {
+    margin-top: 30px;
     border-radius: 10px;
     border: solid 1px #d6d6d6;
+    background-color: #fff;
+}
+.active{
+    background-color: #80CC0E;
+    color: #fff;
+    border-radius: 10px;
+}
+a.active{
+    color: #fff;
+}
+ul {
+    text-align: center;  
+}
+li{
+    width: 250px; 
+    margin: 0px 4px 0px 4px;
+}
+.separator {
+    border-left: solid 1px #d6d6d6;
+}
+
+@media (max-width: 991px) {
+    ul {
+      text-align: left;  
+    }
+    .active {
+        border-radius: 0px;
+    }
+    .separator {
+        border-left: solid 0px;
+    }
 }

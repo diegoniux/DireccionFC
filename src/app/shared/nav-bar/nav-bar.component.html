@@ -1,25 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-light cardMediana" style="background-color: white;">
-    <button class="btn btn-default navbar-brand"><i style="color: #64a70b;" class="fas fa-home"></i></button>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto text-center">
-            <li class="nav-item border-left active" style="width: 250px; margin: 0px 4px 0px 4px;">
-                <a class="nav-link text-white">
-                    <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Pizarrón Digital <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item border-left" style="width: 250px; margin: 0px 4px 0px 4px;">
-                <a class="nav-link">
-                    <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Productividad Agentes
-                </a>
-            </li>
-            <li class="nav-item border-left" style="width: 250px; margin: 0px 4px 0px 4px;">
-                <a class="nav-link">
-                    <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Alarmas Improductivas
-                </a>
-            </li>
-        </ul>
+<div class="row" style="margin-top: 20px; background-color: #fff;">
+    <div class="col-12" style="padding: 0px;">
+        <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="false">
+            <mdb-navbar-brand>
+                <button class="btn btn-default navbar-brand"><i style="color: #64a70b;" class="fas fa-home"></i></button>
+            </mdb-navbar-brand>
+        
+            <links>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item separator active">
+                        <a class="nav-link">
+                            <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Pizarrón Digital <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item separator">
+                        <a class="nav-link">
+                            <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Productividad Agentes
+                        </a>
+                    </li>
+                    <li class="nav-item separator">
+                        <a class="nav-link">
+                            <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Alarmas Improductivas
+                        </a>
+                    </li>
+                </ul>
+            </links>
+        </mdb-navbar>
     </div>
-</nav>
+</div>
