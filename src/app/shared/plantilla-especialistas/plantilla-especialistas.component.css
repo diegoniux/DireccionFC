@@ -1,0 +1,24 @@
+.card-radius{
+    border-radius: 10px;
+}
+.cardEspecialista {
+    border-radius: 14px;
+}
+.imgFoto{
+    width: 90px;
+    border: solid 4px #FF0000;
+}
+.card-body{
+    padding: 10px;
+}
+
+@media (max-width: 1200px) {
+    .imgFoto{
+        width: 75px;
+    }
+}
+@media (max-width: 900px) {
+    .imgFoto{
+        width: 70px;
+    }
+}

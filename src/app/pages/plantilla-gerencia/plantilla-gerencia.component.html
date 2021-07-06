@@ -1,0 +1,36 @@
+<div class="container-fluid p-4" style="background-color: #F2F2F2;">
+    <app-titulo class="row" [nombreTitulo]="nombreTitulo" [nombreImg]="nombreImg"></app-titulo>
+    <app-nav-bar [seccionActiva]="2"></app-nav-bar>
+    <div class="row">
+        <div class="card col cardMediana">
+            <div class="row">
+                <div class="row align-items-center col-lg-3 text-white p-0 imgdiv" style="margin-left: 0px; margin-bottom: 0px; margin-right: 1px;">
+                    <div class="col-lg-5 col-md-12 p-2">
+                        <img class="rounded mx-auto d-block imgPerfil" src="assets/img/fotoperfil.png" alt="">
+                    </div>
+                    <div class="col-lg-7 col-md-6">
+                        <p class="font-weight-bold sizeNombre">Juan José</p>
+                        <p class="font-weight-bold sizeNombre">Pereira González</p>
+                        <p class="sizeSucursal">Santa Catarina 4</p>
+                    </div>
+                </div>
+                <span class="border spanMargin"></span>
+                <div class="col text-center p-4">
+                    <p class="font-weight-bold sizeMoney">$4.5M</p>
+                    <p class="sizeTipoSaldo">Saldo acumulado</p>
+                </div>
+                <span class="border spanMargin"></span>
+                <div class="col text-center p-4">
+                    <p class="font-weight-bold sizeMoney">$1.2M</p>
+                    <p class="sizeTipoSaldo"> Saldo virtual</p>
+                </div>
+                <span class="border spanMargin"></span>
+                <div class="col text-center p-4">
+                    <p class="font-weight-bold sizeMoney">$3.3M</p>
+                    <p class="sizeTipoSaldo">Saldo cantado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-plantilla-especialistas></app-plantilla-especialistas>
+</div>
