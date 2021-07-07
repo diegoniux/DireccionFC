@@ -1,36 +1,45 @@
 <div class="container-fluid p-4" style="background-color: #F2F2F2;">
     <app-titulo class="row" [nombreTitulo]="nombreTitulo" [nombreImg]="nombreImg"></app-titulo>
     <app-nav-bar [seccionActiva]="2"></app-nav-bar>
-    <div class="row">
-        <div class="card col cardMediana">
-            <div class="row">
-                <div class="row align-items-center col-lg-3 text-white p-0 imgdiv" style="margin-left: 0px; margin-bottom: 0px; margin-right: 1px;">
-                    <div class="col-lg-5 col-md-12 p-2">
-                        <img class="rounded mx-auto d-block imgPerfil" src="assets/img/fotoperfil.png" alt="">
+    <app-header-pizzaron-digital></app-header-pizzaron-digital>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-12" style="padding: 0px;">
+            <div class="card card-radius">
+                <div class="card-body">
+                    <div class="row" *ngIf="plantilla">
+                        <div class="col-12 col col-lg-3" *ngFor="let esp of plantilla">
+                            <div class="card cardEspecialista">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-4 col-md-4">
+                                            <img [ngStyle]="{'border-color': esp.colorIndicadorMeta}" class="imgFoto rounded-circle" src="{{ esp.foto }}">
+                                        </div>
+                                        <div class="col-8 col-md-8">
+                                            {{ esp.nombre }}<br /><span class="font-weight-bold">{{ esp.apellidos }}</span><br />
+                                            <div class="progress">
+                                                <div [ngStyle]="{'width': esp.porcentajeSaldoVirtualDesc}" class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <!-- <div [ngStyle]="{'width': item.porcentaje}" class="progress-bar bg-{{ item.positivo ? 'success' : 'danger'}} progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div> -->
+                                            </div>
+                                            <p class="font-weight-bold text-center">{{ esp.porcentajeSaldoVirtualDesc }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row text-center mt-2">
+                                        <div class="col-4 col-md-4">
+                                            <span class="font-weight-bold">{{ esp.saldoAcumulado }}</span><br /><span style="font-size: 13px;">Saldo Acumulado</span>
+                                        </div>
+                                        <div class="col-4 col-md-4 border-left">
+                                            <span class="font-weight-bold">{{ esp.fctInactivos }}</span><br /><span style="font-size: 13px;">Trámites FCT</span>
+                                        </div>
+                                        <div class="col-4 col-md-4 border-left">
+                                            <span class="font-weight-bold">{{ esp.tramitesCertificados }}</span><br /><span style="font-size: 13px;">Total Traspasos</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-7 col-md-6">
-                        <p class="font-weight-bold sizeNombre">Juan José</p>
-                        <p class="font-weight-bold sizeNombre">Pereira González</p>
-                        <p class="sizeSucursal">Santa Catarina 4</p>
-                    </div>
-                </div>
-                <span class="border spanMargin"></span>
-                <div class="col text-center p-4">
-                    <p class="font-weight-bold sizeMoney">$4.5M</p>
-                    <p class="sizeTipoSaldo">Saldo acumulado</p>
-                </div>
-                <span class="border spanMargin"></span>
-                <div class="col text-center p-4">
-                    <p class="font-weight-bold sizeMoney">$1.2M</p>
-                    <p class="sizeTipoSaldo"> Saldo virtual</p>
-                </div>
-                <span class="border spanMargin"></span>
-                <div class="col text-center p-4">
-                    <p class="font-weight-bold sizeMoney">$3.3M</p>
-                    <p class="sizeTipoSaldo">Saldo cantado</p>
                 </div>
             </div>
         </div>
     </div>
-    <app-plantilla-especialistas></app-plantilla-especialistas>
 </div>
