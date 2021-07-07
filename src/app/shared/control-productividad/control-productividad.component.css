@@ -1,0 +1,197 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .cardMediana{
+        margin-right: 0px;
+        padding: 0px 0px 0px 0px;
+        height: 100px;
+    }
+    .lblActivado{
+        margin: 0px 0px 0px 15px;
+        color: white;
+        padding: 15px 0px 0px 0px;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 0px;
+    }
+    .lblDesac{
+        margin: 0px 15px 0px 0px;
+        padding: 15px 0px 0px 0px;
+        font-weight: bold;
+        font-size: 15px;
+        color: #D5D1D6;
+        line-height: 0px;
+    }
+
+    .productividad{
+        padding: 0px 0px 0px 0px;
+    }
+
+    .controlperiodo{
+        color: black;
+        font-size: 25px;
+        padding: 0px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .lbl{
+        padding: 0px;
+        margin-top: 10px;
+        line-height: 0px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .cardMediana{
+        margin-right: 10px;
+        padding: 20px 15px 15px 20px;
+        height: 90px;
+    }
+    .lblActivado{
+        color: white;
+        margin: 0px;
+        padding: 15px 0px 5px 0px;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 0px;
+    }
+    .lblDesac{
+        margin: 0px;
+        padding: 15px 0px 5px 0px;
+        font-weight: bold;
+        font-size: 15px;
+        color: #D5D1D6;
+        line-height: 0px;
+    }
+
+    .productividad{
+        padding: 0px 5px 0px 0px;
+    }
+
+    .controlperiodo{
+        color: black;
+        font-size: 25px;
+        padding: 0px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .lbl{
+        padding: 0px;
+        margin-top: 15px;
+        line-height: 0px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .cardMediana{
+        margin-right: 5px;
+        padding: 20px 15px 15px 20px;
+        height: 90px;
+    }
+    .lblActivado{
+        color: white;
+        margin: 0px;
+        padding: 15px 0px 5px 0px;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 0px;
+    }
+    .lblDesac{
+        margin: 0px;
+        padding: 15px 0px 5px 0px;
+        font-weight: bold;
+        font-size: 15px;
+        color: #D5D1D6;
+        line-height: 0px;
+    }
+
+    .productividad{
+        padding: 0px 5px 0px 0px;
+    }
+
+    .controlperiodo{
+        color: black;
+        font-size: 25px;
+        padding: 0px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .lbl{
+        padding: 0px;
+        margin-top: 15px;
+        line-height: 0px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .cardMediana{
+        margin-right: 10px;
+        padding: 20px;
+        height: 110px;
+    }
+    .lblActivado{
+        color: white;
+        margin: 0px;
+        padding: 20px 0px 5px 0px;
+        font-weight: bold;
+        line-height: 5px;
+    }
+    .lblDesac{
+        margin: 0px;
+        padding: 20px 0px 5px 0px;
+        font-weight: bold;
+        color: #D5D1D6;
+        line-height: 5px;
+    }
+
+    .controlperiodo{
+        color: black;
+        font-size: 35px;
+        padding: 0px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .lbl{
+        padding: 0px;
+        margin-top: 15px;
+        line-height: 0px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .cardMediana{
+        margin-right: 10px;
+        padding: 20px;
+        height: 110px;
+    }
+    .lblActivado{
+        color: white;
+        margin: 0px;
+        padding: 20px 0px 5px 0px;
+        font-weight: bold;
+        line-height: 5px;
+    }
+    .lblDesac{
+        margin: 0px;
+        padding: 20px 0px 5px 0px;
+        font-weight: bold;
+        color: #D5D1D6;
+        line-height: 5px;
+    }
+
+    .controlperiodo{
+        color: black;
+        font-size: 50px;
+        padding: 0px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .lbl{
+        padding: 0px;
+        margin: 10px;
+        line-height: 0px;
+    }
+}

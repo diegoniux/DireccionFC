@@ -43,6 +43,10 @@ import { BarraZonaDirectorComercialComponent } from './shared/barra-zona-directo
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { PlantillaGerenciaComponent } from './pages/plantilla-gerencia/plantilla-gerencia.component';
 import { PlantillaEspecialistasComponent } from './shared/plantilla-especialistas/plantilla-especialistas.component';
+import { HeaderPizzaronDigitalComponent } from './shared/header-pizzaron-digital/header-pizzaron-digital.component';
+import { ControlProductividadComponent } from './shared/control-productividad/control-productividad.component';
+import { ComisionBonoPdComponent } from './shared/comision-bono-pd/comision-bono-pd.component';
+import { DetalleProductividadComponent } from './shared/detalle-productividad/detalle-productividad.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +78,11 @@ import { PlantillaEspecialistasComponent } from './shared/plantilla-especialista
     BarraZonaDirectorComercialComponent,
     NavBarComponent,
     PlantillaGerenciaComponent,
-    PlantillaEspecialistasComponent
+    PlantillaEspecialistasComponent,
+    HeaderPizzaronDigitalComponent,
+    ControlProductividadComponent,
+    ComisionBonoPdComponent,
+    DetalleProductividadComponent
   ],
   imports: [
     BrowserModule,

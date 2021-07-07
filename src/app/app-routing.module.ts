@@ -20,7 +20,7 @@ const appRoutes: Routes = [
    {
     path: 'pizarron-digital',
     loadChildren: () => import('./modules/pizarron-digital/pizarron-digital.module').then(m => PizarronDigitalModule),
-    canActivate : [AuthGuard],
+    // canActivate : [AuthGuard],
     // Lazy Modules y PreLoad
     data: {preload: true}
    },

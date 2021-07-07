@@ -1,0 +1,144 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .cardMediana{
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 10px;
+        height: 90px;
+    }
+    .spanMargin{
+        margin-bottom: 0px;
+        padding: 0px;
+    }
+    .valor{
+        font-weight: 900;
+        color: #4D4D4D;
+        font-size: 25px;
+        margin: 0px;
+        padding: 0px 0px 5px 0px;
+    }
+
+    .lbltitulo{
+        font-weight: bold;
+        color: #4D4D4D;
+        font-size: 15px;
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .cardMediana{
+        margin-left: 5px;
+        margin-right: 0px;
+        padding: 10px;
+        height: 90px;
+    }
+    .spanMargin{
+        margin-bottom: 0px;
+        padding: 0px;
+    }
+    .valor{
+        font-weight: 900;
+        color: #4D4D4D;
+        font-size: 25px;
+        margin: 0px;
+        padding: 0px 0px 5px 0px;
+    }
+
+    .lbltitulo{
+        font-weight: bold;
+        color: #4D4D4D;
+        font-size: 15px;
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .cardMediana{
+        margin-left: 5px;
+        margin-right: 0px;
+        padding: 10px;
+        height: 90px;
+    }
+    .spanMargin{
+        margin-bottom: 0px;
+        padding: 0px;
+    }
+    .valor{
+        font-weight: 900;
+        color: #4D4D4D;
+        font-size: 25px;
+        margin: 0px;
+        padding: 0px 0px 5px 0px;
+    }
+
+    .lbltitulo{
+        font-weight: bold;
+        color: #4D4D4D;
+        font-size: 15px;
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .cardMediana{
+        margin-left: 10px;
+        margin-right: 0px;
+        padding: 10px;
+        height: 110px;
+    }
+    .spanMargin{
+        margin-bottom: 0px;
+        padding: 0px;
+    }
+    .valor{
+        font-weight: 900;
+        color: #4D4D4D;
+        font-size: 30px;
+        margin: 0px;
+        padding: 0px 0px 5px 0px;
+    }
+
+    .lbltitulo{
+        font-weight: bold;
+        color: #4D4D4D;
+        font-size: 20px;
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .cardMediana{
+        margin-left: 10px;
+        margin-right: 0px;
+        padding: 20px;
+        height: 110px;
+    }
+    .spanMargin{
+        margin-bottom: 10px;
+        padding: 0px;
+    }
+    .valor{
+        font-weight: 900;
+        color: #4D4D4D;
+        font-size: 30px;
+        margin: 0px;
+        padding: 0px 0px 5px 0px;
+    }
+
+    .lbltitulo{
+        font-weight: bold;
+        color: #4D4D4D;
+        font-size: 20px;
+        padding: 0px;
+        margin: 0px;
+    }
+}
