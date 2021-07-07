@@ -112,11 +112,17 @@ export class LoginComponent implements OnInit {
             };
             localStorage.setItem('modoPantalla', JSON.stringify(modoPantalla));
             this.router.navigate(['/home']);
-            break;
+            break;            
           case 7: // Director Comercial
             this.router.navigate(['/home/detalleDirectorComercial']);
             break;
+          case 8: // Gerente
+            this.router.navigate(['/home/productividadAgentes']);
+            break;            
           case 14: // VP
+            this.router.navigate(['/home/detalleDirectorComercial']);
+            break;
+          case 1: // GOD
             this.router.navigate(['/home/detalleDirectorComercial']);
             break;
         }
