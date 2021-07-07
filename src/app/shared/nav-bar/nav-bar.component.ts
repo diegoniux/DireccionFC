@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   @Input() seccionActiva:number;
+  perfilId: number;
+
   constructor() { }
 
   ngOnInit(): void {
