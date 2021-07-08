@@ -10,9 +10,10 @@ import { GerentesService } from '../../services/gerentes.service';
 export class HeaderPizarronDigitalComponent implements OnInit {
 
   @Output() isLoadingEvent = new EventEmitter<boolean>();
-  @Input() nominaGerente: number;
+  nominaGerente: number;
   nombre: string;
   apellidos: string;
+  foto: string;
   sucursal: string;
   headerData: HeaderGerentesInterface;
   saldoVirtual: string;
@@ -27,9 +28,10 @@ export class HeaderPizarronDigitalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadData(26720, 'Monterrey 1')
-    this.nombre = 'Rafael';
-    this.apellidos = 'Rodriguez Chiu'
+    // this.loadData(this.nominaGerente, '')
+    this.nombre = '';
+    this.apellidos = ''
+    this.foto = 'assets/img/capi_circulo.png'
   }
 
   public loadData(nomina: number, suc: string): void{
@@ -46,6 +48,10 @@ export class HeaderPizarronDigitalComponent implements OnInit {
       this.saldoAcumulado = data.progreso.saldoAcumulado;
       this.saldoCantado = data.progreso.saldoCantadoFCT;
       this.saldoVirtual = data.progreso.saldoVirtual;
+      this.nombre = data.progreso.nombre;
+      this.foto = data.progreso.foto;
+      this.sucursal = data.perfil;
+      this.apellidos = data.progreso.apellidos;
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
     })

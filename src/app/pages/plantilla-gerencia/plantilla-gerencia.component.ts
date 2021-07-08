@@ -27,17 +27,13 @@ export class PlantillaGerenciaComponent implements OnInit {
   infoGerencia: ReporteGerencia;
   idInterval: any;
 
-  @ViewChild(NavBarComponent) navBarChild?: NavBarComponent;
-  @ViewChild(HeaderGerenteComponent) headerGerenteChild?: HeaderGerenteComponent;
+  @ViewChild(NavBarComponent) navBarChild: NavBarComponent;
+  @ViewChild(HeaderPizarronDigitalComponent) headerPizarronDigitalChild: HeaderPizarronDigitalComponent;
 
   constructor(private router: Router,
               public service: GerentesService,
               public loginService: LoginService,
               private toastrService: ToastrService) { 
-    this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
-    this.nombreTitulo = "Productividad Agentes";
-    this.nombreImg = "iconoProductividad";
-    this.nominaGerente = +this.infoGerencia.nominaGerente;    
   }
 
   ngOnInit(): void {
@@ -51,6 +47,10 @@ export class PlantillaGerenciaComponent implements OnInit {
 
   ngAfterViewInit(): void {
     try {
+      this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
+      this.nombreTitulo = "Productividad Agentes";
+      this.nombreImg = "iconoProductividad";
+      this.nominaGerente = +this.infoGerencia.nominaGerente;    
       this.loginInterface = this.loginService.getUserLoggedIn();
       this.navBarChild.perfilId = this.loginInterface.usuarioData.perfilUsuarioId;
       this.loadData();
@@ -81,7 +81,9 @@ export class PlantillaGerenciaComponent implements OnInit {
   private getHeader(): any{
     if(!this.nominaGerente)
       return;
-    this.headerGerenteChild?.loadData(this.nominaGerente, 'mty');
+    
+    this.headerPizarronDigitalChild.loadData(this.nominaGerente, 'mty');
+    
   }
 
   private getPlantilla(): any {
@@ -129,7 +131,7 @@ export class PlantillaGerenciaComponent implements OnInit {
       });
   }
   recieveIsLoading($event): void {
-    const res: boolean = this.headerGerenteChild.loading;    
+    const res: boolean = this.headerPizarronDigitalChild.loading;    
     //this.controlPeriodosChild.loading = res;
   }
 }
