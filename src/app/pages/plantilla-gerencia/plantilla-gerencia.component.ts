@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { PlantillaEspecialistasInterface } from '../../interfaces/dto/plantillaEspecialistas.interface';
-import { EspecialistaInterface } from '../../interfaces/especialista.interface';
+import { EspecialistaGerenteInterface } from '../../interfaces/especialistaGerente.interface';
 import { GerentesService } from '../../services/gerentes.service';
 import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
 import { NavBarComponent } from '../../shared/nav-bar/nav-bar.component';
@@ -10,30 +10,34 @@ import { ToastrService } from 'ngx-toastr';
 import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { Router } from '@angular/router';
 import { LogErrorInterface } from '../../interfaces/logError.interface';
+import { HeaderPizarronDigitalComponent } from '../../shared/header-pizarron-digital/header-pizarron-digital.component';
+import { HeaderGerenteComponent } from 'src/app/shared/header-gerente/header-gerente.component';
 
 @Component({
   selector: 'app-plantilla-gerencia',
   templateUrl: './plantilla-gerencia.component.html',
   styleUrls: ['./plantilla-gerencia.component.css']
 })
-export class PlantillaGerenciaComponent implements OnInit {
+export class PlantillaGerenciaComponent implements OnInit { 
+  nominaGerente:number;
   nombreTitulo: string
   nombreImg: string
   loginInterface: LoginInterface;
-  plantilla:EspecialistaInterface[];
+  plantilla:EspecialistaGerenteInterface[];
   infoGerencia: ReporteGerencia;
   idInterval: any;
 
-  @ViewChild(NavBarComponent) navBar: NavBarComponent;
+  @ViewChild(NavBarComponent) navBarChild?: NavBarComponent;
+  @ViewChild(HeaderGerenteComponent) headerGerenteChild?: HeaderGerenteComponent;
 
   constructor(private router: Router,
               public service: GerentesService,
               public loginService: LoginService,
               private toastrService: ToastrService) { 
+    this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
     this.nombreTitulo = "Productividad Agentes";
     this.nombreImg = "iconoProductividad";
-    this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
-    this.loadData();
+    this.nominaGerente = +this.infoGerencia.nominaGerente;    
   }
 
   ngOnInit(): void {
@@ -48,34 +52,42 @@ export class PlantillaGerenciaComponent implements OnInit {
   ngAfterViewInit(): void {
     try {
       this.loginInterface = this.loginService.getUserLoggedIn();
-      this.navBar.perfilId = this.loginInterface.usuarioData.perfilUsuarioId;
-    const logSistema: LogSistemaInterface = {
-        idAccion: 3,
-        idPantalla: 2,
-        usuario: this.loginInterface.usuarioData.nomina
-      };
-      this.registrarLogPantalla(logSistema);
+      this.navBarChild.perfilId = this.loginInterface.usuarioData.perfilUsuarioId;
+      this.loadData();
+      const logSistema: LogSistemaInterface = {
+          idAccion: 3,
+          idPantalla: 2,
+          usuario: this.loginInterface.usuarioData.nomina
+        };
+        this.registrarLogPantalla(logSistema);
 
-      if (!this.infoGerencia) {
-        this.router.navigate(['/home']);
+        if (!this.infoGerencia) {
+          this.router.navigate(['/home']);
+        }
+        // Carga automática de componentes cada 1 minuto
+        this.idInterval = setInterval(() => this.loadData(), 60000);
+
+      } catch (error) {
+        this.toastrService.error(error.message, 'Aviso');
+        this.registrarError(error.message);
       }
-      // Carga automática de componentes cada 1 minuto
-      this.idInterval = setInterval(() => this.loadData(), 60000);
-
-    } catch (error) {
-      this.toastrService.error(error.message, 'Aviso');
-      this.registrarError(error.message);
-    }
   }
 
-  private loadData(): any {
+  private loadData(): void {
+    this.getHeader();
     this.getPlantilla(); 
+  }
+
+  private getHeader(): any{
+    if(!this.nominaGerente)
+      return;
+    this.headerGerenteChild?.loadData(this.nominaGerente, 'mty');
   }
 
   private getPlantilla(): any {
     // this.loading = true;
     // this.isLoadingEvent.emit(this.loading);
-    this.service.getPlantilla(this.infoGerencia.nominaGerente)
+    this.service.getPlantilla(this.nominaGerente.toString())
     .toPromise()
     .then((data: PlantillaEspecialistasInterface) =>{
       if (!data.resultadoEjecucion.ejecucionCorrecta) {
@@ -115,5 +127,9 @@ export class PlantillaGerenciaComponent implements OnInit {
       .catch(error => {
         this.toastrService.error(error.message, 'Aviso');
       });
+  }
+  recieveIsLoading($event): void {
+    const res: boolean = this.headerGerenteChild.loading;    
+    //this.controlPeriodosChild.loading = res;
   }
 }

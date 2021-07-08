@@ -1,4 +1,4 @@
-export interface EspecialistaInterface {
+export interface EspecialistaGerenteInterface {
     nominaPromotor:number;
     nombre:string;
     apellidos:string;

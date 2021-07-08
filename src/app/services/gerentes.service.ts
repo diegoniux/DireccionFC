@@ -26,6 +26,7 @@ export class GerentesService {
   }
   public getHeader(nomina: string): any {
     return this.http.get(this.apiURL +
-      `Gestion/getPromotores/${nomina}`);
-  } 
+      `Gestion/GetHeader/${nomina}`);
+  }
+  
 }

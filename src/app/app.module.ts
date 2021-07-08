@@ -42,10 +42,11 @@ import { HeaderDirectorComercialComponent } from './shared/header-director-comer
 import { BarraZonaDirectorComercialComponent } from './shared/barra-zona-director-comercial/barra-zona-director-comercial.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { PlantillaGerenciaComponent } from './pages/plantilla-gerencia/plantilla-gerencia.component';
-import { HeaderPizzaronDigitalComponent } from './shared/header-pizzaron-digital/header-pizzaron-digital.component';
 import { ControlProductividadComponent } from './shared/control-productividad/control-productividad.component';
 import { ComisionBonoPdComponent } from './shared/comision-bono-pd/comision-bono-pd.component';
 import { DetalleProductividadComponent } from './shared/detalle-productividad/detalle-productividad.component';
+import { HeaderPizarronDigitalComponent } from './shared/header-pizarron-digital/header-pizarron-digital.component';
+import { HeaderGerenteComponent } from './shared/header-gerente/header-gerente.component';
 
 @NgModule({
   declarations: [
@@ -77,10 +78,11 @@ import { DetalleProductividadComponent } from './shared/detalle-productividad/de
     BarraZonaDirectorComercialComponent,
     NavBarComponent,
     PlantillaGerenciaComponent,
-    HeaderPizzaronDigitalComponent,
+    HeaderPizarronDigitalComponent,
     ControlProductividadComponent,
     ComisionBonoPdComponent,
-    DetalleProductividadComponent
+    DetalleProductividadComponent,
+    HeaderGerenteComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <div class="container-fluid p-4" style="background-color: #F2F2F2;">
     <app-titulo class="row" [nombreTitulo]="nombreTitulo" [nombreImg]="nombreImg"></app-titulo>
     <app-nav-bar [seccionActiva]="2"></app-nav-bar>
-    <app-header-pizzaron-digital></app-header-pizzaron-digital>
+    <app-header-pizarron-digital (isLoadingEvent)="recieveIsLoading($event)"></app-header-pizarron-digital>
     <div class="row" style="margin-top: 20px;">
         <div class="col-12" style="padding: 0px;">
             <div class="card card-radius">

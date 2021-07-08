@@ -10,26 +10,26 @@
                                 class="rounded-circle imgperfil" src="assets/img/capi_circulo.png" alt="">
                         </div>
                         <div class="col-8">
-                            <div class="card-body bodynombre">
-                                <p class="labelNombre">Juan José</p>
-                                <p class="labelApellido">Pereira Gonzales</p>
-                                <p class="labelSucursal">Santa catarina 4</p>
+                            <div class="card-body bodynombre" >
+                                <p class="labelNombre" *ngIf="nombre">{{ nombre }}</p>
+                                <p class="labelApellido" *ngIf="apellidos">{{ apellidos }}</p>
+                                <p class="labelSucursal">{{ sucursal }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col text-center p-1">
-                    <p class="valores">$4.5M</p>
+                    <p class="valores">{{ saldoVirtual }}</p>
                     <p class="lblTitulos">Saldo Virtual</p>
                 </div>
                 <span class="border spanMargin"></span>
                 <div class="col text-center p-1">
-                    <p class="valores">$1.2M</p>
+                    <p class="valores">{{ saldoCantado }}</p>
                     <p class="lblTitulos"> Saldo Cantado</p>
                 </div>
                 <span class="border spanMargin"></span>
                 <div class="col text-center p-1">
-                    <p class="valores">$3.3M</p>
+                    <p class="valores">{{ saldoAcumulado }}</p>
                     <p class="lblTitulos">Saldo Acumulado</p>
                 </div>
             </div>

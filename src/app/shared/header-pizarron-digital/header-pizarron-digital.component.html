@@ -1,0 +1,38 @@
+<div class="mt-4">
+    <div class="row">
+        <div class="card col cardMediana">
+            <div class="row">
+                <div class="col-lg-3 col-12 text-left" style="background-color: #80CC0E; padding: 0px;">
+                    <div class="row">
+                        <div class="col-4 text-center imgMP">
+                            <img width="100px" height="100px" 
+                                style="margin-top: 5px; margin-bottom: 5px; margin-left: 10px;" 
+                                class="rounded-circle imgperfil" src="assets/img/capi_circulo.png" alt="">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body bodynombre" >
+                                <p class="labelNombre" *ngIf="nombre">{{ nombre }}</p>
+                                <p class="labelApellido" *ngIf="apellidos">{{ apellidos }}</p>
+                                <p class="labelSucursal">{{ sucursal }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col text-center p-1">
+                    <p class="valores">{{ saldoVirtual }}</p>
+                    <p class="lblTitulos">Saldo Virtual</p>
+                </div>
+                <span class="border spanMargin"></span>
+                <div class="col text-center p-1">
+                    <p class="valores">{{ saldoCantado }}</p>
+                    <p class="lblTitulos"> Saldo Cantado</p>
+                </div>
+                <span class="border spanMargin"></span>
+                <div class="col text-center p-1">
+                    <p class="valores">{{ saldoAcumulado }}</p>
+                    <p class="lblTitulos">Saldo Acumulado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
