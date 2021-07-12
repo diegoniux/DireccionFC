@@ -82,7 +82,7 @@ export class PlantillaGerenciaComponent implements OnInit {
     if(!this.nominaGerente)
       return;
     
-    this.headerPizarronDigitalChild.loadData(this.nominaGerente, 'mty');
+    this.headerPizarronDigitalChild.loadData(this.nominaGerente, '');
     
   }
 
@@ -133,5 +133,16 @@ export class PlantillaGerenciaComponent implements OnInit {
   recieveIsLoading($event): void {
     const res: boolean = this.headerPizarronDigitalChild.loading;    
     //this.controlPeriodosChild.loading = res;
+  }
+
+  public porcentajeSaldoAcumuladoDesc (saldoAcumulado: string, SaldoVirtual: string): string {
+    let response: string;
+    if(Number(SaldoVirtual) == 1)
+      return '0%';
+    else if( Number(saldoAcumulado) <= Number(SaldoVirtual) )
+      return '0%';
+
+    response = ((Number(saldoAcumulado) - Number(SaldoVirtual)) * 100).toString() + `%`;
+    return response;
   }
 }
