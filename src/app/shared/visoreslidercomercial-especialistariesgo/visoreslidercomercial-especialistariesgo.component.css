@@ -22,7 +22,7 @@
 .lblNumEspecialistas{
     font-size: 21px;
 }
-@media only screen and (max-device-width: 1550px) {
+@media only screen and (max-device-width: 1591px) {
     .bntImg{
         width: 50px;
         height: 50px;
@@ -30,6 +30,11 @@
     .lblDescipcionBtn{
         font-size: 14px;
     }
+}
+@media only screen and (max-device-width: 1491px) {
+    .lblDescipcionBtn{
+        font-size: 13px;
+    }    
 }
 
 @media only screen and (max-device-width: 1300px) {
@@ -51,18 +56,22 @@
     }
 }
 
-@media only screen and (max-device-width: 1025px) {
+@media only screen and (max-device-width: 1250px) {
+    .bntImg{
+        width: 35px;
+        height: 35px;
+    }
     .lblDescipcionBtn{
-        font-size: 10px;
+        font-size: 11px;
+    }
+    .imgMR{
+        width: 45px;
     }
     .lblNumEspecialistas{
         font-size: 12px;
     }
     .lblDescipcionMR{
-        font-size: 13px;
-    }
-    .imgMR{
-        width: 45px;
+        font-size: 11px;
     }
 }
 

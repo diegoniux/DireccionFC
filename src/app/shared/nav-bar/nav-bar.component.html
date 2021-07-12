@@ -2,7 +2,7 @@
     <div class="col-12" style="padding: 0px;">
         <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="false">
             <mdb-navbar-brand>
-                <a *ngIf="perfilId != 8" href="/#/home/detalleLider" class="btn btn-default navbar-brand">
+                <a *ngIf="perfilId != 8" href="#/home/detalleLider" class="btn btn-default navbar-brand">
                     <i style="color: #64a70b;" class="fas fa-arrow-left"></i>
                 </a>
                 <a *ngIf="perfilId == 8" class="btn btn-default navbar-brand">
@@ -13,12 +13,12 @@
             <links>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item separator {{(seccionActiva == 1) ? 'active' : '' }}">
-                        <a class="nav-link {{(seccionActiva == 1) ? 'text-white' : 'text-black' }}" href="/#/home/pizarronDigital">
+                        <a class="nav-link {{(seccionActiva == 1) ? 'text-white' : 'text-black' }}" href="#/home/pizarronDigital">
                             <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Pizarrón Digital <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item separator {{(seccionActiva == 2) ? 'active' : '' }}">
-                        <a class="nav-link {{(seccionActiva == 2) ? 'text-white' : 'text-black' }}" href="/#/home/productividadAgentes">
+                        <a class="nav-link {{(seccionActiva == 2) ? 'text-white' : 'text-black' }}" href="#/home/productividadAgentes">
                             <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Productividad Agentes
                         </a>
                     </li>
