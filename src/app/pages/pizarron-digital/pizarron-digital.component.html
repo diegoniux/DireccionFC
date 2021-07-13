@@ -4,7 +4,7 @@
     <app-header-pizarron-digital></app-header-pizarron-digital>
     <div class="row">
         <div class="col-12 col-md" style="padding: 0px;">
-            <app-control-productividad></app-control-productividad>
+            <app-control-productividad (changePeriodoEvent)="recievePeriodo($event)"></app-control-productividad>
         </div>
         <div class="col-12 col-md" style="padding: 0px;">
             <app-comision-bono-pd></app-comision-bono-pd>

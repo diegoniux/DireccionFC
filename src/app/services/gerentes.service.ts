@@ -28,5 +28,20 @@ export class GerentesService {
     return this.http.get(this.apiURL +
       `Gestion/GetHeader/${nomina}`);
   }
+
+  public getProductividadDiaria(nomina: string, Anio: string , SemanaAnio: string, FechaCorte: string, EsPosterior: Boolean): any {
+    return this.http.get(this.apiURL +
+      `Gestion/GetProductividadDiaria/${nomina}/${Anio}/${SemanaAnio}/${FechaCorte}/${EsPosterior}`)
+  }
+  
+  public getComisionEstimada(nomina: string, Fecha: string): any {
+    return this.http.get(this.apiURL +
+      `Gestion/GetComisionEstimada/${nomina}/${Fecha}`)
+  }
+
+  public getProductividadSemanal(nomina: string, Anio: string , TetrasemanaAnio: string, FechaCorte: string, EsPosterior: Boolean): any {
+    return this.http.get(this.apiURL +
+      `Gestion/GetProductividadSemanal/${nomina}/${Anio}/${TetrasemanaAnio}/${FechaCorte}/${EsPosterior}`)
+  }
   
 }

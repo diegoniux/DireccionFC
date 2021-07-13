@@ -11,7 +11,6 @@ import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { Router } from '@angular/router';
 import { LogErrorInterface } from '../../interfaces/logError.interface';
 import { HeaderPizarronDigitalComponent } from '../../shared/header-pizarron-digital/header-pizarron-digital.component';
-import { HeaderGerenteComponent } from 'src/app/shared/header-gerente/header-gerente.component';
 
 @Component({
   selector: 'app-plantilla-gerencia',

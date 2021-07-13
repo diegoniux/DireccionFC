@@ -5,8 +5,16 @@ import { LoginService } from 'src/app/services/login.service';
 import { ModoPantallaInterface } from '../../interfaces/modoPantalla.interface';
 import { ToastrService } from 'ngx-toastr';
 import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
+import { ComisionEstimadaInterface } from '../../interfaces/ComisionEstimada.interface';
+import { ProductividadDiariaInterface } from '../../interfaces/ProductividadDiaria.interface';
+import { ProductividadSemanalInterface } from '../../interfaces/ProductividadSemanal.interface';
 import { LogErrorInterface } from '../../interfaces/logError.interface';
 import { HeaderPizarronDigitalComponent } from '../../shared/header-pizarron-digital/header-pizarron-digital.component';
+import { ControlProductividadComponent } from '../../shared/control-productividad/control-productividad.component';
+import { ComisionBonoPdComponent } from '../../shared/comision-bono-pd/comision-bono-pd.component';
+import { DetalleProductividadComponent } from '../../shared/detalle-productividad/detalle-productividad.component';
+import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
+
 
 @Component({
   selector: 'app-pizarron-digital',
@@ -18,17 +26,26 @@ export class PizarronDigitalComponent implements OnInit {
   nombreTitulo: string
   nombreImg: string
   loginInterface: LoginInterface;
-  nomina: number = 26720;
+  gerencia: ReporteGerencia
+  nomina: number;
   modoPantalla: ModoPantallaInterface;
   idInterval: any;
+  comisionEstimadaGFC: ComisionEstimadaInterface;
+  productividadDiariaInterface: ProductividadDiariaInterface;
+  productividadSemanalInterface: ProductividadSemanalInterface;
+
+
 
   // componentes hijos
   @ViewChild(HeaderPizarronDigitalComponent) headerPizarronDigitalChild: HeaderPizarronDigitalComponent;
+  @ViewChild(ControlProductividadComponent) ControlProductividadChild: ControlProductividadComponent;
+  @ViewChild(ComisionBonoPdComponent) ComisionBonoPdChild: ComisionBonoPdComponent;
+  @ViewChild(DetalleProductividadComponent) DetalleProductividadChild: DetalleProductividadComponent;
 
   constructor(public loginService: LoginService,
               private toastrService: ToastrService,
-              public gerentesService: GerentesService) { 
-    
+              public gerentesService: GerentesService) {
+
   }
 
   ngOnInit(): void {
@@ -45,23 +62,18 @@ export class PizarronDigitalComponent implements OnInit {
   ngAfterViewInit(): void {
     try {
       this.loginInterface = this.loginService.getUserLoggedIn();
-      // this.nomina = this.loginInterface.usuarioData.nomina;
-      // const logSistema: LogSistemaInterface = {
-      //   idAccion: 3,
-      //   idPantalla: 1,
-      //   usuario: this.loginInterface.usuarioData.nomina
-      // };
-      // this.registrarLogPantalla(logSistema);
-      // Asignación del token al servicio
+      this.gerencia = JSON.parse(localStorage.getItem('infoGerente'));
+      console.log(this.gerencia);
+      this.nomina = +this.gerencia.nominaGerente;
       this.gerentesService.token = this.loginInterface.token;
       // cargamos el modo pantalla
       this.modoPantalla = JSON.parse(localStorage.getItem('modoPantalla'));
       if (this.modoPantalla && this.modoPantalla.modoDetalle) {
         this.nomina = this.modoPantalla.nominaDetalle;
       }
-      this.loadData();
+      this.loadDataOnlyOnce();
       // Carga automática de componentes cada 20 segundos
-      this.idInterval = setInterval(() => this.loadData(), 60000);
+      // this.idInterval = setInterval(() => this.loadData(), 60000);
 
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
@@ -69,23 +81,64 @@ export class PizarronDigitalComponent implements OnInit {
     }
   }
 
-  recievePeriodo($event: any): void{
-    this.loadData();
+  recievePeriodo(cambioCarga: boolean): void{
+    //control productividad emite un cambio
+    if(cambioCarga){
+      this.loadData();
+    }else{
+      this.DetalleProductividadChild.cambioProductividad(this.ControlProductividadChild.DiariaSemana);
+    }
+
   }
 
   loadData(): void{
     try {
-      this.headerPizarronDigitalChild.loadData(this.nomina,'');
-      // this.cargarBarraMetas();
-      // this.cargarMejorSaldo();
-      // this.cargarRelevante();
-      // this.cargarTendencias();
-      // this.cargarReporteGerencias();
+      console.log("loadData");
+      if(this.ControlProductividadChild.DiariaSemana){
+        //carga Diaria
+        this.DetalleProductividadChild.loadData(this.nomina,
+          this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.anio.toString(),
+          this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.semanaAnio.toString(),
+          '0',
+          this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.fechaCorte,
+          this.ControlProductividadChild.anteriorPosterior,
+          this.ControlProductividadChild.DiariaSemana);
+          this.ComisionBonoPdChild.loadData(this.nomina, this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.fechaCorte);
+      }else{
+        //carga Semana
+        this.DetalleProductividadChild.loadData(this.nomina,
+          this.DetalleProductividadChild.ProductividadSemanal.resultTotal.anio.toString(),
+          '0',
+          this.DetalleProductividadChild.ProductividadSemanal.resultTotal.tetrasemanaAnio.toString(),
+          this.DetalleProductividadChild.ProductividadSemanal.resultTotal.fechaCorte,
+          this.ControlProductividadChild.anteriorPosterior,
+          // false,
+          this.ControlProductividadChild.DiariaSemana)
+          this.ComisionBonoPdChild.loadData(this.nomina, this.DetalleProductividadChild.ProductividadSemanal.resultTotal.fechaCorte);
+      }
+
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
       // this.registrarError(error.message);
     }
   }
+
+  loadDataOnlyOnce(): void{
+    try {
+      const fecha = new Date();
+      console.log(fecha.toISOString())
+      this.headerPizarronDigitalChild.loadData(this.nomina,'');
+      this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,true);
+      this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,false);
+      this.ComisionBonoPdChild.loadData(this.nomina, fecha.toISOString());
+    } catch (error) {
+      this.toastrService.error(error.message, 'Aviso');
+      // this.registrarError(error.message);
+    }
+  }
+
+
+
 
 
   private registrarError(msg: string): any

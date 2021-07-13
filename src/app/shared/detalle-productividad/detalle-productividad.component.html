@@ -1,18 +1,18 @@
 <div class="row mt-4">
     <div class="card col cardMediana">
         <div class="card-body">
-            <div class="row table-responsive">
-                <table class="table table-bordered">
+            <div class="row table-responsive" id="tblDiaria">
+                <table *ngIf="productividadDiaria" class="table table-bordered" >
                     <thead class="text-center">
                     <tr>
-                        <th scope="col" class="text-white" style="background-color: #275D38;">Consulta Semanal</th>
-                        <th scope="col">LU</th>
-                        <th scope="col">MA</th>
-                        <th scope="col">MI</th>
-                        <th scope="col">JU</th>
-                        <th scope="col">VI</th>
-                        <th scope="col">SA</th>
-                        <th scope="col">DO</th>
+                        <th scope="col" class="text-white" style="background-color: #275D38;">Consulta Diaria</th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">LU</p><p class="dia" style="margin: 0px; padding: 0px;">{{productividadDiaria.resultFechas.fechaLunes}}</p></th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">MA</p><p class="dia" style="margin: 0px; padding: 0px;">{{productividadDiaria.resultFechas.fechaMartes}}</p></th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">MI</p><p class="dia" style="margin: 0px; padding: 0px;">{{productividadDiaria.resultFechas.fechaMiercoles}}</p></th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">JU</p><p class="dia" style="margin: 0px; padding: 0px;">{{productividadDiaria.resultFechas.fechaJueves}}</p></th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">VI</p><p class="dia" style="margin: 0px; padding: 0px;">{{productividadDiaria.resultFechas.fechaViernes}}</p></th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">SA</p><p class="dia" style="margin: 0px; padding: 0px;">{{productividadDiaria.resultFechas.fechaSabado}}</p></th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">DO</p><p class="dia" style="margin: 0px; padding: 0px;">{{productividadDiaria.resultFechas.fechaDomingo}}</p></th>
                         <th scope="col" style="color: white; background-color: #DE9401;">Total</th>
                         <th scope="col" style="color: white; background-color: #DE9401;">Faltante</th>
                         <th scope="col" style="color: white; background-color: #DE9401;">Meta</th>
@@ -23,91 +23,55 @@
                     </tr>
                     </thead>
                     <tbody>
+                        <tr *ngFor="let item of productividadDiaria.resultDatos">
+                            <th scope="row">{{item.nombreCompletoAP}}</th>
+                            <td>{{item.saldoVirtualLunes}}</td>
+                            <td>{{item.saldoVirtualMartes}}</td>
+                            <td>{{item.saldoVirtualMiercoles}}</td>
+                            <td>{{item.saldoVirtualJueves}}</td>
+                            <td>{{item.saldoVirtualViernes}}</td>
+                            <td>{{item.saldoVirtualSabado}}</td>
+                            <td>{{item.saldoVirtualDomingo}}</td>
+                            <td [ngStyle]="{'background-color': item.indicadorSaldoMeta}">{{item.saldoVirtualSemana}}</td>
+                            <td>{{item.saldoVirtualFaltante}}</td>
+                            <td>{{item.metaSemana}}</td>
+                            <td>{{item.fctInactivos}}</td>
+                            <td>{{item.fctActivos}}</td>
+                            <td>{{item.foliosMenores30k}}</td>
+                            <td>{{item.foliosCertificados}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row table-responsive" style="display: none;" id="tblSemanal">
+                <table *ngIf="ProductividadSemanal" class="table table-bordered">
+                    <thead class="text-center">
                     <tr>
-                        <th scope="row">Camilo</th>
-                        <td>345</td>
-                        <td>34</td>
-                        <td>89</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="background-color: #FF00001A;">0</td>
-                        <td>40</td>
-                        <td>70</td>
-                        <td></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
+                        <th scope="col" class="text-white" style="background-color: #275D38;">Consulta Semanal</th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">SEM</p><p class="dia" style="margin: 0px; padding: 0px;">{{ProductividadSemanal.resultSemanas.semana1}}</p></th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">SEM</p><p class="dia" style="margin: 0px; padding: 0px;">{{ProductividadSemanal.resultSemanas.semana2}}</p></th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">SEM</p><p class="dia" style="margin: 0px; padding: 0px;">{{ProductividadSemanal.resultSemanas.semana3}}</p></th>
+                        <th scope="col"><p style="margin: 0px; padding: 0px;">SEM</p><p class="dia" style="margin: 0px; padding: 0px;">{{ProductividadSemanal.resultSemanas.semana4}}</p></th>
+                        <th scope="col" style="color: white; background-color: #DE9401;">Total</th>
                     </tr>
-                    <tr>
-                        <th scope="row">Richo</th>
-                        <td>78</td>
-                        <td></td>
-                        <td>6</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="background-color: #FF00001A;">120</td>
-                        <td>40</td>
-                        <td>70</td>
-                        <td></td>
-                        <td></td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Diego</th>
-                        <td>67</td>
-                        <td>78</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="background-color: #FF00001A;">120</td>
-                        <td>40</td>
-                        <td>100</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Rafa</th>
-                        <td>10</td>
-                        <td></td>
-                        <td>100</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="background-color: #FFA40033;">220</td>
-                        <td>175</td>
-                        <td>170</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Alex</th>
-                        <td>13</td>
-                        <td>40</td>
-                        <td>70</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td style="background-color: #64A70B33;">318</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of ProductividadSemanal.resultDatos">
+                            <th scope="row">{{item.nombreCompletoAP}}</th>
+                            <td [ngStyle]="{'background-color': item.indicadorSaldoMetaSem1}">{{item.saldoVirtualSemana1}}</td>
+                            <td [ngStyle]="{'background-color': item.indicadorSaldoMetaSem2}">{{item.saldoVirtualSemana2}}</td>
+                            <td [ngStyle]="{'background-color': item.indicadorSaldoMetaSem3}">{{item.saldoVirtualSemana3}}</td>
+                            <td [ngStyle]="{'background-color': item.indicadorSaldoMetaSem4}">{{item.saldoVirtualSemana4}}</td>
+                            <td [ngStyle]="{'background-color': item.indicadorSaldoMetaTetra}">{{item.saldoVirtualTetrasemana}}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>{{ ProductividadSemanal.resultSemanasTotal.semana1Total }}</td>
+                            <td>{{ ProductividadSemanal.resultSemanasTotal.semana2Total }}</td>
+                            <td>{{ ProductividadSemanal.resultSemanasTotal.semana3Total }}</td>
+                            <td>{{ ProductividadSemanal.resultSemanasTotal.semana4Total }}</td>
+                            <td>{{ ProductividadSemanal.resultTotal.saldoVirtualTotal }}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

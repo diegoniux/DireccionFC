@@ -46,7 +46,6 @@ import { ControlProductividadComponent } from './shared/control-productividad/co
 import { ComisionBonoPdComponent } from './shared/comision-bono-pd/comision-bono-pd.component';
 import { DetalleProductividadComponent } from './shared/detalle-productividad/detalle-productividad.component';
 import { HeaderPizarronDigitalComponent } from './shared/header-pizarron-digital/header-pizarron-digital.component';
-import { HeaderGerenteComponent } from './shared/header-gerente/header-gerente.component';
 
 @NgModule({
   declarations: [
@@ -81,8 +80,7 @@ import { HeaderGerenteComponent } from './shared/header-gerente/header-gerente.c
     HeaderPizarronDigitalComponent,
     ControlProductividadComponent,
     ComisionBonoPdComponent,
-    DetalleProductividadComponent,
-    HeaderGerenteComponent
+    DetalleProductividadComponent
   ],
   imports: [
     BrowserModule,
