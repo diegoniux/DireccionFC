@@ -23,6 +23,7 @@ import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
 })
 export class PizarronDigitalComponent implements OnInit {
 
+  nominaGerente:number;
   nombreTitulo: string
   nombreImg: string
   loginInterface: LoginInterface;
@@ -68,9 +69,9 @@ export class PizarronDigitalComponent implements OnInit {
       this.gerentesService.token = this.loginInterface.token;
       // cargamos el modo pantalla
       this.modoPantalla = JSON.parse(localStorage.getItem('modoPantalla'));
-      if (this.modoPantalla && this.modoPantalla.modoDetalle) {
-        this.nomina = this.modoPantalla.nominaDetalle;
-      }
+      // if (this.modoPantalla && this.modoPantalla.modoDetalle) {
+      //   this.nomina = this.modoPantalla.nominaDetalle;
+      // }
       this.loadDataOnlyOnce();
       // Carga automática de componentes cada 20 segundos
       // this.idInterval = setInterval(() => this.loadData(), 60000);
@@ -126,8 +127,8 @@ export class PizarronDigitalComponent implements OnInit {
   loadDataOnlyOnce(): void{
     try {
       const fecha = new Date();
-      console.log(fecha.toISOString())
-      this.headerPizarronDigitalChild.loadData(this.nomina,'');
+      console.log(fecha.toISOString());      
+      this.headerPizarronDigitalChild.loadData(this.gerencia);
       this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,true);
       this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,false);
       this.ComisionBonoPdChild.loadData(this.nomina, fecha.toISOString());

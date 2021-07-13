@@ -10,21 +10,26 @@
                 </a>
             </mdb-navbar-brand>
         
-            <links>
+            <links>                
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item separator {{(seccionActiva == 1) ? 'active' : '' }}">
-                        <a class="nav-link {{(seccionActiva == 1) ? 'text-white' : 'text-a' }}" href="#/home/pizarronDigital">
-                            <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Pizarrón Digital <span class="sr-only">(current)</span>
+                        <a class="nav-link {{(seccionActiva == 1) ? 'text-white' : 'text-a' }}" href="#/home/productividadAgentes">
+                            <img style="width: 30px;" src="assets/img/btn-productividad-{{(seccionActiva == 1) ? 'white' : 'green' }}.png" /> Productividad Agentes
                         </a>
                     </li>
                     <li class="nav-item separator {{(seccionActiva == 2) ? 'active' : '' }}">
-                        <a class="nav-link {{(seccionActiva == 2) ? 'text-white' : 'text-a' }}" href="#/home/productividadAgentes">
-                            <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Productividad Agentes
+                        <a class="nav-link {{(seccionActiva == 2) ? 'text-white' : 'text-a' }}" href="#/home/pizarronDigital">
+                            <img style="width: 30px;" src="assets/img/btn-pizarron-{{(seccionActiva == 2) ? 'white' : 'green' }}.png" /> Pizarrón Digital <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item separator {{(seccionActiva == 3) ? 'active' : '' }}">
                         <a class="nav-link {{(seccionActiva == 3) ? 'text-white' : 'text-a' }}">
-                            <img style="width: 30px;" src="assets/img/iconoPizarronDigital.png" /> Alarmas Improductivas
+                            <img style="width: 30px;" src="assets/img/btn-alarmas-{{(seccionActiva == 3) ? 'white' : 'green' }}.png" /> Alarmas Improductivas
+                        </a>
+                    </li>
+                    <li class="nav-item separator {{(seccionActiva == 4) ? 'active' : '' }}">
+                        <a class="nav-link {{(seccionActiva == 3) ? 'text-white' : 'text-a' }}">
+                            <img style="width: 30px;" src="assets/img/btn-ranking-{{(seccionActiva == 4) ? 'white' : 'green' }}.png" /> Ranking FC
                         </a>
                     </li>
                 </ul>

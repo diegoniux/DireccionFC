@@ -81,7 +81,7 @@ export class PlantillaGerenciaComponent implements OnInit {
     if(!this.nominaGerente)
       return;
     
-    this.headerPizarronDigitalChild.loadData(this.nominaGerente, '');
+    this.headerPizarronDigitalChild.loadData(this.infoGerencia);
     
   }
 

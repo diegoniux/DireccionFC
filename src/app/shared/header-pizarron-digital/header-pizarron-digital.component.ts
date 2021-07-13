@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HeaderGerentesInterface } from '../../interfaces/dto/headerGerentes.interface';
 import { GerentesService } from '../../services/gerentes.service';
+import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
 
 @Component({
   selector: 'app-header-pizarron-digital',
@@ -34,11 +35,15 @@ export class HeaderPizarronDigitalComponent implements OnInit {
     this.foto = 'assets/img/capi_circulo.png'
   }
 
-  public loadData(nomina: number, suc: string): void{
-    console.log('la NOMINa ES: ' + nomina);
-    this.sucursal = suc;
+  public loadData(gerencia: ReporteGerencia): void{
+    this.nominaGerente = +gerencia.nominaGerente;
+    console.log('la NOMINa ES: ' + this.nominaGerente);
+    this.sucursal = gerencia.nombreSuc;
+    this.nombre = gerencia.nombre;
+    this.foto = gerencia.foto;
+    this.apellidos = gerencia.apellido;
     this.loading = true;
-    this.service.getHeader(nomina.toString())
+    this.service.getHeader(this.nominaGerente.toString())
     .toPromise()
     .then((data: HeaderGerentesInterface) => {
       if(!data.resultadoEjecucion.ejecucionCorrecta)
@@ -48,10 +53,6 @@ export class HeaderPizarronDigitalComponent implements OnInit {
       this.saldoAcumulado = data.progreso.saldoAcumulado;
       this.saldoCantado = data.progreso.saldoCantadoFCT;
       this.saldoVirtual = data.progreso.saldoVirtual;
-      this.nombre = data.progreso.nombre;
-      this.foto = data.progreso.foto;
-      this.sucursal = data.perfil;
-      this.apellidos = data.progreso.apellidos;
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
     })
