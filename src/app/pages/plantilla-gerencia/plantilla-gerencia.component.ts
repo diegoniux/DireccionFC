@@ -144,4 +144,10 @@ export class PlantillaGerenciaComponent implements OnInit {
     response = ((Number(saldoAcumulado) - Number(SaldoVirtual)) * 100).toString() + `%`;
     return response;
   }
+
+  public removeDecimals(str: string): string{
+    let response: string;
+    response = str.split('.')[0];
+    return response;
+  }
 }
