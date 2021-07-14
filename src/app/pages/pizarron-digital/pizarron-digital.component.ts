@@ -34,6 +34,7 @@ export class PizarronDigitalComponent implements OnInit {
   comisionEstimadaGFC: ComisionEstimadaInterface;
   productividadDiariaInterface: ProductividadDiariaInterface;
   productividadSemanalInterface: ProductividadSemanalInterface;
+  onlyOnce: boolean = true;
 
 
 
@@ -87,7 +88,7 @@ export class PizarronDigitalComponent implements OnInit {
     if(cambioCarga){
       this.loadData();
     }else{
-      this.DetalleProductividadChild.cambioProductividad(this.ControlProductividadChild.DiariaSemana);
+      this.DetalleProductividadChild.cambioProductividad(this.ControlProductividadChild.DiariaSemana, () => {});
     }
 
   }
@@ -103,7 +104,7 @@ export class PizarronDigitalComponent implements OnInit {
           '0',
           this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.fechaCorte,
           this.ControlProductividadChild.anteriorPosterior,
-          this.ControlProductividadChild.DiariaSemana , () =>{this.ComisionBonoPdChild.loadData(this.nomina, this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.fechaCorte)});
+          this.ControlProductividadChild.DiariaSemana , () =>{});
           
       }else{
         //carga Semana
@@ -114,7 +115,7 @@ export class PizarronDigitalComponent implements OnInit {
           this.DetalleProductividadChild.ProductividadSemanal.resultTotal.fechaCorte,
           this.ControlProductividadChild.anteriorPosterior,
           // false,
-          this.ControlProductividadChild.DiariaSemana, () =>{this.ComisionBonoPdChild.loadData(this.nomina, this.DetalleProductividadChild.ProductividadSemanal.resultTotal.fechaCorte)})
+          this.ControlProductividadChild.DiariaSemana, () =>{})
           
       }
 
@@ -126,10 +127,10 @@ export class PizarronDigitalComponent implements OnInit {
 
   loadDataOnlyOnce(): void{
     try {
-      const fecha = new Date();
+      const fecha = new Date(0);
       console.log(fecha.toISOString());      
       this.headerPizarronDigitalChild.loadData(this.gerencia);
-      this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,true, () => {this.ComisionBonoPdChild.loadData(this.nomina, fecha.toISOString())});
+      this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,true, () => {this.ComisionBonoPdChild.loadData(this.nomina, new Date().toISOString())});
       this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,false, () => {});
       
     } catch (error) {

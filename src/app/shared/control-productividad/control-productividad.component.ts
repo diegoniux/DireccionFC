@@ -38,10 +38,10 @@ export class ControlProductividadComponent implements OnInit {
   public cambiarPeriodo(productividad: number): any
   {
     if(productividad == 1){
-      //siguiente periodo
+      //periodo diario
       this.DiariaSemana = true;
     }else{
-      //anterior periodo
+      //periodo semanal
       this.DiariaSemana = false;
     }
     console.log(this.DiariaSemana);

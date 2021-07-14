@@ -12,6 +12,7 @@ export class DetalleProductividadComponent implements OnInit {
   
   productividadDiaria: ProductividadDiariaInterface;
   ProductividadSemanal: ProductividadSemanalInterface;
+  nomina: number;
 
   constructor(public service: GerentesService) { 
 
@@ -89,6 +90,7 @@ export class DetalleProductividadComponent implements OnInit {
   }
 
   public loadData(nomina: number, Anio: string, SemanaAnio: string, TrtrasemanaAnio: string, FechaCorte: string, EsPosterior: Boolean, DiariaSemana: Boolean, callback): void {
+    this.nomina = nomina
     console.log('La Nomina ES: ' + nomina);
     // this.loading = true;
     if(FechaCorte == ''){
@@ -139,19 +141,21 @@ export class DetalleProductividadComponent implements OnInit {
         Anio = (Number(Anio) + 1).toString();
       }
       if(this.ProductividadSemanal.resultTotal.esActual && EsPosterior) return;
-      this.GetProductividadSemanal(nomina, Anio, TrtrasemanaAnio, FechaCorte, EsPosterior, () => callback());
+      this.GetProductividadSemanal(nomina, Anio, TrtrasemanaAnio, FechaCorte, EsPosterior, () => {callback()});
     }
   }
 
-  public cambioProductividad(cambioCarga: boolean){
+  public cambioProductividad(cambioCarga: boolean, callback){
     var formElementDiaria = <HTMLFormElement>document.getElementById('tblDiaria');
     var formElementSemanal = <HTMLFormElement>document.getElementById('tblSemanal');
     if(cambioCarga){
       formElementDiaria.style.display='block';
       formElementSemanal.style.display = 'none';
+      callback();
     }else{
       formElementDiaria.style.display='none';
       formElementSemanal.style.display = 'block';
+      this.GetProductividadSemanal(this.nomina, this.ProductividadSemanal.resultTotal.anio.toString(), this.ProductividadSemanal.resultTotal.tetrasemanaAnio.toString(), this.ProductividadSemanal.resultTotal.fechaCorte, false, () => {callback()});
     }
   }
 
