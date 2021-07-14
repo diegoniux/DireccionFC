@@ -88,7 +88,7 @@ export class DetalleProductividadComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public loadData(nomina: number, Anio: string, SemanaAnio: string, TrtrasemanaAnio: string, FechaCorte: string, EsPosterior: Boolean, DiariaSemana: Boolean): void{
+  public loadData(nomina: number, Anio: string, SemanaAnio: string, TrtrasemanaAnio: string, FechaCorte: string, EsPosterior: Boolean, DiariaSemana: Boolean, callback): void {
     console.log('La Nomina ES: ' + nomina);
     // this.loading = true;
     if(FechaCorte == ''){
@@ -116,7 +116,7 @@ export class DetalleProductividadComponent implements OnInit {
       
       console.log(EsPosterior)
       if(this.productividadDiaria.resultAnioSemana.esActual && EsPosterior) return;
-      this.GetProductividadDiaria(nomina, Anio, SemanaAnio, FechaCorte, EsPosterior);
+      this.GetProductividadDiaria(nomina, Anio, SemanaAnio, FechaCorte, EsPosterior, () => callback());
       
     }else{
       console.log(nomina);
@@ -139,7 +139,7 @@ export class DetalleProductividadComponent implements OnInit {
         Anio = (Number(Anio) + 1).toString();
       }
       if(this.ProductividadSemanal.resultTotal.esActual && EsPosterior) return;
-      this.GetProductividadSemanal(nomina, Anio, TrtrasemanaAnio, FechaCorte, EsPosterior)
+      this.GetProductividadSemanal(nomina, Anio, TrtrasemanaAnio, FechaCorte, EsPosterior, () => callback());
     }
   }
 
@@ -155,7 +155,7 @@ export class DetalleProductividadComponent implements OnInit {
     }
   }
 
-  private GetProductividadDiaria(nomina: number, Anio: string, SemanaAnio: string, FechaCorte: string, EsPosterior: Boolean){
+  private GetProductividadDiaria(nomina: number, Anio: string, SemanaAnio: string, FechaCorte: string, EsPosterior: Boolean, callback){
     this.service.getProductividadDiaria(nomina.toString(), Anio , SemanaAnio, FechaCorte, EsPosterior)
     .toPromise()
     .then((data: ProductividadDiariaInterface) => {
@@ -167,13 +167,15 @@ export class DetalleProductividadComponent implements OnInit {
         this.productividadDiaria = data;
       }
       console.log(this.productividadDiaria);
+      callback();
     })
     .catch(error => {
       console.error(error);
+      callback();
     });
   }
 
-  private GetProductividadSemanal(nomina: number, Anio: string, TrtrasemanaAnio: string, FechaCorte: string, EsPosterior: Boolean){
+  private GetProductividadSemanal(nomina: number, Anio: string, TrtrasemanaAnio: string, FechaCorte: string, EsPosterior: Boolean, callback){
     this.service.getProductividadSemanal(nomina.toString(), Anio , TrtrasemanaAnio, FechaCorte, EsPosterior)
     .toPromise()
     .then((data: ProductividadSemanalInterface) => {
@@ -185,9 +187,11 @@ export class DetalleProductividadComponent implements OnInit {
         this.ProductividadSemanal = data;
       }
       console.log(this.ProductividadSemanal);
+      callback();
     })
     .catch(error => {
       console.error(error);
+      callback();
     });
   }
 

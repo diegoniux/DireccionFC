@@ -103,8 +103,8 @@ export class PizarronDigitalComponent implements OnInit {
           '0',
           this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.fechaCorte,
           this.ControlProductividadChild.anteriorPosterior,
-          this.ControlProductividadChild.DiariaSemana);
-          this.ComisionBonoPdChild.loadData(this.nomina, this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.fechaCorte);
+          this.ControlProductividadChild.DiariaSemana , () =>{this.ComisionBonoPdChild.loadData(this.nomina, this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.fechaCorte)});
+          
       }else{
         //carga Semana
         this.DetalleProductividadChild.loadData(this.nomina,
@@ -114,8 +114,8 @@ export class PizarronDigitalComponent implements OnInit {
           this.DetalleProductividadChild.ProductividadSemanal.resultTotal.fechaCorte,
           this.ControlProductividadChild.anteriorPosterior,
           // false,
-          this.ControlProductividadChild.DiariaSemana)
-          this.ComisionBonoPdChild.loadData(this.nomina, this.DetalleProductividadChild.ProductividadSemanal.resultTotal.fechaCorte);
+          this.ControlProductividadChild.DiariaSemana, () =>{this.ComisionBonoPdChild.loadData(this.nomina, this.DetalleProductividadChild.ProductividadSemanal.resultTotal.fechaCorte)})
+          
       }
 
     } catch (error) {
@@ -129,9 +129,9 @@ export class PizarronDigitalComponent implements OnInit {
       const fecha = new Date();
       console.log(fecha.toISOString());      
       this.headerPizarronDigitalChild.loadData(this.gerencia);
-      this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,true);
-      this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,false);
-      this.ComisionBonoPdChild.loadData(this.nomina, fecha.toISOString());
+      this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,true, () => {this.ComisionBonoPdChild.loadData(this.nomina, fecha.toISOString())});
+      this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,false, () => {});
+      
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
       // this.registrarError(error.message);
