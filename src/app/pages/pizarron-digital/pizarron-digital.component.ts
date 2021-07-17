@@ -14,6 +14,7 @@ import { ControlProductividadComponent } from '../../shared/control-productivida
 import { ComisionBonoPdComponent } from '../../shared/comision-bono-pd/comision-bono-pd.component';
 import { DetalleProductividadComponent } from '../../shared/detalle-productividad/detalle-productividad.component';
 import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
+import { NavBarComponent } from '../../shared/nav-bar/nav-bar.component';
 
 
 @Component({
@@ -39,6 +40,7 @@ export class PizarronDigitalComponent implements OnInit {
 
 
   // componentes hijos
+  @ViewChild(NavBarComponent) navBarChild: NavBarComponent;
   @ViewChild(HeaderPizarronDigitalComponent) headerPizarronDigitalChild: HeaderPizarronDigitalComponent;
   @ViewChild(ControlProductividadComponent) ControlProductividadChild: ControlProductividadComponent;
   @ViewChild(ComisionBonoPdComponent) ComisionBonoPdChild: ComisionBonoPdComponent;
@@ -70,6 +72,7 @@ export class PizarronDigitalComponent implements OnInit {
       this.gerentesService.token = this.loginInterface.token;
       // cargamos el modo pantalla
       this.modoPantalla = JSON.parse(localStorage.getItem('modoPantalla'));
+      this.navBarChild.perfilId = this.loginInterface.usuarioData.perfilUsuarioId;
       // if (this.modoPantalla && this.modoPantalla.modoDetalle) {
       //   this.nomina = this.modoPantalla.nominaDetalle;
       // }

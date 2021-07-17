@@ -32,7 +32,6 @@ import { ControlPeriodosComponent } from './shared/control-periodos/control-peri
 import { ComisionEstimadaComponent } from './shared/comision-estimada/comision-estimada.component';
 import { DetallegerenciaComponent } from './shared/detallegerencia/detallegerencia.component';
 import { ChartsModule } from 'ng2-charts';
-import { VisoreslidercomercialEspecialistariesgoComponent } from './shared/visoreslidercomercial-especialistariesgo/visoreslidercomercial-especialistariesgo.component';
 import { AvanceLidercomercialComponent } from './shared/avance-lidercomercial/avance-lidercomercial.component';
 import { RelevantesAppsComponent } from './shared/relevantes-apps/relevantes-apps.component';
 import { DetalleDirectorComercialComponent } from './pages/detalle-director-comercial/detalle-director-comercial.component';
@@ -67,7 +66,6 @@ import { HeaderPizarronDigitalComponent } from './shared/header-pizarron-digital
     ControlPeriodosComponent,
     ComisionEstimadaComponent,
     DetallegerenciaComponent,
-    VisoreslidercomercialEspecialistariesgoComponent,
     AvanceLidercomercialComponent,
     RelevantesAppsComponent,
     DetalleDirectorComercialComponent,

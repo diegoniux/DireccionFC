@@ -1,5 +1,5 @@
 <div class="container-fluid p-4" style="background-color: #F2F2F2;">
-    <app-nav-bar [seccionActiva]="1"></app-nav-bar>
+    <app-nav-bar [seccionActiva]="2"></app-nav-bar>
     <app-header-pizarron-digital></app-header-pizarron-digital>
     <div class="row" style="margin-top: 20px;">
         <div class="col-12" style="padding: 0px;">
@@ -13,9 +13,11 @@
                                         <div class="col-4 col-md-4">
                                             <img [ngStyle]="{'border-color': esp.colorIndicadorMeta}" class="imgFoto rounded-circle" src="{{ esp.foto }}">
                                         </div>
-                                        <div class="col-8 col-md-8">
-                                            {{ esp.nombre }}<br /><span class="font-weight-bold">{{ esp.apellidos }}</span><br />
-                                            <div class="progress">
+                                        <div class="col-8 col-md-8 ">
+                                            <p class="nombres">
+                                                {{ esp.nombre }}<br /><span class="font-weight-bold">{{ esp.apellidos }}</span><br />
+                                            </p>
+                                            <div class="progress" width="100%">
                                                 <div [ngStyle]="{'width': esp.porcentajeSaldoVirtualDesc}" class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div> 
                                                 <div [ngStyle]="{'width': (porcentajeSaldoAcumuladoDesc(esp.porcentajeSaldoAcumulado, esp.porcentajeSaldoVirtual)) }" class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
@@ -24,13 +26,13 @@
                                     </div>
                                     <div class="row text-center mt-2">
                                         <div class="col-4 col-md-4">
-                                            <span class="font-weight-bold">{{ removeDecimals(esp.saldoAcumulado) }}</span><br /><span style="font-size: 13px;">Saldo Acumulado</span>
+                                            <span class="cantidad">{{ removeDecimals(esp.saldoAcumulado) }}</span><br /><span class="descripciones">Saldo Acumulado</span>
                                         </div>
                                         <div class="col-4 col-md-4 border-left">
-                                            <span class="font-weight-bold">{{ esp.fctInactivos }}</span><br /><span style="font-size: 13px;">Trámites FCT</span>
+                                            <span class="cantidad">{{ esp.fctInactivos }}</span><br /><span class="descripciones">Trámites FCT</span>
                                         </div>
                                         <div class="col-4 col-md-4 border-left">
-                                            <span class="font-weight-bold">{{ esp.tramitesCertificados }}</span><br /><span style="font-size: 13px;">Total Traspasos</span>
+                                            <span class="cantidad">{{ esp.tramitesCertificados }}</span><br /><span class="descripciones">Total Traspasos</span>
                                         </div>
                                     </div>
                                 </div>

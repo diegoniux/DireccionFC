@@ -2,3 +2,43 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.card-radius{
+    border-radius: 10px ;
+    width: 100%;
+    /* margin-top: -15px; */
+}
+.lblNumEspecialistas{
+    font-size: 21px;
+}
+
+@media only screen and (max-device-width: 1300px) {
+    .lblNumEspecialistas{
+        font-size: 18px;
+    }
+    .lblDescipcionMR{
+        font-size: 15px;
+    }
+    .imgMR{
+        width: 60px;
+    }
+}
+@media only screen and (max-device-width: 1200px) {
+    .imgMR{
+        width: 65px;
+    }
+    .lblNumEspecialistas{
+        font-size: 18px;
+    }
+    .lblDescipcionMR{
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-device-width: 489px) {
+    .lblDescipcionBtn{
+        font-size: 12px;
+    }
+    .lblNumEspecialistas{
+        font-size: 16px;
+    }
+}

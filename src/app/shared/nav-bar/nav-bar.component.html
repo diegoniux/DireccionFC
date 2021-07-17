@@ -2,7 +2,7 @@
     <div class="col-12" style="padding: 0px;">
         <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="false">
             <mdb-navbar-brand>
-                <a *ngIf="perfilId != 8" href="#/home/detalleLider" class="btn btn-default navbar-brand" placement="bottom" ngbTooltip="Tooltip on bottom">
+                <a *ngIf="perfilId != 8" href="#/home" class="btn btn-default navbar-brand" placement="bottom" ngbTooltip="Tooltip on bottom">
                     <i style="color: #64a70b;" class="fas fa-arrow-left"></i>
                 </a>
                 <a *ngIf="perfilId == 8" class="btn btn-default navbar-brand">
@@ -12,40 +12,47 @@
         
             <links>                
                 <ul class="navbar-nav mr-auto" >
+                    <li class="nav-item separator" *ngIf="perfilId != 8">
+                        <div style="background-color: white;">
+                            <a class="nav-link {{(seccionActiva == 1) ? 'active text-white' : 'text-a' }}" href="#/home/detalleLider">
+                                <img style="width: 30px;" src="assets/img/btn-pizarron-{{(seccionActiva == 1) ? 'white' : 'green' }}.png" />
+                                <span class="{{(seccionActiva == 1) ? 'active text-white' : 'text-a' }}"> Detalle Lider Comercial</span><span class="sr-only">(current)</span>
+                            </a>
+                        </div>
+                    </li>
                     <li class="nav-item separator">
                         <div style="background-color: white;">
-                            <a class="nav-link {{(seccionActiva == 1) ? 'active text-white' : 'text-a' }}" href="#/home/productividadAgentes">
-                                <img style="width: 30px;" src="assets/img/btn-productividad-{{(seccionActiva == 1) ? 'white' : 'green' }}.png" />
-                                <span class="{{(seccionActiva == 1) ? 'active text-white' : 'text-a' }}"> Productividad Agentes</span><span class="sr-only">(current)</span>
+                            <a class="nav-link {{(seccionActiva == 2) ? 'active text-white' : 'text-a' }}" href="#/home/productividadAgentes">
+                                <img style="width: 30px;" src="assets/img/btn-productividad-{{(seccionActiva == 2) ? 'white' : 'green' }}.png" />
+                                <span class="{{(seccionActiva == 2) ? 'active text-white' : 'text-a' }}"> Productividad Agentes</span><span class="sr-only">(current)</span>
                             </a>
                         </div>
                     </li>
                     <li class="nav-item separator" >
                         <div style="background-color: white;">
-                            <a class="nav-link {{(seccionActiva == 2) ? 'active text-white' : 'text-a' }}" href="#/home/pizarronDigital">
-                                <img style="width: 30px;" src="assets/img/btn-pizarron-{{(seccionActiva == 2) ? 'white' : 'green' }}.png" />
-                                <span class="{{(seccionActiva == 2) ? 'active text-white' : 'text-a' }}"> Pizarrón Digital</span>
+                            <a class="nav-link {{(seccionActiva == 3) ? 'active text-white' : 'text-a' }}" href="#/home/pizarronDigital">
+                                <img style="width: 30px;" src="assets/img/btn-pizarron-{{(seccionActiva == 3) ? 'white' : 'green' }}.png" />
+                                <span class="{{(seccionActiva == 3) ? 'active text-white' : 'text-a' }}"> Pizarrón Digital</span>
                             </a>
                         </div>
                     </li>
                     <li class="nav-item separator">
                         <div style="background-color: white;">
-                            <a class="nav-link {{(seccionActiva == 3) ? 'active text-white' : 'text-a' }}">
-                                <img style="width: 30px;" src="assets/img/btn-alarmas-{{(seccionActiva == 3) ? 'white' : 'green' }}.png" />
-                                <span class="{{(seccionActiva == 3) ? 'active text-white' : 'text-a' }}"> Alarmas Improductivas</span>
+                            <a class="nav-link {{(seccionActiva == 4) ? 'active text-white' : 'text-a' }}">
+                                <img style="width: 30px;" src="assets/img/btn-alarmas-{{(seccionActiva == 4) ? 'white' : 'green' }}.png" />
+                                <span class="{{(seccionActiva == 4) ? 'active text-white' : 'text-a' }}"> Alarmas Improductivas</span>
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item separator">                        
+                    <li class="nav-item separator last">                        
                         <div style="background-color: white;">
-                            <a class="nav-link {{(seccionActiva == 3) ? 'active text-white' : 'text-a' }}">
-                                <img style="width: 30px;" src="assets/img/btn-ranking-{{(seccionActiva == 4) ? 'white' : 'green' }}.png" />
-                                <span class="{{(seccionActiva == 4) ? 'active text-white' : 'text-a' }}"> Ranking FC</span>
+                            <a class="nav-link {{(seccionActiva == 5) ? 'active text-white' : 'text-a' }}">
+                                <img style="width: 30px;" src="assets/img/btn-ranking-{{(seccionActiva == 5) ? 'white' : 'green' }}.png" />
+                                <span class="{{(seccionActiva == 5) ? 'active text-white' : 'text-a' }}"> Ranking FC</span>
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item separator"></li>                   
-                    </ul>
+                </ul>
             </links>
         </mdb-navbar>
     </div>

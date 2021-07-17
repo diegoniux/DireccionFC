@@ -15,16 +15,76 @@
     padding: 10px;
 }
 
+.descripciones{
+    font-size: 13px;
+}
+
+.nombres{
+    font-size: 16px;
+}
+
+.cantidad {
+    font-size: 16px;
+    font-weight: bold;
+}
+@media (max-width: 1400px) {
+    .imgFoto{
+        width: 85px;
+        height: 85px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .descripciones{
+        font-size: 11px;
+    }  
+}
+
 @media (max-width: 1200px) {
     .imgFoto{
         width: 75px;
         height: 75px;
+    }
+    .descripciones{
+        font-size: 10px;
+    }   
+    .nombres{
+        font-size: 14px;
+    }
+    .cantidad {
+        font-size: 14px;
+    }
+}
+@media (max-width: 1100px) {
+    .imgFoto{
+        width: 65px;
+        height: 65px;
+    }
+    .descripciones{
+        font-size: 9px;
+    }  
+    .nombres{
+        font-size: 11px;
+    }
+    .cantidad {
+        font-size: 11px;
     }
 }
 @media (max-width: 900px) {
     .imgFoto{
         width: 70px;
         height: 70px;
+    }
+    .descripciones{
+        font-size: 13px;
+    }
+    
+    .nombres{
+        font-size: 16px;
+    }
+    
+    .cantidad {
+        font-size: 17px;
     }
 }
 @media only screen and (max-device-width: 480px) {

@@ -7,13 +7,16 @@ import { ControlPeriodosComponent } from '../../shared/control-periodos/control-
 import { ComisionEstimadaComponent } from '../../shared/comision-estimada/comision-estimada.component';
 import { MejorSaldoComponent } from '../../shared/mejor-saldo/mejor-saldo.component';
 import { RelevantesAppsComponent } from '../../shared/relevantes-apps/relevantes-apps.component';
-import { VisoreslidercomercialEspecialistariesgoComponent } from '../../shared/visoreslidercomercial-especialistariesgo/visoreslidercomercial-especialistariesgo.component';
 import { AvanceLidercomercialComponent } from '../../shared/avance-lidercomercial/avance-lidercomercial.component';
 import { LoginService } from '../../services/login.service';
 import { LoginInterface } from '../../interfaces/login.interface';
 import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
 import { LogErrorInterface } from '../../interfaces/logError.interface';
+import { DetalleGerenciasService } from '../../services/detalle-gerencias-service.service';
+import { RelevantesInterface } from '../../interfaces/dto/relevantes.interface';
+import { NavBarComponent } from '../../shared/nav-bar/nav-bar.component';
+
 @Component({
   selector: 'app-detallelidercomercial',
   templateUrl: './detallelidercomercial.component.html',
@@ -26,13 +29,14 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit, On
   loginInterface: LoginInterface;
   infoGerencia: ReporteGerencia;
   idInterval: any;
+  relevante: RelevantesInterface;
 
   // Componentes hijos
+  @ViewChild(NavBarComponent) navBarChild: NavBarComponent;
   @ViewChild(DetallegerenciaComponent) detalleGerenciaChild: DetallegerenciaComponent;
   @ViewChild(ControlPeriodosComponent) controlPeriodosChild: ControlPeriodosComponent;
   @ViewChild(ComisionEstimadaComponent) comsisionEstimadaChild: ComisionEstimadaComponent;
   @ViewChild(MejorSaldoComponent) mejorSaldoChild: MejorSaldoComponent;
-  @ViewChild(VisoreslidercomercialEspecialistariesgoComponent) visoresChild: VisoreslidercomercialEspecialistariesgoComponent;
   @ViewChild(AvanceLidercomercialComponent) avanceChild: AvanceLidercomercialComponent;
   @ViewChild(RelevantesAppsComponent) relevanteChild: RelevantesAppsComponent;
 
@@ -43,7 +47,8 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit, On
 
   constructor(private router: Router,
               public loginService: LoginService,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              public detalleService: DetalleGerenciasService) {
     this.nombreTitulo = 'Detalle Líder Comercial';
     this.nombreImg = 'iconoPizarronDigital';
     this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
@@ -66,6 +71,7 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit, On
         idPantalla: 2,
         usuario: this.loginInterface.usuarioData.nomina
       };
+      this.navBarChild.perfilId = this.loginInterface.usuarioData.perfilUsuarioId;
       this.registrarLogPantalla(logSistema);
 
       if (!this.infoGerencia) {
@@ -143,11 +149,15 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit, On
   private cargarVisores(): any
   {
     try{
-      this.visoresChild.infoGerencia = this.infoGerencia;
-      this.visoresChild.idTipoPeriodo = this.controlPeriodosChild.idTipoPeriodo;
-      this.visoresChild.periodoMes = this.controlPeriodosChild.periodoMes;
-      this.visoresChild.periodoSemana = this.controlPeriodosChild.periodoSemana;
-      this.visoresChild.loadData();
+      this.detalleService.getRelevantes(Number(this.infoGerencia.nominaGerente), this.controlPeriodosChild.idTipoPeriodo,  
+        this.controlPeriodosChild.periodoMes.fechaInicial,this.controlPeriodosChild.periodoSemana.fechaFinal)
+      .toPromise()
+      .then((data: RelevantesInterface) => {
+        this.relevante = data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
     }catch (error){
       this.toastrService.error(error.message, 'Aviso');
       this.registrarError(error.message);
@@ -226,7 +236,6 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit, On
   recieveIsLoading($event): void {
     const res: boolean = this.detalleGerenciaChild.loading && this.mejorSaldoChild.loading &&
       this.relevanteChild.loading && this.comsisionEstimadaChild.loading && this.avanceChild.loading
-      && this.visoresChild.loading;
     this.controlPeriodosChild.loading = res;
   }
 }
