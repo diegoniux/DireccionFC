@@ -2,7 +2,7 @@
     <div class="col-12" style="padding: 0px;">
         <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="false">
             <mdb-navbar-brand>
-                <a *ngIf="perfilId != 8" href="#/home" class="btn btn-default navbar-brand" placement="bottom" ngbTooltip="Tooltip on bottom">
+                <a *ngIf="perfilId != 8" href="#/home" class="btn btn-default navbar-brand" ngbPopover="Regresar" triggers="mouseenter:mouseleave"  >
                     <i style="color: #64a70b;" class="fas fa-arrow-left"></i>
                 </a>
                 <a *ngIf="perfilId == 8" class="btn btn-default navbar-brand">
@@ -53,6 +53,11 @@
                         </div>
                     </li>
                 </ul>
+                <ul *ngIf="perfilId == 8" class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item">
+                        <button class="btn btn-default" (click)="logOut()"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                    </li>
+                  </ul>
             </links>
         </mdb-navbar>
     </div>

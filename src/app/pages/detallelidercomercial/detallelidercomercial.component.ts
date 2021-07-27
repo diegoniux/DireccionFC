@@ -72,6 +72,7 @@ export class DetallelidercomercialComponent implements OnInit, AfterViewInit, On
         usuario: this.loginInterface.usuarioData.nomina
       };
       this.navBarChild.perfilId = this.loginInterface.usuarioData.perfilUsuarioId;
+      this.navBarChild.nomina = this.loginInterface.usuarioData.nomina;
       this.registrarLogPantalla(logSistema);
 
       if (!this.infoGerencia) {

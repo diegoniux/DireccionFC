@@ -53,12 +53,12 @@ export class PlantillaGerenciaComponent implements OnInit {
       this.loginInterface = this.loginService.getUserLoggedIn();
       this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
       this.perfilId = +this.loginInterface.usuarioData.perfilUsuarioId;
-      console.log(this.perfilId);
       // Obtiene Nóminas
       this.nomina = +this.loginInterface.usuarioData.nomina;
       this.nominaGerente = +this.infoGerencia.nominaGerente;
 
       this.navBarChild.perfilId = this.loginInterface.usuarioData.perfilUsuarioId;
+      this.navBarChild.nomina = this.nomina;
       this.loadData();
       const logSistema: LogSistemaInterface = {
           idAccion: 3,

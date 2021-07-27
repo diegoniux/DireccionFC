@@ -78,6 +78,7 @@ export class PizarronDigitalComponent implements OnInit {
       // cargamos el modo pantalla
       this.modoPantalla = JSON.parse(localStorage.getItem('modoPantalla'));
       this.navBarChild.perfilId = this.perfilId;
+      this.navBarChild.nomina = this.nomina;
       // if (this.modoPantalla && this.modoPantalla.modoDetalle) {
       //   this.nomina = this.modoPantalla.nominaDetalle;
       // }
