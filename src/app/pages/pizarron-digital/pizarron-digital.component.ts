@@ -36,7 +36,7 @@ export class PizarronDigitalComponent implements OnInit {
   productividadDiariaInterface: ProductividadDiariaInterface;
   productividadSemanalInterface: ProductividadSemanalInterface;
   onlyOnce: boolean = true;
-
+  perfilId: number;
 
 
   // componentes hijos
@@ -68,15 +68,26 @@ export class PizarronDigitalComponent implements OnInit {
       this.loginInterface = this.loginService.getUserLoggedIn();
       this.gerencia = JSON.parse(localStorage.getItem('infoGerente'));
       console.log(this.gerencia);
-      this.nomina = +this.gerencia.nominaGerente;
+      
+      this.perfilId = +this.loginInterface.usuarioData.perfilUsuarioId;
+      // Obtiene Nóminas
+      this.nomina = +this.loginInterface.usuarioData.nomina;
+      this.nominaGerente = +this.gerencia.nominaGerente;
+      
       this.gerentesService.token = this.loginInterface.token;
       // cargamos el modo pantalla
       this.modoPantalla = JSON.parse(localStorage.getItem('modoPantalla'));
-      this.navBarChild.perfilId = this.loginInterface.usuarioData.perfilUsuarioId;
+      this.navBarChild.perfilId = this.perfilId;
       // if (this.modoPantalla && this.modoPantalla.modoDetalle) {
       //   this.nomina = this.modoPantalla.nominaDetalle;
       // }
       this.loadDataOnlyOnce();
+      const logSistema: LogSistemaInterface = {
+        idAccion: 3,
+        idPantalla: 4,
+        usuario: this.loginInterface.usuarioData.nomina
+      };
+      this.registrarLogPantalla(logSistema);
       // Carga automática de componentes cada 20 segundos
       // this.idInterval = setInterval(() => this.loadData(), 60000);
 
@@ -84,6 +95,16 @@ export class PizarronDigitalComponent implements OnInit {
       this.toastrService.error(error.message, 'Aviso');
       this.registrarError(error.message);
     }
+  }
+
+  private registrarLogPantalla(logSistema: LogSistemaInterface): any {
+    this.loginService.setLogSistema(logSistema)
+      .toPromise()
+      .then((resp: any ) => {
+      })
+      .catch(error => {
+        this.toastrService.error(error.message, 'Aviso');
+      });
   }
 
   recievePeriodo(cambioCarga: boolean): void{
@@ -101,7 +122,7 @@ export class PizarronDigitalComponent implements OnInit {
       console.log("loadData");
       if(this.ControlProductividadChild.DiariaSemana){
         //carga Diaria
-        this.DetalleProductividadChild.loadData(this.nomina,
+        this.DetalleProductividadChild.loadData(this.nominaGerente,
           this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.anio.toString(),
           this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.semanaAnio.toString(),
           '0',
@@ -111,7 +132,7 @@ export class PizarronDigitalComponent implements OnInit {
           
       }else{
         //carga Semana
-        this.DetalleProductividadChild.loadData(this.nomina,
+        this.DetalleProductividadChild.loadData(this.nominaGerente,
           this.DetalleProductividadChild.ProductividadSemanal.resultTotal.anio.toString(),
           '0',
           this.DetalleProductividadChild.ProductividadSemanal.resultTotal.tetrasemanaAnio.toString(),
@@ -133,8 +154,8 @@ export class PizarronDigitalComponent implements OnInit {
       const fecha = new Date(0);
       console.log(fecha.toISOString());      
       this.headerPizarronDigitalChild.loadData(this.gerencia);
-      this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,true, () => {this.ComisionBonoPdChild.loadData(this.nomina, new Date().toISOString())});
-      this.DetalleProductividadChild.loadData(this.nomina,'0','0','0',fecha.toISOString(),false,false, () => {});
+      this.DetalleProductividadChild.loadData(this.nominaGerente,'0','0','0',fecha.toISOString(),false,true, () => {this.ComisionBonoPdChild.loadData(this.nominaGerente, new Date().toISOString())});
+      this.DetalleProductividadChild.loadData(this.nominaGerente,'0','0','0',fecha.toISOString(),false,false, () => {});
       
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');

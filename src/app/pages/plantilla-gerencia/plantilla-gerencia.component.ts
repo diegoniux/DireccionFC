@@ -18,6 +18,7 @@ import { HeaderPizarronDigitalComponent } from '../../shared/header-pizarron-dig
   styleUrls: ['./plantilla-gerencia.component.css']
 })
 export class PlantillaGerenciaComponent implements OnInit { 
+  nomina: number;
   nominaGerente:number;
   nombreTitulo: string
   nombreImg: string
@@ -25,6 +26,7 @@ export class PlantillaGerenciaComponent implements OnInit {
   plantilla:EspecialistaGerenteInterface[];
   infoGerencia: ReporteGerencia;
   idInterval: any;
+  perfilId: number;
 
   @ViewChild(NavBarComponent) navBarChild: NavBarComponent;
   @ViewChild(HeaderPizarronDigitalComponent) headerPizarronDigitalChild: HeaderPizarronDigitalComponent;
@@ -36,6 +38,8 @@ export class PlantillaGerenciaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.nombreTitulo = "Productividad Agentes";
+    this.nombreImg = "iconoProductividad";    
   }
 
   ngOnDestroy(): void {
@@ -46,30 +50,33 @@ export class PlantillaGerenciaComponent implements OnInit {
 
   ngAfterViewInit(): void {
     try {
-      this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
-      this.nombreTitulo = "Productividad Agentes";
-      this.nombreImg = "iconoProductividad";
-      this.nominaGerente = +this.infoGerencia.nominaGerente;    
       this.loginInterface = this.loginService.getUserLoggedIn();
+      this.infoGerencia = JSON.parse(localStorage.getItem('infoGerente'));
+      this.perfilId = +this.loginInterface.usuarioData.perfilUsuarioId;
+      console.log(this.perfilId);
+      // Obtiene Nóminas
+      this.nomina = +this.loginInterface.usuarioData.nomina;
+      this.nominaGerente = +this.infoGerencia.nominaGerente;
+
       this.navBarChild.perfilId = this.loginInterface.usuarioData.perfilUsuarioId;
       this.loadData();
       const logSistema: LogSistemaInterface = {
           idAccion: 3,
-          idPantalla: 2,
+          idPantalla: 5,
           usuario: this.loginInterface.usuarioData.nomina
         };
-        this.registrarLogPantalla(logSistema);
+      this.registrarLogPantalla(logSistema);
 
-        if (!this.infoGerencia) {
-          this.router.navigate(['/home']);
-        }
-        // Carga automática de componentes cada 1 minuto
-        this.idInterval = setInterval(() => this.loadData(), 60000);
-
-      } catch (error) {
-        this.toastrService.error(error.message, 'Aviso');
-        this.registrarError(error.message);
+      if (!this.nominaGerente) {
+        this.router.navigate(['/home']);
       }
+      // Carga automática de componentes cada 1 minuto
+      this.idInterval = setInterval(() => this.loadData(), 60000);
+
+    } catch (error) {
+      this.toastrService.error(error.message, 'Aviso');
+      this.registrarError(error.message);
+    }
   }
 
   private loadData(): void {

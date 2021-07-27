@@ -29,6 +29,7 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit, OnDestr
   nomina: number;
   modoPantalla: ModoPantallaInterface;
   idInterval: any;
+  perfilId: number;
 
   // componentes hijos
   @ViewChild(BarraMetasComponent) barraMetasChild: BarraMetasComponent;
@@ -66,6 +67,7 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit, OnDestr
         usuario: this.loginInterface.usuarioData.nomina
       };
       this.registrarLogPantalla(logSistema);
+      this.perfilId = this.loginInterface.usuarioData.perfilUsuarioId;
       // Asignación del token al servicio
       this.detalleGerenciaService.token = this.loginInterface.token;
       // cargamos el modo pantalla
@@ -101,9 +103,12 @@ export class DetallegerenciasComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   public logOut(): any {
+
+    if(!this.perfilId)
+      return;
     // si el modo de la pantalla es modo detalle, al presionar el botón de salir, regresaremos a la pantalla anteri
-    if (this.modoPantalla && this.modoPantalla.modoDetalle) {
-      this.location.back();
+    if (this.perfilId != 9) {
+      this.router.navigate(['/home/detalleDirectorComercial']);      
       return;
     }
 

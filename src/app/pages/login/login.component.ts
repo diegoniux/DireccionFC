@@ -9,6 +9,7 @@ import { LogErrorInterface } from '../../interfaces/logError.interface';
 import { InfoAppService } from '../../services/info-app.service';
 import { InfoAppInterface } from '../../interfaces/infoApp.interface';
 import { ModoPantallaInterface } from '../../interfaces/modoPantalla.interface';
+import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
 
 @Component({
   selector: 'app-login',
@@ -97,7 +98,7 @@ export class LoginComponent implements OnInit {
         .then((data: any) => {
         })
         .catch();
-
+        localStorage.removeItem('infoGerente');
         this.alertService.success('Bienvenido', this.options);
         switch (this.loginInterface.usuarioData.perfilUsuarioId) {
           case 9: // Gerente Coorginador
@@ -117,6 +118,30 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/home/detalleDirectorComercial']);
             break;
           case 8: // Gerente
+            let gerencia: ReporteGerencia = {
+              nominaGerente: resp.usuarioData.nomina.toString(),
+              nombre: resp.usuarioData.nombre,
+              apellido: resp.usuarioData.apellidoPaterno + ' ' +
+                resp.usuarioData.apellidoMaterno,
+              foto: resp.usuarioData.foto,
+              nombreSuc: resp.usuarioData.sucursal,
+              usuarioIdGerente: null,
+              sucursalCve: null,
+              proyeccion: null,
+              proyeccionColor: null,
+              saldoAcomulado: null,
+              saldoVirtual: null,
+              saldoCantado: null,
+              saldoPromedio: null,
+              productividadEsp: null,
+              productividadEsps: null,
+              mejorSaldo: null,
+              periodo: null,
+              imgFlecha: null,
+              desempeno: null,
+              diagnostico: null
+            }
+            localStorage.setItem('infoGerente', JSON.stringify(gerencia));
             this.router.navigate(['/home/productividadAgentes']);
             break;            
           case 14: // VP
