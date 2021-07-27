@@ -124,7 +124,7 @@ export class LoginComponent implements OnInit {
               apellido: resp.usuarioData.apellidoPaterno + ' ' +
                 resp.usuarioData.apellidoMaterno,
               foto: resp.usuarioData.foto,
-              nombreSuc: resp.usuarioData.sucursal,
+              nombreSuc: resp.usuarioData.titulo,
               usuarioIdGerente: null,
               sucursalCve: null,
               proyeccion: null,
