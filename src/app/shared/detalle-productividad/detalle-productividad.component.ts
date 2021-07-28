@@ -180,6 +180,11 @@ export class DetalleProductividadComponent implements OnInit {
   }
 
   private GetProductividadSemanal(nomina: number, Anio: string, TrtrasemanaAnio: string, FechaCorte: string, EsPosterior: Boolean, callback){
+    console.log(nomina);
+    console.log(Anio);
+    console.log(TrtrasemanaAnio);
+    console.log(FechaCorte);
+    console.log(EsPosterior);
     this.service.getProductividadSemanal(nomina.toString(), Anio , TrtrasemanaAnio, FechaCorte, EsPosterior)
     .toPromise()
     .then((data: ProductividadSemanalInterface) => {

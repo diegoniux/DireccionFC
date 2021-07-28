@@ -152,11 +152,11 @@ export class PizarronDigitalComponent implements OnInit {
 
   loadDataOnlyOnce(): void{
     try {
-      const fecha = new Date(0);
-      console.log(fecha.toISOString());      
+      const fecha ='1900-01-01';
+      console.log(fecha);      
       this.headerPizarronDigitalChild.loadData(this.gerencia);
-      this.DetalleProductividadChild.loadData(this.nominaGerente,'0','0','0',fecha.toISOString(),false,true, () => {this.ComisionBonoPdChild.loadData(this.nominaGerente, new Date().toISOString())});
-      this.DetalleProductividadChild.loadData(this.nominaGerente,'0','0','0',fecha.toISOString(),false,false, () => {});
+      this.DetalleProductividadChild.loadData(this.nominaGerente,'0','0','0',fecha,false,true, () => {this.ComisionBonoPdChild.loadData(this.nominaGerente, new Date().toISOString())});
+      this.DetalleProductividadChild.loadData(this.nominaGerente,'0','0','0',fecha,false,false, () => {});
       
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
