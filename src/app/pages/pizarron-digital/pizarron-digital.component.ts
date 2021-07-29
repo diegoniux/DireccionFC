@@ -67,7 +67,6 @@ export class PizarronDigitalComponent implements OnInit {
     try {
       this.loginInterface = this.loginService.getUserLoggedIn();
       this.gerencia = JSON.parse(localStorage.getItem('infoGerente'));
-      console.log(this.gerencia);
       
       this.perfilId = +this.loginInterface.usuarioData.perfilUsuarioId;
       // Obtiene Nóminas
@@ -109,30 +108,31 @@ export class PizarronDigitalComponent implements OnInit {
   }
 
   recievePeriodo(cambioCarga: boolean): void{
-    //control productividad emite un cambio
-    if(cambioCarga){
+    // control productividad emite un cambio
+    if (cambioCarga){
       this.loadData();
-    }else{
+    }
+    else
+    {
       this.DetalleProductividadChild.cambioProductividad(this.ControlProductividadChild.DiariaSemana, () => {});
     }
-
   }
 
   loadData(): void{
     try {
-      console.log("loadData");
-      if(this.ControlProductividadChild.DiariaSemana){
-        //carga Diaria
+      if (this.ControlProductividadChild.DiariaSemana){
+        // carga Diaria
         this.DetalleProductividadChild.loadData(this.nominaGerente,
           this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.anio.toString(),
           this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.semanaAnio.toString(),
           '0',
           this.DetalleProductividadChild.productividadDiaria.resultAnioSemana.fechaCorte,
           this.ControlProductividadChild.anteriorPosterior,
-          this.ControlProductividadChild.DiariaSemana , () =>{});
-          
-      }else{
-        //carga Semana
+          this.ControlProductividadChild.DiariaSemana , () => {});
+      }
+      else
+      {
+        // carga Semana
         this.DetalleProductividadChild.loadData(this.nominaGerente,
           this.DetalleProductividadChild.ProductividadSemanal.resultTotal.anio.toString(),
           '0',
@@ -140,8 +140,8 @@ export class PizarronDigitalComponent implements OnInit {
           this.DetalleProductividadChild.ProductividadSemanal.resultTotal.fechaCorte,
           this.ControlProductividadChild.anteriorPosterior,
           // false,
-          this.ControlProductividadChild.DiariaSemana, () =>{})
-          
+          this.ControlProductividadChild.DiariaSemana, () => {});
+
       }
 
     } catch (error) {
@@ -152,26 +152,22 @@ export class PizarronDigitalComponent implements OnInit {
 
   loadDataOnlyOnce(): void{
     try {
-      const fecha ='1900-01-01';
-      console.log(fecha);      
+      const fecha = '1900-01-01';
       this.headerPizarronDigitalChild.loadData(this.gerencia);
-      this.DetalleProductividadChild.loadData(this.nominaGerente,'0','0','0',fecha,false,true, () => {this.ComisionBonoPdChild.loadData(this.nominaGerente, new Date().toISOString())});
-      this.DetalleProductividadChild.loadData(this.nominaGerente,'0','0','0',fecha,false,false, () => {});
-      
+      this.DetalleProductividadChild.loadData(this.nominaGerente, '0', '0', '0', fecha, false, true, () =>
+                                          { this.ComisionBonoPdChild.loadData(this.nominaGerente, new Date().toISOString()); });
+      this.DetalleProductividadChild.loadData(this.nominaGerente, '0', '0', '0', fecha, false, false, () => {});
+
     } catch (error) {
       this.toastrService.error(error.message, 'Aviso');
       // this.registrarError(error.message);
     }
   }
 
-
-
-
-
   private registrarError(msg: string): any
   {
     const logError: LogErrorInterface = {
-      idPantalla: 5,//cual es numero de esta pantalla
+      idPantalla: 5, // cual es numero de esta pantalla
       usuario: this.loginInterface.usuarioData.nomina,
       error: msg
     };

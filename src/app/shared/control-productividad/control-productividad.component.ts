@@ -31,7 +31,6 @@ export class ControlProductividadComponent implements OnInit {
       //anterior periodo
       this.anteriorPosterior = false;
     }
-  console.log(this.anteriorPosterior);
     this.changePeriodoEvent.emit(true);
   }
 
@@ -44,7 +43,6 @@ export class ControlProductividadComponent implements OnInit {
       //periodo semanal
       this.DiariaSemana = false;
     }
-    console.log(this.DiariaSemana);
     this.changePeriodoEvent.emit(false);
   }
   

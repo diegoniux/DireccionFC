@@ -44,7 +44,6 @@ export class PlantillaDirectorComercialComponent implements OnInit {
       this.idSelected = +localStorage.getItem('idSelected');
       if (this.idSelected && this.idSelected > 0) {
         this.selectedUser(this.idSelected);
-        console.log('idSelected ' + this.idSelected.toString());
       } else {
         this.focusUsr = this.listaPlantilla[0];
         this.nominaSelectedEvent.emit();

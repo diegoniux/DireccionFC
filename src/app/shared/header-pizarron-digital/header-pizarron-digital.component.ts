@@ -37,7 +37,6 @@ export class HeaderPizarronDigitalComponent implements OnInit {
 
   public loadData(gerencia: ReporteGerencia ): void{
     this.nominaGerente = +gerencia.nominaGerente;
-    console.log('la NOMINa ES: ' + this.nominaGerente.toString());
     this.sucursal = gerencia.nombreSuc;
     this.nombre = gerencia.nombre;
     this.foto = gerencia.foto;

@@ -27,7 +27,6 @@ export class ComisionBonoPdComponent implements OnInit {
   }
 
   public loadData(nomina: number, FechaCorte: string): void{
-    console.log('La Nomina ES: ' + nomina);
     this.GetComisionEstimada(nomina, FechaCorte);
   }
 
@@ -39,10 +38,9 @@ export class ComisionBonoPdComponent implements OnInit {
       {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
-      if(data.resultadoEjecucion.ejecucionCorrecta){
+      if (data.resultadoEjecucion.ejecucionCorrecta){
         this.ComisionEstimada = data;
       }
-      console.log(this.ComisionEstimada);
     })
     .catch(error => {
       console.error(error);

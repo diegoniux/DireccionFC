@@ -9,12 +9,12 @@ import { GerentesService } from '../../services/gerentes.service';
   styleUrls: ['./detalle-productividad.component.css']
 })
 export class DetalleProductividadComponent implements OnInit {
-  
+
   productividadDiaria: ProductividadDiariaInterface;
   ProductividadSemanal: ProductividadSemanalInterface;
   nomina: number;
 
-  constructor(public service: GerentesService) { 
+  constructor(public service: GerentesService) {
 
     this.productividadDiaria = {
       resultadoEjecucion: {
@@ -53,7 +53,7 @@ export class DetalleProductividadComponent implements OnInit {
         totalFoliosMenores30k: 0,
         totalFoliosCertificados: 0
       }
-    }
+    };
 
     this.ProductividadSemanal = {
       resultadoEjecucion: {
@@ -61,14 +61,15 @@ export class DetalleProductividadComponent implements OnInit {
         errorMessage: '',
         friendlyMessage: ''
       },
-      resultSemanas:{
+      resultSemanas:
+      {
         semana1: '',
         semana2: '',
         semana3: '',
         semana4: ''
       },
-      resultDatos:[],
-      resultTotal:{
+      resultDatos: [],
+      resultTotal: {
         saldoVirtualTotal: 0,
         anio: 0,
         tetrasemanaAnio: 0,
@@ -76,101 +77,126 @@ export class DetalleProductividadComponent implements OnInit {
         fechaCorte: '',
         esUltimaFechaCorte: false
       },
-      resultSemanasTotal:{
+      resultSemanasTotal:
+      {
         semana1Total: 0,
         semana2Total: 0,
         semana3Total: 0,
         semana4Total: 0
       }
-    }
+    };
 
   }
 
   ngOnInit(): void {
   }
 
-  public loadData(nomina: number, Anio: string, SemanaAnio: string, TrtrasemanaAnio: string, FechaCorte: string, EsPosterior: Boolean, DiariaSemana: Boolean, callback): void {
-    this.nomina = nomina
-    console.log('La Nomina ES: ' + nomina);
+  public loadData(nomina: number, Anio: string, SemanaAnio: string, TrtrasemanaAnio: string, FechaCorte: string,
+                  EsPosterior: boolean, DiariaSemana: boolean, callback): void {
+    this.nomina = nomina;
     // this.loading = true;
-    if(FechaCorte == ''){
-      const fecha = new Date();
-      FechaCorte = fecha.toISOString();
+    if (FechaCorte === ''){
+      const fecha = '1900-01-01';
+      FechaCorte = fecha;
       EsPosterior = false;
     }
 
-    if(DiariaSemana){
-      console.log(+SemanaAnio);
-      console.log(+SemanaAnio -1);
-      if(EsPosterior){
-        SemanaAnio = (+SemanaAnio + 1).toString()
-      }else{
-        SemanaAnio = (+SemanaAnio - 1).toString()
+    if (DiariaSemana)
+    {
+      if (EsPosterior)
+      {
+        SemanaAnio = (+SemanaAnio + 1).toString();
       }
-      if(SemanaAnio == '0'){
+      else
+      {
+        SemanaAnio = (+SemanaAnio - 1).toString();
+      }
+      if (SemanaAnio === '0')
+      {
         SemanaAnio = '52';
-        Anio = (Number(Anio)- 1).toString();
+        Anio = (Number(Anio) - 1).toString();
       }
-      if(SemanaAnio == '53'){
+      if (SemanaAnio === '53'){
         SemanaAnio = '1';
         Anio = (Number(Anio) + 1).toString();
       }
-      
-      console.log(EsPosterior)
-      if(this.productividadDiaria.resultAnioSemana.esActual && EsPosterior) return;
-      this.GetProductividadDiaria(nomina, Anio, SemanaAnio, FechaCorte, EsPosterior, () => callback());
-      
-    }else{
-      console.log(nomina);
-      console.log(Anio);
-      console.log(TrtrasemanaAnio);
-      console.log(FechaCorte);
-      console.log(EsPosterior);
-      console.log(DiariaSemana);
-      if(EsPosterior){
-        TrtrasemanaAnio = (+TrtrasemanaAnio + 1).toString()
-      }else{
-        TrtrasemanaAnio = (+TrtrasemanaAnio - 1).toString()
+
+      if (this.productividadDiaria.resultAnioSemana.esActual && EsPosterior) {
+        return;
       }
-      if(TrtrasemanaAnio == '0'){
+
+      if (FechaCorte === '1900-01-01') {
+        Anio = '0';
+        SemanaAnio = '0';
+      }
+
+      this.GetProductividadDiaria(nomina, Anio, SemanaAnio, FechaCorte, EsPosterior, () => callback());
+
+    }
+    else
+    {
+      if (EsPosterior){
+        TrtrasemanaAnio = (+TrtrasemanaAnio + 1).toString();
+      }
+      else
+      {
+        TrtrasemanaAnio = (+TrtrasemanaAnio - 1).toString();
+      }
+      if (TrtrasemanaAnio === '0'){
         TrtrasemanaAnio = '13';
         Anio = (Number(Anio) - 1).toString();
       }
-      if(TrtrasemanaAnio == '14'){
+      if (TrtrasemanaAnio === '14'){
         TrtrasemanaAnio = '1';
         Anio = (Number(Anio) + 1).toString();
       }
-      if(this.ProductividadSemanal.resultTotal.esActual && EsPosterior) return;
-      this.GetProductividadSemanal(nomina, Anio, TrtrasemanaAnio, FechaCorte, EsPosterior, () => {callback()});
+      if (this.ProductividadSemanal.resultTotal.esActual && EsPosterior)
+      {
+        return;
+      }
+
+      if (FechaCorte === '1900-01-01') {
+        Anio = '0';
+        TrtrasemanaAnio = '0';
+      }
+      this.GetProductividadSemanal(nomina, Anio, TrtrasemanaAnio, FechaCorte, EsPosterior, () =>
+      {
+        callback();
+      });
     }
   }
 
-  public cambioProductividad(cambioCarga: boolean, callback){
-    var formElementDiaria = <HTMLFormElement>document.getElementById('tblDiaria');
-    var formElementSemanal = <HTMLFormElement>document.getElementById('tblSemanal');
-    if(cambioCarga){
-      formElementDiaria.style.display='block';
+  public cambioProductividad(cambioCarga: boolean, callback): any{
+    const formElementDiaria = <HTMLFormElement> document.getElementById('tblDiaria');
+    const formElementSemanal = <HTMLFormElement> document.getElementById('tblSemanal');
+    if (cambioCarga){
+      formElementDiaria.style.display = 'block';
       formElementSemanal.style.display = 'none';
       callback();
-    }else{
-      formElementDiaria.style.display='none';
+    }
+    else
+    {
+      formElementDiaria.style.display = 'none';
       formElementSemanal.style.display = 'block';
-      this.GetProductividadSemanal(this.nomina, this.ProductividadSemanal.resultTotal.anio.toString(), this.ProductividadSemanal.resultTotal.tetrasemanaAnio.toString(), this.ProductividadSemanal.resultTotal.fechaCorte, false, () => {callback()});
+      this.GetProductividadSemanal (this.nomina, '0', '0', '1900-01-01', false, () =>
+      {
+        callback();
+      });
     }
   }
 
-  private GetProductividadDiaria(nomina: number, Anio: string, SemanaAnio: string, FechaCorte: string, EsPosterior: Boolean, callback){
+  private GetProductividadDiaria(nomina: number, Anio: string, SemanaAnio: string, FechaCorte: string, EsPosterior: boolean, callback): any{
     this.service.getProductividadDiaria(nomina.toString(), Anio , SemanaAnio, FechaCorte, EsPosterior)
     .toPromise()
     .then((data: ProductividadDiariaInterface) => {
-      if(!data.resultadoEjecucion.ejecucionCorrecta)
+      if (!data.resultadoEjecucion.ejecucionCorrecta)
       {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
-      if(data.resultadoEjecucion.ejecucionCorrecta){
+      if (data.resultadoEjecucion.ejecucionCorrecta)
+      {
         this.productividadDiaria = data;
       }
-      console.log(this.productividadDiaria);
       callback();
     })
     .catch(error => {
@@ -179,23 +205,18 @@ export class DetalleProductividadComponent implements OnInit {
     });
   }
 
-  private GetProductividadSemanal(nomina: number, Anio: string, TrtrasemanaAnio: string, FechaCorte: string, EsPosterior: Boolean, callback){
-    console.log(nomina);
-    console.log(Anio);
-    console.log(TrtrasemanaAnio);
-    console.log(FechaCorte);
-    console.log(EsPosterior);
+  private GetProductividadSemanal(nomina: number, Anio: string, TrtrasemanaAnio: string, FechaCorte: string,
+                                  EsPosterior: boolean, callback): any{
     this.service.getProductividadSemanal(nomina.toString(), Anio , TrtrasemanaAnio, FechaCorte, EsPosterior)
     .toPromise()
     .then((data: ProductividadSemanalInterface) => {
-      if(!data.resultadoEjecucion.ejecucionCorrecta)
+      if (!data.resultadoEjecucion.ejecucionCorrecta)
       {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
-      if(data.resultadoEjecucion.ejecucionCorrecta){
+      if (data.resultadoEjecucion.ejecucionCorrecta){
         this.ProductividadSemanal = data;
       }
-      console.log(this.ProductividadSemanal);
       callback();
     })
     .catch(error => {

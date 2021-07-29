@@ -42,7 +42,6 @@ export class ComisionEstimadaComponent implements OnInit {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
       this.comisionEstimada = data;
-      console.log(this.comisionEstimada);
       this.loading = false;
       this.isLoadingEvent.emit(this.loading);
     })
