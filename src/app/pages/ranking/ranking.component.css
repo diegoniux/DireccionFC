@@ -1,0 +1,74 @@
+#top3View{
+    margin: auto;
+    margin-top: 50px;         
+    min-width: 510px;
+    max-width: 1610px;
+    height: 217px;
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    opacity: 1;
+}
+#containerTop3{
+    margin: auto;
+    max-width: 1110px;
+    height: 217px;
+}
+.perfilTop3{
+    width: 350px;
+    height: 217px;
+    font-weight: 550;
+    margin: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 20px;         
+    position: relative;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    /* border: solid 1px; */
+}
+.colPerfilTop3{
+    width: 170px;
+    /* border: solid 1px; */
+    padding: 5px;
+    float: left;
+}
+.imgPerfilTop3{
+    width: 140px;
+    height: 140px;
+    border: solid 1px;
+    border-radius: 70px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.divPosition{
+    margin: auto;
+    margin-top: 5px;
+    width: 92px;
+    height: 27px;
+    padding: 2px;
+    border-radius: 14px;
+    color: #FFFFFF;
+}
+.divNumTraspasos{
+    margin: 5px;
+    width: 168px;
+    height: 30px;
+    padding: 4px;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+
+
+
+.rankingStarts{
+    width: 169px;
+    height: 35px;
+    margin: 5px;
+    padding: 5px;
+    background-color: #FFFFFF;
+    border: solid 1px;
+    border-color: #EBEBEB;
+    border-radius: 10px;
+}

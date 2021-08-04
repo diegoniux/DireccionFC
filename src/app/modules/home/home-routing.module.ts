@@ -6,6 +6,8 @@ import { AuthGuard } from '../../guards/auth.guard';
 import { DetalleDirectorComercialComponent } from 'src/app/pages/detalle-director-comercial/detalle-director-comercial.component';
 import { PlantillaGerenciaComponent } from '../../pages/plantilla-gerencia/plantilla-gerencia.component';
 import { PizarronDigitalComponent } from '../../pages/pizarron-digital/pizarron-digital.component';
+import { RankingComponent } from '../../pages/ranking/ranking.component';
+import { AlarmasImproductivasComponent } from '../../pages/alarmas-improductivas/alarmas-improductivas.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,16 @@ const routes: Routes = [
   {
     path: 'pizarronDigital',
     component: PizarronDigitalComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'rankingGerentes',
+    component: RankingComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'alarmasImproductivas',
+    component: AlarmasImproductivasComponent,
     canActivate: [AuthGuard]
   }];
 

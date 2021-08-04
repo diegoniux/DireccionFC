@@ -167,7 +167,7 @@ export class PizarronDigitalComponent implements OnInit {
   private registrarError(msg: string): any
   {
     const logError: LogErrorInterface = {
-      idPantalla: 5, // cual es numero de esta pantalla
+      idPantalla: 4,//cual es numero de esta pantalla
       usuario: this.loginInterface.usuarioData.nomina,
       error: msg
     };

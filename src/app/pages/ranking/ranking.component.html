@@ -1,1 +1,42 @@
-<p>ranking works!</p>
+<div class="container-fluid p-4" style="background-color: #F2F2F2;">
+    <app-nav-bar [seccionActiva]="5"></app-nav-bar>
+    <app-header-pizarron-digital></app-header-pizarron-digital>
+    
+    <div id="top3View" >
+        <div id="card containerTop3" *ngIf="rankingResp">
+            <div class="perfilTop3" *ngFor="let gte of rankingResp.topGerentes">
+                <div class="colPerfilTop3">
+                    <img class="imgPerfilTop3" [ngStyle]="{'border-color': gte.colorPosicion}" src="https://pbs.twimg.com/profile_images/792844379635408897/4pwOSKD6_400x400.jpg" />               
+                    <div class="divPosition" [ngStyle]="{'background-color': gte.colorPosicion}">{{gte.posicion}} LUGAR</div>
+                </div>                        
+                <div class="colPerfilTop3">
+                    <span class="">{{gte.nombre}}</span><br />
+                    <span>{{gte.apellidos}}</span><br/>
+                    <span [ngStyle]="{'color': gte.colorPosicion}">{{gte.saldo}}</span>
+                    <div class="rankingStarts">
+                        [ESTRELLAS]
+                    </div>                        
+                    <div class="divNumTraspasos" [ngStyle]="{'background-color': gte.colorPosicion}">{{gte.numTraspaso}} TRASPASOS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-2">
+        <div class="card-body">
+            <table class="table">
+                <tbody class="text-center" *ngIf="rankingResp">
+                    <tr *ngFor="let gte of rankingResp.gerentes">
+                        <td><img src="{{gte.imgPosicionSemAnt}}"></td>
+                        <td>{{gte.posicion}}<br>POSICIÓN</td>
+                        <td><img src="{{gte.foto}}"></td>
+                        <td>{{gte.nombre}}<br>{{gte.apellidos}}</td>
+                        <td>{{gte.saldo}}<br>{{gte.tipoSaldo}}</td>
+                        <td>{{gte.numTraspaso}}<br>TRASPASOS</td>
+                        <td>[ESTRELLAS]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

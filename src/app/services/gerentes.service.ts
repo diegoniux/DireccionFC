@@ -44,4 +44,19 @@ export class GerentesService {
       `Gestion/GetProductividadSemanal/${nomina}/${Anio}/${TetrasemanaAnio}/${FechaCorte}/${EsPosterior}`);
   }
 
+  public GetRanking(nomina: string): any {
+    return this.http.get(this.apiURL +
+      `Gestion/GetRanking/${nomina}`);
+  }
+
+  public GetAlertasPlantillaImproductividad(nomina: string): any {
+    return this.http.get(this.apiURL +
+      `Gestion/GetAlertasPlantillaImproductividad/${nomina}`);
+  }
+
+  public GetMensajeGerente(nomina: string): any {
+    return this.http.get(this.apiURL +
+      `Gestion/GetMensajeGerente/${nomina}`);
+  }
+
 }

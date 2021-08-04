@@ -1,29 +1,24 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { PlantillaEspecialistasInterface } from '../../interfaces/dto/plantillaEspecialistas.interface';
-import { EspecialistaGerenteInterface } from '../../interfaces/especialistaGerente.interface';
-import { GerentesService } from '../../services/gerentes.service';
-import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
-import { NavBarComponent } from '../../shared/nav-bar/nav-bar.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginInterface } from '../../interfaces/login.interface';
+import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
+import { Router } from '@angular/router';
+import { GerentesService } from '../../services/gerentes.service';
 import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
-import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
-import { Router } from '@angular/router';
-import { LogErrorInterface } from '../../interfaces/logError.interface';
+import { NavBarComponent } from '../../shared/nav-bar/nav-bar.component';
 import { HeaderPizarronDigitalComponent } from '../../shared/header-pizarron-digital/header-pizarron-digital.component';
+import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
+import { LogErrorInterface } from '../../interfaces/logError.interface';
 
 @Component({
-  selector: 'app-plantilla-gerencia',
-  templateUrl: './plantilla-gerencia.component.html',
-  styleUrls: ['./plantilla-gerencia.component.css']
+  selector: 'app-alarmas-improductivas',
+  templateUrl: './alarmas-improductivas.component.html',
+  styleUrls: ['./alarmas-improductivas.component.css']
 })
-export class PlantillaGerenciaComponent implements OnInit { 
+export class AlarmasImproductivasComponent implements OnInit {
   nomina: number;
   nominaGerente:number;
-  nombreTitulo: string
-  nombreImg: string
   loginInterface: LoginInterface;
-  plantilla:EspecialistaGerenteInterface[];
   infoGerencia: ReporteGerencia;
   idInterval: any;
   perfilId: number;
@@ -32,16 +27,12 @@ export class PlantillaGerenciaComponent implements OnInit {
   @ViewChild(HeaderPizarronDigitalComponent) headerPizarronDigitalChild: HeaderPizarronDigitalComponent;
 
   constructor(private router: Router,
-              public service: GerentesService,
-              public loginService: LoginService,
-              private toastrService: ToastrService) { 
-  }
+    public service: GerentesService,
+    public loginService: LoginService,
+    private toastrService: ToastrService) { }
 
   ngOnInit(): void {
-    this.nombreTitulo = "Productividad Agentes";
-    this.nombreImg = "iconoProductividad";    
   }
-
   ngOnDestroy(): void {
     if (this.idInterval) {
       clearInterval(this.idInterval);
@@ -62,7 +53,7 @@ export class PlantillaGerenciaComponent implements OnInit {
       this.loadData();
       const logSistema: LogSistemaInterface = {
           idAccion: 3,
-          idPantalla: 5,
+          idPantalla: 6,
           usuario: this.loginInterface.usuarioData.nomina
         };
       this.registrarLogPantalla(logSistema);
@@ -81,33 +72,12 @@ export class PlantillaGerenciaComponent implements OnInit {
 
   private loadData(): void {
     this.getHeader();
-    this.getPlantilla(); 
   }
 
   private getHeader(): any{
     if(!this.nominaGerente)
       return;
-    
     this.headerPizarronDigitalChild.loadData(this.infoGerencia);
-    
-  }
-
-  private getPlantilla(): any {
-    // this.loading = true;
-    // this.isLoadingEvent.emit(this.loading);
-    this.service.getPlantilla(this.nominaGerente.toString())
-    .toPromise()
-    .then((data: PlantillaEspecialistasInterface) =>{
-      if (!data.resultadoEjecucion.ejecucionCorrecta) {
-        throw new Error(data.resultadoEjecucion.friendlyMessage);
-      }
-      this.plantilla = data.promotores;
-      // this.loading = false;
-      // this.isLoadingEvent.emit(this.loading);
-    })
-    .catch(error => {
-      console.error(error);
-    });
   }
 
   private registrarLogPantalla(logSistema: LogSistemaInterface): any {
@@ -123,7 +93,7 @@ export class PlantillaGerenciaComponent implements OnInit {
   private registrarError(msg: string): any
   {
     const logError: LogErrorInterface = {
-      idPantalla: 5,
+      idPantalla: 6,
       usuario: this.loginInterface.usuarioData.nomina,
       error: msg
     };
@@ -139,22 +109,5 @@ export class PlantillaGerenciaComponent implements OnInit {
   recieveIsLoading($event): void {
     const res: boolean = this.headerPizarronDigitalChild.loading;    
     //this.controlPeriodosChild.loading = res;
-  }
-
-  public porcentajeSaldoAcumuladoDesc (saldoAcumulado: string, SaldoVirtual: string): string {
-    let response: string;
-    if(Number(SaldoVirtual) == 1)
-      return '0%';
-    else if( Number(saldoAcumulado) <= Number(SaldoVirtual) )
-      return '0%';
-
-    response = ((Number(saldoAcumulado) - Number(SaldoVirtual)) * 100).toString() + `%`;
-    return response;
-  }
-
-  public removeDecimals(str: string): string{
-    let response: string;
-    response = str.split('.')[0];
-    return response;
   }
 }

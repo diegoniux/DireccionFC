@@ -45,6 +45,7 @@ import { ControlProductividadComponent } from './shared/control-productividad/co
 import { ComisionBonoPdComponent } from './shared/comision-bono-pd/comision-bono-pd.component';
 import { DetalleProductividadComponent } from './shared/detalle-productividad/detalle-productividad.component';
 import { HeaderPizarronDigitalComponent } from './shared/header-pizarron-digital/header-pizarron-digital.component';
+import { AlarmasImproductivasComponent } from './pages/alarmas-improductivas/alarmas-improductivas.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { HeaderPizarronDigitalComponent } from './shared/header-pizarron-digital
     HeaderPizarronDigitalComponent,
     ControlProductividadComponent,
     ComisionBonoPdComponent,
-    DetalleProductividadComponent
+    DetalleProductividadComponent,
+    AlarmasImproductivasComponent
   ],
   imports: [
     BrowserModule,

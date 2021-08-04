@@ -1,0 +1,19 @@
+export interface AlertaImproductividad {
+    Foto:string
+    IdAlerta:number;
+    IdTipoAlerta:number;
+    IdEstatusAlerta:number;
+    NominaAP:number;
+    NombreAP:string;
+    ApellidosAP:string;
+    DiasSinFolios:number;
+    DiasRestantes:number;
+    Msj1:string;
+    Msj2:string;
+    Msj3:string;
+    BanderaCalendar:boolean;
+    ColorCalendar:string;
+    MsjEstatus:string;
+    ImgNotificacion:string;
+    ImgWarning:boolean;
+}
