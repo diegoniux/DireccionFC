@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HeaderGerentesInterface } from '../../interfaces/dto/headerGerentes.interface';
 import { GerentesService } from '../../services/gerentes.service';
 import { ReporteGerencia } from '../../interfaces/reporteGerencias.interface';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-header-pizarron-digital',
@@ -21,7 +22,12 @@ export class HeaderPizarronDigitalComponent implements OnInit {
   saldoCantado: string;
   saldoAcumulado: string;
   loading: boolean;
-
+  dirPos:number;
+  dirArrow:string;
+  nacPos:number;
+  nacArrow:string;
+  pantallaId:number;
+  
   constructor(public service: GerentesService) { 
     this.saldoAcumulado = '$0M';
     this.saldoVirtual = '$0M';
@@ -58,6 +64,22 @@ export class HeaderPizarronDigitalComponent implements OnInit {
     .catch(error => {
       console.error(error);
     });
+  }
+
+  public getPositionIcon(img:string): string{
+    let result:string;
+
+    if(img.length === 0)
+      return result;
+
+    if(img.includes('up'))
+      result = "fas fa-arrow-up";
+    else if(img.includes('down'))
+      result = "fas fa-arrow-down";
+    else if(img.includes('equal'))
+      result = "fas fa-equals";
+
+    return result;
   }
 
 }

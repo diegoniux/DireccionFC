@@ -1,3 +1,6 @@
+.card-radius{
+    border-radius: 10px;
+}
 #top3View{
     margin: auto;
     margin-top: 50px;         
@@ -29,7 +32,7 @@
     /* border: solid 1px; */
 }
 .colPerfilTop3{
-    width: 170px;
+    width: 180px;
     /* border: solid 1px; */
     padding: 5px;
     float: left;
@@ -37,7 +40,7 @@
 .imgPerfilTop3{
     width: 140px;
     height: 140px;
-    border: solid 1px;
+    border: solid 2px;
     border-radius: 70px;
     font-size: 16px;
     font-weight: bold;
@@ -45,30 +48,54 @@
 .divPosition{
     margin: auto;
     margin-top: 5px;
-    width: 92px;
+    width: 100px;
     height: 27px;
     padding: 2px;
     border-radius: 14px;
     color: #FFFFFF;
+    font-weight: bold;
 }
 .divNumTraspasos{
     margin: 5px;
+    margin-top: 15px;
     width: 168px;
     height: 30px;
     padding: 4px;
     border-radius: 5px;
     color: #FFFFFF;
+    font-weight: bold;
 }
-
-
-
 .rankingStarts{
     width: 169px;
     height: 35px;
     margin: 5px;
-    padding: 5px;
+    margin-top: 15px;
+    padding: 3px 12px 3px 12px;
     background-color: #FFFFFF;
     border: solid 1px;
     border-color: #EBEBEB;
     border-radius: 10px;
+}
+.imgTbl {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+.names{
+    font-size: 16px;
+}
+.saldo{
+    margin-top: 15px;
+    font-weight: bold;
+}
+@media only screen and (max-device-width: 480px) {
+    .card-body {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .colPerfilTop3 {
+        width: 165px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 }

@@ -2,41 +2,80 @@
     <app-nav-bar [seccionActiva]="5"></app-nav-bar>
     <app-header-pizarron-digital></app-header-pizarron-digital>
     
-    <div id="top3View" >
-        <div id="card containerTop3" *ngIf="rankingResp">
-            <div class="perfilTop3" *ngFor="let gte of rankingResp.topGerentes">
-                <div class="colPerfilTop3">
-                    <img class="imgPerfilTop3" [ngStyle]="{'border-color': gte.colorPosicion}" src="https://pbs.twimg.com/profile_images/792844379635408897/4pwOSKD6_400x400.jpg" />               
-                    <div class="divPosition" [ngStyle]="{'background-color': gte.colorPosicion}">{{gte.posicion}} LUGAR</div>
-                </div>                        
-                <div class="colPerfilTop3">
-                    <span class="">{{gte.nombre}}</span><br />
-                    <span>{{gte.apellidos}}</span><br/>
-                    <span [ngStyle]="{'color': gte.colorPosicion}">{{gte.saldo}}</span>
-                    <div class="rankingStarts">
-                        [ESTRELLAS]
-                    </div>                        
-                    <div class="divNumTraspasos" [ngStyle]="{'background-color': gte.colorPosicion}">{{gte.numTraspaso}} TRASPASOS</div>
+    <div class="row" style="margin-top: 20px;"> 
+        <div class="col-12" style="padding: 0px;">
+            <div class="card card-radius" *ngIf="rankingResp">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col col-lg-4 text-center" *ngFor="let gte of rankingResp.topGerentes">
+                            <div class="colPerfilTop3">
+                                <img class="imgPerfilTop3" [ngStyle]="{'border-color': gte.colorPosicion}" [src]="getDefaultImg(gte.foto)" />               
+                                <div class="divPosition" [ngStyle]="{'background-color': gte.colorPosicion}">{{gte.posicion}} LUGAR</div>
+                            </div>                        
+                            <div class="colPerfilTop3">
+                                <span class="names font-weight-bold">{{gte.nombre}}</span><br />
+                                <span class="names">{{gte.apellidos}}</span><br/>
+                                <span class="saldo" [ngStyle]="{'color': gte.colorPosicion}">{{gte.saldo}}</span>
+                                <div class="rankingStarts">
+                                    <div class="row" style="padding-top: 0px;">
+                                        <div class="col" style="padding: 1px; padding-top: 0px;">
+                                            <img src="assets/img/{{gte.estrellas.semana1}}">
+                                        </div>
+                                        <div class="col" style="padding: 1px; padding-top: 0px;">
+                                            <img src="assets/img/{{gte.estrellas.semana2}}">
+                                        </div>
+                                        <div class="col" style="padding: 1px; padding-top: 0px;">
+                                            <img src="assets/img/{{gte.estrellas.semana3}}">
+                                        </div>
+                                        <div class="col" style="padding: 1px; padding-top: 0px;"  >
+                                            <img src="assets/img/{{gte.estrellas.semana4}}">
+                                        </div>
+                                    </div>
+                                </div>                        
+                                <div class="divNumTraspasos" [ngStyle]="{'background-color': gte.colorPosicion}">{{gte.numTraspaso}} TRASPASOS</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card mt-2">
-        <div class="card-body">
-            <table class="table">
-                <tbody class="text-center" *ngIf="rankingResp">
-                    <tr *ngFor="let gte of rankingResp.gerentes">
-                        <td><img src="{{gte.imgPosicionSemAnt}}"></td>
-                        <td>{{gte.posicion}}<br>POSICIÓN</td>
-                        <td><img src="{{gte.foto}}"></td>
-                        <td>{{gte.nombre}}<br>{{gte.apellidos}}</td>
-                        <td>{{gte.saldo}}<br>{{gte.tipoSaldo}}</td>
-                        <td>{{gte.numTraspaso}}<br>TRASPASOS</td>
-                        <td>[ESTRELLAS]</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="row" style="margin-top: 20px;"> 
+        <div class="col-12" style="padding: 0px;">
+            <div class="card card-radius">
+                <div class="card-body" style="overflow-x: scroll">
+                    <table class="table table-hover">
+                        <tbody class="text-center" *ngIf="rankingResp">
+                            <tr *ngFor="let gte of rankingResp.gerentes">
+                                <td><img src="assets/img/{{gte.imgPosicionSemAnt}}"></td>
+                                <td><span class="font-weight-bold">{{gte.posicion}}</span><br>POSICIÓN</td>
+                                <td><img class="imgTbl" [src]="getDefaultImg(gte.foto)"></td>
+                                <td><span class="font-weight-bold">{{gte.nombre}}</span><br>{{gte.apellidos}}</td>
+                                <td><span class="font-weight-bold">{{gte.saldo}}</span><br>{{gte.tipoSaldo}}</td>
+                                <td><span class="font-weight-bold">{{gte.numTraspaso}}</span><br>TRASPASOS</td>
+                                <td>
+                                    <div class="rankingStarts">
+                                        <div class="row" style="padding-top: 0px;">
+                                            <div class="col" style="padding: 1px; padding-top: 0px;">
+                                                <img src="assets/img/{{gte.estrellas.semana1}}">
+                                            </div>
+                                            <div class="col" style="padding: 1px; padding-top: 0px;">
+                                                <img src="assets/img/{{gte.estrellas.semana2}}">
+                                            </div>
+                                            <div class="col" style="padding: 1px; padding-top: 0px;">
+                                                <img src="assets/img/{{gte.estrellas.semana3}}">
+                                            </div>
+                                            <div class="col" style="padding: 1px; padding-top: 0px;"  >
+                                                <img src="assets/img/{{gte.estrellas.semana4}}">
+                                            </div>
+                                        </div>
+                                    </div>              
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>

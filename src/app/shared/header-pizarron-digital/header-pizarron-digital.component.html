@@ -32,6 +32,19 @@
                     <p class="valores">{{ saldoAcumulado }}</p>
                     <p class="lblTitulos">Saldo Acumulado</p>
                 </div>
+                <span *ngIf="pantallaId==5" class="border spanMargin"></span>
+                <div *ngIf="pantallaId==5" class="col text-center p-1">
+                    <div class="row" *ngIf="dirArrow">
+                        <div class="col-6">
+                            <p class="valores"><i [ngClass]="getPositionIcon(dirArrow)"></i> {{ dirPos }}</p>
+                            <p class="lblTitulos">Dirección</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="valores"><i [ngClass]="getPositionIcon(nacArrow)"></i> {{ nacPos }}</p>
+                            <p class="lblTitulos">Nacional</p>
+                        </div>
+                    </div>                    
+                </div>
             </div>
         </div>
     </div>

@@ -23,7 +23,7 @@ export class RankingComponent implements OnInit {
   infoGerencia: ReporteGerencia;
   idInterval: any;
   perfilId: number;
-  rankingResp: RankingInterface
+  rankingResp: RankingInterface;
 
   @ViewChild(NavBarComponent) navBarChild: NavBarComponent;
   @ViewChild(HeaderPizarronDigitalComponent) headerPizarronDigitalChild: HeaderPizarronDigitalComponent;
@@ -74,7 +74,7 @@ export class RankingComponent implements OnInit {
     }
   }
 
-  private loadData(): void {
+  private loadData(): void {   
     this.getHeader();
     this.getRanking();
   }
@@ -82,6 +82,7 @@ export class RankingComponent implements OnInit {
   private getHeader(): any{
     if(!this.nominaGerente)
       return;
+    this.headerPizarronDigitalChild.pantallaId = 5;
     this.headerPizarronDigitalChild.loadData(this.infoGerencia);
   }
 
@@ -96,6 +97,10 @@ export class RankingComponent implements OnInit {
       }
       console.log(data);
       this.rankingResp = data;
+      this.headerPizarronDigitalChild.dirPos = data.posicionDireccion;
+      this.headerPizarronDigitalChild.nacPos = data.posicionNacional;
+      this.headerPizarronDigitalChild.dirArrow = data.imgPosicionSemAntDireccion;
+      this.headerPizarronDigitalChild.nacArrow = data.imgPosicionSemAntNacional;
       // this.loading = false;
       // this.isLoadingEvent.emit(this.loading);
     })
@@ -112,6 +117,12 @@ export class RankingComponent implements OnInit {
       .catch(error => {
         this.toastrService.error(error.message, 'Aviso');
       });
+  }
+
+  public getDefaultImg(img:string): string {
+    if(img === "capi_circulo.png")
+      return 'assets/img/' + img;
+    return img;
   }
 
   private registrarError(msg: string): any
