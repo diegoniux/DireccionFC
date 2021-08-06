@@ -1,4 +1,4 @@
-export interface AlertaImproductividad {
+export interface AlertaImproductividadInterface {
     Foto:string
     IdAlerta:number;
     IdTipoAlerta:number;

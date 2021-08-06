@@ -1,5 +1,50 @@
 <div class="container-fluid p-4" style="background-color: #F2F2F2;">
     <app-nav-bar [seccionActiva]="4"></app-nav-bar>
     <app-header-pizarron-digital></app-header-pizarron-digital>
-    <p>alarmas-improductivas works!</p>
+    <div class="row" style="margin-top: 20px;"> 
+        <div class="col-12" style="padding: 0px;">
+            <div class="card card-radius">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-2 col-sm-2">
+                            <img src="assets/img/speaker_circle_white.png">
+                        </div>
+                        <div class="col-10 col-sm-10" *ngIf="mensajeResp">
+                            <p class="font-weight-bold">{{mensajeResp.mensaje}} {{mensajeResp.saldoAcomuladoMeta}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px;"> 
+        <div class="col-12" style="padding: 0px;">
+            <div class="card card-radius">
+                <div class="card-body" style="overflow-x: scroll">
+                    <table class="table table-hover">
+                        <tbody *ngIf="alarmasResp">
+                            <tr *ngFor="let esp of alarmasResp.resultDatos">
+                                <td><img class="imgTbl" *ngIf="esp.foto" [src]="getDefaultImg(esp.foto)"></td>
+                                <td><span class="font-weight-bold">{{esp.nombreAP}}</span><br>{{esp.apellidosAP}}</td>
+                                <td><img *ngIf="esp.banderaCalendar" src="assets/img/{{esp.colorCalendar}}"></td>
+                                <td><span class="font-weight-bold">{{esp.msjEstatus}}</span></td>
+                                <td>
+                                    <div style="width: 350px; height: 60px; border-radius: 10px; background-color: #F5F5F5;">
+                                        <div class="row" style="padding: 0px;">
+                                            <div class="col-2" style="padding: 0px;">
+                                                <img style="margin:12px 0px 0px 25px;" src="assets/img/{{esp.imgNotificacion}}"></div>
+                                            <div class="col-8">
+                                                <p style="padding-top: 5px;">{{esp.msj1}} {{esp.msj2}} {{esp.msj3}}</p></div>
+                                            <div class="col-2" style="padding: 0px;">
+                                                <img *ngIf="esp.imgWarning" src="assets/img/icon_warning_corner.png"></div>
+                                        </div>                                        
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -9,6 +9,8 @@ import { NavBarComponent } from '../../shared/nav-bar/nav-bar.component';
 import { HeaderPizarronDigitalComponent } from '../../shared/header-pizarron-digital/header-pizarron-digital.component';
 import { LogSistemaInterface } from '../../interfaces/logSistema.interface';
 import { LogErrorInterface } from '../../interfaces/logError.interface';
+import { AlertasImproductividadInterface } from '../../interfaces/dto/alertasImproductividad.interface';
+import { AlertaMensajeInterface } from '../../interfaces/dto/alertaMensaje.interface';
 
 @Component({
   selector: 'app-alarmas-improductivas',
@@ -22,6 +24,8 @@ export class AlarmasImproductivasComponent implements OnInit {
   infoGerencia: ReporteGerencia;
   idInterval: any;
   perfilId: number;
+  alarmasResp: AlertasImproductividadInterface;
+  mensajeResp: AlertaMensajeInterface;
 
   @ViewChild(NavBarComponent) navBarChild: NavBarComponent;
   @ViewChild(HeaderPizarronDigitalComponent) headerPizarronDigitalChild: HeaderPizarronDigitalComponent;
@@ -72,12 +76,52 @@ export class AlarmasImproductivasComponent implements OnInit {
 
   private loadData(): void {
     this.getHeader();
+    this.getMensaje();
+    this.getAlarmas()
   }
 
   private getHeader(): any{
     if(!this.nominaGerente)
       return;
     this.headerPizarronDigitalChild.loadData(this.infoGerencia);
+  }
+
+  private getAlarmas(): any{
+    // this.loading = true;
+    // this.isLoadingEvent.emit(this.loading);
+    this.service.GetAlertasPlantillaImproductividad(this.nominaGerente.toString())
+    .toPromise()
+    .then((data: AlertasImproductividadInterface) =>{
+      if (!data.resultadoEjecucion.ejecucionCorrecta) {
+        throw new Error(data.resultadoEjecucion.friendlyMessage);
+      }
+      console.log(data);
+      this.alarmasResp = data;
+      // this.loading = false;
+      // this.isLoadingEvent.emit(this.loading);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }
+
+  private getMensaje(): any{
+    // this.loading = true;
+    // this.isLoadingEvent.emit(this.loading);
+    this.service.GetMensajeGerente(this.nominaGerente.toString())
+    .toPromise()
+    .then((data: AlertaMensajeInterface) =>{
+      if (!data.resultadoEjecucion.ejecucionCorrecta) {
+        throw new Error(data.resultadoEjecucion.friendlyMessage);
+      }
+      console.log(data);
+      this.mensajeResp = data;
+      // this.loading = false;
+      // this.isLoadingEvent.emit(this.loading);
+    })
+    .catch(error => {
+      console.error(error);
+    });
   }
 
   private registrarLogPantalla(logSistema: LogSistemaInterface): any {
@@ -88,6 +132,12 @@ export class AlarmasImproductivasComponent implements OnInit {
       .catch(error => {
         this.toastrService.error(error.message, 'Aviso');
       });
+  }
+
+  public getDefaultImg(img:string): string {
+    if(img === "capi_circulo.png")
+      return 'assets/img/' + img;
+    return img;
   }
 
   private registrarError(msg: string): any
