@@ -6,3 +6,16 @@
     height: 60px;
     border-radius: 30px;
 }
+.calendarDaysNum{
+    width: 51px;
+    position: absolute;
+    margin-top: -45px;
+    text-align: center;
+}
+.calendarDaysDesc{
+    width: 51px;
+    position: absolute;
+    margin-top: -23px;
+    text-align: center;
+    font-size: 13px;
+}
