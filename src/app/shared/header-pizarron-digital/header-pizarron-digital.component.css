@@ -336,3 +336,8 @@
         border: none;
     }
 }
+@media only screen and (max-width: 1344px) {
+    .fa-arrow-up, .fa-arrow-down, .fa-equals{
+        font-size: 20px;
+    }   
+}

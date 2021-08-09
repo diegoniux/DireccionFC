@@ -7,7 +7,7 @@
             <div class="card card-radius" *ngIf="rankingResp">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col col-lg-4 text-center" *ngFor="let gte of rankingResp.topGerentes">
+                        <div class="col-12 col-sm-4 text-center" *ngFor="let gte of rankingResp.topGerentes">
                             <div class="colPerfilTop3">
                                 <img class="imgPerfilTop3" [ngStyle]="{'border-color': gte.colorPosicion}" [src]="getDefaultImg(gte.foto)" />               
                                 <div class="divPosition" [ngStyle]="{'background-color': gte.colorPosicion}">{{gte.posicion}} LUGAR</div>
