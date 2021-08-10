@@ -27,8 +27,8 @@
                                 <td><img class="imgTbl" *ngIf="esp.foto" [src]="getDefaultImg(esp.foto)"></td>
                                 <td>{{esp.nombreAP}}<br><span class="font-weight-bold">{{esp.apellidosAP}}</span></td>
                                 <td class="text-center font-weight-bold">
-                                    <div style="width: 52px; height: 56px; position: relative;">
-                                        <img *ngIf="esp.banderaCalendar" src="assets/img/{{esp.colorCalendar}}" style="position: relative;">
+                                    <div *ngIf="esp.banderaCalendar" style="width: 52px; height: 56px; position: relative;">
+                                        <img src="assets/img/{{esp.colorCalendar}}" style="position: relative;">
                                         <p class="calendarDaysNum">{{esp.diasSinFolios}}</p>
                                         <p class="calendarDaysDesc">DÍAS</p>
                                     </div>
