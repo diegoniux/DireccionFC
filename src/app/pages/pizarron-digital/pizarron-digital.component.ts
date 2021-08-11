@@ -37,6 +37,7 @@ export class PizarronDigitalComponent implements OnInit {
   productividadSemanalInterface: ProductividadSemanalInterface;
   onlyOnce: boolean = true;
   perfilId: number;
+  loaded:boolean = false;
 
 
   // componentes hijos
@@ -116,6 +117,10 @@ export class PizarronDigitalComponent implements OnInit {
     {
       this.DetalleProductividadChild.cambioProductividad(this.ControlProductividadChild.DiariaSemana, () => {});
     }
+  }
+
+  isLoaded(): boolean {
+    return this.loaded;
   }
 
   loadData(): void{
