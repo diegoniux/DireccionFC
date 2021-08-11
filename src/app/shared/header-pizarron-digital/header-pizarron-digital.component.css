@@ -336,7 +336,22 @@
         border: none;
     }
 }
-@media only screen and (max-width: 1344px) {
+@media only screen and (max-width: 1500px) {
+    .fa-arrow-up, .fa-arrow-down, .fa-equals{
+        font-size: 35px;
+    }   
+}
+@media only screen and (max-width: 1350px) {
+    .fa-arrow-up, .fa-arrow-down, .fa-equals{
+        font-size: 30px;
+    }   
+}
+@media only screen and (max-width: 1250x) {
+    .fa-arrow-up, .fa-arrow-down, .fa-equals{
+        font-size: 25px;
+    }   
+}
+@media only screen and (max-width: 1150x) {
     .fa-arrow-up, .fa-arrow-down, .fa-equals{
         font-size: 20px;
     }   

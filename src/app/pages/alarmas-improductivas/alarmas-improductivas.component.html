@@ -1,7 +1,9 @@
 <div class="container-fluid p-4" style="background-color: #F2F2F2;">
     <app-nav-bar [seccionActiva]="4"></app-nav-bar>
     <app-header-pizarron-digital></app-header-pizarron-digital>
-    <div class="row justify-content-md-center" style="margin-top: 20px;"> 
+    <app-loading *ngIf="!(isLoaded())"></app-loading>
+
+    <div *ngIf="isLoaded()" class="row justify-content-md-center" style="margin-top: 20px;"> 
         <div class="col-12 col-md-6 align-self-center" style="padding: 0px;">
             <div class="card card-radius">
                 <div class="card-body">
@@ -17,7 +19,7 @@
             </div>
         </div>
     </div>
-    <div class="row" style="margin-top: 20px;"> 
+    <div *ngIf="isLoaded()" class="row" style="margin-top: 20px;"> 
         <div class="col-12" style="padding: 0px;">
             <div class="card card-radius">
                 <div class="card-body" style="overflow-x: scroll">
@@ -36,7 +38,7 @@
                                 <td><span class="font-weight-bold">{{esp.msjEstatus}}</span></td>
                                 <td>
                                     <div style="width: 350px; height: 60px; border-radius: 10px; background-color: #F5F5F5;">
-                                        <div class="row" style="padding: 0px;">
+                                        <div class="row " style="padding: 0px;">
                                             <div class="col-2" style="padding: 0px;">
                                                 <img style="margin:12px 0px 0px 25px;" src="assets/img/{{esp.imgNotificacion}}"></div>
                                             <div class="col-8">

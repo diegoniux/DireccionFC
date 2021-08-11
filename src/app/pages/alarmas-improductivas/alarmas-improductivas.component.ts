@@ -26,6 +26,7 @@ export class AlarmasImproductivasComponent implements OnInit {
   perfilId: number;
   alarmasResp: AlertasImproductividadInterface;
   mensajeResp: AlertaMensajeInterface;
+  loaded:boolean = false;
 
   @ViewChild(NavBarComponent) navBarChild: NavBarComponent;
   @ViewChild(HeaderPizarronDigitalComponent) headerPizarronDigitalChild: HeaderPizarronDigitalComponent;
@@ -80,6 +81,10 @@ export class AlarmasImproductivasComponent implements OnInit {
     this.getAlarmas()
   }
 
+  isLoaded(): boolean{
+    return this.loaded;
+  }
+
   private getHeader(): any{
     if(!this.nominaGerente)
       return;
@@ -95,8 +100,8 @@ export class AlarmasImproductivasComponent implements OnInit {
       if (!data.resultadoEjecucion.ejecucionCorrecta) {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
-      console.log(data);
       this.alarmasResp = data;
+      this.loaded = true;
       // this.loading = false;
       // this.isLoadingEvent.emit(this.loading);
     })
@@ -114,8 +119,8 @@ export class AlarmasImproductivasComponent implements OnInit {
       if (!data.resultadoEjecucion.ejecucionCorrecta) {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
-      console.log(data);
       this.mensajeResp = data;
+      // this.loaded = true;
       // this.loading = false;
       // this.isLoadingEvent.emit(this.loading);
     })

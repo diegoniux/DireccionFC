@@ -1,8 +1,9 @@
 <div class="container-fluid p-4" style="background-color: #F2F2F2;">
     <app-nav-bar [seccionActiva]="5"></app-nav-bar>
     <app-header-pizarron-digital></app-header-pizarron-digital>
+    <app-loading *ngIf="!(isLoaded())"></app-loading>
     
-    <div class="row" style="margin-top: 20px;"> 
+    <div *ngIf="isLoaded()" class="row" style="margin-top: 20px;"> 
         <div class="col-12" style="padding: 0px;">
             <div class="card card-radius" *ngIf="rankingResp">
                 <div class="card-body">
@@ -40,7 +41,7 @@
             </div>
         </div>
     </div>
-    <div class="row" style="margin-top: 20px;"> 
+    <div *ngIf="isLoaded()" class="row" style="margin-top: 20px;"> 
         <div class="col-12" style="padding: 0px;">
             <div class="card card-radius">
                 <div class="card-body" style="overflow-x: scroll">

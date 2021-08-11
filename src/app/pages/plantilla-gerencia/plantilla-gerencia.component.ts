@@ -27,6 +27,7 @@ export class PlantillaGerenciaComponent implements OnInit {
   infoGerencia: ReporteGerencia;
   idInterval: any;
   perfilId: number;
+  loaded: boolean = false;
 
   @ViewChild(NavBarComponent) navBarChild: NavBarComponent;
   @ViewChild(HeaderPizarronDigitalComponent) headerPizarronDigitalChild: HeaderPizarronDigitalComponent;
@@ -84,6 +85,10 @@ export class PlantillaGerenciaComponent implements OnInit {
     this.getPlantilla(); 
   }
 
+  isLoaded(): boolean{
+    return this.loaded;
+  }
+
   private getHeader(): any{
     if(!this.nominaGerente)
       return;
@@ -102,6 +107,7 @@ export class PlantillaGerenciaComponent implements OnInit {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
       this.plantilla = data.promotores;
+      this.loaded = true;
       // this.loading = false;
       // this.isLoadingEvent.emit(this.loading);
     })

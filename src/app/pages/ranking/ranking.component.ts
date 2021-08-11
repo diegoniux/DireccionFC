@@ -24,6 +24,7 @@ export class RankingComponent implements OnInit {
   idInterval: any;
   perfilId: number;
   rankingResp: RankingInterface;
+  loaded:boolean = false;
 
   @ViewChild(NavBarComponent) navBarChild: NavBarComponent;
   @ViewChild(HeaderPizarronDigitalComponent) headerPizarronDigitalChild: HeaderPizarronDigitalComponent;
@@ -79,6 +80,10 @@ export class RankingComponent implements OnInit {
     this.getRanking();
   }
 
+  isLoaded(): boolean {
+    return this.loaded;
+  }
+
   private getHeader(): any{
     if(!this.nominaGerente)
       return;
@@ -95,12 +100,12 @@ export class RankingComponent implements OnInit {
       if (!data.resultadoEjecucion.ejecucionCorrecta) {
         throw new Error(data.resultadoEjecucion.friendlyMessage);
       }
-      console.log(data);
       this.rankingResp = data;
       this.headerPizarronDigitalChild.dirPos = data.posicionDireccion;
       this.headerPizarronDigitalChild.nacPos = data.posicionNacional;
       this.headerPizarronDigitalChild.dirArrow = data.imgPosicionSemAntDireccion;
       this.headerPizarronDigitalChild.nacArrow = data.imgPosicionSemAntNacional;
+      this.loaded = true;
       // this.loading = false;
       // this.isLoadingEvent.emit(this.loading);
     })
