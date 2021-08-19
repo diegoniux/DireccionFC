@@ -36,14 +36,18 @@
 <div class="row mt-3 plantillaWebDisplay" *ngIf='listaPlantilla && perfilUsuarioId != 7'>
     <div class="col-12 col-md" *ngFor='let item of listaPlantilla'>
         <div class="card card-radius" (click)="selectedUser( item.id )" [ngClass]="(item.id == focusUsr.id ? 'card-bg-on' : 'card-bg-off')">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-3">
+            <div class="card-body" style="padding: 20px 10px 20px 10px;">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-4" style="padding-right: 10px;">
                         <img src="{{ item.foto }}" class="mx-auto d-block rounded-circle imgFoto">
                     </div>
-                    <div class="col-md-*" style="padding-left: 10px;">
+                    <div class="col-12 col-lg-8">
                         <p class="font-weight-bold nombre">{{ item.nombre }}<br>{{ item.apellidoPaterno }} {{ item.apellidoMaterno }}</p>
-                        <p class="zona" style="margin-top: -15px;">{{ item.zona }}</p>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-12 text-center">
+                        <p class="zona" style="margin-top: 10px;">{{ item.zona }}</p>
                     </div>
                 </div>
                 <div class="text-center">

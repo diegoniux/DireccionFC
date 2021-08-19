@@ -8,6 +8,11 @@
 }
 .barraWebDisplay{
 }
+@media only screen and (max-device-width: 883px) {
+    h4{
+        font-size: 20px;
+    }
+}
 
 @media only screen and (max-device-width: 769px) {
     .barraMbDisplay{

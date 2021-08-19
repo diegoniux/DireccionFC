@@ -4,7 +4,7 @@
             <div class="col-lg-3 col-12 p-3" [mdbPopover]="PopOverSV" placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
                     <div class="col">
-                        <div class="row">
+                        <div class="row align-items-center titleRow">
                             <div class="col-6 lbl">
                                 <p>Saldo Acumulado</p>
                             </div>
@@ -43,7 +43,7 @@
             <div class="col-12  col-lg-3 p-3" [mdbPopover]="PopOverSol" placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
                     <div class="col">
-                        <div class="row">
+                        <div class="row align-items-center titleRow">
                             <div class="col-6 lbl">
                                 <p>Solicitudes</p>
                             </div>
@@ -79,7 +79,7 @@
             placement="bottom" triggers="focus" mdbWavesEffect>
                 <div class="row">
                     <div class="col">
-                        <div class="row">
+                        <div class="row align-items-center titleRow">
                             <div class="col-6 lbl">
                                 <p>Traspasos FCT</p>
                             </div>
@@ -114,7 +114,7 @@
             <div class="col p-3">
                 <div class="row">
                     <div class="col">
-                        <div class="row">
+                        <div class="row align-items-center titleRow">
                             <div class="col-8 lbl">
                                 <p>Gerencias Productivas</p>
                             </div>
@@ -148,16 +148,17 @@
         </div>
     </div>
 </div>
-<div class="row m-3 mensaje">
-    <div class="alert alert-danger col p-0" role="alert">
-        <div class="row">
-            <div class="col-1 offset-md-3">
-                <img class="rounded mx-auto d-block imgPerfil" style="height: 30px; margin: 0px;" src="assets/img/img-mensaje.png" alt="">
+<div class="row m-1 mensaje justify-content-md-center">
+    <div class="col-12 col-md-6 align-self-center">
+            <div class="alert alert-danger row align-items-center" style="border-radius: 10px;">
+                <div class="col-1 col-lg-1">
+                    <img style="height: 30px;" src="assets/img/img-mensaje.png" alt="">                        
+                </div>
+                <div class="col-11 col-lg-11">
+                        <span >{{ barraMetas.mensaje }}</span>
+                </div>
             </div>
-            <div class="col" style="padding-top: 5px; padding-bottom: 5px;">
-                {{ barraMetas.mensaje }}
-            </div>
-        </div>
+        <!-- </div> -->
     </div>
 </div>
 <ng-template #PopOverSV><div>

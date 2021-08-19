@@ -2,6 +2,7 @@
     
     <app-nav-bar [seccionActiva]="3"></app-nav-bar>
     <app-header-pizarron-digital></app-header-pizarron-digital>
+
     <div class="row">
         <div class="col-12 col-md" style="padding: 0px;">
             <app-control-productividad (changePeriodoEvent)="recievePeriodo($event)"></app-control-productividad>
@@ -10,6 +11,7 @@
             <app-comision-bono-pd></app-comision-bono-pd>
         </div>
     </div>
-    <app-detalle-productividad></app-detalle-productividad>
+    <!-- <app-loading *ngIf="!(isLoaded())"></app-loading> -->
+    <app-detalle-productividad ></app-detalle-productividad>
 
 </div>

@@ -81,8 +81,13 @@ export class PlantillaGerenciaComponent implements OnInit {
   }
 
   private loadData(): void {
-    this.getHeader();
-    this.getPlantilla(); 
+    try {
+      this.getHeader();
+      this.getPlantilla();
+    } catch (error) {
+      this.toastrService.error(error.message, 'Aviso');
+      // this.registrarError(error.message);
+    }
   }
 
   isLoaded(): boolean{

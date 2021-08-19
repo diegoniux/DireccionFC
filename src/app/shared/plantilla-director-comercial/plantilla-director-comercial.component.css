@@ -43,20 +43,37 @@
         padding: 3px;
     }
 }
-
-@media only screen and (max-device-width: 1300px) {
-    .nombre {
-        padding: 3px;        
-        font-size: 12px;
+@media only screen and (max-device-width: 1460px) {
+    .card{
+        height: 290px;
     }
+}
+@media only screen and (max-device-width: 1300px) {
+
     .imgFoto {
-        width: 52px;
+        width: 53px;
     }
     .zona{
         padding: 3px;
     }
 }
 
+@media only screen and (max-device-width: 1190px) {
+
+    .imgFoto {
+        width: 51px;
+    }
+}
+@media only screen and (max-device-width: 994px) {
+    .card{
+        height: 320px;
+    }
+}
+@media only screen and (max-device-width: 924px) {
+    .card{
+        height: 350px;
+    }
+}
 @media only screen and (max-device-width: 769px) {
     .nombre {
         padding: 1px;        
@@ -67,6 +84,9 @@
     }
     .plantillaWebDisplay{
         display: none;
+    }
+    .card{
+        height: 260px;
     }
 }
 

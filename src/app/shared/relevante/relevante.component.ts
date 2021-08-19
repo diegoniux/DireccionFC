@@ -34,15 +34,15 @@ export class RelevanteComponent implements OnInit {
   };
 
   public pieChartColors: Array < any > = [{
-        backgroundColor: ['#59C812', 'red', 'red'],
+        backgroundColor: ['#59981A', 'red', 'red'],
         borderColor: ['red', 'red', 'red'],
     },
     {
-      backgroundColor: ['#3C830F', 'red', 'red'],
+      backgroundColor: ['#81B622', 'red', 'red'],
       borderColor: ['red', 'red', 'red'],
     },
     {
-      backgroundColor: ['#FF1D25', 'red', 'red'],
+      backgroundColor: ['#FFA900', 'red', 'red'],
       borderColor: ['red', 'red', 'red'],
     }
   ];
